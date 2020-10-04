@@ -14,7 +14,10 @@ public class MemberDto {
     private String phone_number;
     private String email;
     private String password;
-    //private String address;
+    private String zipcode;
+    private String firstAddr;
+    private String secondAddr;
+
 
     public Member toEntity() {
         return Member.builder()
@@ -23,17 +26,21 @@ public class MemberDto {
                 .phone_number(phone_number)
                 .email(email)
                 .password(password)
-                //.address(address)
+                .zipcode(zipcode)
+                .firstAddr(firstAddr)
+                .secondAddr(secondAddr)
                 .build();
     }
 
     @Builder
-    public MemberDto(Long id, String name, String phone_number, String email, String password) {
+    public MemberDto(Long id, String name, String phone_number, String email, String password, String zipcode, String firstAddr, String secondAddr) {
         this.id = id;
         this.name = name;
         this.phone_number = phone_number;
         this.email = email;
         this.password = password;
-        //this.address = address;
+        this.zipcode = zipcode;
+        this.firstAddr = firstAddr;
+        this.secondAddr = secondAddr;
     }
 }

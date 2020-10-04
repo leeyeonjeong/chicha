@@ -11,18 +11,50 @@ import sw.chicha.Member.service.MemberService;
 public class MemberController {
     private MemberService memberService;
 
-     // 회원가입 페이지
-    @GetMapping("join_general")
-    public String dis_join_general() {
-        return "/join/join_general";
+    // 회원가입 선택
+    @GetMapping("join_select")
+    public String join_select() {
+        return "/join/회원가입선택";
     }
 
-    // 회원가입 처리
+     // 회원가입 페이지 (일반)
+    @GetMapping("join_general")
+    public String dis_join_general() {
+        return "/join/회원가입_일반";
+    }
+
+    // 회원가입 처리 (일반)
     @PostMapping("join_general")
     public String exec_join_general(MemberDto memberDto) {
         memberService.joinUser(memberDto);
 
-        return "redirect:/login";
+        return "redirect:/join_success_general";
+    }
+
+    // 회원가입 완료 (일반)
+    @GetMapping("join_success_general")
+    public String join_success_general() {
+        return "/join/회원가입완료_일반";
+    }
+
+    // 회원가입 페이지 (치료사)
+    @GetMapping("join_therapist")
+    public String dis_join_therapist() {
+        return "/join/회원가입_치료사";
+    }
+
+    // 회원가입 처리 (치료사)
+    //@PostMapping("join_therapist")
+    //public String exec_join_therapist(MemberDto memberDto) {
+    //    memberService.joinUser(memberDto);
+
+    //    return "redirect:/join_success_therapist";
+    //}
+
+    // 회원가입 완료 (치료사)
+    @GetMapping("join_success_therapist")
+    public String join_success_therapist() {
+        return "/join/회원가입완료_치료사";
     }
 
     // 아이디 중복 확인
@@ -41,17 +73,12 @@ public class MemberController {
     // 로그인 페이지
     @GetMapping("login")
     public String login() {
-        return "/login/login";
+        return "/login/로그인";
     }
 
-
-    @GetMapping("join_select")
-    public String join_select() {
-        return "/join/join_select";
-    }
-
-    @GetMapping("join_therapist")
-    public String join_therapist() {
-        return "/join/join_therapist";
+    // 로그아웃 페이지
+    @GetMapping("logout")
+    public String logout() {
+        return "redirect:/";
     }
 }

@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         // static 하위 목록 인증 패스
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**");
+        web.ignoring().antMatchers("/css/**", "/js/**", "/image/**", "/lib/**");
     }
 
     @Override
@@ -40,10 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                //.defaultSuccessUrl("/")
                 .permitAll()
         .and()
                 .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID")
                 //.logoutRequestMatcher(new AndRequestMatcher("/logout"))
                 //.logoutRequestMatcher("/logout/result")
                 .invalidateHttpSession(true);

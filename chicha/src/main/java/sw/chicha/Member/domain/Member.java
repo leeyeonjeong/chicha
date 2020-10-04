@@ -28,16 +28,27 @@ public class Member {
     @Column(length = 200, nullable = false)
     private String password;
 
-    //@Column(length = 256, nullable = false)
-    //private String address;
+    // 우편번호
+    @Column(nullable = false)
+    private String zipcode;
+
+    // 지번주소
+    @Column(nullable = false)
+    private String firstAddr;
+
+    // 상세주소
+    @Column(nullable = false)
+    private String secondAddr;
 
     @Builder
-    public Member(Long id, String name, String phone_number, String email, String password) {
+    public Member(Long id, String name, String phone_number, String email, String password, String zipcode, String firstAddr, String secondAddr) {
         this.id = id;
         this.name = name;
         this.phone_number = phone_number;
         this.email = email;
         this.password = password;
-        //this.address = address;
+        this.zipcode = zipcode;
+        this.firstAddr = firstAddr;
+        this.secondAddr = secondAddr;
     }
 }

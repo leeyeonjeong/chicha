@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MENU</title>
+<title>메뉴</title>
 <style>
 	#area {
     width: 751px;
     height: 2011px;
 }
-	#top { width: 750px; height: 140px; background-color: #ffffff; }
-	#img1 { width: 165px; height: 80px; position: absolute; left: 18px; top: 26px;}
+	#top { width: 750px; height: 140px; background-color: #ffffff; display:table;}
+	#img1 { width: 165px; height: 80px; position: absolute; left: 8px; top: 26px;}
 	#chicha {
     opacity: 0.8;
     font-family: "Noto Sans CJK KR";
@@ -27,11 +27,13 @@
     top: 0px;
 	}
 	#x_icn{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     position: absolute;
     left: 667px;
-    top: 34px;		
+    top: 34px;
+	border: none;
+	background-color: #ffffff;
 	}
 	.text{
     font-family: "Noto Sans CJK KR";
@@ -66,47 +68,55 @@
     top : 1552px;
 	}
 </style>
+	
+<script>
+function goBack() {
+  window.history.go(-1);
+}
+</script>	
+
 </head>
 	
 <body id = "area">
 	<div id = "top"> <!--맨 위에 top부분 div-->
-		<img src = "/img/chicha.png" id = "img1">
+		<img src = "image/chicha.png" id = "img1">
       	<h4 id="chicha">치료실을 찾아드립니다.</h4>
-		<a href = "/"><img src = "/img/x_icn.png" id = "x_icn"></a>
+		<button onclick = "goBack()" style = "background-image: url(image/x_icn.png)" id = "x_icn"></button>
+		
 	</div>
 	
 	<div id = "center">
 	  <span class = "text" width = "170px" height = "48px" style = "position: absolute; left: 41px; top: 126px;">기관검색</span>
-	  <img src = "/img/down.png" class = "down" style = "position: absolute; left: 678px; top: 200px;">
-	  <img src = "/img/line.png" class = "line" style = "position: absolute; left: 20px; top: 254px;">
+	  <img src = "image/down.png" class = "down" style = "position: absolute; left: 678px; top: 200px;">
+	  <img src = "image/line_menu.png" class = "line" style = "position: absolute; left: 20px; top: 254px;">
 
-	  <span class = "mintext" width = "105px" height = "38px" style = "position: absolute; left: 76px; top: 257px;">자가진단</span>
-	  <img src = "/img/line.png" width = "670px" height = "2px" style = "position: absolute; left: 60px; top: 350px; opacity: 0.3;">
+	  <a href = "자가진단.html"><span class = "mintext" width = "105px" height = "38px" style = "position: absolute; left: 76px; top: 257px;">자가진단</span></a>
+	  <img src = "image/line_menu.png" width = "670px" height = "2px" style = "position: absolute; left: 60px; top: 350px; opacity: 0.3;">
 	  <span class = "mintext" width = "105px" height = "38px" style = "position: absolute; left: 76px; top: 350px;">검색하기</span>
-	  <img src = "/img/line.png" class = "line" style = "position: absolute; left: 20px; top: 450px;">
+	  <img src = "image/line_menu.png" class = "line" style = "position: absolute; left: 20px; top: 450px;">
 
 	  <span class = "text" width = "170px" height = "48px" style = "position: absolute; left: 41px; top: 430px;">캘린더</span>
-	  <img src = "/img/down.png" class = "down" style = "position: absolute; left: 678px; top: 504px;">
-	  <img src = "/img/line.png" class = "line" style = "position: absolute; left: 20px; top: 560px;">
+	  <img src = "image/down.png" class = "down" style = "position: absolute; left: 678px; top: 504px;">
+	  <img src = "image/line_menu.png" class = "line" style = "position: absolute; left: 20px; top: 560px;">	
 
 	  <span class = "text" width = "170px" height = "48px" style = "position: absolute; left: 41px; top: 545px;">커뮤니티</span>
-	  <img src = "/img/down.png" class = "down" style = "position: absolute; left: 678px; top: 619px;">
-	  <img src = "/img/line.png" class = "line" style = "position: absolute; left: 20px; top: 675px;">
+	  <img src = "image/down.png" class = "down" style = "position: absolute; left: 678px; top: 619px;">
+	  <img src = "image/line_menu.png" class = "line" style = "position: absolute; left: 20px; top: 675px;">
 
 	  <span class = "text" width = "170px" height = "48px" style = "position: absolute; left: 41px; top: 660px;">메시지</span>
-	  <img src = "/img/down.png" class = "down" style = "position: absolute; left: 678px; top: 725px;">
-	  <img src = "/img/line.png" class = "line" style = "position: absolute; left: 20px; top: 790px;">
+	  <img src = "image/down.png" class = "down" style = "position: absolute; left: 678px; top: 725px;">
+	  <img src = "image/line_menu.png" class = "line" style = "position: absolute; left: 20px; top: 790px;">
 
 	  <span class = "text" width = "170px" height = "48px" style = "position: absolute; left: 41px; top: 775px;">마이페이지</span>
-	  <img src = "/img/down.png" class = "down" style = "position: absolute; left: 678px; top: 845px;">
-	  <img src = "/img/line.png" class = "line" style = "position: absolute; left: 20px; top: 905px;">
+	  <img src = "image/down.png" class = "down" style = "position: absolute; left: 678px; top: 845px;">
+	  <img src = "image/line_menu.png" class = "line" style = "position: absolute; left: 20px; top: 905px;">	
 	</div>
 	<div id = "footer">
-		<img src = "/img/chicha.png" width = "224px" height = "108px" style = "position: absolute; left: 6px; top: 907.8px;">
-		<img src = "/img/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 1036.8px;">
+		<img src = "image/chicha.png" width = "224px" height = "108px" style = "position: absolute; left: 6px; top: 907.8px;">
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 1036.8px;">
 		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 1087.8px;">이메일무단수집 거부</span>
 		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 1087.8px;">개인정보처리방침</span>
-		<img src = "/img/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 1034.8px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 1034.8px;"></a>
 	</div>
 </body>
 </html>
