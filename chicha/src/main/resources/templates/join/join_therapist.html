@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JOIN_THERAPIST</title>
+	<style>
+		#area { width: 751px; height: 2011px;}
+		#top { width: 751px; height: 140px; background-color: #ffffff; }
+		#img1 { width: 165px; height: 80px; position: absolute; left: 8px; top: 26px;}
+		#chicha {
+		opacity: 0.8;
+		font-family: "Noto Sans CJK KR";
+		font-size: 30px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.53;
+		letter-spacing: -1.8px;
+		text-align: left;
+		color: rgba(1, 1, 1, 0.8);
+		position: absolute;
+		left: 275px; top: 48px;
+		}
+		#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+		#main {width: 751px; height : 1728px; background-color: #f4f4f4;}
+		#text_ma{width: 500px;height: 69px;font-family: 'Noto Sans CJK KR';font-size: 26px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.68px;text-align: left;color: #000000;position: absolute; left: 42px; top: 275px;}
+		#content{width: 670px;height: 1046px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 41px; top: 383px;}
+		.info{height: 26px;opacity: 0.8;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: rgba(0, 0, 0, 0.8);}
+		.info_insert{height: 71px;border-radius: 10px;border: solid 1px rgba(0, 0, 0, 0.2);background-color: #ffffff;}
+		input::placeholder{opacity: 0.4;font-family: 'Noto Sans CJK KR';font-size: 20px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: left;color: rgba(0, 0, 0, 0.4); text-indent:29px;}
+		#footer{
+			width : 751px;
+			height: 500px;
+			background-color: #f4f4f4;
+			position: absolute;
+			top : 1511px;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<div id = "footer"><!--맨 아래 부분--> <!--자리 고정으로 인해 내용이 가려져서 제일 먼저 배치하였습니다-->
+		<img src = "/img/chicha.png" width = "164px" height = "88px" style = "position: absolute; left: 6px; top: 271px;">
+		<img src = "/img/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+		<img src = "/img/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;">
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+	</div>
+	
+	<div id = "top"><!--top 화면-->
+		<img src = "/img/chicha.png" id = "img1">
+     	<label id="chicha">치료실을 찾아드립니다.</label>
+		<a href = "/menu"><img src = "/img/icn_menu.png" id = "menu"></a>
+	</div>
+	
+	<div id = "main">
+		<label style = "width: 280px;height: 38px;font-family: 'Noto Sans CJK KR';font-size: 37.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.95;letter-spacing: -2.37px;text-align: left;color: #000000; position: absolute; left: 41px; top: 196px;">치료사 회원가입</label>
+		
+		<label id = "text_ma"><font style="font-weight: bold; color: #9501d7;">ChiCha</font>를 통해 
+			<br>나의 <font style="font-weight: bold; ">치료일정</font>을 관리하고 사람들과 소통해보세요.</label>
+		
+		<div id = "content"> <!--개인정보 입력 창-->
+			<label class = "info" style = "position: absolute; left: 35px; top: 39px;">이름</label>
+			<input type = "text" class = "info_insert"  style = "width : 603px; position: absolute; left: 34px; top: 83px;" placeholder="실명을 입력하세요.">
+			
+			<label class = "info" style = "position: absolute; left: 35px; top: 185px;">휴대폰</label>
+			<input type = "text" class = "info_insert" style = "width : 417px; position: absolute; left: 34px; top: 226px;" placeholder="‘-’없이 입력하세요.">
+			<img src = "/img/인증요청.png" style = "position: absolute; left: 462px; top: 224px;">
+			
+			<label class = "info" style = "position: absolute; left: 35px; top: 325px;">인증번호</label>
+			<input type = "text" class = "info_insert" style = "width : 417px; position: absolute; left: 34px; top: 366px;" placeholder="인증번호">
+			<img src = "/img/인증확인.png" style = "position: absolute; left: 462px; top: 364px;">
+			
+			<label class = "info" style = "position: absolute; left: 35px; top: 465px;">아이디</label>
+			<input type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 505px;" placeholder="영문, 숫자를 혼합하여 6~12자로  입력하세요.">
+			<label class = "info" style = "position: absolute; left: 400px; top: 465px; font-size: 26px; color : rgba(237, 20, 59, 0.75); ">존재하는 아이디 입니다.</label>
+			
+			<label class = "info" style = "position: absolute; left: 35px; top: 603px;">비밀번호</label>
+			<input type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 643px;" placeholder="영문, 숫자를 혼합하여 6~20자로 입력하세요.">
+			
+			<label class = "info" style = "position: absolute; left: 35px; top: 744px;">비밀번호 재확인</label>
+			<input type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 786px;" placeholder="다시 한 번 입력해주세요.">
+			
+			<label class = "info" style = "position: absolute; left: 35px; top: 890px;">자격증 확인</label>
+			<input type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 929px;" placeholder="자격증 고유번호를 입력. (예 :제26호)">
+		</div>
+		
+		<hr style="width: 670px;height: 8px;background-color: #3c3c3c; position: absolute; left: 41px; top: 373px;">
+		
+		<img src = "/img/회원가입.png" style = "width: 669px; height: 80px; position: absolute; left: 41px; top: 1474px;">
+	</div>
+
+</body>
+</html>
