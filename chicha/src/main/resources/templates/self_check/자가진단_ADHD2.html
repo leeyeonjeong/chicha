@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ADHD자가진단</title>
+	<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#next').click(function () {
+
+				if(!$(':input:radio[name=one]:checked').val()) {
+					alert("선택이 완료되지 않은 항목이 있습니다.");
+					return;
+				} else if(!$(':input:radio[name=two]:checked').val()) {
+					alert("선택이 완료되지 않은 항목이 있습니다.");
+					return;
+				} else if(!$(':input:radio[name=three]:checked').val()) {
+					alert("선택이 완료되지 않은 항목이 있습니다.");
+					return;
+				} else if(!$(':input:radio[name=four]:checked').val()) {
+					alert("선택이 완료되지 않은 항목이 있습니다.");
+					return;
+				} else if(!$(':input:radio[name=five]:checked').val()) {
+					alert("선택이 완료되지 않은 항목이 있습니다.");
+					return;
+				}
+
+				var s = parseInt(sessionStorage.getItem("score"))
+
+				s += parseInt($('input[name="one"]:checked').val());
+				s += parseInt($('input[name="two"]:checked').val());
+				s += parseInt($('input[name="three"]:checked').val());
+				s += parseInt($('input[name="four"]:checked').val());
+				s += parseInt($('input[name="five"]:checked').val());
+
+				sessionStorage.setItem("score", s);
+			})
+		})
+	</script>
+<style>
+	#area { width: 751px; height: 2011px;}
+	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
+	#img1 { width: 165px; height: 80px; position: absolute; left: 8px; top: 26px;}
+	#chicha {
+    opacity: 0.8;
+    font-family: "Noto Sans CJK KR";
+    font-size: 30px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: -1.8px;
+    text-align: left;
+    color: rgba(1, 1, 1, 0.8);
+display:table-cell; text-align:center; vertical-align:middle;
+	}	
+	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 1371px; background-color: #f4f4f4;}
+	#expl{width: 523px;height: 69px;font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left; position: absolute; left: 40px; top: 290px;}
+	#select_box{width: 751px;height: 1572px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; top: 433px;}
+	#explain{width: 523px;height: 94px;font-family: 'Noto Sans CJK KR';font-size: 17px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.79;letter-spacing: -1.16px;text-align: left;color: #777777; position: absolute; left: 40px; top: 70px;}
+	#total{width: 90px;height: 18px;font-family: 'Noto Sans CJK KR';font-size: 17px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.02px;text-align: left;color: #000000;position: absolute; left: 40px; top: 217px;}
+	#insert{width: 671px;height: 1050px;position: absolute;left: 40px;top: 253px;}
+	.question{width: 671px;background-color: #e6e6e6; border:none; border-top:solid 1px #3c3c3c;font-family: 'Noto Sans CJK KR';font-size: 20px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.2px;text-align: center;color: #000000; padding-top:19px;}
+	.select{width: 671px;height: 115px;background-color: #ffffff; border:none; border-bottom:solid 1px #e6e6e6;}
+	input[type = radio]{display: none;}
+	input[type = radio] + label{display: inline-block;cursor: pointer; width:44px;height:44px;background: url('image/자가진단체크_off.png') no-repeat;}
+	input[type = radio]:checked + label{background: url("image/자가진단체크_on.png") no-repeat;;}
+	
+	.font{font-family: 'Noto Sans CJK KR'; font-size: 16px; font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.25;letter-spacing: -0.96px;text-align: center;color:rgba(0, 0, 0, 0.6);position:absolute;}
+	#next{width: 315px;height: 50px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(0, 191, 191, 0.45);;border: solid 3px #00bfbf;background-color: #ffffff;position:absolute; left:355px; top:985px;}
+	#back{width: 315px;height: 50px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(0, 191, 191, 0.45);;border: solid 3px #00bfbf;background-color: #ffffff;position:absolute; right:355px; top:985px;}
+	#footer{
+    width : 751px;
+    height: 250px;
+    background-color: #ffffff;
+    position: absolute;
+    top : 1861px;
+	}
+</style>
+</head>
+
+<body id="area">
+	<div id = "top"><!--top 화면-->
+		<img src = "image/chicha.png" id = "img1">
+     	<label id="chicha">치료실을 찾아드립니다.</label>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
+	</div>
+	
+	<div id = "main">
+		
+		<div> <!-- 회색 박스-->
+			<label style = "height: 47px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 39px; top: 203px;">자가 진단</label>
+			
+			<div id = "expl">
+				우리 아이가 혹시 <font style = "font-weight: 900; color: #00bfbf;">ADHD</font>?
+				<br>
+				간편하게 확인해보고 <font style = "font-weight: 900;">알맞은 기관</font>을 추천받으세요!
+			</div>
+		</div>
+		
+		<div id = "select_box"> <!--하얀 박스-->
+			<hr style = "width: 61px;height: 6px;border: solid 6px #000000;background-color: #000000;position: absolute; left: 40px; top: 35px;">
+			
+			<div id = "explain">
+				<font style = "font-size: 21px; letter-spacing: -1.36px; color: #000000;">항목을 읽어보고 알맞게 선택해주세요.</font>
+				<br>
+				**자가진단은 개인적으로 참고할 수 있는 자료로
+				<br>
+				이 결과가 효력을 발휘하지 않습니다.
+				<br>
+				원하시는 경우 전문 기관에 방문하여 정확한 평가를 받아보시길 바랍니다.  
+			</div>
+			
+			<font id = "total">총 <font style = "color: #00bfbf;">2</font> / 18 개</font> 
+			
+			<div id = "insert"> <!--항목 선택-->
+				<div id = "one"> <!--1번 질문-->
+					<div class = "question" style = "height: 57px;">
+						상황에 맞지 않게 과도하게 뛰어다니거나 기어오른다.
+					</div>
+					<div class = "select">
+						<input type = "radio" value="0" id = "1_never" name = "one"><label for= "1_never" style =  "position: absolute;left:98.9px; top:88px;"></label>
+						<font class = "font" style = "left:84px; top:140px;">전혀<br>그렇지 않다</font>
+						
+						<input type = "radio" value="1" id = "1_not" name = "one"><label for= "1_not" style =  "position: absolute;left:241.7px; top:88px;"></label>
+						<font class = "font" style = "left:226.9px; top:140px;">약간<br>그렇지 않다</font>
+						
+						<input type = "radio" value="2" id = "1_little" name = "one"><label for= "1_little" style =  "position: absolute;left:384.6px; top:88px;"></label>
+						<font class = "font" style = "left:386px; top:140px;">약간<br>그렇다</font>
+						
+						<input type = "radio" value="3" id = "1_very" name = "one"><label for= "1_very" style =  "position: absolute;left:527.5px; top:88px;"></label>
+						<font class = "font" style = "left:528px; top:140px;">매우<br>그렇다</font>
+					</div>
+				</div>
+				
+				<div id = "two"> <!--2번 질문-->
+					<div class = "question" style = "height: 57px;">
+						지시에 따라서 학업이나 집안일이나 자신이 해야할 일을 끝마치지 못한다.
+					</div>
+					<div class = "select" style = "top: 57px;">
+						<input type = "radio" value="0" id = "2_never" name = "two"><label for= "2_never" style = "position: absolute;left:98.9px; top:280px;"></label>
+						<font class = "font" style = "left:84px; top:332px;">전혀<br>그렇지 않다</font>
+						<input type = "radio" value="1" id = "2_not" name = "two"><label for= "2_not"  style =  "position: absolute;left:241.7px;top:280px;"></label>
+						<font class = "font" style = "left:226.9px; top:332px;">약간<br>그렇지 않다</font>
+						<input type = "radio" value="2" id = "2_little" name = "two"><label for= "2_little"   style =  "position: absolute;left:384.6px;top:280px;"></label>
+						<font class = "font" style = "left:386px; top:332px;">약간<br>그렇다</font>
+						<input type = "radio" value="3" id = "2_very" name = "two"><label for= "2_very"  style =  "position: absolute;left:527.5px;top:280px;"></label>
+						<font class = "font" style = "left: 528px; top:332px;">매우<br>그렇다</font>
+					</div>
+				</div>
+				
+				<div id = "three"> <!--3번 질문-->
+					<div class = "question" style = "height: 57px;">
+						조용히 하는 놀이나 오락 활동에 참여하는데 어려움이 있다.
+					</div>
+					<div class = "select" style = "top: 57px;">
+						<input type = "radio" value="0" id = "3_never" name = "three"><label for= "3_never" style = "position: absolute;left:98.9px; top:472px;"></label>
+						<font class = "font" style = "left:84px; top:524px;">전혀<br>그렇지 않다</font>
+						<input type = "radio" value="1" id = "3_not" name = "three"><label for= "3_not"  style =  "position: absolute;left:241.7px;top:472px;"></label>
+						<font class = "font" style = "left:226.9px; top:524px;">약간<br>그렇지 않다</font>
+						<input type = "radio" value="2" id = "3_little" name = "three"><label for= "3_little" style =  "position: absolute;left:384.6px;top:472px;"></label>
+						<font class = "font" style = "left:386px; top:524px;">약간<br>그렇다</font>
+						<input type = "radio" value="3" id = "3_very" name = "three"><label for= "3_very"  style =  "position: absolute;left:527.5px;top:472px;"></label>
+						<font class = "font" style = "left: 528px; top:524px;">매우<br>그렇다</font>
+					</div>
+				</div>
+				
+				<div id = "four"> <!--4번 질문-->
+					<div class = "question" style = "height: 57px;">
+						과제나 활동을 체계적으로 하는데 어려움이 있다.
+					</div>
+					<div class = "select" style = "top: 57px;">
+						<input type = "radio" value="0" id = "4_never" name = "four"><label for= "4_never" style = "position: absolute;left:98.9px; top:664px;"></label>
+						<font class = "font" style = "left:84px; top:716px;">전혀<br>그렇지 않다</font>
+						<input type = "radio" value="1" id = "4_not" name = "four"><label for= "4_not" style =  "position: absolute;left:241.7px;top:664px;"></label>
+						<font class = "font" style = "left:226.9px; top:716px;">약간<br>그렇지 않다</font>
+						<input type = "radio" value="2" id = "4_little" name = "four"><label for= "4_little" style =  "position: absolute;left:384.6px;top:664px;"></label>
+						<font class = "font" style = "left:386px; top:716px;">약간<br>그렇다</font>
+						<input type = "radio" value="3" id = "4_very" name = "four"><label for= "4_very" style =  "position: absolute;left:527.5px;top:664px;"></label>
+						<font class = "font" style = "left: 528px; top:716px;">매우<br>그렇다</font>
+					</div>
+				</div>
+				<div id = "five"> <!--5번 질문-->
+					<div class = "question" style = "height: 57px;">
+						항상 끊임없이 움직이거나 마치 모터가 달려서 움직이는 것처럼 행동한다.
+					</div>
+					<div class = "select" style = "top: 57px;">
+						<input type = "radio" value="0" id = "5_never" name = "five"><label for= "5_never" style = "position: absolute;left:98.9px; top:856px;"></label>
+						<font class = "font" style = "left:84px; top:908px;">전혀<br>그렇지 않다</font>
+						<input type = "radio" value="1" id = "5_not" name = "five"><label for= "5_not"  style =  "position: absolute;left:241.7px;top:856px;"></label>
+						<font class = "font" style = "left:226.9px; top:908px;">약간<br>그렇지 않다</font>
+						<input type = "radio" value="2" id = "5_little" name = "five"><label for= "5_little"  style =  "position: absolute;left:384.6px;top:856px;"></label>
+						<font class = "font" style = "left:386px; top:908px;">약간<br>그렇다</font>
+						<input type = "radio" value="3" id = "5_very" name = "five"><label for= "5_very"  style =  "position: absolute;left:527.5px;top:856px;"></label>
+						<font class = "font" style = "left: 528px; top:908px;">매우<br>그렇다</font>
+					</div>
+				</div>
+				
+				<a href ="/self_check_ADHD1"><button id = "back"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #00bfbf;">이전</font></button></a>
+				<a href ="/self_check_ADHD3"><button id = "next"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #00bfbf;">다음</font></button></a>
+			</div>
+		</div>
+	</div>
+	
+	<div id = "footer">
+		<img src = "image/chicha.png" width = "164px" height = "88px" style = "position: absolute; left: 6px; top: 21px;">
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 130px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 137px;"></a>
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 177px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 174px;">개인정보처리방침</span>
+	</div>
+</body>
+</html>
+
