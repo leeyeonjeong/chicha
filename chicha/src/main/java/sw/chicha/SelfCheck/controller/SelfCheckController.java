@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sw.chicha.Member.dto.MemberDto;
+import sw.chicha.SelfCheck.dto.SelfCheckDto;
+import sw.chicha.SelfCheck.service.SelfCheckService;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,8 @@ import static ch.qos.logback.core.joran.action.ActionConst.NULL;
 
 @Controller
 public class SelfCheckController {
+
+    private SelfCheckService selfCheckService;
 
     /**
      * *********** 뷰 ***********
@@ -50,7 +54,7 @@ public class SelfCheckController {
 
     // ADHD4
     @GetMapping("/self_check_ADHD4")
-    public String self_check_ADHD4() {
+    public String dis_self_check_ADHD4() {
         return "/self_check/자가진단_ADHD4";
     }
 
@@ -98,7 +102,7 @@ public class SelfCheckController {
     }
 
     // 정보입력
-    @GetMapping("/saveInfo")
+    @GetMapping("saveInfo")
     public String saveInfo(@RequestParam(name="gender", required = false) String gender,
                            @RequestParam(name = "age", required = false) String age,
                            HttpSession session) {
@@ -127,6 +131,12 @@ public class SelfCheckController {
     /**
      * *********** DB 저장 ***********
      * */
+    @PostMapping("self_check_ADHD4")
+    public String exec_self_check_ADHD4(SelfCheckDto selfCheckDto) {
+        selfCheckService.saveCheck(selfCheckDto);
+
+        return "redirect:/self_check_result_ADHD";
+    }
 
 
 }

@@ -3,6 +3,15 @@
 <head>
 <meta charset="utf-8">
 <title>자가진단 정보입력</title>
+	<script type="text/javascript">
+		var g = document.getElementById("gender");
+		var gender = g.options[g.selectedIndex].value;
+		var a = document.getElementById("age");
+		var age = a.options[a.selectedIndex].value;
+
+		sessionStorage.setItem("gender", gender);
+		sessionStorage.setItem("age", age);
+	</script>
 <style>
 	#area { width: 751px; height: 2011px;}
 	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
@@ -65,7 +74,7 @@ display:table-cell; text-align:center; vertical-align:middle;
 		<div id = "select_box"> <!--선택 영역-->
 			<div class = "option" style = "top:47px;">
 				<font class = "option_text" >성별</font>
-				<select name = "gender" class = "select_font" >
+				<select id="gender" name = "gender" class = "select_font" >
 					<option value = "">선택</option>
 					<option value = "woman">여자</option>
 					<option value = "man">남자</option>
@@ -74,7 +83,7 @@ display:table-cell; text-align:center; vertical-align:middle;
 			
 			<div class = "option" style = "top:146px;">
 				<font class = "option_text">연령</font>
-				<select name = "age" class = "select_font" >
+				<select id="age" name = "age" class = "select_font" >
 					<option value = "">선택</option>
 					<option value = "unthree">3개월이하</option>
 					<option value = "fosi">4~6개월</option>

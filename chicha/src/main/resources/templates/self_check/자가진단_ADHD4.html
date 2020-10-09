@@ -26,6 +26,12 @@
 				s += parseInt($('input[name="three"]:checked').val());
 
 				sessionStorage.setItem("score", s);
+
+				var score = document.getElementById('score');
+				score = s;
+				console.log(score)
+
+				//document.self_check.score.value = parseInt(sessionStorage.getItem("score"));
 			})
 		})
 	</script>
@@ -104,8 +110,8 @@ display:table-cell; text-align:center; vertical-align:middle;
 				원하시는 경우 전문 기관에 방문하여 정확한 평가를 받아보시길 바랍니다.  
 			</div>
 			
-			<font id = "total">총 <font style = "color: #00bfbf;">2</font> / 18 개</font> 
-			
+			<font id = "total">총 <font style = "color: #00bfbf;">2</font> / 18 개</font>
+
 			<div id = "insert"> <!--항목 선택-->
 				<div id = "one"> <!--1번 질문-->
 					<div class = "question" style = "height: 57px;">
@@ -159,15 +165,17 @@ display:table-cell; text-align:center; vertical-align:middle;
 						<font class = "font" style = "left: 528px; top:543px;">매우<br>그렇다</font>
 					</div>
 				</div>
+				<form th:action="@{/self_check_ADHD4}" name="self_check" method="post">
+					<!-- db로 session 값 보내기 -->
 
-				<!-- db로 session 값 보내기 -->
-				<th:input type="hidden" name="gender" value="${session.gender}"></th:input>
-				<th:input type="hidden" name="age" value="${session.age}"></th:input>
-				<th:input type="hidden" name="type" value="${session.type}"></th:input>
-				<th:input type="hidden" name="score" value="${session.score}"></th:input>
+					<th:input type="text" id="gender" name="gender" value="${session.gender}"></th:input>
+					<th:input type="text" id="age" name="age" value="${session.age}"></th:input>
+					<th:input type="text" id="type" name="type" value="${session.type}"></th:input>
+					<th:input type="number" id="score" name="score"></th:input>
 
-				<a href ="/self_check_ADHD3"><button id = "back"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #00bfbf;">이전</font></button></a>
-				<a href ="/self_check_result_ADHD"><button id = "next"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #ffffff;">결과보기</font></button></a>
+					<a href ="/self_check_ADHD3"><button id = "back"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #00bfbf;">이전</font></button></a>
+					<a href ="/self_check_result_ADHD"><button type="submit" id = "next"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #ffffff;">결과보기</font></button></a>
+				</form>
 			</div>
 		</div>
 	</div>
