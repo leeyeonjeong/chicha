@@ -1,5 +1,6 @@
 package sw.chicha.SelfCheck.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import static ch.qos.logback.core.joran.action.ActionConst.NULL;
 
 @Controller
+@AllArgsConstructor // 이거 안해줘서 계속 null값 들어갔었음
 public class SelfCheckController {
 
     private SelfCheckService selfCheckService;
@@ -135,7 +137,15 @@ public class SelfCheckController {
     public String exec_self_check_ADHD4(SelfCheckDto selfCheckDto) {
         selfCheckService.saveCheck(selfCheckDto);
 
-        return "redirect:/self_check_result_ADHD";
+        String re = "redirect:/";
+
+        if (selfCheckDto.getScore() < 19) {
+            re += "self_check_result_nomal";
+        } else {
+            re += "self_check_result_ADHD";
+        }
+
+        return re;
     }
 
 

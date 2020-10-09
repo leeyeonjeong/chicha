@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.service.MemberService;
 
+import java.util.Random;
+
 @Controller
 @AllArgsConstructor
 public class MemberController {
@@ -55,6 +57,25 @@ public class MemberController {
     @GetMapping("join_success_therapist")
     public String join_success_therapist() {
         return "/join/회원가입완료_치료사";
+    }
+
+    // 문자인증
+    @GetMapping("/check/sendSMS")
+    public @ResponseBody
+    String sendSMS(String phoneNumber) {
+
+        Random rand  = new Random();
+        String numStr = "";
+
+        for(int i=0; i<4; i++) {
+            String ran = Integer.toString(rand.nextInt(10));
+            numStr+=ran;
+        }
+
+        System.out.println("수신자 번호 : " + phoneNumber);
+        System.out.println("인증번호 : " + numStr);
+        //certificationService.certifiedPhoneNumber(phoneNumber,numStr);
+        return numStr;
     }
 
     // 아이디 중복 확인

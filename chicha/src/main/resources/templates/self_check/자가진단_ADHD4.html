@@ -6,33 +6,34 @@
 	<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
+			var s = parseInt(sessionStorage.getItem("score"))
+
 			$('#next').click(function () {
 
 				if(!$(':input:radio[name=one]:checked').val()) {
 					alert("선택이 완료되지 않은 항목이 있습니다.");
-					return;
+					location.reload();
+					return false;
 				} else if(!$(':input:radio[name=two]:checked').val()) {
 					alert("선택이 완료되지 않은 항목이 있습니다.");
+					location.reload();
 					return;
 				} else if(!$(':input:radio[name=three]:checked').val()) {
 					alert("선택이 완료되지 않은 항목이 있습니다.");
+					location.reload();
 					return;
 				}
-
-				var s = parseInt(sessionStorage.getItem("score"))
 
 				s += parseInt($('input[name="one"]:checked').val());
 				s += parseInt($('input[name="two"]:checked').val());
 				s += parseInt($('input[name="three"]:checked').val());
 
 				sessionStorage.setItem("score", s);
+				document.getElementById("score").value = sessionStorage.getItem("score");
 
-				var score = document.getElementById('score');
-				score = s;
-				console.log(score)
-
-				//document.self_check.score.value = parseInt(sessionStorage.getItem("score"));
 			})
+
+
 		})
 	</script>
 <style>
@@ -168,10 +169,10 @@ display:table-cell; text-align:center; vertical-align:middle;
 				<form th:action="@{/self_check_ADHD4}" name="self_check" method="post">
 					<!-- db로 session 값 보내기 -->
 
-					<th:input type="text" id="gender" name="gender" value="${session.gender}"></th:input>
-					<th:input type="text" id="age" name="age" value="${session.age}"></th:input>
-					<th:input type="text" id="type" name="type" value="${session.type}"></th:input>
-					<th:input type="number" id="score" name="score"></th:input>
+					<input type="hidden" id="gender" name="gender" th:value="${session.gender}"></input>
+					<input type="hidden" id="age" name="age" th:value="${session.age}"></input>
+					<input type="hidden" id="type" name="type" th:value="${session.type}"></input>
+					<input type="hidden" id="score" name="score"></input>
 
 					<a href ="/self_check_ADHD3"><button id = "back"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #00bfbf;">이전</font></button></a>
 					<a href ="/self_check_result_ADHD"><button type="submit" id = "next"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #ffffff;">결과보기</font></button></a>

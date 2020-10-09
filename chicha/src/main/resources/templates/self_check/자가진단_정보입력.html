@@ -4,13 +4,24 @@
 <meta charset="utf-8">
 <title>자가진단 정보입력</title>
 	<script type="text/javascript">
-		var g = document.getElementById("gender");
-		var gender = g.options[g.selectedIndex].value;
-		var a = document.getElementById("age");
-		var age = a.options[a.selectedIndex].value;
+		$(document).ready(function () {
+			var g = document.getElementById("gender");
+			var gender = g.options[g.selectedIndex].value;
+			var a = document.getElementById("age");
+			var age = a.options[a.selectedIndex].value;
 
-		sessionStorage.setItem("gender", gender);
-		sessionStorage.setItem("age", age);
+			sessionStorage.setItem("gender", gender);
+			sessionStorage.setItem("age", age);
+
+			$('#btn').click(function () {
+				if ($("select[name=gender]").val() == "" || $("select[name=age]").val() == "") {
+					alert("선택이 완료되지 않은 항목이 있습니다.");
+					location.reload()
+					return false;
+				}
+			})
+		})
+
 	</script>
 <style>
 	#area { width: 751px; height: 2011px;}
@@ -70,7 +81,7 @@ display:table-cell; text-align:center; vertical-align:middle;
 			
 			<label style = "width: 294px;height: 27px;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.43;letter-spacing: -2.24px;text-align: left;color: #000000;position: absolute; left: 39px; top: 511px;">나이와 성별을 선택해주세요.</label>
 		</div>
-		
+
 		<div id = "select_box"> <!--선택 영역-->
 			<div class = "option" style = "top:47px;">
 				<font class = "option_text" >성별</font>
@@ -103,7 +114,7 @@ display:table-cell; text-align:center; vertical-align:middle;
 			</div>
 		</div>
 		
-		<a href = "/self_check_ADHD1"><button type="submit" id = "btn"><font style = "width: 43px;height: 25px;font-family:'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.56px;text-align: left;color: #00bfbf;">다음</font></button></a>
+		<a href = "/self_check_ADHD1"><button name="btn" type="submit" id = "btn"><font style = "width: 43px;height: 25px;font-family:'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.56px;text-align: left;color: #00bfbf;">다음</font></button></a>
 	</div>
 	</form>
 	

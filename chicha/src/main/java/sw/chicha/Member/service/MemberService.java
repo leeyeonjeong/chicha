@@ -1,6 +1,9 @@
 package sw.chicha.Member.service;
 
 import lombok.AllArgsConstructor;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+import org.apache.logging.log4j.message.Message;
+import org.json.simple.JSONObject;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -15,6 +18,7 @@ import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.repository.MemberRepository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,5 +62,26 @@ public class MemberService implements UserDetailsService {
         } else {
             return false;
         }
+    }
+
+    public void certificationService(String phoneNumber, String cerNum) {
+        String api_key = "내 API KEY";
+        String api_secret = "내 API SECRET";
+        //Message coolsms = new Message(api_key, api_secret);
+
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("to", phoneNumber); // 수신 전화번호
+        params.put("from", "발송할 번호 입력");
+        params.put("type", "SMS");
+        params.put("text", "인증번호: "+ "["+cerNum+"]"+"입니다.");
+        params.put("app_version", "text");
+
+        //try {
+        //    JSONObject obj = (JSONObject) coolsms.send(params);
+        //    System.out.println(obj.toString());
+        //} catch (CoolsmsException e) {
+        //    System.out.println(e.getMessage());
+        //    System.out.println(e.getCode());
+        //}
     }
 }

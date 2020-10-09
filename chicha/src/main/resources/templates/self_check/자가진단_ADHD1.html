@@ -10,19 +10,24 @@
 
 				if(!$(':input:radio[name=one]:checked').val()) {
 					alert("선택이 완료되지 않은 항목이 있습니다.");
-					return;
+					location.reload();
+					return false;
 				} else if(!$(':input:radio[name=two]:checked').val()) {
 					alert("선택이 완료되지 않은 항목이 있습니다.");
-					return;
+					location.reload();
+					return false;
 				} else if(!$(':input:radio[name=three]:checked').val()) {
 					alert("선택이 완료되지 않은 항목이 있습니다.");
-					return;
+					location.reload();
+					return false;
 				} else if(!$(':input:radio[name=four]:checked').val()) {
 					alert("선택이 완료되지 않은 항목이 있습니다.");
-					return;
+					location.reload();
+					return false;
 				} else if(!$(':input:radio[name=five]:checked').val()) {
 					alert("선택이 완료되지 않은 항목이 있습니다.");
-					return;
+					location.reload();
+					return false;
 				}
 
 				var s = parseInt($('input[name="one"]:checked').val());
