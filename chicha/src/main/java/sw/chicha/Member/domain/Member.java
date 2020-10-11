@@ -20,7 +20,7 @@ public class Member {
     private String name;
 
     @Column(length = 16, nullable = false)
-    private String phone_number;
+    private String phoneNumber;
 
     @Column(length = 12, nullable = false)
     private String email;
@@ -41,10 +41,10 @@ public class Member {
     private String secondAddr;
 
     @Builder
-    public Member(Long id, String name, String phone_number, String email, String password, String zipcode, String firstAddr, String secondAddr) {
+    public Member(Long id, String name, String phoneNumber, String email, String password, String zipcode, String firstAddr, String secondAddr) {
         this.id = id;
         this.name = name;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         this.zipcode = zipcode;

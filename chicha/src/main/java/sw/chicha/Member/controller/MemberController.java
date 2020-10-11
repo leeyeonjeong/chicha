@@ -4,14 +4,19 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import sw.chicha.Member.dto.MemberDto;
+import sw.chicha.Member.repository.MemberRepository;
+import sw.chicha.Member.service.CertificationService;
 import sw.chicha.Member.service.MemberService;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @Controller
 @AllArgsConstructor
 public class MemberController {
     private MemberService memberService;
+    private CertificationService certificationService;
 
     // 회원가입 선택
     @GetMapping("join_select")
@@ -59,7 +64,13 @@ public class MemberController {
         return "/join/회원가입완료_치료사";
     }
 
-    // 문자인증
+    // 아이등록
+    @GetMapping("join_child")
+    public String join_child() {
+        return "/join/회원가입_아이등록";
+    }
+
+    // SMS 인증
     @GetMapping("/check/sendSMS")
     public @ResponseBody
     String sendSMS(String phoneNumber) {
@@ -74,21 +85,17 @@ public class MemberController {
 
         System.out.println("수신자 번호 : " + phoneNumber);
         System.out.println("인증번호 : " + numStr);
-        //certificationService.certifiedPhoneNumber(phoneNumber,numStr);
+        certificationService.certifiedPhoneNumber(phoneNumber,numStr);
         return numStr;
     }
 
     // 아이디 중복 확인
-    @ResponseBody
-    @RequestMapping(value = "emailCheck", method = RequestMethod.POST)
-    public String emailCheck(@RequestBody String email) {
-
-        System.out.println("######################33"+memberService.emailCheck(email));
-        if (memberService.emailCheck(email) == true) {
-            return "1";
-        } else {
-            return "0";
-        }
+    @GetMapping("idCheck")
+    public String id_check(String id) {
+        System.out.println("conttttttttttttttttttt"+id);
+        String str = memberService.idCheck(id);
+        System.out.println("conttttttttttttttttttt str"+str);
+        return str;
     }
 
     // 로그인 페이지

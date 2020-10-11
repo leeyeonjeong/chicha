@@ -6,29 +6,16 @@
 <style>
 	#area { width: 751px; height: 2011px;}
 	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
-	#img1 { width: 165px; height: 80px; position: absolute; left: 8px; top: 26px;}
-	#chicha {
-    opacity: 0.8;
-    font-family: "Noto Sans CJK KR";
-    font-size: 30px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.53;
-    letter-spacing: -1.8px;
-    text-align: left;
-    color: rgba(1, 1, 1, 0.8);
-display:table-cell; text-align:center; vertical-align:middle;
-	}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
 	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #f4f4f4;}
+	#main {width: 751px; height : 1371px; background-color: #ebf2f2;}
 	#general{width: 322px;height: 350px;box-shadow: 0 0 12px 3px rgba(0, 191, 191, 0.45);;background-color: #00bfbf; position: absolute; left: 40px; top: 541px;}
-	.sign{width: 241px;height: 70px;border-radius: 10px;background-color: #ffffff; border:none;}
-	#therapist{width: 322px;height: 350px;box-shadow: 0 0 12px 3px rgba(60, 60, 60, 0.45);background-color: #3c3c3c; position: absolute; left: 388px; top: 541px;}
+	.sign{width: 241px;height: 70px;border-radius: 10px;background-color: #ffffff; border:none; outline: none;}
+	#therapist{width: 322px;height: 350px;box-shadow: 0 0 12px 3px rgba(60, 60, 60, 0.45);background-color: #0778ff; position: absolute; left: 388px; top: 541px;}
 	#footer{
 		width : 751px;
 		height: 500px;
-		background-color: #f4f4f4;
+		background-color: #ebf2f2;
 		position: absolute;
 		top : 1511px;
 	}
@@ -38,8 +25,7 @@ display:table-cell; text-align:center; vertical-align:middle;
 
 <body id = "area">
 	<div id = "top"><!--top 화면-->
-		<img src = "image/chicha.png" id = "img1">
-     	<label id="chicha">치료실을 찾아드립니다.</label>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
 		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
@@ -53,21 +39,21 @@ display:table-cell; text-align:center; vertical-align:middle;
 		
 		<div> <!--선택 박스-->
 			<div id = "general"> <!--일반회원-->
-				<img src = "image/line.png" style = "width: 61px; height: 7px; position: absolute; left : 38px; top: 51px;">
+				<hr style = "width: 61px;height: 7px;background-color: #ffffff; border: none; position: absolute; left : 38px; top: 51px;">
 				<label style = "width: 200px;height: 35px;font-family: 'Noto Sans CJK KR';font-size: 36.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.19px;text-align: left;color: #ffffff; position: absolute; left : 39px; top: 88px;">일반회원</label>
-				<a href = "/join_general"><button class = "sign" style = "position: absolute; left : 39px; top: 230px;"><font style = "width: 120px; height: 29px; font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal; line-height: normal; letter-spacing: -1.8px; text-align: left; color: #00bfbf; position: absolute; left: 70px; top: 15px;">가입하기</font></button></a>
+				<a href = "/join_general"><button class = "sign" style = "position: absolute; left : 39px; top: 230px; "><font style = "width: 120px; height: 29px; font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal; line-height: normal; letter-spacing: -1.8px; text-align: left; color: #00bfbf; position: absolute; left: 70px; top: 15px;">가입하기</font></button></a>
 			</div>
 			
 			<div id = "therapist"> <!--치료사 회원-->
-				<img src = "line.png" style = "width: 61px; height: 7px; position: absolute; left : 38px; top: 51px;">
+				<hr style = "width: 61px;height: 7px;background-color: #ffffff; border: none; position: absolute; left : 38px; top: 51px;">
 				<label style = "width: 200px;height: 35px;font-family: 'Noto Sans CJK KR';font-size: 36.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.19px;text-align: left;color: #ffffff; position: absolute; left : 39px; top: 88px;">치료사 회원</label>
-				<a href = "/join_therapist"><button class = "sign" style = "position: absolute; left : 39px; top: 230px;"><font  style = "width: 120px; height: 29px; font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal; line-height: normal; letter-spacing: -1.8px; text-align: left; color: #3c3c3c; position: absolute; left: 70px; top: 15px;">가입하기</font></button></a>
+				<a href = "/join_therapist"><button class = "sign" style = "position: absolute; left : 39px; top: 230px;"><font  style = "width: 120px; height: 29px; font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal; line-height: normal; letter-spacing: -1.8px; text-align: left; color: #0778ff; position: absolute; left: 70px; top: 15px;">가입하기</font></button></a>
 			</div>
 		</div>
 	</div>
 	
 	<div id = "footer">
-		<img src = "image/chicha.png" width = "164px" height = "88px" style = "position: absolute; left: 6px; top: 271px;">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
 		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
 		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
 		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>

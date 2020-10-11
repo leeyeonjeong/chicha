@@ -11,7 +11,7 @@ public class MemberDto {
 
     private Long id;
     private String name;
-    private String phone_number;
+    private String phoneNumber;
     private String email;
     private String password;
     private String zipcode;
@@ -23,7 +23,7 @@ public class MemberDto {
         return Member.builder()
                 .id(id)
                 .name(name)
-                .phone_number(phone_number)
+                .phoneNumber(phoneNumber)
                 .email(email)
                 .password(password)
                 .zipcode(zipcode)
@@ -33,10 +33,10 @@ public class MemberDto {
     }
 
     @Builder
-    public MemberDto(Long id, String name, String phone_number, String email, String password, String zipcode, String firstAddr, String secondAddr) {
+    public MemberDto(Long id, String name, String phoneNumber, String email, String password, String zipcode, String firstAddr, String secondAddr) {
         this.id = id;
         this.name = name;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         this.zipcode = zipcode;

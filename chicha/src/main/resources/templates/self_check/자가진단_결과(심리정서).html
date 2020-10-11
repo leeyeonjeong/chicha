@@ -6,29 +6,16 @@
 <style>
 	#area { width: 751px; height: 2011px;}
 	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
-	#img1 { width: 165px; height: 80px; position: absolute; left: 8px; top: 26px;}
-	#chicha {
-    opacity: 0.8;
-    font-family: "Noto Sans CJK KR";
-    font-size: 30px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.53;
-    letter-spacing: -1.8px;
-    text-align: left;
-    color: rgba(1, 1, 1, 0.8);
-display:table-cell; text-align:center; vertical-align:middle;
-	}	
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
 	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #ffffff;}
+	#main {width: 751px; height : 1371px; background-color: #f2faf9;}
 	#expl{width: 523px;height: 69px;font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left; position: absolute; left: 40px; top: 290px;}
 	#result{width: 670px;height: 71px;background-color: #d9d9d9;position: absolute; left: 40px; top: 550px;}
-	.btn{width: 670px;height: 80px;  border-radius: 10px;box-shadow: 0 0 5px 0 rgba(0, 191, 191, 0.45); border: solid 3px #00bfbf;font-size: 24px;font-family: 'Noto Sans CJK KR';font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;position: absolute; left: 40px;}
+	.btn{width: 670px;height: 80px;  border-radius: 10px;box-shadow: 0 0 5px 0 rgba(0, 191, 191, 0.45); border: solid 3px #00bfbf;font-size: 24px;font-family: 'Noto Sans CJK KR';font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;position: absolute; left: 40px; outline: none;}
 	#footer{
     width : 751px;
     height: 500px;
-    background-color: #ffffff;
+    background-color: #f2faf9;
     position: absolute;
 	top : 1511px;
 	}
@@ -37,9 +24,8 @@ display:table-cell; text-align:center; vertical-align:middle;
 
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<img src = "image/chicha.png" id = "img1">
-     	<label id="chicha">치료실을 찾아드립니다.</label>
-		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
 	<div id = "main">
@@ -48,7 +34,7 @@ display:table-cell; text-align:center; vertical-align:middle;
 			<label style = "height: 47px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 39px; top: 203px;">자가 진단</label>
 			
 			<div id = "expl">
-				우리 아이가 혹시 <font style = "font-weight: 900; color: #00bfbf;">심리정서</font>?
+				우리 아이가 혹시 <font style = "font-weight: 900; color: #0778ff;">심리정서</font>?
 				<br>
 				간편하게 확인해보고 <font style = "font-weight: 900;">알맞은 기관</font>을 추천받으세요!
 			</div>
@@ -56,12 +42,12 @@ display:table-cell; text-align:center; vertical-align:middle;
 		
 		
 		<div> <!--결과-->
-			<hr style = "width: 61px;height: 6px;border: solid 6px #000000;background-color: #000000;position: absolute; left: 40px; top: 454px;">
+			<hr style = "width: 61px;height: 6px;border:none;background-color: #000000;position: absolute; left: 40px; top: 454px;">
 		
 			<label style = "width: 160px;height: 20px;font-family: 'Noto Sans CJK KR';font-size: 21px;font-weight: 500; font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left; position: absolute; left: 40px; top: 500px;">우리 아이 결과는?</label>
 			
 			<div id = "result" style = "display: table;">
-				<label style = "width: 220px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 23px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left; display:table-cell; text-align:center; vertical-align:middle;"><font style = "color: #00bfbf;">심리정서</font> 가 의심됩니다.</label>
+				<label style = "width: 220px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 23px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left; display:table-cell; text-align:center; vertical-align:middle;"><font style = "color: #0778ff;">심리정서</font> 가 의심됩니다.</label>
 			</div>	
 			
 			<div style = "width: 671px;height: 115px;background-color: #ffffff; border:none; border-bottom:solid 1px #e6e6e6; position: absolute; left: 40px; top: 621px; display: table;">
@@ -69,13 +55,13 @@ display:table-cell; text-align:center; vertical-align:middle;
 			</div>
 			
 			<div>
-				<a href = "기관검색.html"><button class = "btn" style="color:#ffffff; top:766px; background-color: #00bfbf;">기관 찾아보기</button></a>
-				<a href = "자가진단.html"><button class = "btn" style="color:#00bfbf; top:876px; background-color: #ffffff;">다른 진단해보기</button></a>
+				<a href = "기관검색.html"><button class = "btn" style="color:#ffffff; top:766px; background-color: #0778ff;border: none;">기관 찾아보기</button></a>
+				<a href = "/self_check"><button class = "btn" style="color:#00bfbf; top:876px; background-color: #ffffff;">다른 진단해보기</button></a>
 			</div>
 		</div>
 	</div>
 	<div id = "footer">
-		<img src = "image/chicha.png" width = "164px" height = "88px" style = "position: absolute; left: 6px; top: 271px;">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
 		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
 		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
 		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>

@@ -54,34 +54,16 @@ public class MemberService implements UserDetailsService {
     }
 
     // 아이디 중복 체크 함수
-    public Boolean emailCheck(String email) {
-        System.out.println("EEEEEEEEEEEEMMMMMMMMMMMMMMMAAAAAAAAAAAIL"+email);
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$44"+memberRepository.findByEmail(email));
+    public String idCheck(String email) {
+        System.out.println("serviceeeeeeeeeeeeeeeeeeeeeeeee"+memberRepository.findByEmail(email));
+        String re = "YES";
+
         if (memberRepository.findByEmail(email) == null) {
-            return true;
+            re = "YES";
         } else {
-            return false;
+            re = "NO";
         }
+        return re;
     }
 
-    public void certificationService(String phoneNumber, String cerNum) {
-        String api_key = "내 API KEY";
-        String api_secret = "내 API SECRET";
-        //Message coolsms = new Message(api_key, api_secret);
-
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("to", phoneNumber); // 수신 전화번호
-        params.put("from", "발송할 번호 입력");
-        params.put("type", "SMS");
-        params.put("text", "인증번호: "+ "["+cerNum+"]"+"입니다.");
-        params.put("app_version", "text");
-
-        //try {
-        //    JSONObject obj = (JSONObject) coolsms.send(params);
-        //    System.out.println(obj.toString());
-        //} catch (CoolsmsException e) {
-        //    System.out.println(e.getMessage());
-        //    System.out.println(e.getCode());
-        //}
-    }
 }

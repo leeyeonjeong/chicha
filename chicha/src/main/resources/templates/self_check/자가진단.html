@@ -6,25 +6,12 @@
 <style>
 	#area { width: 751px; height: 2011px;}
 	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
-	#img1 { width: 165px; height: 80px; position: absolute; left: 8px; top: 26px;}
-	#chicha {
-    opacity: 0.8;
-    font-family: "Noto Sans CJK KR";
-    font-size: 30px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.53;
-    letter-spacing: -1.8px;
-    text-align: left;
-    color: rgba(1, 1, 1, 0.8);
-display:table-cell; text-align:center; vertical-align:middle;
-	}	
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
 	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #f4f4f4;}	
+	#main {width: 751px; height : 1371px; background-color: #eef3f6;}	
 	#expl{width: 300px;height: 111px;position: absolute; left: 39px; top: 289px;}
 	.ex_text{font-family: 'Noto Sans CJK KR';font-size: 28.5px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left;}
-	#select {width: 751px;height: 1567px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff; position: absolute; top: 439px;}
+	#select {width: 751px;height: 1567px;box-shadow: inset 0 10px 10px -10px rgba(115, 155, 210, 0.45);background-color: #ffffff; position: absolute; top: 439px;}
 	.self_font{font-family:'Noto Sans CJK KR';font-size: 28px;font-stretch: normal;font-style: normal;line-height: 1.43;letter-spacing: -2.24px;text-align: left;color: #00bfbf; position: absolute; left : 38px;}
 	#image_box{width: 670x;height: 602px;opacity: 0.5;position: absolute; left: 39px; top: 181.2px;}
 	#image1{width: 335px; height: 301px; position: absolute; left: auto; top:auto; background-image: url("image/언어발달_off.png");}
@@ -35,8 +22,8 @@ display:table-cell; text-align:center; vertical-align:middle;
 	#image3:hover{background-image: url("image/심리정서_on.png");}
 	#image4{width: 335px; height: 301px; position: absolute; left : 335px; top:301px; background-image: url("image/감각발달_off.png");}
 	#image4:hover{background-image: url("image/감각발달_on.png");}
-	.box_btn{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #ffffff;position: absolute; left: 42px; top: 198.8px; border:none; background-color: transparent;}
-	.arrow{width: 53px;height: 18px; position: absolute; left: 226px; top: 205px; border:none; background-color: transparent;}
+	.box_btn{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #ffffff;position: absolute; left: 42px; top: 198.8px; border:none; outline:none; background-color: transparent;}
+	.arrow{width: 53px;height: 18px; position: absolute; left: 226px; top: 205px; border:none; outline:none;background-color: transparent;}
 	#footer{
     width : 751px;
     height: 500px;
@@ -50,8 +37,7 @@ display:table-cell; text-align:center; vertical-align:middle;
 
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<img src = "image/chicha.png" id = "img1">
-     	<label id="chicha">치료실을 찾아드립니다.</label>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
 		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
@@ -62,43 +48,43 @@ display:table-cell; text-align:center; vertical-align:middle;
 			<div id = "expl">
 				<label class = "ex_text"><font style = "font-weight: bold;">무슨 치료</font>를 받아야 하는지,</label>
 				<label class = "ex_text"><font style = "font-weight: bold;">어떤 기관</font>에 가야 하는지</label>
-				<label class = "ex_text"><font style = "font-weight: bold;color: #00bfbf;">ChiCha</font>에서 알려드릴게요.</label>
+				<label class = "ex_text"><font style = "font-weight: bold;color: #0778ff;">ChiCha</font>에서 알려드릴게요.</label>
 			</div>
 		</div>
 		
 		<div id = "select"> <!--영역 선택 -->
-			<hr style = "width: 61px;height: 6px;border: solid 6px #00bfbf;background-color: #00bfbf; position: absolute; left: 38px; top: 41px;">
+			<hr style = "width: 61px;height: 6px;border: none;background-color: #000000; position: absolute; left: 38px; top: 41px;">
 			
-			<label class = "self_font" style = "font-weight: 900; top:74px;">자가진단</label>
+			<label class = "self_font" style = "font-weight: 900; color : #000000; top:74px;">자가진단</label>
 			<br>
-			<label class = "self_font" style = "font-weight: 300; top:108px;">해보고 싶은 영역을 선택해보세요.</label>
+			<label class = "self_font" style = "font-weight: normal; top:120px;">해보고 싶은 영역을 선택해보세요.</label>
 
 			<form action="/saveType" method="get">
-			<div id = "image_box">
-				<div id = "image1">
-					<a href = "/self_check_info" name="language_development"><button type="submit" name="type" value="language_development" class = "box_btn">진단하러 가기</button>
-					<button style = "background-image: url('image/자가진단화살표.png')" class = "arrow"></button></a>
+				<div id = "image_box">
+					<div id = "image1">
+						<a href = "/self_check_info" name="language_development"><button type="submit" name="type" value="language_development" class = "box_btn">진단하러 가기</button>
+							<button style = "background-image: url('image/자가진단화살표.png')" class = "arrow"></button></a>
+					</div>
+					<div id = "image2">
+						<a href = "/self_check_info"></a><button name="type" value="ADHD" type="submit" class = "box_btn">진단하러 가기</button>
+						<button style = "background-image: url('image/자가진단화살표.png'); left : 241px;" class = "arrow"></button></a>
+					</div>
+					<div id = "image3">
+						<a href = "/self_check_info"><button name="type" type="submit" value="psychological_sentiment" class = "box_btn">진단하러 가기</button>
+							<button style = "background-image: url('image/자가진단화살표.png')" class = "arrow"></button></a>
+					</div>
+					<div id = "image4">
+						<a href = "/self_check_info"><button name="type" type="submit" value="sensory_development" class = "box_btn">진단하러 가기</button>
+							<button style = "background-image: url('image/자가진단화살표.png'); left : 241px; " class = "arrow"></button></a>
+					</div>
 				</div>
-				<div id = "image2">
-					<a href = "/self_check_info"></a><button name="type" value="ADHD" type="submit" class = "box_btn">진단하러 가기</button>
-					<button style = "background-image: url('image/자가진단화살표.png'); left : 241px;" class = "arrow"></button></a>
-				</div>
-				<div id = "image3">
-					<a href = "/self_check_info"><button name="type" type="submit" value="psychological_sentiment" class = "box_btn">진단하러 가기</button>
-					<button style = "background-image: url('image/자가진단화살표.png')" class = "arrow"></button></a>
-				</div>
-				<div id = "image4">
-					<a href = "/self_check_info"><button name="type" type="submit" value="sensory_development" class = "box_btn">진단하러 가기</button>
-					<button style = "background-image: url('image/자가진단화살표.png'); left : 241px; " class = "arrow"></button></a>
-				</div>
-			</div>
 			</form>
 		
 		</div>
 		
 	</div>
 	<div id = "footer">
-		<img src = "image/chicha.png" width = "164px" height = "88px" style = "position: absolute; left: 6px; top: 271px;">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
 		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
 		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
 		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
