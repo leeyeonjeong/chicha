@@ -2,6 +2,7 @@ package sw.chicha.Member.dto;
 
 import lombok.*;
 import sw.chicha.Member.domain.Member;
+import sw.chicha.Member.domain.Therapist;
 
 @NoArgsConstructor
 @Setter
@@ -14,10 +15,10 @@ public class TherapistDto {
     private String phoneNumber;
     private String email;
     private String password;
-    private Boolean confirm;
+    private String confirm;
 
-    public Member toEntity() {
-        return Member.builder()
+    public Therapist toEntity() {
+        return Therapist.builder()
                 .id(id)
                 .name(name)
                 .phoneNumber(phoneNumber)
@@ -33,6 +34,6 @@ public class TherapistDto {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
-        this.confirm = false;
+        this.confirm = "0";
     }
 }

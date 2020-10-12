@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import sw.chicha.Member.dto.MemberDto;
+import sw.chicha.Member.dto.TherapistDto;
 import sw.chicha.Member.repository.MemberRepository;
 import sw.chicha.Member.service.CertificationService;
 import sw.chicha.Member.service.MemberService;
+import sw.chicha.Member.service.TherapistService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +18,7 @@ import java.util.Random;
 @AllArgsConstructor
 public class MemberController {
     private MemberService memberService;
+    private TherapistService therapistService;
     private CertificationService certificationService;
 
     // 회원가입 선택
@@ -51,12 +54,11 @@ public class MemberController {
     }
 
     // 회원가입 처리 (치료사)
-    //@PostMapping("join_therapist")
-    //public String exec_join_therapist(MemberDto memberDto) {
-    //    memberService.joinUser(memberDto);
-
-    //    return "redirect:/join_success_therapist";
-    //}
+    @PostMapping("join_therapist")
+    public String exec_join_therapist(TherapistDto therapistDto) {
+        therapistService.joinUser(therapistDto);
+        return "redirect:/join_success_therapist";
+    }
 
     // 회원가입 완료 (치료사)
     @GetMapping("join_success_therapist")

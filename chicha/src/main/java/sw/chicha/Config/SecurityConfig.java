@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import sw.chicha.OAuth.service.CustomOAuth2UserService;
 import sw.chicha.Member.service.MemberService;
 
 import static org.hibernate.criterion.Restrictions.and;
@@ -19,7 +20,7 @@ import static org.hibernate.criterion.Restrictions.and;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private MemberService memberService;
-    //private final CustomOAuth2UserService customOAuth2UserService;
+    private final CustomOAuth2UserService customOAuth2UserService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -53,9 +54,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.logoutRequestMatcher("/logout/result")
                 .invalidateHttpSession(true);
         //.and()
-                //.oauth2Login()
-                //.userInfoEndpoint()
-                //.userService(customOAuth2UserService);
+        //        .oauth2Login()
+        //        .userInfoEndpoint()
+        //        .userService(customOAuth2UserService);
         //.and()
                 // 403 예외처리
                 //.exceptionHandling().accessDeniedPage("/denied");

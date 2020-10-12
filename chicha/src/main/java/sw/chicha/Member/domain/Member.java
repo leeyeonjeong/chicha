@@ -16,16 +16,16 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 20, nullable = false)
+    @Column(nullable = false)
     private String name;
 
-    @Column(length = 16, nullable = false)
+    @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(length = 12, nullable = false)
+    @Column(nullable = false)
     private String email;
 
-    @Column(length = 200, nullable = false)
+    @Column(nullable = false)
     private String password;
 
     // 우편번호
