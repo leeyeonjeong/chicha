@@ -1,8 +1,86 @@
 <!doctype html>
-<html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <title>치료사 회원가입</title>
+	<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+	<script type="text/javascript">
+
+		// 비밀번호 일치 검사
+		$(function (){
+			$('#password2').blur(function(){
+				console.log($('#password2').val())
+				console.log($('#password').val())
+				if($('#password').val() != $('#password2').val()){
+					if($('#password2').val()!=''){
+						alert("비밀번호가 일치하지 않습니다.");
+						$('#password2').val('');
+						$('#password2').focus();
+					}
+				}
+			})
+		});
+
+		// 아이디 중복 검사
+		$(function () {
+			$('#email').blur(function () {
+				$.ajax({
+					type: "GET",
+					url: "idCheck",
+					data: {
+						"id": $('#email').val()
+					},
+					success: function (data) {
+						if ($.trim(data) == "YES") {
+							if ($('#email').val() != '') {
+								$('#checkMsg').html('사용가능한 ID 입니다!');
+							}
+						} else {
+							if ($('#email').val() != '') {
+								$('#checkMsg').html('중복된 아이디입니다.');
+								$('#email').val('');
+								$('#email').focus();
+							}
+						}
+					}
+				})
+			})
+		});
+
+		// SMS 인증
+		$( document ).ready(function() {
+			var phone = 0;
+			sessionStorage.setItem("phone", phone);
+			$('#sendPhoneNumber').click(function () {
+				let phoneNumber = $('#phoneNumber').val();
+				//Swal.fire('인증번호 발송 완료!')
+				console.log(phoneNumber);
+
+				$.ajax({
+					type: "GET",
+					url: "/check/sendSMS",
+					data: {
+						"phoneNumber": phoneNumber
+					},
+					success: function (res) {
+						$( document ).ready(function() {
+							$('#checkBtn').click(function () {
+								if ($.trim(res) == $('#inputCertifiedNumber').val()) {
+									alert("인증성공");
+									phone = 1;
+									sessionStorage.setItem("phone", phone);
+								} else {
+									alert("인증실패");
+									location.reload();
+									return;
+								}
+							})
+						})
+					}
+				})
+			})
+		});
+		</script>
 	<style>
 		#area { width: 751px; height: 2011px;}
 		#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
@@ -30,7 +108,8 @@
 		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
 		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
-	
+
+	<form th:action="@{/join_therapist}" method="post">
 	<div id = "main">
 		<label style = "width: 280px;height: 38px;font-family: 'Noto Sans CJK KR';font-size: 37.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.95;letter-spacing: -2.37px;text-align: left;color: #000000; position: absolute; left: 41px; top: 196px;">치료코치 회원가입</label>
 		
@@ -41,31 +120,32 @@
 		
 		<div id = "content"> <!--개인정보 입력 창-->
 			<label class = "info" style = "position: absolute; left: 35px; top: 39px;">이름<font style = "color:#0778ff">*</font></label>
-			<input type = "text" class = "info_insert"  style = "width : 603px; position: absolute; left: 34px; top: 83px;" placeholder="실명을 입력하세요.">
+			<input name="name" id="name" type = "text" class = "info_insert"  style = "width : 603px; position: absolute; left: 34px; top: 83px;" placeholder="실명을 입력하세요.">
 			
 			<label class = "info" style = "position: absolute; left: 35px; top: 185px;">휴대폰<font style = "color:#0778ff">*</font></label>
-			<input type = "text" class = "info_insert" style = "width : 417px; position: absolute; left: 34px; top: 226px;" placeholder="‘-’없이 입력하세요.">
-			<button class = "btn" style = "top: 229px;"><font class = "btn_font">인증요청</font></button>
+			<input id="phoneNumber" name="phoneNumber" type = "text" class = "info_insert" style = "width : 417px; position: absolute; left: 34px; top: 226px;" placeholder="‘-’없이 입력하세요.">
+			<button type="button" id="sendPhoneNumber" name="sendPhoneNumber" class = "btn" style = "top: 229px;"><font class = "btn_font">인증요청</font></button>
 			
 			<label class = "info" style = "position: absolute; left: 35px; top: 325px;">인증번호<font style = "color:#0778ff">*</font></label>
-			<input type = "text" class = "info_insert" style = "width : 417px; position: absolute; left: 34px; top: 366px;" placeholder="인증번호">
-			<button class = "btn" style = "top: 369px;"><font class = "btn_font">인증확인</font></button>
+			<input id="inputCertifiedNumber" name="inputCertifiedNumber" type = "text" class = "info_insert" style = "width : 417px; position: absolute; left: 34px; top: 366px;" placeholder="인증번호">
+			<button type="button" id="checkBtn" name="checkBtn" class = "btn" style = "top: 369px;"><font class = "btn_font">인증확인</font></button>
 			
 			<label class = "info" style = "position: absolute; left: 35px; top: 465px;">아이디<font style = "color:#0778ff">*</font></label>
-			<input type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 505px;" placeholder="영문, 숫자를 혼합하여 6~12자로  입력하세요.">
-			<label class = "info" style = "position: absolute; left: 400px; top: 465px; font-size: 26px; color : rgba(237, 20, 59, 0.75); ">존재하는 아이디 입니다.</label>
+			<input name="email" id="email" type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 505px;" placeholder="영문, 숫자를 혼합하여 6~12자로  입력하세요.">
+			<label name="checkMsg" class = "info" style = "position: absolute; left: 400px; top: 465px; font-size: 26px; color : rgba(237, 20, 59, 0.75); "></label>
 			
 			<label class = "info" style = "position: absolute; left: 35px; top: 603px;">비밀번호<font style = "color:#0778ff">*</font></label>
-			<input type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 643px;" placeholder="영문, 숫자를 혼합하여 6~20자로 입력하세요.">
+			<input name="password" id="password" type = "password" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 643px;" placeholder="영문, 숫자를 혼합하여 6~20자로 입력하세요.">
 			
 			<label class = "info" style = "position: absolute; left: 35px; top: 744px;">비밀번호 재확인<font style = "color:#0778ff">*</font></label>
-			<input type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 786px;" placeholder="다시 한 번 입력해주세요.">
+			<input name="password2" id="password2" type = "password" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 786px;" placeholder="다시 한 번 입력해주세요.">
 		</div>
 		
 		<hr style="width: 670px;height: 8px;background-color: #3c3c3c; position: absolute; left: 41px; top: 373px;">
 		
-		<button style = "border:none; width: 669px;height: 80px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #00bfbf;  position: absolute; left: 41px; top: 1367px; outline: none;"><font style = "width: 93px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #ffffff;">다음</font></button>
+		<button type="submit" style = "border:none; width: 669px;height: 80px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #00bfbf;  position: absolute; left: 41px; top: 1367px; outline: none;"><font style = "width: 93px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #ffffff;">다음</font></button>
 	</div>
+	</form>
 	<div id = "footer"><!--맨 아래 부분--> 
 		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
 		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">

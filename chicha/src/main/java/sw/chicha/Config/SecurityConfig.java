@@ -1,4 +1,4 @@
-package sw.chicha.Member.Config;
+package sw.chicha.Config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
