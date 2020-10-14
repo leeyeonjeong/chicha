@@ -2,6 +2,8 @@ package sw.chicha.Member.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.dto.TherapistDto;
@@ -35,9 +37,21 @@ public class MemberController {
 
     // 회원가입 처리 (일반)
     @PostMapping("join_general")
-    public String exec_join_general(MemberDto memberDto) {
-        memberService.joinUser(memberDto);
+    public String exec_join_general(MemberDto memberDto, Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            // 회원가입 실패 시, 입력 데이터 유지
+            model.addAttribute("memberDto", memberDto);
 
+            // 유효성 검사 못한 필드 핸들링
+            Map<String, String> validatorResult = memberService.validateHandling(errors);
+            for (String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
+            }
+
+            return "/join/회원가입_일반";
+        }
+
+        memberService.joinUser(memberDto);
         return "redirect:/join_success_general";
     }
 

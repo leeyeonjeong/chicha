@@ -12,15 +12,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Role;
 import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.repository.MemberRepository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -51,6 +50,17 @@ public class MemberService implements UserDetailsService {
 
         // Detail에서 새로운 객체 반환
         return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
+    }
+
+    public Map<String, String> validateHandling(Errors errors) {
+        Map<String, String> validatorResult = new HashMap<>();
+
+        for (FieldError error : errors.getFieldErrors()) {
+            String validKeyName = String.format("valid_%s", error.getField());
+            validatorResult.put(validKeyName, error.getDefaultMessage());
+        }
+
+        return validatorResult;
     }
 
     // 아이디 중복 체크 함수

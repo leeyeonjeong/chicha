@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
 @Getter
@@ -17,23 +19,29 @@ public class Member {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank
     private String name;
 
     @Column(nullable = false)
+    @NotBlank
     private String phoneNumber;
 
     @Column(nullable = false)
+    @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{6,20}")
     private String email;
 
     @Column(nullable = false)
+    @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}")
     private String password;
 
     // 우편번호
     @Column(nullable = false)
+    @NotBlank
     private String zipcode;
 
     // 지번주소
     @Column(nullable = false)
+    @NotBlank
     private String firstAddr;
 
     // 상세주소

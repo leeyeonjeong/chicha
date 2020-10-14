@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
 <title>아이등록</title>
@@ -31,8 +31,8 @@
 
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
 	<div id = "main">
@@ -49,18 +49,18 @@
 		
 		<label style = " width: 108px;height: 19px;opacity: 0.8;font-family: 'Noto Sans CJK KR';font-size: 20px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.53;letter-spacing: -1px;text-align: left;color: rgba(0, 0, 0, 0.8); position: absolute; left: 601px; top: 436px;"><font style = "font-weight: 900; color: #07788f;">*</font> 필수 입력 값</label>
 		
-		
+		<form th:action="@{/child_registration}" method="post">
 		<div id = "info_box">
 			<div id = "box_1"> <!--사진, 이름, 성별-->
 				<div style = "width : 180px; height: 180px;"> <!--사진-->
 					<div style = "width : 180px; height: 150px; background-color: #d9d9d9 "><img src = "image/picture.png" style = "position: absolute; left: 32px; top: 36px;"></div> <!-- 사진등록 누른 후 사진등록하면 등록한 사진으로 바뀌게 해야 함-->
 					
 					<label for = "file_input" style = "width: 180px;height: 50px; position: absolute; top: 130px;"><img src = "image/사진등록.png"></label>
-					<input id = "file_input" type = "file" style = "display: none;">
+					<input name="picture" id = "file_input" type = "file" style = "display: none;">
 					</div>
 				
 					<label style = "width : 70px; position: absolute; left: 203px; top: 29px;" class = "font">이름<font style = "color:#0788ff;">*</font></label>
-					<input type = "text" class = "input_text" style = "width : 240px; position: absolute; left: 301px; top: 38px;" placeholder="아이 이름을 입력해주세요."> 
+					<input name="name" type = "text" class = "input_text" style = "width : 240px; position: absolute; left: 301px; top: 38px;" placeholder="아이 이름을 입력해주세요.">
 				
 					<img src = "image/grayline.png" style = "width: 423px; position: absolute; left: 180px; top: 88px; background-color: #d9d9d9">
 				
@@ -74,23 +74,29 @@
 			<div id = "box_2"> <!--생년월일, 소속, 희망 치료분야-->	
 				
 				<img src = "image/birth.png" style = "width = 180px; height: 90px; position: absolute; top: auto">
-				<input type = "text" class = "input_text" style = "width : 394px; position: absolute; left: 209px; top:35px;" placeholder="‘-’ 구분없이 입력">
+				<input name="birthday" type = "text" class = "input_text" style = "width : 394px; position: absolute; left: 209px; top:35px;" placeholder="‘-’ 구분없이 입력">
 				<img src = "image/grayline.png" style = "width: 603px; position: absolute; top: 89px; background-color: #d9d9d9"> <!--생년월일-->
 				
 				<img src = "image/belong.png" style = "width = 180px; height: 90px; position: absolute; top: 90px;">
-				<input type = "text" class = "input_text" style = "width : 394px; position: absolute; left: 209px; top:124px;" placeholder="예) 학교, 유치원, 어린이집"> 
+				<input name="affiliation" type = "text" class = "input_text" style = "width : 394px; position: absolute; left: 209px; top:124px;" placeholder="예) 학교, 유치원, 어린이집">
 				<img src = "image/grayline.png" style = "width: 603px; position: absolute; top: 180px; background-color: #d9d9d9"><!--소-->
 				
 				<img src = "image/want.png" style = "width = 180px; height: 160px;position: absolute; top: 181px;">
-				<textarea cols="49" rows="7" style = "position: absolute; left: 209px; top:213px; border: none; resize: none;" placeholder = "예) 언어치료, 놀이치료 등"></textarea><!--희망 치료분-->
+				<textarea name="field" cols="49" rows="7" style = "position: absolute; left: 209px; top:213px; border: none; resize: none;" placeholder = "예) 언어치료, 놀이치료 등"></textarea><!--희망 치료분-->
 			</div>
-			
+
+			<!--
+			<sec:authentication var="principal" property="principal" />
+			<input type="hidden" id="parent" name="parent" th:value="${principal?.username}"></input>
+			-->
 			<div> <!--버튼-->
-				<a href = "메인.html"><button id = "check"><font style = "width: 47px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #ffffff;">확인</font></button></a>
+				<a href = "/"><button type="submit" id = "check"><font style = "width: 47px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #ffffff;">확인</font></button></a>
 				
-				<a href = "메인.html"><button id = "next"><font style = "width: 47px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #ffffff;">다음에 하기</font></button></a>
+				<a href = "/"><button id = "next"><font style = "width: 47px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #ffffff;">다음에 하기</font></button></a>
 			</div>
 		</div>
+		</form>
+
 		<div id = "footer">
 			<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
 			<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">

@@ -47,6 +47,38 @@
     color: #ffffff;
     top: 212px;
 	}
+	#id_font{width : 100px;
+		font-family: "Noto Sans CJK KR";
+		font-size: 28px;
+		font-weight: 400;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: -1.68px;
+		text-align: right;
+		position: absolute;
+		left: 630px;
+		color: #ffffff;
+		top: 172px;
+	}
+	#loginSubmit{
+		width: 120px;
+		height: 27px;
+		background-color: rgba(0,0,0,0);
+		border-color: rgba(0,0,0,0);
+		font-family: "Noto Sans CJK KR";
+		font-size: 28px;
+		font-weight: 400;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: -1.68px;
+		text-align: right;
+		position: absolute;
+		left: 630px;
+		color: #ffffff;
+		top: 212px;
+	}
 	#withchicha{width: 400px; height: 94px; position: absolute; left: 48px; top: 327px;}
 	.textbox{
     font-family: "Noto Sans CJK KR";
@@ -116,7 +148,7 @@
 		
 	<div id = "search"> <!--그림이 배경인 검색창-->
 		<th:block sec:authorize="isAuthenticated()">
-			<span sec:authentication="principal.username"></span> 님
+			<text id="id_font" sec:authentication="principal.username"></text> 님
 			<form th:action="@{/logout}"  method='POST'>
 				<button type="submit" id="loginSubmit">로그아웃</button>
 			</form>

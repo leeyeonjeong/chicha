@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <title>일반 회원가입완료</title>
@@ -38,8 +38,14 @@
 		</div>
 		
 		<div> <!--버튼 3개 -->
-			<a href = "회원가입_아이등록.html"><button class = "btn" style = " border:none; box-shadow: 0 0 14.3px 0.8px rgba(7, 120, 255, 0.45);background-color: #0778ff;top: 456px;"> <font class = "font_btn" style = "color: #ffffff;">아이등록 하러가기</font></button></a>
-			
+			<th:block sec:authorize="isAuthenticated()">
+				<a href = "/child_registration"><button class = "btn" style = " border:none; box-shadow: 0 0 14.3px 0.8px rgba(7, 120, 255, 0.45);background-color: #0778ff;top: 456px;"> <font class = "font_btn" style = "color: #ffffff;">아이등록 하러가기</font></button></a>
+			</th:block>
+
+			<th:block sec:authorize="isAnonymous()">
+				<a href = "/login"><button class = "btn" style = " border:none; box-shadow: 0 0 14.3px 0.8px rgba(7, 120, 255, 0.45);background-color: #0778ff;top: 456px;"> <font class = "font_btn" style = "color: #ffffff;">아이등록 하러가기</font></button></a>
+			</th:block>
+
 			<a href = "/login"><button class = "btn" style = "border:none; box-shadow: 0 0 9.5px 0.5px rgba(0, 191, 191, 0.45); background-color: #ffffff;top: 546px;"> <font class = "font_btn" style = "color: #00bfbf;">로그인하기</font></button></a>
 			
 			<a href = "/"><button class = "btn" style = "box-shadow: 0 0 14.3px 0.8px rgba(84, 84, 84, 0.75); background-color: #3c3c3c;top: 636px;"> <font class = "font_btn" style = "color: #ffffff;">메인으로 이동하기</font></button></a>

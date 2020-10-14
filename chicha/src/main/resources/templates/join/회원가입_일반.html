@@ -23,6 +23,58 @@
 			})
 		});
 
+		// 유효성 검사 이거 약간 에러 나옴
+		$( document ).ready(function() {
+			$('#join_click').click(function () {
+
+				// NotBlank 검사
+				if ($('#name').val() == '' || $('#name').val() == ' ' || $('#name').val() == null) {
+					alert("이름을 입력하세요.")
+					console.log("NNNNNNNNNNNN"+ $('name').val())
+					location.reload();
+					return false;
+				} else if ($('#phoneNumber').val() == '' || $('#phoneNumber').val() == ' ' || $('#phoneNumber').val() == null) {
+					alert("휴대폰을 입력하세요.")
+					location.reload();
+					return false;
+				} else if (sessionStorage.getItem("phone") == 0) {
+					alert("휴대폰을 인증하세요.")
+					location.reload();
+					return false;
+				} else if ($('#password').val() == '' || $('#password').val() == ' ' || $('#password').val() == null) {
+					alert("비밀번호를 입력하세요.")
+					location.reload();
+					return false;
+				} else if ($('#password2').val() == '' || $('#password2').val() == ' ' || $('#password2').val() == null) {
+					alert("비밀번호를 입력하세요.")
+					location.reload();
+					return false;
+				} else if ($('#zipcode').val() == '' || $('#zipcode').val() == ' ' || $('#zipcode').val() == null) {
+					alert("주소를 입력하세요.")
+					location.reload();
+					return false;
+				} else if ($('#firstAddr').val() == '' || $('#firstAddr').val() == ' ' || $('#firstAddr').val() == null) {
+					alert("주소를 입력하세요.")
+					location.reload();
+					return false;
+				}
+
+
+				// 아이디, 비밀번호 유효성 검사
+				if ($('valid_email').val() != null) {
+					$('#email').focus();
+					$('#checkMsg').html('영문, 숫자를 혼합하여 6~12자로  입력하세요.');
+					location.reload();
+					return false;
+				} else if (($('valid_password').val() != null)) {
+					$('#password').focus();
+					$('#checkMsg').html('영문, 숫자를 혼합하여 6~12자로  입력하세요.');
+					location.reload();
+					return false;
+				}
+			})
+		})
+
 		// 아이디 중복 검사
 		$(function () {
 			$('#email').blur(function () {
@@ -175,10 +227,10 @@
 		
 		<div id = "content"> <!--개인정보 입력 창-->
 			<label class = "info" style = "position: absolute; left: 35px; top: 39px;">이름<font style = "color:#0778ff">*</font> </label>
-			<input name="email" type = "text" class = "info_insert"  style = "width : 603px; position: absolute; left: 34px; top: 83px;" placeholder="실명을 입력하세요.">
-			
+			<input id="name" name="name" type = "text" class = "info_insert"  style = "width : 603px; position: absolute; left: 34px; top: 83px;" placeholder="실명을 입력하세요.">
+
 			<label class = "info" style = "position: absolute; left: 35px; top: 185px;">휴대폰<font style = "color:#0778ff">*</font> </label>
-			<input id="phoneNumber" name="phoneNumber" type = "text" class = "info_insert" style = "width : 413px; position: absolute; left: 34px; top: 226px;" placeholder="‘-’없이 입력하세요.">
+			<input id="phoneNumber" name="phoneNumber"type = "text" class = "info_insert" style = "width : 413px; position: absolute; left: 34px; top: 226px;" placeholder="‘-’없이 입력하세요.">
 			<button type="button" id="sendPhoneNumber" name="sendPhoneNumber" class = "btn" style = "top: 229px;"><font class = "btn_font">인증요청</font></button>
 			
 			<label class = "info" style = "position: absolute; left: 35px; top: 325px;">인증번호<font style = "color:#0778ff">*</font> </label>
@@ -187,24 +239,26 @@
 			
 			<label class = "info" style = "position: absolute; left: 35px; top: 465px;">아이디<font style = "color:#0778ff">*</font> </label>
 			<input name="email" id="email" type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 505px;" placeholder="영문, 숫자를 혼합하여 6~12자로  입력하세요.">
+			<span id="valid_email" name="valid_email" th:text="${valid_email}"></span>
 			<label name="checkMsg" class = "info" style = "position: absolute; left: 400px; top: 465px; font-size: 26px; color : rgba(237, 20, 59, 0.75); "></label>
 			
 			<label class = "info" style = "position: absolute; left: 35px; top: 603px;">비밀번호<font style = "color:#0778ff">*</font> </label>
 			<input type = "password" name="password" id="password" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 643px;" placeholder="영문, 숫자를 혼합하여 6~20자로 입력하세요.">
-			
+			<span id="valid_password" name="valid_password" th:text="${valid_password}"></span>
+
 			<label class = "info" style = "position: absolute; left: 35px; top: 744px;">비밀번호 재확인<font style = "color:#0778ff">*</font> </label>
 			<input type = "password" id="password2" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 786px;" placeholder="다시 한 번 입력해주세요.">
 			
 			<label class = "info" style = "position: absolute; left: 35px; top: 890px;">주소<font style = "color:#0778ff">*</font> </label>
 			<input name="zipcode" id="zipcode" type = "text" class = "info_insert" style = "width : 413px; position: absolute; left: 34px; top: 929px;" placeholder="우편번호">
 			<button type="button" class = "btn" onclick="execPostCode()" style = "top: 932px;"><font class = "btn_font">우편번호</font></button>
-			<input name="firstAddr" type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 1010px;" placeholder="기본주소">
+			<input name="firstAddr" id="firstAddr" type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 1010px;" placeholder="기본주소">
 			<input name="secondAddr" type = "text" class = "info_insert" style = "width : 603px; position: absolute; left: 34px; top: 1096px;" placeholder="상세주소">
 		</div>
 		
 		<hr style="width: 670px;height: 8px;background-color: #3c3c3c; position: absolute; left: 41px; top: 373px;">
 		
-		<a href = "/join_success_general"><button type="submit" style = "width: 669px;height: 80px;border-radius: 10px; border:none;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #00bfbf;  position: absolute; left: 41px; top: 1648px; outline: none;"><font style = "width: 93px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #ffffff;">회원가입</font></button></a>
+		<a href = "/join_success_general"><button id="join_click" name="join_click" type="submit" style = "width: 669px;height: 80px;border-radius: 10px; border:none;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #00bfbf;  position: absolute; left: 41px; top: 1648px; outline: none;"><font style = "width: 93px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #ffffff;">회원가입</font></button></a>
 	</div>
 	</form>
 	

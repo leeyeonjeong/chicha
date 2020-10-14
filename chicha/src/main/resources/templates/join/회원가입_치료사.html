@@ -80,6 +80,36 @@
 				})
 			})
 		});
+
+		// 유효성 검사 이거 약간 에러 나옴
+		$( document ).ready(function() {
+			$('#join_click').click(function () {
+
+				// NotBlank 검사
+				if ($('#name').val() == '' || $('#name').val() == ' ' || $('#name').val() == null) {
+					alert("이름을 입력하세요.")
+					console.log("NNNNNNNNNNNN"+ $('name').val())
+					location.reload();
+					return false;
+				} else if ($('#phoneNumber').val() == '' || $('#phoneNumber').val() == ' ' || $('#phoneNumber').val() == null) {
+					alert("휴대폰을 입력하세요.")
+					location.reload();
+					return false;
+				} else if (sessionStorage.getItem("phone") == 0) {
+					alert("휴대폰을 인증하세요.")
+					location.reload();
+					return false;
+				} else if ($('#password').val() == '' || $('#password').val() == ' ' || $('#password').val() == null) {
+					alert("비밀번호를 입력하세요.")
+					location.reload();
+					return false;
+				} else if ($('#password2').val() == '' || $('#password2').val() == ' ' || $('#password2').val() == null) {
+					alert("비밀번호를 입력하세요.")
+					location.reload();
+					return false;
+				}
+			})
+		})
 		</script>
 	<style>
 		#area { width: 751px; height: 2011px;}
