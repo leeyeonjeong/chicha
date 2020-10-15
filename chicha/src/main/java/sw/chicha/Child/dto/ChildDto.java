@@ -23,7 +23,7 @@ public class ChildDto {
     private String birthday;
     private String affiliation;
     private String field;
-    private String parent;
+    private Member member;
 
     public Child toEntity() {
         return Child.builder()
@@ -34,12 +34,12 @@ public class ChildDto {
                 .birthday(birthday)
                 .affiliation(affiliation)
                 .field(field)
-                .parent(parent)
+                .member(member)
                 .build();
     }
 
     @Builder
-    public ChildDto(Long id, String name, String gender, String picture, String birthday, String affiliation, String field, String parent) {
+    public ChildDto(Long id, String name, String gender, String picture, String birthday, String affiliation, String field, Member member) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -47,6 +47,6 @@ public class ChildDto {
         this.birthday = birthday;
         this.affiliation = affiliation;
         this.field = field;
-        this.parent = parent;
+        this.member = member;
     }
 }

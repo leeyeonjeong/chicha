@@ -32,12 +32,12 @@ public class Therapist {
 
     @Column(nullable = false)
     @NotBlank
-    @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{6,20}")
+    //@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{6,20}")
     private String email;
 
     @Column(nullable = false)
     @NotBlank
-    @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}")
+    //@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}")
     private String password;
 
     // 자격증 인증

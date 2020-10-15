@@ -1,32 +1,43 @@
 package sw.chicha.Calendar.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import sw.chicha.Calendar.dto.CalendarDto;
+import sw.chicha.Calendar.service.CalendarService;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping(value = "/therapist")    // url Mapping
+@RequestMapping(value = "/therapist/calendar")    // url Mapping
 public class CalendarController {
+    private CalendarService calendarService;
 
-    @GetMapping("/calendar_month")
+    @GetMapping("/month")
     public String therapist_calendar_month() {
-        return "캘린더_치료사_월";
+        return "calendar/캘린더_치료사_월";
     }
 
-    @GetMapping("/calendar_day")
+    @GetMapping("/day")
     public String therapist_calendar_day() {
-        return "캘린더_치료사_일";
+        return "calendar/캘린더_치료사_일";
     }
 
-    @GetMapping("/calendar_registration")
-    public String therapist_calendar_registration() {
-        return "캘린더_치료사_일정등록";
+    @GetMapping("/registration")
+    public String dis_therapist_calendar_registration() {
+        return "calendar/캘린더_치료사_일정등록";
     }
 
-    @GetMapping("/calendar_search")
-    public String therapist_calendar_search() {
-        return "캘린더_치료사_팝업_아동검색";
+    @PostMapping("/registration")
+    public String exec_therapist_calendar_registration(CalendarDto calendarDto, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        System.out.println("AUthhhhhhhhhhhhhhhhhh" +userDetails.getAuthorities());
+        System.out.println("NAMMMeEEEEEEEEEEEEEEEEEEEEEe" +userDetails.getUsername());
+
+        calendarService.saveCalender(calendarDto);
+        return "redirect:/therapist/calendar/month";
     }
 }

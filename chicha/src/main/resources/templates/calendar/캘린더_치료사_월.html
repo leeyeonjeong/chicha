@@ -103,8 +103,8 @@
 </head>
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
 	<div id = "main"> 
@@ -139,7 +139,7 @@
 		</div> <!--end schedule-->
 
 		<div> <!--달력-->
-			<a href = "캘린더_치료사_일정등록.html"><button class ="cal_btn" style = "left : 76px;"><label class = "btn_font" ><img src = "image/캘린더_플러스.png" style = "width: 30px; height: 30px; background-color: transparent;">코칭등록</label></button></a>
+			<a href = "/therapist/calendar/registration"><button class ="cal_btn" style = "left : 76px;"><label class = "btn_font" ><img src = "image/캘린더_플러스.png" style = "width: 30px; height: 30px; background-color: transparent;">코칭등록</label></button></a>
 			<a href = "캘린더_치료사_치료회기_등록.html"><button class ="cal_btn" style = "left : 392px;"><label class = "btn_font" ><img src = "image/캘린더_화살표.png" style = "width: 54px; height: 21px; background-color: transparent;">코칭회기</label></button></a>
 			
 			<table id = "calendar">
@@ -167,13 +167,13 @@
 			<label class = "absent_number">2</label>
 		</div>
 		
-		<a href = "캘린더_치료사_일.html" onClick="window.open(this.href,'_blanck','width = 680px, height = 1097px','left = 40px, top = 290px'); return false">
+		<a href = "/therapist/calendar/day" onClick="window.open(this.href,'_blanck','width = 680px, height = 1097px','left = 40px, top = 290px'); return false">
 			
 		<div class = "attendance_check" style = "width: 81px;height: 43px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);border: solid 2px #7d868d;background-color:transparent;display: table; position: absolute; left: 230px; top:881px;"><!--출석-->
 			<label class = "attendance_number">출석<font style = "font-size: 20px;font-weight: bold;">6명</font></label>
 		</div></a>
 		
-		<a href = "캘린더_치료사_팝업_아동검색.html" onClick="window.open(this.href,'_blanck','width = 680px, height = 1097px', 'left = 40px, top = 290px'); return false"><button id = "chi_list">아동리스트</button></a>
+		<a href = "/therapist/calendar/search" onClick="window.open(this.href,'_blanck','width = 680px, height = 1097px', 'left = 40px, top = 290px'); return false"><button id = "chi_list">아동리스트</button></a>
 	</div><!--end main-->
 	
 	

@@ -23,22 +23,51 @@
 			})
 		});
 
+		// SMS 인증
+		$( document ).ready(function() {
+			var phone = 0;
+			sessionStorage.setItem("phone", phone);
+			$('#sendPhoneNumber').click(function () {
+				let phoneNumber = $('#phoneNumber').val();
+				//Swal.fire('인증번호 발송 완료!')
+				console.log(phoneNumber);
+
+				$.ajax({
+					type: "GET",
+					url: "/check/sendSMS",
+					data: {
+						"phoneNumber": phoneNumber
+					},
+					success: function (res) {
+						$( document ).ready(function() {
+							$('#checkBtn').click(function () {
+								if ($.trim(res) == $('#inputCertifiedNumber').val()) {
+									alert("인증성공");
+									phone = 1;
+									sessionStorage.setItem("phone", phone);
+								} else {
+									alert("인증실패");
+									location.reload();
+									return;
+								}
+							})
+						})
+					}
+				})
+			})
+		});
+
 		// 유효성 검사 이거 약간 에러 나옴
 		$( document ).ready(function() {
 			$('#join_click').click(function () {
-
 				// NotBlank 검사
 				if ($('#name').val() == '' || $('#name').val() == ' ' || $('#name').val() == null) {
 					alert("이름을 입력하세요.")
-					console.log("NNNNNNNNNNNN"+ $('name').val())
+					console.log("NNNNNNNNNNNN" + $('name').val())
 					location.reload();
 					return false;
 				} else if ($('#phoneNumber').val() == '' || $('#phoneNumber').val() == ' ' || $('#phoneNumber').val() == null) {
 					alert("휴대폰을 입력하세요.")
-					location.reload();
-					return false;
-				} else if (sessionStorage.getItem("phone") == 0) {
-					alert("휴대폰을 인증하세요.")
 					location.reload();
 					return false;
 				} else if ($('#password').val() == '' || $('#password').val() == ' ' || $('#password').val() == null) {
@@ -75,6 +104,7 @@
 			})
 		})
 
+
 		// 아이디 중복 검사
 		$(function () {
 			$('#email').blur(function () {
@@ -101,39 +131,7 @@
 			})
 		});
 
-		// SMS 인증
-		$( document ).ready(function() {
-			var phone = 0;
-			sessionStorage.setItem("phone", phone);
-			$('#sendPhoneNumber').click(function () {
-				let phoneNumber = $('#phoneNumber').val();
-				//Swal.fire('인증번호 발송 완료!')
-				console.log(phoneNumber);
 
-				$.ajax({
-					type: "GET",
-					url: "/check/sendSMS",
-					data: {
-						"phoneNumber": phoneNumber
-					},
-					success: function (res) {
-						$( document ).ready(function() {
-							$('#checkBtn').click(function () {
-								if ($.trim(res) == $('#inputCertifiedNumber').val()) {
-									alert("인증성공");
-									phone = 1;
-									sessionStorage.setItem("phone", phone);
-								} else {
-									alert("인증실패");
-									location.reload();
-									return;
-								}
-							})
-						})
-					}
-				})
-			})
-		});
 
 		// 주소
 		function execPostCode() {

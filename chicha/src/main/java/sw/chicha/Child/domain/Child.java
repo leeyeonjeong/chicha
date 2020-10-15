@@ -28,8 +28,12 @@ public class Child {
     private String field;
     private String parent;
 
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     @Builder
-    public Child(Long id, String name, String gender, String picture, String birthday, String affiliation, String field, String parent) {
+    public Child(Long id, String name, String gender, String picture, String birthday, String affiliation, String field, Member member) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -37,6 +41,6 @@ public class Child {
         this.birthday = birthday;
         this.affiliation = affiliation;
         this.field = field;
-        this.parent = parent;
+        this.member = member;
     }
 }

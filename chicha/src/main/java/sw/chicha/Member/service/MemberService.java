@@ -16,8 +16,11 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Role;
+import sw.chicha.Member.domain.Therapist;
 import sw.chicha.Member.dto.MemberDto;
+import sw.chicha.Member.dto.TherapistDto;
 import sw.chicha.Member.repository.MemberRepository;
+import sw.chicha.Member.repository.TherapistRepository;
 
 import java.util.*;
 
@@ -26,32 +29,65 @@ import java.util.*;
 public class MemberService implements UserDetailsService {
 
     private MemberRepository memberRepository;
+    private TherapistRepository therapistRepository;
 
-    public Long joinUser(MemberDto memberDto) {
+    // 일반 회원가입
+    public Long joinMember(MemberDto memberDto) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
 
         return memberRepository.save(memberDto.toEntity()).getId();
     }
 
+    // 치료사 회원가입
+    public Long joinTherapist(TherapistDto therapistDto) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        therapistDto.setPassword(passwordEncoder.encode(therapistDto.getPassword()));
+
+        return therapistRepository.save(therapistDto.toEntity()).getId();
+    }
+
+    // 로그인
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<Member> userEntityWrapper = memberRepository.findByEmail(email);
-        Member userEntity = userEntityWrapper.get();
 
-        List<GrantedAuthority> authorities = new ArrayList<>();
+        // 치료사 로그인일 때
+        if (!userEntityWrapper.isPresent()) {
+            Optional<Therapist> userEntityWrapper2 = therapistRepository.findByEmail(email);
+            Therapist userEntity = userEntityWrapper2.get();
 
-        // 권한생성
-        if (("admin").equals(email)) {
-            authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
+            List<GrantedAuthority> authorities = new ArrayList<>();
+
+            // 권한생성
+            if (("admin").equals(email)) {
+                authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
+            } else {
+                authorities.add(new SimpleGrantedAuthority(Role.THERAPIST.getValue()));
+            }
+
+            // Detail에서 새로운 객체 반환
+            return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
         } else {
-            authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
+            Member userEntity = userEntityWrapper.get();
+
+            List<GrantedAuthority> authorities = new ArrayList<>();
+
+            // 권한생성
+            if (("admin").equals(email)) {
+                authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
+            } else {
+                authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
+            }
+
+            // Detail에서 새로운 객체 반환
+            return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
         }
 
-        // Detail에서 새로운 객체 반환
-        return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
+
     }
 
+    // 유효성검사 핸들러
     public Map<String, String> validateHandling(Errors errors) {
         Map<String, String> validatorResult = new HashMap<>();
 
