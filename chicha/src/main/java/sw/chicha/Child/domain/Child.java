@@ -22,18 +22,21 @@ public class Child {
     @Column(nullable = false)
     private String gender;
     private String picture;
-    @Column(nullable = false)
     private String birthday;
     private String affiliation;
     private String field;
-    private String parent;
+    private String phoneNumber;
+    private String zipcode;
+    private String firstAddr;
+    private String secondAddr;
 
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
     @Builder
-    public Child(Long id, String name, String gender, String picture, String birthday, String affiliation, String field, Member member) {
+    public Child(Long id, String name, String gender, String picture, String birthday, String affiliation, String field, String phoneNumber,
+                 String zipcode, String firstAddr, String secondAddr, Member member) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -41,6 +44,10 @@ public class Child {
         this.birthday = birthday;
         this.affiliation = affiliation;
         this.field = field;
+        this.phoneNumber = phoneNumber;
+        this.zipcode = zipcode;
+        this.firstAddr = firstAddr;
+        this.secondAddr = secondAddr;
         this.member = member;
     }
 }

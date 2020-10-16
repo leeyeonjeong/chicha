@@ -23,6 +23,10 @@ public class ChildDto {
     private String birthday;
     private String affiliation;
     private String field;
+    private String phoneNumber;
+    private String zipcode;
+    private String firstAddr;
+    private String secondAddr;
     private Member member;
 
     public Child toEntity() {
@@ -34,12 +38,17 @@ public class ChildDto {
                 .birthday(birthday)
                 .affiliation(affiliation)
                 .field(field)
+                .phoneNumber(phoneNumber)
+                .zipcode(zipcode)
+                .firstAddr(firstAddr)
+                .secondAddr(secondAddr)
                 .member(member)
                 .build();
     }
 
     @Builder
-    public ChildDto(Long id, String name, String gender, String picture, String birthday, String affiliation, String field, Member member) {
+    public ChildDto(Long id, String name, String gender, String picture, String birthday, String affiliation, String field,
+                    String phoneNumber, String zipcode, String firstAddr, String secondAddr, Member member) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -47,6 +56,11 @@ public class ChildDto {
         this.birthday = birthday;
         this.affiliation = affiliation;
         this.field = field;
+        this.phoneNumber = phoneNumber;
+        this.zipcode = zipcode;
+        this.firstAddr = firstAddr;
+        this.secondAddr = secondAddr;
+        this.member = member;
         this.member = member;
     }
 }

@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>치료사 회기등록</title>
+<style>
+	#area { width: 751px; height: 2011px;}
+	#top { width: 751px; height: 140px; background-color: #ffffff;display:table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
+	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 1371px; background-color: #f4f4f4; overflow-y: auto;}
+	#child_name{font-family: 'Noto Sans CJK KR';font-size: 40px;letter-spacing: -2.4px;color: #fefefe;font-weight: bold;font-stretch: normal;font-style: normal;text-align: left; background-color: #0778ff;position: absolute; left: 39px; top:300px;}
+	#birth{opacity: 0.8;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.68px;text-align: left;color: rgba(0, 0, 0, 0.8); position: absolute; left: 155px; top:320px;}
+	#record{width: 751px;height: 1500px;box-shadow: inset 0 10px 10px -10px rgba(115, 155, 210, 0.45);background-color: #ffffff; position: absolute; top: 380px;}
+	#record>span{font-family: 'Noto Sans CJK KR';font-size: 23.5px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.41px;text-align: left;color: #000000; position: absolute; left: 40px; top:35px;}
+	select{width:145px;height:56px; border-style : none; -webkit-appearance: none;-moz-appearance: none;appearance: none;position: absolute;left:570px;top:23px;}
+	select::-ms-expand {display: none;}
+	.select_font{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight:500;font-stretch: normal;font-style: normal;line-height: 2.58;letter-spacing: -1.71px;text-align: left;color:rgba(0, 0, 0, 0.6);}
+	#record_box{width:670px; height: 1250px; position: absolute; left:38px; top:100px;overflow-y: auto; overflow-x: hidden;}
+	.title{width: 670px;height: 140px;background-color: #e6e6e6; border:none; border-top: solid 4px #3c3c3c; padding-top:10px;}
+	.title>span{font-family: 'Noto Sans CJK KR';font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.41px;text-align: left;position: relative;}
+	.title>.ti_btn{width: 180px;height: 70px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45);border: solid 3px #00bfbf;background-color: #ffffff;font-family: 'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.56px;text-align: center;color: #00bfbf;position: relative; left: 70%;top:5%;outline:none;}
+	.title>.ti_one{font-size: 28px;font-weight: bold;color: #00bfbf;width:75px;left:-23.5%;top:-5%;}
+	.title>.ti_two{font-size: 28px;font-weight: bold;color: #000000;width:100px;left:4%;top:-15%;}
+	.title>.ti_three{font-size: 28px;font-weight: normal;color: #404040;width:240px;left:4%;top:-15%;}
+	.title>.ti_four{font-size: 24px;font-weight: normal;color: #808080;width:220px;left:4%;top:-15%;}
+	.title>.ti_detail{font-size: 24px;font-weight: 500;color: rgba(64, 64, 64, 0.5);width:90px;left:50%;top:-15%;}
+	.content{width: 670px;height: 523px;background-color: #f7f7f7;border: none;padding-left: 20px; padding-right: 20px;overflow-y: auto; overflow-x: hidden;}
+	.content>.con_1{width: 630px;;background-color: #f7f7f7;border: none; border-bottom: solid 3px #dcdcdc;overflow-y: auto; overflow-x: hidden;word-break:break-all;padding-top:30px;padding-bottom:10px;}
+	.content>.con_1>span{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #000000;}
+	.content>.con_1>label{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.44px;text-align: left;color: #404040; position: relative;top:10%;}
+	.content>.con_2{width: 630px;background-color: #f7f7f7;border: none; overflow-y: auto; overflow-x: hidden;word-break:break-all;padding-top:30px;}
+	.content>.con_2>span{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #000000;}
+	.content>.con_2>label{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.44px;text-align: left;color: #404040; position: relative;top:10%;}
+	
+	#footer{width : 751px;height: 300px;background-color: #ffffff;position: absolute;top : 1721px;}
+</style>
+</head>
+
+<body id="area">
+	<div id = "top"><!--top 화면-->
+		<a href = "../메인.html"><img src = "../image/로고.png" id = "img1"></a>
+		<a href = "../메뉴.html"><img src = "../image/icn_menu.png" id = "menu"></a>
+	</div>
+	
+	<div id = "main"> 
+		<div> <!-- 회색 박스-->
+			<label style = "height: 47px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 39px; top: 193px;">코칭 회기</label>
+		
+			<label style = "font-family: 'Noto Sans CJK KR';font-size: 32px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.89;letter-spacing: -1.92px;text-align: left;color: #0778ff;position: absolute; left: 39px; top:249px;">아이플러스 서울언어치료센터</label>
+			
+			<label id = "child_name">홍길동</label>
+			<label id = "birth">15. 05.04 (남)</label>
+		</div>
+		
+		<div id = "record">
+			<span>총 <font style = "color : #00bfbf;">5</font> 명</span>
+		
+			<select name = "alignment" class = "select_font" style = "left: 630px; background: url('image/선택화살표.png') no-repeat 70% 60%; color: rgba(0, 0, 0, 0.4);">
+				<option value = "">최신순</option>
+			</select>
+			<hr style = "width: 125px;height: 3px;background-color:rgba(0, 0, 0, 0.4); border:none; position: absolute; left: 622px; top:65px;">
+			
+			<div id = "record_box">
+				<div class = "title">
+					<button class = "ti_btn" onClick="location.href = '캘린더_치료사_치료회기_등록.html'">회기작성</button>
+					<span class = "ti_one">05회기</span><br>
+					<span class = "ti_two">2020.09.14</span>
+					<span class = "ti_three">13:00-14:00 (50분)</span><br>
+					<span class = "ti_four">최종수정일 2020.09.14</span>
+					<span class = "ti_detail">수정하기</span>
+				</div>
+				
+				<br>
+				
+				<div class = "title">
+					<button class = "ti_btn" onClick="location.href = '캘린더_치료사_치료회기_등록.html'">회기작성</button>
+					<span class = "ti_one">04회기</span><br>
+					<span class = "ti_two">2020.09.07</span>
+					<span class = "ti_three">13:00-14:00 (50분)</span><br>
+					<span class = "ti_four">최종수정일 2020.09.14</span>
+					<span class = "ti_detail">수정하기</span>
+				</div>
+				<div class = "content">
+					<div class = "con_1">
+						<span>회기</span>
+						<br>
+						<label>더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다.더보기를 누르면 전체 글 내용이 보여집니다.</label>
+					</div><!--end con_1-->
+					<div class = "con_2">
+						<span>상담</span>
+						<br>
+						<label>본문(상담)입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다본문(상담)입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다.본문(상담)입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다.본문(상담)입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다..</label>
+					</div><!--end con_1-->
+				</div><!--end content-->
+				
+				<br>
+					
+				<div class = "title">
+					<button class = "ti_btn" onClick="location.href = '캘린더_치료사_치료회기_등록.html'">회기작성</button>
+					<span class = "ti_one">03회기</span><br>
+					<span class = "ti_two">2020.09.04</span>
+					<span class = "ti_three">13:00-14:00 (50분)</span><br>
+					<span class = "ti_four">최종수정일 2020.09.10</span>
+					<span class = "ti_detail">상세보기</span>
+				</div>
+				
+				<br>
+				
+				<div class = "title">
+					<button class = "ti_btn" onClick="location.href = '캘린더_치료사_치료회기_등록.html'">회기작성</button>
+					<span class = "ti_one">02회기</span><br>
+					<span class = "ti_two">2020.08.27</span>
+					<span class = "ti_three">13:00-14:00 (50분)</span><br>
+					<span class = "ti_four">최종수정일 2020.09.27</span>
+					<span class = "ti_detail">상세보기</span>
+				</div>
+				
+				<br>
+				
+				<div class = "title">
+					<button class = "ti_btn" onClick="location.href = '캘린더_치료사_치료회기_등록.html'">회기작성</button>
+					<span class = "ti_one">01회기</span><br>
+					<span class = "ti_two">2020.08.24</span>
+					<span class = "ti_three">13:00-14:00 (50분)</span><br>
+					<span class = "ti_four">최종수정일 2020.09.14</span>
+					<span class = "ti_detail">상세보기</span>
+				</div>
+				
+				
+			
+			</div><!--end record_box-->
+
+			
+			
+			
+			
+		</div><!--end record-->
+	</div> <!--end main-->
+	<div id = "footer">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 71px;"> 
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 180px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 187px;"></a>
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 227px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 224px;">개인정보처리방침</span>
+	</div>
+</body>
+</html>
