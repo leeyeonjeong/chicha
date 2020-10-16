@@ -43,7 +43,7 @@
 	</div> <!--end search_box-->
 	
 	
-	<div id = "result" style = "display:none;"> <!--결과-->	
+	<div id = "result"> <!--결과-->
 		<label style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #000000;position: absolute; left: 32px; top:269px;">아동 &nbsp;&nbsp;<font style = "color: #0778ff">홍길동</font></label>
 		<button style = "width: 158px;height: 56px;border-radius: 10px;box-shadow: 0 0 9.5px 0.5px rgba(0, 191, 191, 0.44);border: solid 3px #00bfbf;background-color: #ffffff; outline: none; position: absolute; left:401px; top:260px; font-family: 'Noto Sans CJK KR';font-size: 21px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.26px;text-align: center; color: #00bfbf; outline:none;">다시 선택</button>
 
@@ -59,14 +59,11 @@
 		<hr style = "width: 531px;height: 5px;background-color: #404040; position: absolute; left: 29px; top:393px;">
 		<div id = "ta">
 			<table style = "width: 532px;position: absolute; border-collapse:collapse">
-				<tr>
-
 				<tr onClick="ClickTR(this)">
 					<td>기관명이 들어갑니다.</td>
-					<td th:each="child : ${childList}">
+					<p th:each="child : ${childList}">
 						<span th:text="${child.name}"></span>
-					</td>
-				</tr>
+					</p>
 				</tr>
 
 			</table>		
