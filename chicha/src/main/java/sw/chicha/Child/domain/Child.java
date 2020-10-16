@@ -29,6 +29,7 @@ public class Child {
     private String zipcode;
     private String firstAddr;
     private String secondAddr;
+    private String memo;
 
     @ManyToOne
     @JoinColumn(name = "member_id")
@@ -36,7 +37,7 @@ public class Child {
 
     @Builder
     public Child(Long id, String name, String gender, String picture, String birthday, String affiliation, String field, String phoneNumber,
-                 String zipcode, String firstAddr, String secondAddr, Member member) {
+                 String zipcode, String firstAddr, String secondAddr, String memo,Member member) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -48,6 +49,7 @@ public class Child {
         this.zipcode = zipcode;
         this.firstAddr = firstAddr;
         this.secondAddr = secondAddr;
+        this.memo = memo;
         this.member = member;
     }
 }

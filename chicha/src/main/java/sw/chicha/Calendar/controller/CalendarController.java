@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sw.chicha.Calendar.dto.CalendarDto;
@@ -56,8 +57,11 @@ public class CalendarController {
         return "redirect:/";
     }
 
-    @GetMapping("therapist_calendar_child_registration_detail}")
-    public String therapist_calendar_child_registration_detail() {
+    @GetMapping("therapist_calendar_child_registration_detail/{id}")
+    public String therapist_calendar_child_registration_detail(@PathVariable("id") Long id, Model model) {
+        ChildDto childDto = childService.getChild(id);
+
+        model.addAttribute("childDto", childDto);
         return "calendar/아동등록_상세";
     }
 

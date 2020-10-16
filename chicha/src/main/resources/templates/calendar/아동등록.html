@@ -5,7 +5,6 @@
 <title>아동등록</title>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script type="text/javascript">
-		// 주소
 
 
 	</script>
@@ -88,14 +87,14 @@
 			
 			<span style = "top:198px;">성별 <font style = "color: rgba(7, 120, 255, 0.8);">*</font></span>
 			<div id = "gender_box">
-				<input type = "radio" id = "man" name = "gender" style = "left:37px;"> <label for = "man" style = "left:72px;">남성</label>
-				<input type = "radio" id = "woman" name = "gender" style = "left:265px;"> <label for = "man" style = "left:299px;">여성</label>
+				<input type = "radio" id = "man" name = "gender" value="남자" style = "left:37px;"> <label for = "man" style = "left:72px;">남성</label>
+				<input type = "radio" id = "woman" name = "gender" value="여자" style = "left:265px;"> <label for = "man" style = "left:299px;">여성</label>
 			</div><!--end gender_box-->
 		
 			<span style = "top:304px;">상태 <font style = "color: rgba(7, 120, 255, 0.8);">*</font></span>
-			<input type = "radio" id = "standby" name = "state" class = "state"><label for = "standby"  style = "position: absolute; left: 155px; top:294px;">대기</label>
-			<input type = "radio" id = "progress" name = "state" class = "state"><label for = "progress" style = "position: absolute; left: 319px; top:294px;">진행</label>
-			<input type = "radio" id = "end" name = "state" class = "state"><label for = "end" style = "position: absolute; left: 484px; top:294px;">종결</label>
+			<input value="대기" type = "radio" id = "standby" name = "state" class = "state"><label for = "standby"  style = "position: absolute; left: 155px; top:294px;">대기</label>
+			<input value="진행" type = "radio" id = "progress" name = "state" class = "state"><label for = "progress" style = "position: absolute; left: 319px; top:294px;">진행</label>
+			<input value="종결" type = "radio" id = "end" name = "state" class = "state"><label for = "end" style = "position: absolute; left: 484px; top:294px;">종결</label>
 			
 			<hr style = "width: 670px; height: 2px; background-color: #dcdcdc; border: none; position: absolute; top:394px;">
 			
@@ -134,10 +133,10 @@
 			<input name="zipcode" id="zipcode" type = "text" class = "address_box" style = "width: 408px;top:55px;" placeholder="우편번호">
 			<input name="firstAddr" id="firstAddr" type = "text" class = "address_box" style = "width: 590px;top:135px;" placeholder="기본주소">
 			<input name="secondAddr" id="secondAddr" type = "text" class = "address_box" style = "width: 590px;top:215px;" placeholder="상세주소">
-			<button name="address_btn" id = "address_btn">우편번호</button>
+			<button onclick="execPostCode()" name="address_btn" id = "address_btn">우편번호</button>
 			
 			<span style = "top: 295px;">메모</span>
-			<textarea></textarea>
+			<textarea name="memo"></textarea>
 		</div>
 		
 		<button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0778ff; top:1640px;">등록</button>

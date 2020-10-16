@@ -37,8 +37,16 @@ public class ChildController {
         return "redirect:/";
     }
 
-    @GetMapping("/therapist_calendar_search")
-    public String therapist_calendar_search(@RequestParam(value = "keyword") String keyword, Model model) {
+    @GetMapping("/therapist_calendar_search_dis")
+    public String dis_therapist_calendar_search(Model model) {
+        List<ChildDto> childList = childService.getChildList();
+
+        model.addAttribute("childList", childList);
+        return "calendar/캘린더_치료사_팝업_아동검색";
+    }
+
+    @GetMapping("/therapist_calendar_search_exce")
+    public String exce_therapist_calendar_search(@RequestParam(value = "keyword") String keyword, Model model) {
         List<ChildDto> childDtoList = childService.searchPosts(keyword);
         model.addAttribute("childList", childDtoList);
 

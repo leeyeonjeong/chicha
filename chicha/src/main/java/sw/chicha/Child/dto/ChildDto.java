@@ -27,6 +27,7 @@ public class ChildDto {
     private String zipcode;
     private String firstAddr;
     private String secondAddr;
+    private String memo;
     private Member member;
 
     public Child toEntity() {
@@ -42,13 +43,14 @@ public class ChildDto {
                 .zipcode(zipcode)
                 .firstAddr(firstAddr)
                 .secondAddr(secondAddr)
+                .memo(memo)
                 .member(member)
                 .build();
     }
 
     @Builder
     public ChildDto(Long id, String name, String gender, String picture, String birthday, String affiliation, String field,
-                    String phoneNumber, String zipcode, String firstAddr, String secondAddr, Member member) {
+                    String phoneNumber, String zipcode, String firstAddr, String secondAddr, String memo, Member member) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -60,7 +62,7 @@ public class ChildDto {
         this.zipcode = zipcode;
         this.firstAddr = firstAddr;
         this.secondAddr = secondAddr;
-        this.member = member;
+        this.memo = memo;
         this.member = member;
     }
 }
