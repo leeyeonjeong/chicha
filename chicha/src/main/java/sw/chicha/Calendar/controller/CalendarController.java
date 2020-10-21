@@ -53,10 +53,14 @@ public class CalendarController {
 
     // 치료사 캘린더 -> 아동등록
     @PostMapping("therapist_calendar_child_registration")
-    public String exec_therapist_calendar_child_registration(ChildTherapistDto childTherapistDto, Principal principal) {
+    public String exec_therapist_calendar_child_registration(@RequestParam(value = "year") String year,
+                                                             @RequestParam(value = "month") String month,
+                                                             @RequestParam(value = "day") String day,
+                                                             ChildTherapistDto childTherapistDto, Principal principal) {
         String currentName = (String)principal.getName();
         childTherapistDto.setTherapist(therapistRepository.findByEmail(currentName).get());
-
+        String birth = year + "-" + month + "-" + day;
+        childTherapistDto.setBirthday(birth);
         calendarService.saveChildTherapist(childTherapistDto);
 
         return "redirect:/";
