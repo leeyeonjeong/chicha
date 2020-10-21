@@ -25,6 +25,7 @@ public class Child {
     private String birthday;
     private String affiliation;
     private String field;
+    private String state;   // 상태
     private String phoneNumber;
     private String zipcode;
     private String firstAddr;
@@ -35,9 +36,13 @@ public class Child {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @ManyToOne
+    @JoinColumn(name = "therapist_id")
+    private Therapist therapist;
+
     @Builder
-    public Child(Long id, String name, String gender, String picture, String birthday, String affiliation, String field, String phoneNumber,
-                 String zipcode, String firstAddr, String secondAddr, String memo,Member member) {
+    public Child(Long id, String name, String gender, String picture, String birthday, String affiliation, String state, String field, String phoneNumber,
+                 String zipcode, String firstAddr, String secondAddr, String memo,Member member, Therapist therapist) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -45,11 +50,13 @@ public class Child {
         this.birthday = birthday;
         this.affiliation = affiliation;
         this.field = field;
+        this.state = state;
         this.phoneNumber = phoneNumber;
         this.zipcode = zipcode;
         this.firstAddr = firstAddr;
         this.secondAddr = secondAddr;
         this.memo = memo;
         this.member = member;
+        this.therapist = therapist;
     }
 }

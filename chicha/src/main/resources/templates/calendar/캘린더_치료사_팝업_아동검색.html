@@ -24,6 +24,8 @@
 			pos.style.backgroundColor="#f2f2f2";
 		obj.style.backgroundColor="#c7eded";
 		pos = obj;
+		sessionStorage.setItem("obj", obj);
+
 	}
 </script>
 </head>
@@ -44,7 +46,7 @@
 	
 	
 	<div id = "result"> <!--결과-->
-		<label style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #000000;position: absolute; left: 32px; top:269px;">아동 &nbsp;&nbsp;<font style = "color: #0778ff">홍길동</font></label>
+		<label style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #000000;position: absolute; left: 32px; top:269px;">아동 &nbsp;&nbsp;<font th:name="childname1" style = "color: #0778ff"></font></label>
 		<button style = "width: 158px;height: 56px;border-radius: 10px;box-shadow: 0 0 9.5px 0.5px rgba(0, 191, 191, 0.44);border: solid 3px #00bfbf;background-color: #ffffff; outline: none; position: absolute; left:401px; top:260px; font-family: 'Noto Sans CJK KR';font-size: 21px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.26px;text-align: center; color: #00bfbf; outline:none;">다시 선택</button>
 
 		<hr style = "width: 587px;height: 6px;background-color:#0778ff;border:none; position: absolute; top:323px;">
@@ -62,7 +64,7 @@
 				<tr onClick="ClickTR(this)">
 					<td>기관명이 들어갑니다.</td>
 					<p th:each="child : ${childList}">
-						<span th:text="${child.name}"></span>
+						<span th:name="childname" th:text="${child.name}"></span>
 					</p>
 				</tr>
 

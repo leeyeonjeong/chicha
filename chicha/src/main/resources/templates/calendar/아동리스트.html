@@ -77,8 +77,7 @@
 
 					<div class = "con" th:each="child : ${childList}">
 						<a th:href="@{'/therapist_calendar_child_registration_detail/' + ${child.id}}">
-							<span th:text="${child.name}" class = "one"></span>
-						</a>
+							<span th:text="${child.name}" class = "one"></span></a>
 						<span th:text="${child.birthday}" class = "two"></span>
 						<span th:text="${child.gender}" class = "three"></span>
 						<span class = "four">2020-09-14</span>

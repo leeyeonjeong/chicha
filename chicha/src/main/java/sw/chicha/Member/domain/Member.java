@@ -27,11 +27,13 @@ public class Member {
     private String phoneNumber;
 
     @Column(nullable = false)
-    //@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{6,20}")
+    @NotBlank
+    @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=\\S+$).{6,20}")
     private String email;
 
     @Column(nullable = false)
-    //@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,20}")
+    @NotBlank
+    //@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=\\S+$).{6,20}")
     private String password;
 
     // 우편번호

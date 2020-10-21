@@ -56,10 +56,10 @@
 			
 			<span style = "top: 530px;">메모</span>
 			<div class = "content" style = "top:580px;">
-				메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 
+				<p th:text="${childDto.memo}">
 			</div>
 		</div><!--end box_1-->
-		<a th:href="@{'/therapist_calendar_child_registration/' + ${childDto.id}}"><button style = "top: 1080px; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0778ff;">수정</button></a>
+		<!--<a th:href="@{'/therapist_calendar_child_registration/' + ${childDto.id}}"/>--><button style = "top: 1080px; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0778ff;">수정</button>
 		<button style = "top: 1170px; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #3c3c3c;">확인</button>
 	</div> <!--end main-->
 	
