@@ -2,10 +2,10 @@ package sw.chicha.Calendar.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import sw.chicha.Calendar.domain.Calendar;
 import sw.chicha.Calendar.dto.CalendarDto;
 import sw.chicha.Calendar.repository.CalendarRepository;
 import sw.chicha.Child.domain.Child;
-import sw.chicha.Child.dto.ChildDto;
 import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Child.repository.ChildRepository;
 
@@ -29,30 +29,6 @@ public class CalendarService {
         return childRepository.save(childTherapistDto.toEntity()).getId();
     }
 
-//    public Long saveChild(ChildDto childDto) {
-//        if (childDto.getMember() == null) {
-//            childDto.setMember(memberRepository.findByEmail("member").get());
-//            if (childDto.getZipcode() == null || childDto.getZipcode() == "") {
-//                childDto.setZipcode(childDto.getMember().getZipcode());
-//            }
-//            if (childDto.getFirstAddr() == null || childDto.getFirstAddr() == "") {
-//                childDto.setFirstAddr(childDto.getMember().getFirstAddr());
-//            }
-//            if (childDto.getSecondAddr() == null || childDto.getSecondAddr() == "") {
-//                childDto.setSecondAddr(childDto.getMember().getSecondAddr());
-//            }
-//            if (childDto.getPhoneNumber() == null || childDto.getPhoneNumber() == "") {
-//                childDto.setPhoneNumber(childDto.getMember().getPhoneNumber());
-//            }
-//        } else {
-//            childDto.setPhoneNumber(childDto.getMember().getPhoneNumber());
-//            childDto.setZipcode(childDto.getMember().getZipcode());
-//            childDto.setFirstAddr(childDto.getMember().getFirstAddr());
-//            childDto.setSecondAddr(childDto.getMember().getSecondAddr());
-//        }
-//        return childRepository.save(childDto.toEntity()).getId();
-//    }
-
     // 이름, 성별, 생년월일
     public List<ChildTherapistDto> getChildTherapistList() {
         List<Child> childs = childRepository.findAll();
@@ -70,6 +46,25 @@ public class CalendarService {
         }
 
         return childTherapistDtoList;
+    }
+
+    public CalendarDto getCalendar(Long id) {
+        Optional<Calendar> calendarWrapper = calendarRepository.findById(id);
+        Calendar calendar = calendarWrapper.get();
+
+        CalendarDto calendarDto = CalendarDto.builder()
+                .id(calendar.getId())
+                .name(calendar.getName())
+                .state(calendar.getState())
+                .child(calendar.getChild())
+                .end(calendar.getEnd())
+                .memo(calendar.getMemo())
+                .repitation(calendar.getRepitation())
+                .start(calendar.getStart())
+                .therapist(calendar.getTherapist())
+                .build();
+
+        return calendarDto;
     }
 
     // 이름, 성별, 상태, 생년월일, 전화번호, 주소, 메모
@@ -93,29 +88,6 @@ public class CalendarService {
 
         return childTherapistDto;
     }
-
-
-//    @Transactional
-//    public ChildDto getChild(Long id) {
-//        Optional<Child> childWrapper = childRepository.findById(id);
-//        Child child = childWrapper.get();
-//
-//        ChildDto childDto = ChildDto.builder()
-//                .id(child.getId())
-//                .name(child.getName())
-//                .picture(child.getPicture())
-//                .affiliation(child.getAffiliation())
-//                .birthday(child.getBirthday())
-//                .field(child.getField())
-//                .gender(child.getGender())
-//                .zipcode(child.getZipcode())
-//                .firstAddr(child.getFirstAddr())
-//                .secondAddr(child.getSecondAddr())
-//                .phoneNumber(child.getPhoneNumber())
-//                .build();
-//
-//        return childDto;
-//    }
 
     public List<ChildTherapistDto> searchPosts(String keyword) {
         List<Child> childs = childRepository.findByNameContaining(keyword);

@@ -1,6 +1,8 @@
 package sw.chicha.Calendar.controller;
 
 import lombok.AllArgsConstructor;
+import org.apache.http.protocol.HTTP;
+import org.apache.struts.mock.MockHttpSession;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -10,9 +12,11 @@ import sw.chicha.Calendar.dto.CalendarDto;
 import sw.chicha.Calendar.service.CalendarService;
 import sw.chicha.Child.dto.ChildDto;
 import sw.chicha.Child.dto.ChildTherapistDto;
+import sw.chicha.Child.repository.ChildRepository;
 import sw.chicha.Child.service.ChildService;
 import sw.chicha.Member.repository.TherapistRepository;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
@@ -20,7 +24,7 @@ import java.util.List;
 @Controller
 public class CalendarController {
     private CalendarService calendarService;
-    private ChildService childService;
+    private ChildRepository childRepository;
     private TherapistRepository therapistRepository;
 
     @GetMapping("therapist_calendar_month")
@@ -33,9 +37,35 @@ public class CalendarController {
         return "calendar/캘린더_치료사_일";
     }
 
+    // month -> 코칭등록1
+    @GetMapping("therapist_calendar_registration1")
+    public String dis_therapist_calendar_registration1() {
+        return "calendar/캘린더_치료사_일정등록1";
+    }
+
+    // 팝업 -> 코칭등록2
     @GetMapping("therapist_calendar_registration")
     public String dis_therapist_calendar_registration() {
-        return "calendar/캘린더_치료사_일정등록";
+        return "calendar/캘린더_치료사_일정등록2";
+    }
+
+    // 코칭등록2 -> 저장
+    @PostMapping("therapist_calendar_registration")
+    public String exec_therapist_calendar_registration(HttpSession session, CalendarDto calendarDto, Principal principal) {
+        String currentName = (String)principal.getName();
+        calendarDto.setTherapist(therapistRepository.findByEmail(currentName).get());
+        calendarDto.setChild(childRepository.findByName((String)session.getAttribute("childName")).get());
+        calendarService.saveCalender(calendarDto);
+        return "redirect:/";
+    }
+
+    // 팝업 -> 코칭등록2
+    @GetMapping("therapist_calendar_registration_pop/{id}")
+    public String pop_therapist_calendar_registration(@PathVariable("id") Long id, Model model, HttpSession session) {
+        ChildTherapistDto childTherapistDto = calendarService.getChildTherapist(id);
+        session.setAttribute("childName", childTherapistDto.getName());
+        model.addAttribute("childDto", childTherapistDto);
+        return "calendar/캘린더_치료사_일정등록2";
     }
 
     @GetMapping("therapist_calendar_childlist")
@@ -75,18 +105,6 @@ public class CalendarController {
         return "calendar/아동등록_상세";
     }
 
-
-
-    @PostMapping("therapist_calendar_registration")
-    public String exec_therapist_calendar_registration(CalendarDto calendarDto, Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        System.out.println("AUthhhhhhhhhhhhhhhhhh" +userDetails.getAuthorities());
-        System.out.println("NAMMMeEEEEEEEEEEEEEEEEEEEEEe" +userDetails.getUsername());
-
-        calendarService.saveCalender(calendarDto);
-        return "redirect:/therapist_calendar_month";
-    }
-
     @GetMapping("/therapist_calendar_search_dis")
     public String dis_therapist_calendar_search(Model model) {
         List<ChildTherapistDto> childList = calendarService.getChildTherapistList();
@@ -102,4 +120,6 @@ public class CalendarController {
 
         return "calendar/캘린더_치료사_팝업_아동검색";
     }
+
+
 }

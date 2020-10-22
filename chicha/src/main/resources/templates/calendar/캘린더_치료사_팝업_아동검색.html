@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <style>
+	/*a태그 밑줄 삭제*/
+	a {
+		text-decoration: none
+	}
 	#area{width: 637px;height: 3195px;background-color: #ffffff; overflow-x: hidden; overflow-y: auto;}
 	::-webkit-scrollbar-track {background-color:#f2f2f2;}
 	::-webkit-scrollbar-thumb {background-color: #00cccc;}
@@ -78,7 +82,9 @@
 				<tr onClick="ClickTR(this)">
 					<td>기관명이 들어갑니다.</td>
 					<td th:each="child : ${childList}">
+						<a th:href="@{'/therapist_calendar_registration_pop/' + ${child.id}}">
 						<span onclick="getName(this)" id="childname" th:name="childname" th:text="${child.name}"></span>
+						</a>
 					</td>
 				</tr>
 

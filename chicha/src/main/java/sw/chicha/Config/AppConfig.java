@@ -6,10 +6,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import sw.chicha.Calendar.service.CalendarService;
-import sw.chicha.Child.dto.ChildDto;
-import sw.chicha.Child.dto.ChildTherapistDto;
-import sw.chicha.Child.service.ChildService;
-import sw.chicha.Member.domain.Therapist;
 import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.dto.TherapistDto;
 import sw.chicha.Member.service.MemberService;
@@ -22,7 +18,6 @@ public class AppConfig {
         return new ApplicationRunner() {
             @Autowired
             MemberService memberService;
-            CalendarService calendarService;
 
             @Override
             public void run(ApplicationArguments args) throws Exception {
@@ -36,8 +31,6 @@ public class AppConfig {
                         .secondAddr("")
                         .build();
 
-                memberService.joinMember(memberDto);
-
                 TherapistDto therapistDto = TherapistDto.builder()
                         .name("therapist")
                         .email("therapist12")
@@ -45,8 +38,8 @@ public class AppConfig {
                         .phoneNumber("010-1111-1111")
                         .build();
 
+                memberService.joinMember(memberDto);
                 memberService.joinTherapist(therapistDto);
-
             }
         };
     }
