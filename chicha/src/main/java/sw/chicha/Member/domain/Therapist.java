@@ -68,24 +68,4 @@ public class Therapist {
         this.strengthen = strengthen;
         this.evaluation = evaluation;
     }
-
-    public void updateState(String state) {
-        if (expect == null) {expect = 0L;}
-        if (attend == null) {attend = 0L;}
-        if (absent == null) {absent = 0L;}
-        if (strengthen == null) {strengthen = 0L;}
-        if (evaluation == null) {evaluation = 0L;}
-        
-        if (state == "예정") {
-            expect++;
-        } else if (state == "출석") {
-            attend++;
-        } else if (state == "결석") {
-            absent++;
-        } else if (state == "보강") {
-            strengthen++;
-        } else if (state == "평가") {
-            evaluation++;
-        }
-    }
 }

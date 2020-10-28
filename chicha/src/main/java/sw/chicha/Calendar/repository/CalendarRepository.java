@@ -8,5 +8,4 @@ import java.util.Optional;
 
 public interface CalendarRepository extends JpaRepository<CalendarTherapist, Long> {
     Optional<CalendarTherapist> findByName(String name);
-    Long countByChild(Child child);
 }

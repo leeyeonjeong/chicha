@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface ChildRepository extends JpaRepository<Child, Long> {
     List<Child> findByNameContaining(String keyword);
     Optional<Child> findByName(String name);
+    Long countByName(String name);
 }

@@ -9,12 +9,16 @@ import sw.chicha.Calendar.repository.CalendarRepository;
 import sw.chicha.Calendar.service.CalendarService;
 import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Child.repository.ChildRepository;
+import sw.chicha.Member.domain.Therapist;
+import sw.chicha.Member.dto.TherapistDto;
 import sw.chicha.Member.repository.MemberRepository;
 import sw.chicha.Member.repository.TherapistRepository;
+import sw.chicha.Member.service.MemberService;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Controller
@@ -23,6 +27,7 @@ public class CalendarController {
     private CalendarRepository calendarRepository;
     private ChildRepository childRepository;
     private TherapistRepository therapistRepository;
+    private MemberService memberService;
     private MemberRepository memberRepository;
 
     /**
@@ -35,31 +40,28 @@ public class CalendarController {
 
          // 사용자가 치료사일 경우
        if (therapistRepository.findByEmail(principal.getName()).isPresent()) {
-            Long id = therapistRepository.findByEmail(principal.getName()).get().getId();
-            CalendarTherapistDto calendarTherapistDto = calendarService.getCalendar(id);
-            model.addAttribute("calendarList", calendarTherapistDto);
+           Long id = therapistRepository.findByEmail(principal.getName()).get().getId();
+           CalendarTherapistDto calendarTherapistDto = calendarService.getCalendar(id);
+           //Optional<Therapist> therapist = therapistRepository.findById(calendarTherapistDto.getTherapist().getId());
+           model.addAttribute("calendarList", calendarTherapistDto);
 
-            if (calendarTherapistDto.getTherapist() != null) {
-                if (calendarTherapistDto.getState() != null) {
-                    calendarTherapistDto.getTherapist().updateState(calendarTherapistDto.getState());
-                }
-                model.addAttribute("expect", calendarTherapistDto.getTherapist().getAttend().longValue());
-                model.addAttribute("attend", calendarTherapistDto.getTherapist().getAttend().longValue());
-                model.addAttribute("absent", calendarTherapistDto.getTherapist().getAbsent().longValue());
-                model.addAttribute("strengthen", calendarTherapistDto.getTherapist().getStrengthen().longValue());
-                model.addAttribute("evaluation", calendarTherapistDto.getTherapist().getEvaluation().longValue());
-            }
+           if (calendarTherapistDto.getTherapist() != null) {
+               model.addAttribute("expect", calendarTherapistDto.getTherapist().getAttend());
+               model.addAttribute("attend", calendarTherapistDto.getTherapist().getAttend());
+               model.addAttribute("absent", calendarTherapistDto.getTherapist().getAbsent());
+               model.addAttribute("strengthen", calendarTherapistDto.getTherapist().getStrengthen());
+               model.addAttribute("evaluation", calendarTherapistDto.getTherapist().getEvaluation());
+           }
 
-            //누적
-            //Long childCount = calendarTheRepository.countByChild(calendarTheDto.getChild());
-            //model.addAttribute("childCount", childCount);
-            return "calendar/캘린더_치료사_월";
+           //누적
+           Long childCount = childRepository.countByName(calendarTherapistDto.getChild());
+           //model.addAttribute("childCount", childCount);
+           return "calendar/캘린더_치료사_월";
 
-        } else if (memberRepository.findByEmail(principal.getName()).isPresent()){
-           Long id = memberRepository.findByEmail(principal.getName()).get().getId();
-           //CalendarMemberDto calendarMemberDto = calendarMemberService.getCalendar(id);
-           //model.addAttribute("calendarList", calendarMemberDto);
-
+       } else if (memberRepository.findByEmail(principal.getName()).isPresent()){
+          Long id = memberRepository.findByEmail(principal.getName()).get().getId();
+          //CalendarMemberDto calendarMemberDto = calendarMemberService.getCalendar(id);
+          //model.addAttribute("calendarList", calendarMemberDto);
 //           if (calendarMemberDto.getMember() != null) {
 //               if (calendarDto.getState() != null) {
 //                   calendarDto.getTherapist().updateState(calendarDto.getState());
@@ -126,11 +128,26 @@ public class CalendarController {
 
     // 코칭등록2 -> 저장
     @PostMapping("therapist_calendar_registration")
-    public String exec_therapist_calendar_registration(HttpSession session, CalendarTherapistDto calendarTherapistDto, Principal principal) {
+    public String exec_therapist_calendar_registration(HttpSession session,TherapistDto therapistDto , CalendarTherapistDto calendarTherapistDto, Principal principal) {
         String currentName = (String)principal.getName();
         calendarTherapistDto.setTherapist(therapistRepository.findByEmail(currentName).get());
         calendarTherapistDto.setChild((String)session.getAttribute("childName"));
         calendarService.saveCalender(calendarTherapistDto);
+
+        if (calendarTherapistDto.getState() != null) {
+            if (calendarTherapistDto.getState() == "예정") {
+                therapistDto.setExpect(therapistDto.getExpect()+1);
+            } else if (calendarTherapistDto.getState() == "출석") {
+                therapistDto.setAttend(therapistDto.getAttend()+1);
+            } else if (calendarTherapistDto.getState() == "결석") {
+                therapistDto.setAbsent(therapistDto.getAbsent()+1);
+            } else if (calendarTherapistDto.getState() == "보강") {
+                therapistDto.setStrengthen(therapistDto.getStrengthen()+1);
+            } else if (calendarTherapistDto.getState() == "평가") {
+                therapistDto.setEvaluation(therapistDto.getEvaluation()+1);
+            }
+        }
+
         return "redirect:/";
     }
 
