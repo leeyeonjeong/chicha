@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import sw.chicha.Child.domain.Child;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -50,8 +51,13 @@ public class Member {
     @Column(nullable = false)
     private String secondAddr;
 
+    @ManyToOne
+    @JoinColumn(name = "child_id")
+    private Child child;
+
     @Builder
-    public Member(Long id, String name, String phoneNumber, String email, String password, String zipcode, String firstAddr, String secondAddr) {
+    public Member(Long id, String name, String phoneNumber, String email, String password,
+                  String zipcode, String firstAddr, String secondAddr, Child child) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -60,5 +66,6 @@ public class Member {
         this.zipcode = zipcode;
         this.firstAddr = firstAddr;
         this.secondAddr = secondAddr;
+        this.child = child;
     }
 }

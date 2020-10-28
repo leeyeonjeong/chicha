@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
 <title>치료사캘린더</title>
@@ -16,7 +16,7 @@
 	.cal_btn{width: 286px;height: 70px;border-radius: 10px;box-shadow: 0 0 10px 0 rgba(0, 98, 217, 0.45);background-color: #ffffff;position: absolute; top:555px; border:none;outline:none;}
 	.btn_font{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #0262d6;position: absolute; left: 78px; top:17px;}
 	#month_box{width:448px; height: 111px; position: absolute;  left:111px;  border:none; display: table;}
-	#calendar{width: 670px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 39px; top: 660px; border-collapse:collapse}
+	#calendarMember{width: 670px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 39px; top: 660px; border-collapse:collapse}
 	.day{
     height: 30px;
     opacity: 0.5;
@@ -63,7 +63,7 @@
 		var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var doMonth = new Date(today.getFullYear(),today.getMonth(),1);
         var lastDate = new Date(today.getFullYear(),today.getMonth()+1,0);
-        var tbCalendar = document.getElementById("calendar");
+        var tbCalendar = document.getElementById("calendarMember");
         var tbCalendarYM = document.getElementById("tbCalendarYM");
         tbCalendarYM.innerHTML = monthNames[today.getMonth()] +"  "+ today.getFullYear() + "년" ;
         
@@ -87,7 +87,7 @@
             }
             if (cnt % 7 == 0) {
                 cell.innerHTML = i
-                row = calendar.insertRow();
+                row = calendarMember.insertRow();
             }
             if(today.getFullYear()==date.getFullYear()&&today.getMonth()==date.getMonth()&&i==date.getDate()) 
             {
@@ -114,35 +114,35 @@
 			<label style = "font-family:'Noto Sans CJK KR';font-size: 32px;font-weight:300;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #2f2f2f;position: absolute; left: 31px; top:30px;">이번달<br><font style = "font-weight: bold;">치료예정</font></label>
 			
 			<div style = "width: 106px;height: 44px;box-shadow: 0 0 10px 0 rgba(0, 191, 191, 0.45);background-color: #00bfbf; position: absolute; left: 152px; top:75px; display: table">
-				<label id = "person" style = "font-family:'Noto Sans CJK KR';font-size: 32px;font-weight:bold;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #ffffff;display:table-cell; text-align:center; vertical-align:middle;">145 명</label>
+				<label id = "person" style = "font-family:'Noto Sans CJK KR';font-size: 32px;font-weight:bold;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #ffffff;display:table-cell; text-align:center; vertical-align:middle;" th:text="${expect}"> 명</label>
 			</div>
 			
 			<label style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;text-align: right;color: #2f2f2f; position: absolute; left: 455px; top:90px;">
-			이번달 치료현황 <font style = "font-weight: normal;color: #4e4e4e;">(명)</font></label>
+			이번달 치료현황 <font style = "font-weight: normal;color: #4e4e4e;"> 명</font></label>
 			
 			<div style = "width: 670px;height: 111px; background-color: #2f2f2f; position: absolute; top:134px;"> 
 				<label class = "sche_font" style = "left:22px;">출석</label>
-				<div class = "sche_box" style = "left:78px; background-color: #ffffff"><label id = "attendance" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#2f2f2f">56</label></div>
+				<div class = "sche_box" style = "left:78px; background-color: #ffffff"><label id = "attendance" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#2f2f2f" th:text="${attend}"></label></div>
 				
 				<label class = "sche_font" style = "left:134px; color:#f25b3d;">결석</label>
-				<div class = "sche_box" style = "left:190px; background-color: #f25b3d;"><label id = "absen" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff">03</label></div>
+				<div class = "sche_box" style = "left:190px; background-color: #f25b3d;"><label id = "absen" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff" th:text="${absent}"></label></div>
 				
 				<label class = "sche_font" style = "left:246px;">보강완료</label>
-				<div class = "sche_box" style = "left:340px; background-color: #ffffff"><label id = "reinforce" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#f25b3d">02</label></div>
+				<div class = "sche_box" style = "left:340px; background-color: #ffffff"><label id = "reinforce" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#f25b3d" th:text="${strengthen}"></label></div>
 				
 				<label class = "sche_font" style = "left:400px;">평가완료</label>
-				<div class = "sche_box" style = "left:494px;"><label id = "evaluation" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff;">04</label></div>
+				<div class = "sche_box" style = "left:494px;"><label id = "evaluation" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff;" th:text="${evaluation}"></label></div>
 				
 				<label class = "sche_font" style = "left:550px;">누적</label>
-				<div class = "sche_box" style = "left:606px;"><label id = "accumulation" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff;">58</label></div>
+				<div class = "sche_box" style = "left:606px;"><label id = "accumulation" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff;" th:text="${childCount}"></label></div>
 			</div>
 		</div> <!--end schedule-->
 
 		<div> <!--달력-->
 			<a href = "/therapist_calendar_registration1"><button class ="cal_btn" style = "left : 76px;"><label class = "btn_font" ><img src = "image/캘린더_플러스.png" style = "width: 30px; height: 30px; background-color: transparent;">코칭등록</label></button></a>
-			<a href = "캘린더_치료사_치료회기.html"><button class ="cal_btn" style = "left : 392px;"><label class = "btn_font" ><img src = "image/캘린더_화살표.png" style = "width: 54px; height: 21px; background-color: transparent;">코칭회기</label></button></a>
+			<a href = "/therapist_calendar_session"><button class ="cal_btn" style = "left : 392px;"><label class = "btn_font" ><img src = "image/캘린더_화살표.png" style = "width: 54px; height: 21px; background-color: transparent;">코칭회기</label></button></a>
 			
-			<table id = "calendar">
+			<table id = "calendarMember">
 				<tr id = "c_top">
 					<th><button style = "width: 80px; height: 80px; position: absolute; left: 30px;top:15px;background-image: url('image/캘린더back.png'); background-color: transparent;border:none; outline: none;" onclick="prevCalendar()" id="before"></button></th>
 					<th id = "month_box"><span id="tbCalendarYM" style = "font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -0.56px;text-align: center;color: #616d76; display:table-cell; text-align:center; vertical-align:middle;"></span></th>
@@ -167,7 +167,7 @@
 			<label class = "absent_number">2</label>
 		</div>
 		
-		<a href = "/therapist/calendar/day" onClick="window.open(this.href,'_blanck','width = 680px, height = 1097px','left = 40px, top = 290px'); return false">
+		<a href = "/therapist_calendar_day" onClick="window.open(this.href,'_blanck','width = 680px, height = 1097px','left = 40px, top = 290px'); return false">
 			
 		<div class = "attendance_check" style = "width: 81px;height: 43px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);border: solid 2px #7d868d;background-color:transparent;display: table; position: absolute; left: 230px; top:881px;"><!--출석-->
 			<label class = "attendance_number">출석<font style = "font-size: 20px;font-weight: bold;">6명</font></label>

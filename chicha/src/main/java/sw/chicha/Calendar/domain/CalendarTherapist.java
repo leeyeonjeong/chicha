@@ -1,18 +1,19 @@
 package sw.chicha.Calendar.domain;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sw.chicha.Child.domain.Child;
+import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Therapist;
 
 import javax.persistence.*;
 
 
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
 @Entity
 @Getter
-public class Calendar {
+public class CalendarTherapist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +21,7 @@ public class Calendar {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private String state;
+    private String state;   // 전체 상태
     @Column(nullable = false)
     private String start;
     @Column(nullable = false)
@@ -29,18 +30,15 @@ public class Calendar {
     private String repitation;
     @Column(nullable = false)
     private String memo;
+    private String child;
 
     @ManyToOne
     @JoinColumn(name = "therapist_id")
     private Therapist therapist;
 
-    @ManyToOne
-    @JoinColumn(name = "child_id")
-    private Child child;
-
     @Builder
-    public Calendar(Long id, String name, String state, String start, String end, String repitation,
-                    String memo, Therapist therapist, Child child) {
+    public CalendarTherapist(Long id, String name, String state, String start, String end, String repitation,
+                             String memo, Therapist therapist, String child) {
         this.id = id;
         this.name = name;
         this.state = state;
@@ -51,4 +49,5 @@ public class Calendar {
         this.therapist = therapist;
         this.child = child;
     }
+
 }

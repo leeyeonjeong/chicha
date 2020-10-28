@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sw.chicha.Calendar.domain.Calendar;
+import sw.chicha.Calendar.domain.CalendarTherapist;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -45,15 +45,47 @@ public class Therapist {
     private String confirm;
 
     @OneToMany(mappedBy = "therapist")
-    private List<Calendar> calendars = new ArrayList<Calendar>();
+    private List<CalendarTherapist> calendarTherapists = new ArrayList<CalendarTherapist>();
+
+    private Long expect;    // 예정
+    private Long attend;  // 출석
+    private Long absent;  // 결석
+    private Long strengthen;   // 보강완료
+    private Long evaluation;  // 평가완료
 
     @Builder
-    public Therapist(Long id, String name, String phoneNumber, String email, String password) {
+    public Therapist(Long id, String name, String phoneNumber, String email, String password,
+                     Long expect, Long attend, Long absent, Long strengthen, Long evaluation) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         this.confirm = "0";
+        this.expect = expect;
+        this.attend = attend;
+        this.absent = absent;
+        this.strengthen = strengthen;
+        this.evaluation = evaluation;
+    }
+
+    public void updateState(String state) {
+        if (expect == null) {expect = 0L;}
+        if (attend == null) {attend = 0L;}
+        if (absent == null) {absent = 0L;}
+        if (strengthen == null) {strengthen = 0L;}
+        if (evaluation == null) {evaluation = 0L;}
+        
+        if (state == "예정") {
+            expect++;
+        } else if (state == "출석") {
+            attend++;
+        } else if (state == "결석") {
+            absent++;
+        } else if (state == "보강") {
+            strengthen++;
+        } else if (state == "평가") {
+            evaluation++;
+        }
     }
 }

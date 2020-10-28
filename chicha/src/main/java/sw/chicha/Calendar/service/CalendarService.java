@@ -2,8 +2,8 @@ package sw.chicha.Calendar.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import sw.chicha.Calendar.domain.Calendar;
-import sw.chicha.Calendar.dto.CalendarDto;
+import sw.chicha.Calendar.domain.CalendarTherapist;
+import sw.chicha.Calendar.dto.CalendarTherapistDto;
 import sw.chicha.Calendar.repository.CalendarRepository;
 import sw.chicha.Child.domain.Child;
 import sw.chicha.Child.dto.ChildTherapistDto;
@@ -19,9 +19,9 @@ import java.util.Optional;
 public class CalendarService {
     private CalendarRepository calendarRepository;
     private ChildRepository childRepository;
-    
-    public Long saveCalender(CalendarDto calendarDto) {
-        return calendarRepository.save(calendarDto.toEntity()).getId();
+
+    public Long saveCalender(CalendarTherapistDto calendarTherapistDto) {
+        return calendarRepository.save(calendarTherapistDto.toEntity()).getId();
     }
 
     // 이름, 성별, 상태, 생년월일, 전화번호, 주소, 메모
@@ -48,23 +48,27 @@ public class CalendarService {
         return childTherapistDtoList;
     }
 
-    public CalendarDto getCalendar(Long id) {
-        Optional<Calendar> calendarWrapper = calendarRepository.findById(id);
-        Calendar calendar = calendarWrapper.get();
+    public CalendarTherapistDto getCalendar(Long id) {
+        Optional<CalendarTherapist> calendarWrapper = calendarRepository.findById(id);
+        if (calendarWrapper.isPresent()) {
+            CalendarTherapist calendarTherapist = calendarWrapper.get();
 
-        CalendarDto calendarDto = CalendarDto.builder()
-                .id(calendar.getId())
-                .name(calendar.getName())
-                .state(calendar.getState())
-                .child(calendar.getChild())
-                .end(calendar.getEnd())
-                .memo(calendar.getMemo())
-                .repitation(calendar.getRepitation())
-                .start(calendar.getStart())
-                .therapist(calendar.getTherapist())
-                .build();
+            CalendarTherapistDto calendarTherapistDto = CalendarTherapistDto.builder()
+                    .id(calendarTherapist.getId())
+                    .name(calendarTherapist.getName())
+                    .state(calendarTherapist.getState())
+                    .child(calendarTherapist.getChild())
+                    .end(calendarTherapist.getEnd())
+                    .memo(calendarTherapist.getMemo())
+                    .repitation(calendarTherapist.getRepitation())
+                    .start(calendarTherapist.getStart())
+                    .therapist(calendarTherapist.getTherapist())
+                    .build();
 
-        return calendarDto;
+            return calendarTherapistDto;
+        } else {
+            return CalendarTherapistDto.builder().build();
+        }
     }
 
     // 이름, 성별, 상태, 생년월일, 전화번호, 주소, 메모

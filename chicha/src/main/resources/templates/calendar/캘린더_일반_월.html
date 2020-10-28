@@ -14,7 +14,7 @@
 	.sche_box{width: 40px;height: 35px;border-radius: 5px;box-shadow: 0 0 9.5px 0.5px #000000; border:none;position: absolute; top:36px; display: table;}
 	#c_top{width: 670px;height: 110px;border:none;}
 	#month_box{width:448px; height: 111px; position: absolute;  left:111px;  border:none; display: table;}
-	#calendar{width: 670px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 39px; top: 560px; border-collapse:collapse}
+	#calendarMember{width: 670px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 39px; top: 560px; border-collapse:collapse}
 	td{width: 90px;height: 108px;font-family: 'Noto Sans CJK KR';font-size: 22px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.27;letter-spacing: -1.32px;text-align: center;color: #616d76; padding-top: 18px; vertical-align: top;}
 	.day{height: 30px;opacity: 0.5;font-family: 'Noto Sans CJK KR';font-size: 20px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.4;letter-spacing: normal;text-align: center;color: rgba(51, 58, 64, 0.5);}
 	.absent_check{width :40px;height:40px;position: absolute;}
@@ -54,9 +54,9 @@
 		var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var doMonth = new Date(today.getFullYear(),today.getMonth(),1);
         var lastDate = new Date(today.getFullYear(),today.getMonth()+1,0);
-        var tbCalendar = document.getElementById("calendar");
+        var tbCalendar = document.getElementById("calendarMember");
         var tbCalendarYM = document.getElementById("tbCalendarYM");
-        tbCalendarYM.innerHTML = monthNames[(today.getMonth())] +"  "+ today.getFullYear() + "년" ;
+        tbCalendarYM.innerHTML = monthNames[today.getMonth()] +"  "+ today.getFullYear() + "년" ;
         
         while (tbCalendar.rows.length > 2) {
 			tbCalendar.deleteRow(tbCalendar.rows.length-1);
@@ -78,7 +78,7 @@
             }
             if (cnt % 7 == 0) {
                 cell.innerHTML = i
-                row = calendar.insertRow();
+                row = calendarMember.insertRow();
             }
             if(today.getFullYear()==date.getFullYear()&&today.getMonth()==date.getMonth()&&i==date.getDate()) 
             {
@@ -94,8 +94,8 @@
 
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
 	<div id = "main"> 
@@ -105,11 +105,11 @@
 			<label style = "font-family:'Noto Sans CJK KR';font-size: 32px;font-weight:300;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #2f2f2f;position: absolute; left: 31px; top:30px;">이번달<br><font style = "font-weight: bold;">치료예정</font></label>
 			
 			<div style = "width: 106px;height: 44px;box-shadow: 0 0 10px 0 rgba(0, 191, 191, 0.45);background-color: #00bfbf; position: absolute; left: 152px; top:75px; display: table">
-				<label id = "person" style = "font-family:'Noto Sans CJK KR';font-size: 32px;font-weight:bold;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #ffffff;display:table-cell; text-align:center; vertical-align:middle;">25 명</label>
+				<label id = "person" style = "font-family:'Noto Sans CJK KR';font-size: 32px;font-weight:bold;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #ffffff;display:table-cell; text-align:center; vertical-align:middle;">25 일</label>
 			</div>
 			
 			<label style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;text-align: right;color: #2f2f2f; position: absolute; left: 455px; top:90px;">
-			이번달 치료현황 <font style = "font-weight: normal;color: #4e4e4e;">(명)</font></label>
+			이번달 치료현황 <font style = "font-weight: normal;color: #4e4e4e;">(일)</font></label>
 			
 			<div style = "width: 670px;height: 111px; background-color: #2f2f2f; position: absolute; top:134px;"> 
 				<label class = "sche_font" style = "left:22px;">출석</label>
@@ -130,7 +130,8 @@
 		</div> <!--end schedule-->
 		
 		<div> <!--달력-->
-			<table id = "calendar">
+			<a href = "/member_calendar_registration"><button class ="cal_btn" style = "left : 76px;"><label class = "btn_font" ><img src = "image/캘린더_플러스.png" style = "width: 30px; height: 30px; background-color: transparent;">코칭등록</label></button></a>
+			<table id = "calendarMember">
 				<tr id = "c_top">
 					<th><button style = "width: 80px; height: 80px; position: absolute; left: 30px;top:15px;background-image: url('image/캘린더back.png'); background-color: transparent;border:none; outline: none;" onclick="prevCalendar()" id="before"></button></th>
 					<th id = "month_box"><span id="tbCalendarYM" style = "font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -0.56px;text-align: center;color: #616d76; display:table-cell; text-align:center; vertical-align:middle;"></span></th>

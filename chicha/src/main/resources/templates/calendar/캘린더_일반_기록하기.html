@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <title>기록하기</title>
@@ -28,26 +28,28 @@
 
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
-	
-	<div id = "main"> 
-		<label style = "font-size: 50px;left:39px;top:208px;">기록하기</label>
-		<label style = "font-size: 24px;left:39px;top:289px;">오늘 우리 아이는 어땠나요?</label>
-		
-		<div id = "box">
-			<label id = "date" style = "top:30px;">날짜</label>
-			<label id = "d_content" style = "">2020-09-14</label>
-			
-			<label id = "memo" style = "top:80px;">메모</label>
-			<textarea id = "m_content" placeholder="내용을 입력하세요.">
-			</textarea>
-		</div> <!--end box-->
-		
-		<button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0778ff;top:935px;">등록</button>
-		<button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #3c3c3c;top:1024px;">취소</button>
-	</div> <!--end main-->
+
+	<form th:action="@{/member_calendar_registration}" method="post">
+		<div id = "main">
+			<label style = "font-size: 50px;left:39px;top:208px;">기록하기</label>
+			<label style = "font-size: 24px;left:39px;top:289px;">오늘 우리 아이는 어땠나요?</label>
+
+			<div id = "box">
+				<label id = "date" style = "top:30px;">날짜</label>
+				<input id = "d_content" name="currentDate" style = "" th:text="${#date.format(#date.createNow(),'YYYY-MM-dd')}"></inputlabel>
+
+				<label id = "memo" style = "top:80px;">메모</label>
+				<textarea name="memo" id = "m_content" placeholder="내용을 입력하세요.">
+				</textarea>
+			</div> <!--end box-->
+
+			<button type="submit" style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0778ff;top:935px;">등록</button>
+			<button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #3c3c3c;top:1024px;">취소</button>
+		</div> <!--end main-->
+	</form>
 	<div id = "footer">
 		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
 		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">

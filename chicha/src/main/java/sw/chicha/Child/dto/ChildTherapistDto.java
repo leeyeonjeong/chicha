@@ -1,9 +1,7 @@
 package sw.chicha.Child.dto;
 
 import lombok.*;
-import sw.chicha.Calendar.domain.Calendar;
 import sw.chicha.Child.domain.Child;
-import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Therapist;
 
 @NoArgsConstructor
@@ -23,7 +21,6 @@ public class ChildTherapistDto {
     private String secondAddr;
     private String memo;
     private Therapist therapist;
-    private Calendar calendar;
 
     public Child toEntity() {
         return Child.builder()
@@ -38,13 +35,12 @@ public class ChildTherapistDto {
                 .secondAddr(secondAddr)
                 .memo(memo)
                 .therapist(therapist)
-                .calendar(calendar)
                 .build();
     }
 
     @Builder
     public ChildTherapistDto(Long id, String name, String gender, String state, String phoneNumber, String birthday,
-                             String zipcode, String firstAddr, String secondAddr, String memo, Therapist therapist, Calendar calendar) {
+                             String zipcode, String firstAddr, String secondAddr, String memo, Therapist therapist) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -56,6 +52,5 @@ public class ChildTherapistDto {
         this.secondAddr = secondAddr;
         this.memo = memo;
         this.therapist = therapist;
-        this.calendar = calendar;
     }
 }

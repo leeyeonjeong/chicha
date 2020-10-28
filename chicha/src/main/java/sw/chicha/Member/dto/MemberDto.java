@@ -1,6 +1,7 @@
 package sw.chicha.Member.dto;
 
 import lombok.*;
+import sw.chicha.Child.domain.Child;
 import sw.chicha.Member.domain.Member;
 
 @NoArgsConstructor
@@ -17,6 +18,7 @@ public class MemberDto {
     private String zipcode;
     private String firstAddr;
     private String secondAddr;
+    private Child child;
 
 
     public Member toEntity() {
@@ -29,11 +31,13 @@ public class MemberDto {
                 .zipcode(zipcode)
                 .firstAddr(firstAddr)
                 .secondAddr(secondAddr)
+                .child(child)
                 .build();
     }
 
     @Builder
-    public MemberDto(Long id, String name, String phoneNumber, String email, String password, String zipcode, String firstAddr, String secondAddr) {
+    public MemberDto(Long id, String name, String phoneNumber, String email, String password,
+                     String zipcode, String firstAddr, String secondAddr, Child child) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -42,5 +46,6 @@ public class MemberDto {
         this.zipcode = zipcode;
         this.firstAddr = firstAddr;
         this.secondAddr = secondAddr;
+        this.child = child;
     }
 }

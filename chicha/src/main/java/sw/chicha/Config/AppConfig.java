@@ -5,7 +5,6 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import sw.chicha.Calendar.service.CalendarService;
 import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.dto.TherapistDto;
 import sw.chicha.Member.service.MemberService;

@@ -1,14 +1,8 @@
 package sw.chicha.Child.dto;
 
 import lombok.*;
-import sw.chicha.Calendar.domain.Calendar;
 import sw.chicha.Child.domain.Child;
 import sw.chicha.Member.domain.Member;
-import sw.chicha.Member.domain.Therapist;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @NoArgsConstructor
 @Setter
