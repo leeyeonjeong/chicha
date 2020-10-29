@@ -1,14 +1,14 @@
 package sw.chicha.Calendar.dto;
 
 import lombok.*;
-import sw.chicha.Calendar.domain.CalendarTherapist;
+import sw.chicha.Calendar.domain.Calendar;
 import sw.chicha.Member.domain.Therapist;
 
 @NoArgsConstructor
 @Setter
 @Getter
 @ToString
-public class CalendarTherapistDto {
+public class CalendarDto {
 
     private Long id;
     private String name;
@@ -19,9 +19,10 @@ public class CalendarTherapistDto {
     private String memo;
     private Therapist therapist;
     private String child;
+    private String cal_session;
 
-    public CalendarTherapist toEntity() {
-        return CalendarTherapist.builder()
+    public Calendar toEntity() {
+        return Calendar.builder()
                 .id(id)
                 .name(name)
                 .state(state)
@@ -31,12 +32,13 @@ public class CalendarTherapistDto {
                 .memo(memo)
                 .therapist(therapist)
                 .child(child)
+                .cal_session(cal_session)
                 .build();
     }
 
     @Builder
-    public CalendarTherapistDto(Long id, String name, String state, String start, String end, String repitation,
-                                String memo, Therapist therapist, String child) {
+    public CalendarDto(Long id, String name, String state, String start, String end, String repitation,
+                       String memo, Therapist therapist, String child, String cal_session) {
         this.id = id;
         this.name = name;
         this.state = state;
@@ -44,7 +46,8 @@ public class CalendarTherapistDto {
         this.end = end;
         this.repitation = repitation;
         this.memo = memo;
-        //this.therapist = therapist;
+        this.therapist = therapist;
         this.child = child;
+        this.cal_session = cal_session;
     }
 }

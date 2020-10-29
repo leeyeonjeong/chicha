@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
 @Entity
 @Getter
-public class CalendarTherapist {
+public class Calendar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,14 +31,15 @@ public class CalendarTherapist {
     @Column(nullable = false)
     private String memo;
     private String child;
+    private String cal_session;     // 치료회기
 
     @ManyToOne
     @JoinColumn(name = "therapist_id")
     private Therapist therapist;
 
     @Builder
-    public CalendarTherapist(Long id, String name, String state, String start, String end, String repitation,
-                             String memo, Therapist therapist, String child) {
+    public Calendar(Long id, String name, String state, String start, String end, String repitation,
+                    String memo, Therapist therapist, String child, String cal_session) {
         this.id = id;
         this.name = name;
         this.state = state;
@@ -48,6 +49,7 @@ public class CalendarTherapist {
         this.memo = memo;
         this.therapist = therapist;
         this.child = child;
+        this.cal_session = cal_session;
     }
 
 }

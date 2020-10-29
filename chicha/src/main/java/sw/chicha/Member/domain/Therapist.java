@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sw.chicha.Calendar.domain.CalendarTherapist;
+import sw.chicha.Calendar.domain.Calendar;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -45,7 +45,7 @@ public class Therapist {
     private String confirm;
 
     @OneToMany(mappedBy = "therapist")
-    private List<CalendarTherapist> calendarTherapists = new ArrayList<CalendarTherapist>();
+    private List<Calendar> calendars = new ArrayList<Calendar>();
 
     private Long expect;    // 예정
     private Long attend;  // 출석

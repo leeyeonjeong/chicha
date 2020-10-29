@@ -1,11 +1,10 @@
 package sw.chicha.Calendar.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import sw.chicha.Calendar.domain.CalendarTherapist;
-import sw.chicha.Child.domain.Child;
+import sw.chicha.Calendar.domain.Calendar;
 
 import java.util.Optional;
 
-public interface CalendarRepository extends JpaRepository<CalendarTherapist, Long> {
-    Optional<CalendarTherapist> findByName(String name);
+public interface CalendarRepository extends JpaRepository<Calendar, Long> {
+    Optional<Calendar> findByName(String name);
 }
