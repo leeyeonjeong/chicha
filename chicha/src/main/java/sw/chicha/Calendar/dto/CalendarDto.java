@@ -2,6 +2,7 @@ package sw.chicha.Calendar.dto;
 
 import lombok.*;
 import sw.chicha.Calendar.domain.Calendar;
+import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Therapist;
 
 @NoArgsConstructor
@@ -11,43 +12,40 @@ import sw.chicha.Member.domain.Therapist;
 public class CalendarDto {
 
     private Long id;
-    private String name;
-    private String state;
-    private String start;
-    private String end;
-    private String repitation;
-    private String memo;
+    private Long expect;    // 예정
+    private Long attendance;    // 출석
+    private Long absen;     // 결석
+    private Long reinforce;     // 보강완료
+    private Long evaluation;    // 평가완료
+    private Long accumulation;      // 누적
     private Therapist therapist;
-    private String child;
-    private String cal_session;
+    private Member member;
 
     public Calendar toEntity() {
         return Calendar.builder()
                 .id(id)
-                .name(name)
-                .state(state)
-                .start(start)
-                .end(end)
-                .repitation(repitation)
-                .memo(memo)
+                .expect(expect)
+                .attendance(attendance)
+                .absen(absen)
+                .reinforce(reinforce)
+                .evaluation(evaluation)
+                .accumulation(accumulation)
                 .therapist(therapist)
-                .child(child)
-                .cal_session(cal_session)
+                .member(member)
                 .build();
     }
 
     @Builder
-    public CalendarDto(Long id, String name, String state, String start, String end, String repitation,
-                       String memo, Therapist therapist, String child, String cal_session) {
+    public CalendarDto(Long id, Long expect, Long attendance, Long absen, Long reinforce, Long evaluation, Long accumulation,
+                       Therapist therapist, Member member) {
         this.id = id;
-        this.name = name;
-        this.state = state;
-        this.start = start;
-        this.end = end;
-        this.repitation = repitation;
-        this.memo = memo;
+        this.expect = expect;
+        this.attendance = attendance;
+        this.absen = absen;
+        this.reinforce = reinforce;
+        this.evaluation = evaluation;
+        this.accumulation = accumulation;
         this.therapist = therapist;
-        this.child = child;
-        this.cal_session = cal_session;
+        this.member = member;
     }
 }

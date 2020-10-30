@@ -6,5 +6,5 @@ import sw.chicha.Calendar.domain.Calendar;
 import java.util.Optional;
 
 public interface CalendarRepository extends JpaRepository<Calendar, Long> {
-    Optional<Calendar> findByName(String name);
+    Optional<Calendar> findById(Long id);
 }

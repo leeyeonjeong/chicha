@@ -18,38 +18,34 @@ public class Calendar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String name;
-    @Column(nullable = false)
-    private String state;   // 전체 상태
-    @Column(nullable = false)
-    private String start;
-    @Column(nullable = false)
-    private String end;
-    @Column(nullable = false)
-    private String repitation;
-    @Column(nullable = false)
-    private String memo;
-    private String child;
-    private String cal_session;     // 치료회기
 
-    @ManyToOne
+    private Long expect;    // 예정
+    private Long attendance;    // 출석
+    private Long absen;     // 결석
+    private Long reinforce;     // 보강완료
+    private Long evaluation;    // 평가완료
+    private Long accumulation;      // 누적
+
+    @OneToOne
     @JoinColumn(name = "therapist_id")
     private Therapist therapist;
 
+    @OneToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     @Builder
-    public Calendar(Long id, String name, String state, String start, String end, String repitation,
-                    String memo, Therapist therapist, String child, String cal_session) {
+    public Calendar(Long id, Long expect, Long attendance, Long absen, Long reinforce, Long evaluation, Long accumulation,
+                    Therapist therapist, Member member) {
         this.id = id;
-        this.name = name;
-        this.state = state;
-        this.start = start;
-        this.end = end;
-        this.repitation = repitation;
-        this.memo = memo;
+        this.expect = expect;
+        this.attendance = attendance;
+        this.absen = absen;
+        this.reinforce = reinforce;
+        this.evaluation = evaluation;
+        this.accumulation = accumulation;
         this.therapist = therapist;
-        this.child = child;
-        this.cal_session = cal_session;
+        this.member = member;
     }
 
 }

@@ -116,25 +116,24 @@
 			<div style = "width: 106px;height: 44px;box-shadow: 0 0 10px 0 rgba(0, 191, 191, 0.45);background-color: #00bfbf; position: absolute; left: 152px; top:75px; display: table">
 				<label id = "person" style = "font-family:'Noto Sans CJK KR';font-size: 32px;font-weight:bold;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #ffffff;display:table-cell; text-align:center; vertical-align:middle;" th:text="${expect}"> 명</label>
 			</div>
-			
 			<label style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;text-align: right;color: #2f2f2f; position: absolute; left: 455px; top:90px;">
 			이번달 치료현황 <font style = "font-weight: normal;color: #4e4e4e;"> 명</font></label>
 			
 			<div style = "width: 670px;height: 111px; background-color: #2f2f2f; position: absolute; top:134px;"> 
 				<label class = "sche_font" style = "left:22px;">출석</label>
-				<div class = "sche_box" style = "left:78px; background-color: #ffffff"><label id = "attendance" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#2f2f2f" th:text="${attend}"></label></div>
+				<div class = "sche_box" style = "left:78px; background-color: #ffffff"><label id = "attendance" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#2f2f2f" th:text="${attendance}"></label></div>
 				
 				<label class = "sche_font" style = "left:134px; color:#f25b3d;">결석</label>
-				<div class = "sche_box" style = "left:190px; background-color: #f25b3d;"><label id = "absen" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff" th:text="${absent}"></label></div>
+				<div class = "sche_box" style = "left:190px; background-color: #f25b3d;"><label id = "absen" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff" th:text="${absen}"></label></div>
 				
 				<label class = "sche_font" style = "left:246px;">보강완료</label>
-				<div class = "sche_box" style = "left:340px; background-color: #ffffff"><label id = "reinforce" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#f25b3d" th:text="${strengthen}"></label></div>
+				<div class = "sche_box" style = "left:340px; background-color: #ffffff"><label id = "reinforce" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#f25b3d" th:text="${reinforce}"></label></div>
 				
 				<label class = "sche_font" style = "left:400px;">평가완료</label>
 				<div class = "sche_box" style = "left:494px;"><label id = "evaluation" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff;" th:text="${evaluation}"></label></div>
 				
 				<label class = "sche_font" style = "left:550px;">누적</label>
-				<div class = "sche_box" style = "left:606px;"><label id = "accumulation" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff;" th:text="${childCount}"></label></div>
+				<div class = "sche_box" style = "left:606px;"><label id = "accumulation" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff;" th:text="${accumulation}"></label></div>
 			</div>
 		</div> <!--end schedule-->
 
