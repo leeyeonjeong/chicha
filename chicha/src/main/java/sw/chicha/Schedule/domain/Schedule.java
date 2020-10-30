@@ -18,17 +18,11 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
     private String state;   // 전체 상태
-    @Column(nullable = false)
     private String start;
-    @Column(nullable = false)
     private String end;
-    @Column(nullable = false)
     private String repitation;
-    @Column(nullable = false)
     private String memo;
     private String child;
 

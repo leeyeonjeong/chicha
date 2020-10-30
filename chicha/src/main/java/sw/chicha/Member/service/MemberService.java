@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
+import sw.chicha.Calendar.dto.CalendarDto;
 import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Role;
 import sw.chicha.Member.domain.Therapist;
@@ -21,6 +22,8 @@ import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.dto.TherapistDto;
 import sw.chicha.Member.repository.MemberRepository;
 import sw.chicha.Member.repository.TherapistRepository;
+import sw.chicha.Schedule.domain.Schedule;
+import sw.chicha.Schedule.dto.ScheduleDto;
 
 import java.util.*;
 
@@ -30,6 +33,11 @@ public class MemberService implements UserDetailsService {
 
     private MemberRepository memberRepository;
     private TherapistRepository therapistRepository;
+
+    // 일반 회원가입
+    public Long saveMember(MemberDto memberDto) {
+        return memberRepository.save(memberDto.toEntity()).getId();
+    }
 
     // 일반 회원가입
     public Long joinMember(MemberDto memberDto) {
@@ -85,6 +93,29 @@ public class MemberService implements UserDetailsService {
         }
 
 
+    }
+
+    // 일반 멤버 반환
+    public MemberDto getMember(Long id) {
+        Optional<Member> memberWrapper = memberRepository.findById(id);
+        if (memberWrapper.isPresent()) {
+            Member member = memberWrapper.get();
+
+            MemberDto memberDto = MemberDto.builder()
+                    .id(member.getId())
+                    .name(member.getName())
+                    .email(member.getEmail())
+                    .password(member.getPassword())
+                    .zipcode(member.getZipcode())
+                    .firstAddr(member.getFirstAddr())
+                    .secondAddr(member.getSecondAddr())
+                    .child(member.getChild())
+                    .build();
+
+            return memberDto;
+        } else {
+            return MemberDto.builder().build();
+        }
     }
 
     // 유효성검사 핸들러

@@ -12,7 +12,9 @@ import sw.chicha.Child.dto.ChildDto;
 import sw.chicha.Child.dto.ChildMemberDto;
 import sw.chicha.Child.repository.ChildRepository;
 import sw.chicha.Child.service.ChildService;
+import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.repository.MemberRepository;
+import sw.chicha.Member.service.MemberService;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
@@ -23,6 +25,7 @@ import java.util.List;
 public class ChildController {
     private ChildService childService;
     private MemberRepository memberRepository;
+    private MemberService memberService;
 
     @GetMapping("/child_registration")
     public String dis_child_registration() {
@@ -43,7 +46,9 @@ public class ChildController {
     public String exce_child_registration(@ModelAttribute ChildMemberDto childmemberDto, Principal principal) {
         String currentName = (String)principal.getName();
         childmemberDto.setMember(memberRepository.findByEmail(currentName).get());
-
+        MemberDto memberDto = memberService.getMember(childmemberDto.getMember().getId());
+        memberDto.setChild(childmemberDto.toEntity());
+        memberService.saveMember(memberDto);
         childService.saveChildMember(childmemberDto);
         return "redirect:/";
     }

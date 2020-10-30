@@ -18,40 +18,15 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
-    @NotBlank
     private String name;
-
-    @Column(nullable = false)
-    @NotBlank
     private String phoneNumber;
-
-    @Column(nullable = false)
-    @NotBlank
-    @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=\\S+$).{6,20}")
     private String email;
-
-    @Column(nullable = false)
-    @NotBlank
-    //@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=\\S+$).{6,20}")
     private String password;
+    private String zipcode;     // 우편번호
+    private String firstAddr;      // 지번주소
+    private String secondAddr;      // 상세주소
 
-    // 우편번호
-    @Column(nullable = false)
-    @NotBlank
-    private String zipcode;
-
-    // 지번주소
-    @Column(nullable = false)
-    @NotBlank
-    private String firstAddr;
-
-    // 상세주소
-    @Column(nullable = false)
-    private String secondAddr;
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "child_id")
     private Child child;
 

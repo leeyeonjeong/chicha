@@ -15,6 +15,7 @@ import sw.chicha.Member.repository.MemberRepository;
 import sw.chicha.Member.repository.TherapistRepository;
 import sw.chicha.Member.service.MemberService;
 import sw.chicha.Schedule.dto.ScheduleDto;
+import sw.chicha.Schedule.dto.ScheduleMemberDto;
 import sw.chicha.Schedule.repository.ScheduleRepository;
 import sw.chicha.Schedule.service.ScheduleService;
 
@@ -27,6 +28,7 @@ import java.util.List;
 public class ScheduleController {
     private ScheduleService scheduleService;
     private TherapistRepository therapistRepository;
+    private MemberRepository memberRepository;
     private CalendarRepository calendarRepository;
     private CalendarService calendarService;
 
@@ -195,13 +197,18 @@ public class ScheduleController {
         return "calendar/캘린더_일반_기록하기";
     }
 
-//    @PostMapping("member_calendar_registration")
-//    public String exec_member_calendar_registration(CalendarMemberDto calendarMemberDto, Principal principal) {
-//        String currentName = (String)principal.getName();
-//        calendarMemberDto.setMember(memberRepository.findByEmail(currentName).get());
-//        calendarMemberDto.setChild(calendarMemberDto.getMember().getChild());
-//        calendarMemberService.saveCalender(calendarMemberDto);
-//        return "redirect:/";
-//    }
+    @PostMapping("member_calendar_registration")
+    public String exec_member_calendar_registration(Principal principal, ScheduleMemberDto scheduleMemberDto) {
+        String currentName = (String)principal.getName();
+        Long member_id = memberRepository.findByEmail(currentName).get().getId();
+        Long calendar_id = calendarRepository.findById(member_id).get().getId();
+        CalendarDto calendarDto = calendarService.getCalendar(calendar_id);
+
+        scheduleMemberDto.setChild(calendarRepository.findById(calendar_id).get().getMember().getChild().getName());
+        scheduleMemberDto.setCalendar(calendarDto.toEntity());
+
+        scheduleService.saveCalenderMember(scheduleMemberDto);
+        return "redirect:/";
+    }
 
 }

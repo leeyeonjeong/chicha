@@ -7,6 +7,7 @@ import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Child.repository.ChildRepository;
 import sw.chicha.Schedule.domain.Schedule;
 import sw.chicha.Schedule.dto.ScheduleDto;
+import sw.chicha.Schedule.dto.ScheduleMemberDto;
 import sw.chicha.Schedule.repository.ScheduleRepository;
 
 import javax.transaction.Transactional;
@@ -23,6 +24,11 @@ public class ScheduleService {
     // 일정 전체 저장
     public Long saveCalender(ScheduleDto scheduleDto) {
         return scheduleRepository.save(scheduleDto.toEntity()).getId();
+    }
+
+    // 멤버
+    public Long saveCalenderMember(ScheduleMemberDto scheduleMemberDto) {
+        return scheduleRepository.save(scheduleMemberDto.toEntity()).getId();
     }
 
     // 이름, 성별, 상태, 생년월일, 전화번호, 주소, 메모
