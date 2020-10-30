@@ -12,7 +12,7 @@
 	#main>label{font-family:'Noto Sans CJK KR';font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000;position: absolute;}
 	#main>#box{width: 670px;height: 531px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 40px; top:335px;}
 	#main>#box>#date{font-family:'Noto Sans CJK KR';font-size: 28.5px; opacity: 0.8; font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.71px;text-align: left;color: rgba(0, 0, 0, 0.8);position: absolute; left:33px;}
-	#main>#box>#d_content{font-family:'Noto Sans CJK KR';font-size: 28.5px;opacity: 0.8;  font-weight: 300;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.71px;text-align: left;color: rgba(0, 0, 0, 0.8);position: absolute;left:123px; top:30px;}
+	#main>#box>#currentDate{font-family:'Noto Sans CJK KR';font-size: 28.5px;opacity: 0.8;  font-weight: 300;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.71px;text-align: left;color: rgba(0, 0, 0, 0.8);position: absolute;left:123px; top:30px;}
 	#main>#box>#memo{font-family:'Noto Sans CJK KR';font-size: 28.5px; opacity: 0.8; font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.71px;text-align: left;color: rgba(0, 0, 0, 0.8);position: absolute; left:33px; top:75px;}
 	#main>#box>#m_content{width: 578px;height: 353px;border-radius: 10px;border: solid 1px rgba(0, 0, 0, 0.2);background-color: #ffffff;position: absolute; left: 31px; top:127px; opacity: 0.5;font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.47px;text-align: left;color: rgba(0, 0, 0, 0.5);padding-left:30px; padding-top:22px;resize: none;}
 	button{ width: 668px;height: 70px;border-radius: 10px;position: absolute; left: 40px;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: center;color: #ffffff;border: none; outline: none;}
@@ -39,7 +39,7 @@
 
 			<div id = "box">
 				<label id = "date" style = "top:30px;">날짜</label>
-				<input id = "d_content" name="currentDate" style = ""></inputlabel>
+				<label id = "currentDate" name="currentDate" th:text="${currentDate}"></label>
 
 				<label id = "memo" style = "top:80px;">메모</label>
 				<textarea name="memo" id = "m_content" placeholder="내용을 입력하세요.">

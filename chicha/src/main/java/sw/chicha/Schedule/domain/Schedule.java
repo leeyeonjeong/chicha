@@ -4,10 +4,13 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import sw.chicha.Calendar.domain.Calendar;
 import sw.chicha.Member.domain.Therapist;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
@@ -26,13 +29,16 @@ public class Schedule {
     private String memo;
     private String child;
 
+    @CreatedDate
+    private LocalDate createdDate;
+
     @ManyToOne
     @JoinColumn(name = "calendar_id")
     private Calendar calendar;
 
     @Builder
     public Schedule(Long id, String name, String state, String start, String end, String repitation,
-                    String memo, String child, Calendar calendar) {
+                    String memo, String child, LocalDate createdDate,Calendar calendar) {
         this.id = id;
         this.name = name;
         this.state = state;
@@ -41,6 +47,7 @@ public class Schedule {
         this.repitation = repitation;
         this.memo = memo;
         this.child = child;
+        this.createdDate = createdDate;
         this.calendar = calendar;
     }
 

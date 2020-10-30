@@ -9,6 +9,8 @@ import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.dto.TherapistDto;
 import sw.chicha.Member.service.MemberService;
 
+import java.time.LocalDateTime;
+
 @Configuration
 public class AppConfig {
 

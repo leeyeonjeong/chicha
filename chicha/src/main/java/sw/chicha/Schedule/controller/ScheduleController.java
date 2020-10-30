@@ -21,6 +21,7 @@ import sw.chicha.Schedule.service.ScheduleService;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -189,11 +190,12 @@ public class ScheduleController {
     }
 
     /**
-     * 일반 일정등록
+     * 일반 기록하기
      * */
 
     @GetMapping("member_calendar_registration")
-    public String dis_member_calendar_registration() {
+    public String dis_member_calendar_registration(Principal principal, Model model) {
+        model.addAttribute("currentDate", LocalDateTime.now().toLocalDate());
         return "calendar/캘린더_일반_기록하기";
     }
 
@@ -203,7 +205,7 @@ public class ScheduleController {
         Long member_id = memberRepository.findByEmail(currentName).get().getId();
         Long calendar_id = calendarRepository.findById(member_id).get().getId();
         CalendarDto calendarDto = calendarService.getCalendar(calendar_id);
-
+        scheduleMemberDto.setCreatedDate(LocalDateTime.now().toLocalDate());
         scheduleMemberDto.setChild(calendarRepository.findById(calendar_id).get().getMember().getChild().getName());
         scheduleMemberDto.setCalendar(calendarDto.toEntity());
 
