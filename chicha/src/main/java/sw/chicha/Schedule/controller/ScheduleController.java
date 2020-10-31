@@ -32,6 +32,7 @@ public class ScheduleController {
     private MemberRepository memberRepository;
     private CalendarRepository calendarRepository;
     private CalendarService calendarService;
+    private ChildRepository childRepository;
 
     /**
      * 코칭등록
@@ -65,8 +66,8 @@ public class ScheduleController {
         Long therapist_id = therapistRepository.findByEmail(currentName).get().getId();
         Long calendar_id = calendarRepository.findById(therapist_id).get().getId();
         CalendarDto calendarDto = calendarService.getCalendar(calendar_id);
+        String childName = (String)session.getAttribute("childName");
 
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+scheduleDto.getState());
         if (scheduleDto.getState().equals((String)"예정")) {
             calendarDto.setExpect(calendarDto.getExpect()+1);
         } else if (scheduleDto.getState().equals((String)"출석")) {
@@ -83,7 +84,9 @@ public class ScheduleController {
                 calendarDto.getReinforce()+calendarDto.getEvaluation());
 
         scheduleDto.setCalendar(calendarDto.toEntity());
-        scheduleDto.setChild((String)session.getAttribute("childName"));
+        scheduleDto.setChild(childName);
+        scheduleDto.setGender(childRepository.findByName(childName).get().getGender());
+        scheduleDto.setBirthday(childRepository.findByName(childName).get().getBirthday());
 
         calendarService.saveCalender(calendarDto);
         scheduleService.saveCalender(scheduleDto);
@@ -95,7 +98,19 @@ public class ScheduleController {
      * 코칭회기
      * */
 
-    @GetMapping("therapist_calendar_session")
+    // 캘린더 -> 코칭회기 클릭 -> 목록
+    @GetMapping("therapist_calendar_sessionlist")
+    public String therapist_calendar_sessionlist(Principal principal, Model model) {
+        String currentName = (String)principal.getName();
+        Long therapist_id = therapistRepository.findByEmail(currentName).get().getId();
+        Long calendar_id = calendarRepository.findById(therapist_id).get().getId();
+        List<ScheduleDto> scheduleDto = scheduleService.getScheduleList(calendar_id);
+        model.addAttribute("scheduleDto", scheduleDto);
+        return "calendar/캘린더_치료사_치료회기_목록";
+    }
+
+    // 코칭회기 목록 -> 상세
+    @GetMapping("therapist_calendar_sessionlist")
     public String therapist_calendar_session(Principal principal, Model model) {
         String currentName = (String)principal.getName();
         Long therapist_id = therapistRepository.findByEmail(currentName).get().getId();
@@ -104,12 +119,6 @@ public class ScheduleController {
         ScheduleDto scheduleDto = scheduleService.getSchedule(calendar_id);
         model.addAttribute("calendar", scheduleDto);
         return "calendar/캘린더_치료사_치료회기";
-    }
-
-    @GetMapping("therapist_calendar_sessionlist")
-    public String therapist_calendar_sessionlist() {
-
-        return "calendar/캘린더_치료사_치료회기_목록";
     }
 
     @GetMapping("therapist_calendar_session_registration")

@@ -32,15 +32,6 @@ public class ChildController {
         return "/join/회원가입_아이등록";
     }
 
-//    @PostMapping("/child_registration")
-//    public String exce_child_registration(@ModelAttribute ChildDto childDto, Principal principal) {
-//        String currentName = (String)principal.getName();
-//        childDto.setMember(memberRepository.findByEmail(currentName).get());
-//
-//        childService.saveChild(childDto);
-//        return "redirect:/";
-//    }
-
     // 보호자 -> 아이등록
     @PostMapping("/child_registration")
     public String exce_child_registration(@ModelAttribute ChildMemberDto childmemberDto, Principal principal) {

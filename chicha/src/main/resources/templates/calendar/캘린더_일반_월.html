@@ -82,7 +82,7 @@
             }
             if(today.getFullYear()==date.getFullYear()&&today.getMonth()==date.getMonth()&&i==date.getDate()) 
             {
-				cell.innerHTML = "<a href = '캘린더_일반_일.html' target = '_blank' onClick = 'javascript:open()'>"+"<font color  = #ffffff>" + i + "</a>";
+				cell.innerHTML = "<a href = 'member_calendar_day' target = '_blank' onClick = 'javascript:open()'>"+"<font color  = #ffffff>" + i + "</a>";
 				cell.style.background = "url('image/오늘날짜표시.png')";
             }
         }
@@ -131,9 +131,6 @@
 		
 		<div> <!--달력-->
 			<a href = "/member_calendar_registration"><button class ="cal_btn" style = "left : 76px;"><label class = "btn_font" ><img src = "image/캘린더_플러스.png" style = "width: 30px; height: 30px; background-color: transparent;">코칭등록</label></button></a>
-			<a th:href="@{'/therapist_calendar_sessionlist'}">
-				<button>치료회기</button>
-			</a>
 			<table id = "calendarMember">
 				<tr id = "c_top">
 					<th><button style = "width: 80px; height: 80px; position: absolute; left: 30px;top:15px;background-image: url('image/캘린더back.png'); background-color: transparent;border:none; outline: none;" onclick="prevCalendar()" id="before"></button></th>

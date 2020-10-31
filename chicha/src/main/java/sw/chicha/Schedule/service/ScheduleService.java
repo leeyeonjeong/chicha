@@ -14,6 +14,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -53,6 +54,30 @@ public class ScheduleService {
         }
 
         return childTherapistDtoList;
+    }
+
+    // 일정 반환 리스트
+    public List<ScheduleDto> getScheduleList(Long id) {
+        List<Schedule> schedules = scheduleRepository.findById(id).stream().collect(Collectors.toList());
+        List<ScheduleDto> scheduleDtoList = new ArrayList<>();
+        for (Schedule schedule : schedules) {
+            ScheduleDto scheduleDto = ScheduleDto.builder()
+                    .id(schedule.getId())
+                    .name(schedule.getName())
+                    .state(schedule.getState())
+                    .child(schedule.getChild())
+                    .end(schedule.getEnd())
+                    .memo(schedule.getMemo())
+                    .repitation(schedule.getRepitation())
+                    .start(schedule.getStart())
+                    .calendar(schedule.getCalendar())
+                    .gender(schedule.getGender())
+                    .birthday(schedule.getBirthday())
+                    .build();
+            scheduleDtoList.add(scheduleDto);
+        }
+
+        return scheduleDtoList;
     }
 
     // 일정 전체 반환

@@ -28,6 +28,8 @@ public class Schedule {
     private String repitation;
     private String memo;
     private String child;
+    private String gender;
+    private String birthday;
 
     @CreatedDate
     private LocalDate createdDate;
@@ -38,7 +40,7 @@ public class Schedule {
 
     @Builder
     public Schedule(Long id, String name, String state, String start, String end, String repitation,
-                    String memo, String child, LocalDate createdDate,Calendar calendar) {
+                    String memo, String child, String gender, String birthday, LocalDate createdDate,Calendar calendar) {
         this.id = id;
         this.name = name;
         this.state = state;
@@ -47,6 +49,8 @@ public class Schedule {
         this.repitation = repitation;
         this.memo = memo;
         this.child = child;
+        this.gender = gender;
+        this.birthday = birthday;
         this.createdDate = createdDate;
         this.calendar = calendar;
     }
