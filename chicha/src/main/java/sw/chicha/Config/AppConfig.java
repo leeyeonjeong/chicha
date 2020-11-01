@@ -5,9 +5,14 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import sw.chicha.Calendar.service.CalendarService;
+import sw.chicha.Child.dto.ChildTherapistDto;
+import sw.chicha.Child.service.ChildService;
 import sw.chicha.Member.dto.MemberDto;
 import sw.chicha.Member.dto.TherapistDto;
 import sw.chicha.Member.service.MemberService;
+import sw.chicha.Schedule.domain.Schedule;
+import sw.chicha.Schedule.service.ScheduleService;
 
 import java.time.LocalDateTime;
 
@@ -19,6 +24,7 @@ public class AppConfig {
         return new ApplicationRunner() {
             @Autowired
             MemberService memberService;
+            ScheduleService scheduleService;
 
             @Override
             public void run(ApplicationArguments args) throws Exception {
@@ -41,6 +47,7 @@ public class AppConfig {
 
                 memberService.joinMember(memberDto);
                 memberService.joinTherapist(therapistDto);
+
             }
         };
     }

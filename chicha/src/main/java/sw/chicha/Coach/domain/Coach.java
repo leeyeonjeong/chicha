@@ -21,10 +21,6 @@ public class Coach {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private LocalDate createdDate;
-    private String start;
-    private String end;
     private String session;
     private String counseling;
 
@@ -33,12 +29,8 @@ public class Coach {
     private Schedule schedule;
 
     @Builder
-    public Coach(Long id, String name, String start, String end, String session, String counseling, Schedule schedule) {
+    public Coach(Long id, String session, String counseling, Schedule schedule) {
         this.id = id;
-        this.name = name;
-        this.createdDate = LocalDate.now();
-        this.start = start;
-        this.end = end;
         this.session = session;
         this.counseling = counseling;
         this.schedule = schedule;

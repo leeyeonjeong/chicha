@@ -83,6 +83,7 @@ public class ScheduleService {
                     .calendar(schedule.getCalendar())
                     .gender(schedule.getGender())
                     .birthday(schedule.getBirthday())
+                    .createdDate(schedule.getCreatedDate())
                     .build();
             scheduleDtoList.add(scheduleDto);
         }

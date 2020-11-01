@@ -1,9 +1,13 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
 <title>치료회기 등록</title>
 <style>
+	/*a태그 밑줄 삭제*/
+	a {
+		text-decoration: none
+	}
 	#area {width: 670px; height: 1097px;}
 	#box{width: 610px;height: 181px;border: none;background-color: #d9d9d9;position: absolute; left: 30px; top:112px; padding-top:25px; padding-left:34px; padding-bottom: 20px;}
 	#box>label{font-family: 'Noto Sans CJK KR';font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.8px;text-align: left;position: absolute;}
@@ -14,28 +18,30 @@
 </style>
 </head>
 
-<body id = "area">
-	<label style = "font-family: 'Noto Sans CJK KR';font-size: 40.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.43px;text-align: left;s: #000000;position: absolute; left: 31px; top:40px;">치료회기</label>
-	
-	<div id = "box">
-		<label style = "font-size: 30px;font-weight: bold;">홍길동</label>
-		<label style = "font-size: 30px;font-weight: bold; left:180px;color:#0778ff;">05회기</label><br><br><br><br>
-		
-		<label class = "sub">날짜</label>
-		<label class = "obj">2020.09.05</label><br><br>
-		<label class = "sub">시간</label>
-		<label class = "obj">13:00 - 14:00 (50분) </label><br><br>
-		<label class = "sub">최종수정일</label>
-		<label class = "obj">2020.09.14</label>
-	</div>
-	
-	<label style = "font-family: 'Noto Sans CJK KR';font-size: 28.5px;font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.43px;text-align: left;color: #000000;position: absolute; left: 31px; top:360px;">회기</label>
-	<textarea  class = "textbox" style = "top:410px;" placeholder = "내용을 입력하세요."></textarea>
-	
-	<label style = "font-family: 'Noto Sans CJK KR';font-size: 28.5px;font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.43px;text-align: left;color: #000000;position: absolute; left: 31px; top:625px;">상담</label>
-	<textarea class = "textbox" style = "top:675px;" placeholder = "내용을 입력하세요."></textarea>
-	
-	<button style = "background-color: #00bfbf; top:900px;" onClick="location.href='/therapist_calendar_sessionlist'">등록</button>
-	<button style = "background-color: #4d4d4d; top:990px;" >취소</button>
-</body>
+<form th:action="@{/therapist_calendar_session_registration}" method="post">
+	<body id = "area">
+		<label style = "font-family: 'Noto Sans CJK KR';font-size: 40.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.43px;text-align: left;s: #000000;position: absolute; left: 31px; top:40px;">치료회기</label>
+		<div id = "box">
+			<label style = "font-size: 30px;font-weight: bold;" th:text="${childName}"></label>
+			<label style = "font-size: 30px;font-weight: bold; left:180px;color:#0778ff;" th:text="${scheduleDto.id}"></label><label style = "font-size: 30px;font-weight: bold; left:180px;color:#0778ff;"> 회기</label><br><br><br><br>
+
+			<label class = "sub">날짜</label>
+			<label class = "obj" th:text="${scheduleDto.createdDate}"></label><br><br>
+			<label class = "sub">시간</label>
+			<label class = "obj" th:text="${scheduleDto.start}"></label><label class="obj"> - </label><label class = "obj" th:text="${scheduleDto.end}"></label><br><br>
+			<label class = "sub">최종수정일</label>
+			<label class = "obj">2020.09.14</label>
+		</div>
+
+		<label style = "font-family: 'Noto Sans CJK KR';font-size: 28.5px;font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.43px;text-align: left;color: #000000;position: absolute; left: 31px; top:360px;">회기</label>
+		<textarea id="session" name="session" class = "textbox" style = "top:410px;" placeholder = "내용을 입력하세요."></textarea>
+
+		<label style = "font-family: 'Noto Sans CJK KR';font-size: 28.5px;font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.43px;text-align: left;color: #000000;position: absolute; left: 31px; top:625px;">상담</label>
+		<textarea id="counseling" name="counseling" class = "textbox" style = "top:675px;" placeholder = "내용을 입력하세요."></textarea>
+
+		<!--<button style = "background-color: #00bfbf; top:900px;" onClick="location.href='/therapist_calendar_sessionlist'">등록</button>-->
+		<button type="submit" style = "background-color: #00bfbf; top:900px;">등록</button>
+		<button style = "background-color: #4d4d4d; top:990px;" >취소</button>
+	</body>
+</form>
 </html>

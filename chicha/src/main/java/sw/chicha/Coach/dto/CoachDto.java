@@ -16,10 +16,6 @@ import java.time.LocalDate;
 public class CoachDto {
 
     private Long id;
-    private String name;
-    private LocalDate createdDate;
-    private String start;
-    private String end;
     private String session;
     private String counseling;
     private Schedule schedule;
@@ -27,9 +23,6 @@ public class CoachDto {
     public Coach toEntity() {
         return Coach.builder()
                 .id(id)
-                .name(name)
-                .start(start)
-                .end(end)
                 .session(session)
                 .counseling(counseling)
                 .schedule(schedule)
@@ -37,12 +30,8 @@ public class CoachDto {
     }
 
     @Builder
-    public CoachDto(Long id, String name, String start, String end, String session, String counseling, Schedule schedule) {
+    public CoachDto(Long id, String session, String counseling, Schedule schedule) {
         this.id = id;
-        this.name = name;
-        this.createdDate = LocalDate.now();
-        this.start = start;
-        this.end = end;
         this.session = session;
         this.counseling = counseling;
         this.schedule = schedule;

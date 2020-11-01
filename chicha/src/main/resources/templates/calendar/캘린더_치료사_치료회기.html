@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <title>치료사 회기등록</title>
 <style>
+	/*a태그 밑줄 삭제*/
+	a {
+		text-decoration: none
+	}
 	#area { width: 751px; height: 2011px;}
 	#top { width: 751px; height: 140px; background-color: #ffffff;display:table;}
 	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
@@ -50,7 +54,8 @@
 			<label style = "font-family: 'Noto Sans CJK KR';font-size: 32px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.89;letter-spacing: -1.92px;text-align: left;color: #0778ff;position: absolute; left: 39px; top:249px;">아이플러스 서울언어치료센터</label>
 			
 			<label id = "child_name" th:text="${scheduleDto1.child}"></label>
-			<label id = "birth" th:text="${scheduleDto1.birthday}"></label><label id = "gender" th:text="${scheduleDto1.gender}"></label>
+			<label id = "birth" th:text="${scheduleDto1.birthday}"></label>
+			<label id = "gender" th:text="${scheduleDto1.gender}"></label>
 		</div>
 		
 		<div id = "record">
@@ -63,11 +68,12 @@
 			
 			<div id = "record_box">
 				<div class = "title" th:each="schedule : ${scheduleDto}">
-					<button class = "ti_btn" onClick="location.href = '/therapist_calendar_session_registration'">회기작성</button>
-					<span th:text="${schedule.id}" class = "ti_one"></span><br>
-					<span th:text="${schedule.createdDate}" class = "ti_two">2020.09.14</span>
-					<span th:text="${schedule.start}" class = "ti_three"></span> - <span th:text="${schedule.end}" class = "ti_three">-</span><br>
-					<span class = "ti_four">최종수정일 2020.09.14</span>
+					<a class="ti_btn" th:href="@{'/therapist_calendar_session_registration/' + ${schedule.id}}">회기작성</a>
+					<!--<button class = "ti_btn" onClick="location.href = '/therapist_calendar_session_registration'">회기작성</button>-->
+					<span th:text="${schedule.id}" class = "ti_one"></span><span class="ti_one"> 회기</span><br>
+					<span th:text="${schedule.createdDate}" class = "ti_two"></span>
+					<span th:text="${schedule.start}" class = "ti_three"></span><span class="ti_three"> - </span><span th:text="${schedule.end}" class = "ti_three">-</span><br>
+					<span class = "ti_four">최종수정일 </span><span class = "ti_four" th:text="${schedule.createdDate}"></span>
 					<span class = "ti_detail">수정하기</span>
 				</div>
 

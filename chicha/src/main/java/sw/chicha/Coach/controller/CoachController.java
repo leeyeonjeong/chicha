@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import sw.chicha.Calendar.domain.Calendar;
 import sw.chicha.Calendar.repository.CalendarRepository;
 import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Child.repository.ChildRepository;
@@ -52,8 +53,6 @@ public class CoachController {
     // 코칭회기 목록 -> 상세
     @GetMapping("therapist_calendar_sessionlist/{id}")
     public String therapist_calendar_session(@PathVariable(name="id") Long id, Model model, CoachDto coachDto, Principal principal) {
-        // id = schedule_id
-        // X child_id로 가야해
         Long therapist_id = therapistRepository.findByEmail(principal.getName()).get().getId();
         List<ScheduleDto> scheduleDto = scheduleService.getScheduleList(therapist_id);
         ScheduleDto scheduleDto1 = scheduleService.getSchedule(id);
@@ -64,16 +63,26 @@ public class CoachController {
         return "calendar/캘린더_치료사_치료회기";
     }
 
-    @GetMapping("therapist_calendar_session_registration")
-    public String dis_therapist_calendar_session_registration() {
+    // 코칭회기 등록
+    @GetMapping("therapist_calendar_session_registration/{id}")
+    public String dis_therapist_calendar_session_registration(@PathVariable(name="id") Long id, Principal principal, Model model) {
+        Long therapist_id = therapistRepository.findByEmail(principal.getName()).get().getId();
+        ScheduleDto scheduleDto = scheduleService.getSchedule(therapist_id);
+        String childName = scheduleService.getSchedule(id).getName();
+        model.addAttribute("scheduleDto", scheduleDto);
+        model.addAttribute("childName", childName);
         return "calendar/캘린더_치료사_치료회기_등록";
     }
 
-    // 코칭회기 등록
+    // 코칭회기 저장
     @PostMapping("therapist_calendar_session_registration")
-    public String exec_therapist_calendar_session_registration(Principal principal, CoachDto coachDto, Model model) {
+    public String exec_therapist_calendar_session_registration(Principal principal, CoachDto coachDto) {
+        Long therapist_id = therapistRepository.findByEmail(principal.getName()).get().getId();
+        ScheduleDto scheduleDto = scheduleService.getSchedule(therapist_id);
 
+        coachDto.setSchedule(scheduleDto.toEntity());
         coachService.saveCalender(coachDto);
-        return "redirect:/therapist_calendar_sessionlist";
+
+        return "redirect:/";
     }
 }

@@ -24,10 +24,7 @@ public class CoachService {
 
             CoachDto coachDto = CoachDto.builder()
                     .id(coach.getId())
-                    .name(coach.getSchedule().getChild())
                     .counseling(coach.getCounseling())
-                    .start(coach.getSchedule().getStart())
-                    .end(coach.getSchedule().getEnd())
                     .session(coach.getSession())
                     .schedule(coach.getSchedule())
                     .build();

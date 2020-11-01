@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <title>치료회기목록</title>
 <style>
+	/*a태그 밑줄 삭제*/
+	a {
+		text-decoration: none
+	}
 	#area { width: 751px; height: 2011px;}
 	#top { width: 751px; height: 140px; background-color: #ffffff;display:table;}
 	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
@@ -93,11 +97,11 @@
 						<span class = "con_four">최근작성일</span>
 					</div><!--end con_top-->
 					<div class = "con" th:each="schedule : ${scheduleDto}">
-						<a th:href="@{'/therapist_calendar_sessionlist/' + ${schedule.id}}">
+						<a class="one" th:href="@{'/therapist_calendar_sessionlist/' + ${schedule.id}}">
 							<span th:text="${schedule.child}" class = "one"></span></a>
 						<span th:text="${schedule.birthday}" class = "two"></span>
 						<span th:text="${schedule.gender}" class = "three"></span>
-						<span class = "four">2020-09-14</span>
+						<span class = "four" th:text="${schedule.createdDate}"></span>
 					</div><!--end con-->
 					<div class = "con">
 						<span class = "one">홍길동</span>
