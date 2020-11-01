@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <title>치료사 회기등록</title>
@@ -49,8 +49,8 @@
 		
 			<label style = "font-family: 'Noto Sans CJK KR';font-size: 32px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.89;letter-spacing: -1.92px;text-align: left;color: #0778ff;position: absolute; left: 39px; top:249px;">아이플러스 서울언어치료센터</label>
 			
-			<label id = "child_name">홍길동</label>
-			<label id = "birth">15. 05.04 (남)</label>
+			<label id = "child_name" th:text="${scheduleDto1.child}"></label>
+			<label id = "birth" th:text="${scheduleDto1.birthday}"></label><label id = "gender" th:text="${scheduleDto1.gender}"></label>
 		</div>
 		
 		<div id = "record">
@@ -62,15 +62,15 @@
 			<hr style = "width: 125px;height: 3px;background-color:rgba(0, 0, 0, 0.4); border:none; position: absolute; left: 622px; top:65px;">
 			
 			<div id = "record_box">
-				<div class = "title">
+				<div class = "title" th:each="schedule : ${scheduleDto}">
 					<button class = "ti_btn" onClick="location.href = '/therapist_calendar_session_registration'">회기작성</button>
-					<span class = "ti_one">05회기</span><br>
-					<span class = "ti_two">2020.09.14</span>
-					<span class = "ti_three">13:00-14:00 (50분)</span><br>
+					<span th:text="${schedule.id}" class = "ti_one"></span><br>
+					<span th:text="${schedule.createdDate}" class = "ti_two">2020.09.14</span>
+					<span th:text="${schedule.start}" class = "ti_three"></span> - <span th:text="${schedule.end}" class = "ti_three">-</span><br>
 					<span class = "ti_four">최종수정일 2020.09.14</span>
 					<span class = "ti_detail">수정하기</span>
 				</div>
-				
+
 				<br>
 				
 				<div class = "title">

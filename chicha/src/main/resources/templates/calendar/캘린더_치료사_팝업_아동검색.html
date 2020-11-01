@@ -79,9 +79,9 @@
 		<hr style = "width: 531px;height: 5px;background-color: #404040; position: absolute; left: 29px; top:393px;">
 		<div id = "ta">
 			<table style = "width: 532px;position: absolute; border-collapse:collapse">
-				<tr onClick="ClickTR(this)">
+				<tr onClick="ClickTR(this)" th:each="child : ${childList}">
 					<td>기관명이 들어갑니다.</td>
-					<td th:each="child : ${childList}">
+					<td>
 						<a th:href="@{'/therapist_calendar_registration_pop/' + ${child.id}}">
 						<span onclick="getName(this)" id="childname" th:name="childname" th:text="${child.name}"></span>
 						</a>

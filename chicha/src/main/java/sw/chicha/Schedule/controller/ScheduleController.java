@@ -87,50 +87,12 @@ public class ScheduleController {
         scheduleDto.setChild(childName);
         scheduleDto.setGender(childRepository.findByName(childName).get().getGender());
         scheduleDto.setBirthday(childRepository.findByName(childName).get().getBirthday());
+        scheduleDto.setCreatedDate(LocalDateTime.now().toLocalDate());
 
         calendarService.saveCalender(calendarDto);
         scheduleService.saveCalender(scheduleDto);
 
         return "redirect:/";
-    }
-
-    /**
-     * 코칭회기
-     * */
-
-    // 캘린더 -> 코칭회기 클릭 -> 목록
-    @GetMapping("therapist_calendar_sessionlist")
-    public String therapist_calendar_sessionlist(Principal principal, Model model) {
-        String currentName = (String)principal.getName();
-        Long therapist_id = therapistRepository.findByEmail(currentName).get().getId();
-        Long calendar_id = calendarRepository.findById(therapist_id).get().getId();
-        List<ScheduleDto> scheduleDto = scheduleService.getScheduleList(calendar_id);
-        model.addAttribute("scheduleDto", scheduleDto);
-        return "calendar/캘린더_치료사_치료회기_목록";
-    }
-
-    // 코칭회기 목록 -> 상세
-    @GetMapping("therapist_calendar_sessionlist")
-    public String therapist_calendar_session(Principal principal, Model model) {
-        String currentName = (String)principal.getName();
-        Long therapist_id = therapistRepository.findByEmail(currentName).get().getId();
-        Long calendar_id = calendarRepository.findById(therapist_id).get().getId();
-
-        ScheduleDto scheduleDto = scheduleService.getSchedule(calendar_id);
-        model.addAttribute("calendar", scheduleDto);
-        return "calendar/캘린더_치료사_치료회기";
-    }
-
-    @GetMapping("therapist_calendar_session_registration")
-    public String dis_therapist_calendar_session_registration() {
-        return "calendar/캘린더_치료사_치료회기_등록";
-    }
-
-    // 치료회기 등록
-    @PutMapping("therapist_calendar_session_registration/{id}")
-    public String exec_therapist_calendar_session_registration(ScheduleDto scheduleDto) {
-        scheduleService.saveCalender(scheduleDto);
-        return "redirect:/therapist_calendar_sessionlist";
     }
 
     /**

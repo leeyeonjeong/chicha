@@ -17,52 +17,19 @@ public class CoachService {
         return coachRepository.save(coachDto.toEntity()).getId();
     }
 
-    public CoachDto getCalendar(Long id) {
-        Optional<Coach> calendarWrapper = coachRepository.findById(id);
-        if (calendarWrapper.isPresent()) {
-            Coach coach = calendarWrapper.get();
+    public CoachDto getCoach(Long id) {
+        Optional<Coach> coachWrapper = coachRepository.findById(id);
+        if (coachWrapper.isPresent()) {
+            Coach coach = coachWrapper.get();
 
             CoachDto coachDto = CoachDto.builder()
                     .id(coach.getId())
-                    .expect(coach.getExpect())
-                    .attendance(coach.getAttendance())
-                    .absen(coach.getAbsen())
-                    .reinforce(coach.getReinforce())
-                    .accumulation(coach.getAccumulation())
-                    .evaluation(coach.getEvaluation())
-                    .therapist(coach.getTherapist())
-                    .build();
-
-            return coachDto;
-        } else {
-            return CoachDto.builder().build();
-        }
-    }
-
-    public CoachDto getTherapist(Long id) {
-        Optional<Coach> calendarWrapper = coachRepository.findById(id);
-        if (calendarWrapper.isPresent()) {
-            Coach coach = calendarWrapper.get();
-
-            CoachDto coachDto = CoachDto.builder()
-                    .id(coach.getId())
-                    .therapist(coach.getTherapist())
-                    .build();
-
-            return coachDto;
-        } else {
-            return CoachDto.builder().build();
-        }
-    }
-
-    public CoachDto getMember(Long id) {
-        Optional<Coach> calendarWrapper = coachRepository.findById(id);
-        if (calendarWrapper.isPresent()) {
-            Coach coach = calendarWrapper.get();
-
-            CoachDto coachDto = CoachDto.builder()
-                    .id(coach.getId())
-                    .member(coach.getMember())
+                    .name(coach.getSchedule().getChild())
+                    .counseling(coach.getCounseling())
+                    .start(coach.getSchedule().getStart())
+                    .end(coach.getSchedule().getEnd())
+                    .session(coach.getSession())
+                    .schedule(coach.getSchedule())
                     .build();
 
             return coachDto;

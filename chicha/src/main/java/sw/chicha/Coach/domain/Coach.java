@@ -6,8 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Therapist;
+import sw.chicha.Schedule.domain.Schedule;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
@@ -18,34 +21,27 @@ public class Coach {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long expect;    // 예정
-    private Long attendance;    // 출석
-    private Long absen;     // 결석
-    private Long reinforce;     // 보강완료
-    private Long evaluation;    // 평가완료
-    private Long accumulation;      // 누적
-
-    @OneToOne
-    @JoinColumn(name = "therapist_id")
-    private Therapist therapist;
+    private String name;
+    private LocalDate createdDate;
+    private String start;
+    private String end;
+    private String session;
+    private String counseling;
 
     @OneToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
+    @JoinColumn(name = "schedule_id")
+    private Schedule schedule;
 
     @Builder
-    public Coach(Long id, Long expect, Long attendance, Long absen, Long reinforce, Long evaluation, Long accumulation,
-                 Therapist therapist, Member member) {
+    public Coach(Long id, String name, String start, String end, String session, String counseling, Schedule schedule) {
         this.id = id;
-        this.expect = expect;
-        this.attendance = attendance;
-        this.absen = absen;
-        this.reinforce = reinforce;
-        this.evaluation = evaluation;
-        this.accumulation = accumulation;
-        this.therapist = therapist;
-        this.member = member;
+        this.name = name;
+        this.createdDate = LocalDate.now();
+        this.start = start;
+        this.end = end;
+        this.session = session;
+        this.counseling = counseling;
+        this.schedule = schedule;
     }
 
 }

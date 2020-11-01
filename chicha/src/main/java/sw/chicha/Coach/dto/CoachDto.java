@@ -4,6 +4,10 @@ import lombok.*;
 import sw.chicha.Coach.domain.Coach;
 import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Therapist;
+import sw.chicha.Schedule.domain.Schedule;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @Setter
@@ -12,40 +16,35 @@ import sw.chicha.Member.domain.Therapist;
 public class CoachDto {
 
     private Long id;
-    private Long expect;    // 예정
-    private Long attendance;    // 출석
-    private Long absen;     // 결석
-    private Long reinforce;     // 보강완료
-    private Long evaluation;    // 평가완료
-    private Long accumulation;      // 누적
-    private Therapist therapist;
-    private Member member;
+    private String name;
+    private LocalDate createdDate;
+    private String start;
+    private String end;
+    private String session;
+    private String counseling;
+    private Schedule schedule;
 
     public Coach toEntity() {
         return Coach.builder()
                 .id(id)
-                .expect(expect)
-                .attendance(attendance)
-                .absen(absen)
-                .reinforce(reinforce)
-                .evaluation(evaluation)
-                .accumulation(accumulation)
-                .therapist(therapist)
-                .member(member)
+                .name(name)
+                .start(start)
+                .end(end)
+                .session(session)
+                .counseling(counseling)
+                .schedule(schedule)
                 .build();
     }
 
     @Builder
-    public CoachDto(Long id, Long expect, Long attendance, Long absen, Long reinforce, Long evaluation, Long accumulation,
-                    Therapist therapist, Member member) {
+    public CoachDto(Long id, String name, String start, String end, String session, String counseling, Schedule schedule) {
         this.id = id;
-        this.expect = expect;
-        this.attendance = attendance;
-        this.absen = absen;
-        this.reinforce = reinforce;
-        this.evaluation = evaluation;
-        this.accumulation = accumulation;
-        this.therapist = therapist;
-        this.member = member;
+        this.name = name;
+        this.createdDate = LocalDate.now();
+        this.start = start;
+        this.end = end;
+        this.session = session;
+        this.counseling = counseling;
+        this.schedule = schedule;
     }
 }

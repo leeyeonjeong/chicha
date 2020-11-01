@@ -1,10 +1,14 @@
 package sw.chicha.Schedule.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import sw.chicha.Calendar.domain.Calendar;
 import sw.chicha.Child.domain.Child;
 import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Child.repository.ChildRepository;
+import sw.chicha.Member.repository.TherapistRepository;
 import sw.chicha.Schedule.domain.Schedule;
 import sw.chicha.Schedule.dto.ScheduleDto;
 import sw.chicha.Schedule.dto.ScheduleMemberDto;
@@ -21,6 +25,7 @@ import java.util.stream.Collectors;
 public class ScheduleService {
     private ScheduleRepository scheduleRepository;
     private ChildRepository childRepository;
+    private TherapistRepository therapistRepository;
 
     // 일정 전체 저장
     public Long saveCalender(ScheduleDto scheduleDto) {
@@ -58,7 +63,12 @@ public class ScheduleService {
 
     // 일정 반환 리스트
     public List<ScheduleDto> getScheduleList(Long id) {
-        List<Schedule> schedules = scheduleRepository.findById(id).stream().collect(Collectors.toList());
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = (UserDetails)principal;
+        List<Calendar> calendarList = therapistRepository.findByEmail(userDetails.getUsername()).get().getCalendars();
+        Long calendar_id = calendarList.stream().findAny().get().getId();
+
+        List<Schedule> schedules = scheduleRepository.findByCalendar_id(calendar_id);
         List<ScheduleDto> scheduleDtoList = new ArrayList<>();
         for (Schedule schedule : schedules) {
             ScheduleDto scheduleDto = ScheduleDto.builder()
@@ -96,6 +106,8 @@ public class ScheduleService {
                     .repitation(schedule.getRepitation())
                     .start(schedule.getStart())
                     .calendar(schedule.getCalendar())
+                    .birthday(schedule.getBirthday())
+                    .gender(schedule.getGender())
                     .build();
 
             return scheduleDto;

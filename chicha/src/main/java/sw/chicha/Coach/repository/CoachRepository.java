@@ -6,5 +6,4 @@ import sw.chicha.Coach.domain.Coach;
 import java.util.Optional;
 
 public interface CoachRepository extends JpaRepository<Coach, Long> {
-    Optional<Coach> findById(Long id);
 }

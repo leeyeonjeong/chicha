@@ -6,6 +6,7 @@ import sw.chicha.Member.domain.Therapist;
 import sw.chicha.Schedule.domain.Schedule;
 
 import javax.persistence.Column;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @Setter
@@ -24,6 +25,7 @@ public class ScheduleDto {
     private String gender;
     private String birthday;
     private Calendar calendar;
+    private LocalDate createdDate;
 
     public Schedule toEntity() {
         return Schedule.builder()
@@ -38,12 +40,13 @@ public class ScheduleDto {
                 .gender(gender)
                 .birthday(birthday)
                 .calendar(calendar)
+                .createdDate(createdDate)
                 .build();
     }
 
     @Builder
     public ScheduleDto(Long id, String name, String state, String start, String end, String repitation,
-                       String memo, String child, String gender, String birthday, Calendar calendar) {
+                       String memo, String child, String gender, String birthday, Calendar calendar, LocalDate createdDate) {
         this.id = id;
         this.name = name;
         this.state = state;
@@ -55,5 +58,6 @@ public class ScheduleDto {
         this.gender = gender;
         this.birthday =birthday;
         this.calendar = calendar;
+        this.createdDate = createdDate;
     }
 }
