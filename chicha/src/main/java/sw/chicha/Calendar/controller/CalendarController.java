@@ -38,7 +38,6 @@ public class CalendarController {
 
     @GetMapping("calendar_month")
     public String calendar_month(Principal principal, CalendarDto calendarDto, Model model) {
-
          // 사용자가 치료사일 경우
        if (therapistRepository.findByEmail(principal.getName()).isPresent()) {
            // 처음 캘린더를 실행할 경우
@@ -82,13 +81,16 @@ public class CalendarController {
            model.addAttribute("evaluation", calendarDto.getEvaluation());
            model.addAttribute("accumulation", calendarDto.getAccumulation());
            return "calendar/캘린더_일반_월";
-        } else {
+       } else if (principal.getName() == null){
+           return "error/null";
+       } else {
            return "main/메인";
        }
     }
 
-    @GetMapping("therapist_calendar_day")
-    public String therapist_calendar_day() {
+    @GetMapping("therapist_calendar_day/{day}")
+    public String therapist_calendar_day(@PathVariable(name = "day")String day) {
+
         return "calendar/캘린더_치료사_일";
     }
 

@@ -12,6 +12,7 @@ import sw.chicha.Calendar.repository.CalendarRepository;
 import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Child.repository.ChildRepository;
 import sw.chicha.Child.service.ChildService;
+import sw.chicha.Coach.domain.Coach;
 import sw.chicha.Coach.dto.CoachDto;
 import sw.chicha.Coach.repository.CoachRepository;
 import sw.chicha.Coach.service.CoachService;
@@ -25,6 +26,7 @@ import sw.chicha.Schedule.service.ScheduleService;
 import javax.websocket.server.PathParam;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Controller
@@ -52,14 +54,21 @@ public class CoachController {
 
     // 코칭회기 목록 -> 상세
     @GetMapping("therapist_calendar_sessionlist/{id}")
-    public String therapist_calendar_session(@PathVariable(name="id") Long id, Model model, CoachDto coachDto, Principal principal) {
+    public String therapist_calendar_session(@PathVariable(name="id") Long id, Model model, Principal principal) {
         Long therapist_id = therapistRepository.findByEmail(principal.getName()).get().getId();
         List<ScheduleDto> scheduleDto = scheduleService.getScheduleList(therapist_id);
         ScheduleDto scheduleDto1 = scheduleService.getSchedule(id);
+        List<CoachDto> coachList = coachService.getcoachList(id);
+        
+        if (!coachList.isEmpty()) {
+            scheduleDto.stream().findAny().get().setCoach(coachList.stream().findAny().get().toEntity());
+            scheduleDto.stream().findAny().get().setSession(coachList.stream().findAny().get().toEntity().getSession());
+            scheduleDto.stream().findAny().get().setCounseling(coachList.stream().findAny().get().toEntity().getCounseling());
+
+        }
+
         model.addAttribute("scheduleDto", scheduleDto);
         model.addAttribute("scheduleDto1", scheduleDto1);
-
-        //model.addAttribute("calendar", coachDto);
         return "calendar/캘린더_치료사_치료회기";
     }
 

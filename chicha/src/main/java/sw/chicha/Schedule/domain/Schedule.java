@@ -6,11 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import sw.chicha.Calendar.domain.Calendar;
+import sw.chicha.Coach.domain.Coach;
+import sw.chicha.Coach.dto.CoachDto;
 import sw.chicha.Member.domain.Therapist;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
@@ -30,6 +34,8 @@ public class Schedule {
     private String child;
     private String gender;
     private String birthday;
+    private String session;
+    private String counseling;
 
     @CreatedDate
     private LocalDate createdDate;
@@ -38,9 +44,13 @@ public class Schedule {
     @JoinColumn(name = "calendar_id")
     private Calendar calendar;
 
+    @OneToOne
+    @JoinColumn(name = "coach_id")
+    private Coach coach;
+
     @Builder
-    public Schedule(Long id, String name, String state, String start, String end, String repitation,
-                    String memo, String child, String gender, String birthday, LocalDate createdDate,Calendar calendar) {
+    public Schedule(Long id, String name, String state, String start, String end, String repitation,String memo,String child,
+                    String gender, String birthday, LocalDate createdDate,Calendar calendar,Coach coach, String session, String counseling) {
         this.id = id;
         this.name = name;
         this.state = state;
@@ -53,6 +63,9 @@ public class Schedule {
         this.birthday = birthday;
         this.createdDate = createdDate;
         this.calendar = calendar;
+        this.coach = coach;
+        this.session = session;
+        this.counseling = counseling;
     }
 
 }

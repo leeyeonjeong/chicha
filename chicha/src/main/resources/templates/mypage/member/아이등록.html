@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>아이등록</title>
+<style>
+	#area {width: 751px; height: 2011px;}
+	#top {width: 751px; height: 140px; background-color: #ffffff;display:table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 1671px; background-color: #f2f7f7;}
+	#main>#title{width:751px; height:47px;text-align:center;position: absolute;margin-top:61px;}
+	#main>#title>label{font-family:'Noto Sans CJK KR';font-size:50px;font-weight:bold;font-stretch: normal;font-style: normal;text-align:center;display: inline-block;color:#000000;}
+	#main>#box_1_div{width:751px; height:50px;text-align:center;position: absolute;margin-top:148px;}
+	#main>#box_1_div>#box_1{width: 666px;height: 50px;background-color: #00bfbf;display:inline-block;}
+	#main>#box_1_div>#box_1>label{font-family:'Noto Sans CJK KR';font-size:30.5px;font-weight:500;font-stretch: normal;font-style: normal;text-align:center;display: inline-block;color:#ffffff;}
+	#main>#explaindiv{width:751px; height:80px;text-align:center;position: absolute;margin-top:230px;}
+	#main>#explaindiv>#explain{width:475px; height:80px;display: inline-block;}
+	#main>#explaindiv>#explain>label{font-family:'Noto Sans CJK KR';font-size:28px;font-weight:300;font-stretch: normal;font-style: normal;text-align:center;display: inline-block;color:#000000;}
+	#main>#essential{width: 108px;height: 19px;text-align:center;position: absolute; margin-left:600px;margin-top:331px;}
+	#main>#essential>label{font-family:'Noto Sans CJK KR';font-size: 20px;font-weight: 500;font-stretch: normal;font-style: normal;text-align: right;color: rgba(0, 0, 0, 0.8);}
+	#main>#essential>label>font{font-weight: 900;color: rgba(0, 111, 247, 0.8);}
+	
+	#main>#boxdiv{width:751px; height:614px;text-align:center;position: absolute;margin-top:370px;}
+	#main>#boxdiv>#box{width: 670px;height: 614px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;display: inline-block; text-align: center;}
+	
+	#main>#boxdiv>#box>#topboxdiv{width: 603px;height: 180px;border: solid 1px rgba(0, 0, 0, 0.2);display: inline-block;text-align: left;margin-top:35px;}
+	#main>#boxdiv>#box>#topboxdiv>#photo{width: 180px;height: 180px;float:left;display: inline-block;background-color: #d9d9d9;text-align: center;}
+	#main>#boxdiv>#box>#topboxdiv>#photo>#image{width: 117px;height: 117px;display:inline-block;margin-top:30px;}
+	#main>#boxdiv>#box>#topboxdiv>#photo>#register{width: 180px;height: 50px;background-color: #3c3c3c;text-align: center;margin-top:-22px;}
+	#main>#boxdiv>#box>#topboxdiv>#photo>#register>label{font-family:'Noto Sans CJK KR';font-size:28px;font-weight:bold;font-stretch: normal;font-style: normal;text-align:center;display: inline-block;color:#ffffff;display: inline-block;}
+	
+	#main>#boxdiv>#box>#topboxdiv>.namegenderdiv{width:423px;height:90px; border-bottom: solid 2px #d9d9d9; display: inline-block; text-align: left; float:left;}
+	#main>#boxdiv>#box>#topboxdiv>.namegenderdiv>label{width:90px; height:50px; display: inline-block; margin-left:23px; margin-top:22px;font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;text-align: left;color: rgba(0, 0, 0, 0.8);}
+	#main>#boxdiv>#box>#topboxdiv>.namegenderdiv>#name_input{width:260px; height:50px; border:none; display: inline-block; font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: 300;font-stretch: normal;font-style: normal;text-align: left;color: rgba(0, 0, 0, 0.5);}
+	.namegenderdiv>.gender_box{widows: 75px; height: 50px; display: inline-block; text-align: center;}
+	.gender_box>.gender_select{width : 24px; height: 24px; display: inline-block;}
+	.gender_box>label{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;text-align: left;color: rgba(0, 0, 0, 0.8);}
+	
+	#botboxdiv{width: 603px;height:353px;border: solid 1px rgba(0, 0, 0, 0.2);display: inline-block;text-align: center;margin-top:18px;}
+	
+	#botboxdiv>.seconddiv{width: 603px; height:90px;border-bottom: solid 1px rgba(0, 0, 0, 0.2);display: inline-block;text-align: left;}
+	.seconddiv>.left{width: 180px;border:none;background-color: #d9d9d9;float:left;display: inline-block;text-align: left;}
+	.seconddiv>.left>label{font-family:'Noto Sans CJK KR';font-size: 28px;font-weight:bold;font-stretch: normal;font-style: normal;text-align: left;color: rgba(0, 0, 0, 0.8);display: inline-block;margin-top: 20px;margin-left: 22px;}
+	
+	.seconddiv>.input_text{width:391px; height:50px; border:none; display: inline-block; font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: 300;font-stretch: normal;font-style: normal;text-align: left;color: rgba(0, 0, 0, 0.5); float:left; margin-top: 15px; padding-left: 30px;}
+	.seconddiv>textarea{width:391px; height:140px; border:none; display: inline-block; font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: 300;font-stretch: normal;font-style: normal;text-align: left;color: rgba(0, 0, 0, 0.5); float:left; margin-top: 15px; padding-left: 30px;resize: none; word-break: break-all; overflow-y: auto;}
+	
+	.btn{width:751px; height:80px;text-align:center;position: absolute;}
+	.btn>button{width: 669px;height: 80px;border-radius: 10px;display: inline-block;border:none;outline:none;font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;text-align: center;color: #ffffff;}
+	#footer{width : 751px;height: 500px;background-color: #f2f7f7;position: absolute;top :1671px}
+	
+</style>
+</head>
+
+<body id="area">
+	<div id = "top"><!--top 화면-->
+		<a href = "메인"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "메뉴"><img src = "image/icn_menu.png" id = "menu"></a>
+	</div>
+	
+	<div id = "main">
+		<div id = "title"><label>아이 등록</label></div>
+		
+		<div id = "box_1_div">
+			<div id = "box_1"><label>내 아이를 등록해주세요.</label></div>
+		</div> <!--end box_1_div-->
+		
+		<div id = "explaindiv">
+			<div id = "explain"><label><font style = "font-weight: 900; color: #006ff7;">ChiCha</font>를 통해 <font style = "font-weight: bold;">치료일정</font>을 관리하고<br>
+				<font style = "font-weight: bold;">맞춤형 치료정보</font>를 제공받을 수 있습니다.</label></div>
+		</div> <!--end explaindiv-->
+		
+		<div id = "essential"><label><font>*</font>필수입력값</label></div>
+		
+		<div id = "boxdiv">
+			<div id = "box">
+				<div id = "topboxdiv">
+					<div id = "photo">
+						<img src = "image/picture.png" id = "image">
+						<div id = "register"><label>사진등록</label></div>
+					</div> <!--end photo-->
+					
+					<div class = "namegenderdiv">
+						<label>이름<font style = "color: rgba(0, 111, 247, 0.8);">*</font></label>
+						<input type = "text" id = "name_input" placeholder="아이 이름을 입력해주세요."> 
+					</div>
+					
+					<div class = "namegenderdiv" style = "border:none;">
+						<label>성별<font style = "color: rgba(0, 111, 247, 0.8);">*</font></label>
+						<div class = "gender_box">
+							<input type = "radio" name = "gender" value = "woman" class = "gender_select">
+							<label>여자</label>
+						</div>
+						<div class = "gender_box" style = "margin-left:63px;">
+							<input type = "radio" name = "gender" value = "woman" class = "gender_select">
+							<label>남자</label>
+						</div>
+					</div> <!--end namegenderdiv-->
+				</div> <!--end topboxdiv-->
+				
+				<div id = "botboxdiv">
+					<div class = "seconddiv">
+						<div class = "left" style="height: 90px;"><label>생년월일<font style = "color: rgba(0, 111, 247, 0.8);">*</font></label></div>
+						<input type = "text" class = "input_text" placeholder="‘-’ 구분없이 입력">
+					</div> <!--end birthdiv-->
+					
+					<div class = "seconddiv" style = "margin-top:-4px;">
+						<div class = "left" style="height: 90px;"><label>소속</label></div>
+						<input type = "text" class = "input_text" placeholder="예) 학교, 유치원, 어린이집">
+					</div>  <!--end belongdiv-->
+					
+					<div class = "seconddiv" style = "height: 167px; border-bottom:none; margin-top:-4px;">
+						<div class = "left" style="height: 171px;"><label>희망<br>치료분야</label></div>
+						<textarea placeholder = "예) 언어치료, 놀이치료 등"></textarea>
+					</div> <!--end wantdiv-->
+				</div> <!-- end botboxdiv-->
+			</div><!--end box-->
+		</div> <!--end boxdiv-->
+		
+		<div class = "btn" style = "top:1172px;"><button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #00bfbf;" onClick="location.href = '/'">확인</button></div>
+		
+		<div class = "btn" style = "top:1272px;"><button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);;background-color: #595959;" onClick="location.href = '/'">다음에하기</button></div>
+	</div> <!--end main-->
+	
+	<div id = "footer">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+	</div>
+</body>
+</html>

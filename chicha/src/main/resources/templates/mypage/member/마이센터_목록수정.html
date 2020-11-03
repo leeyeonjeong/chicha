@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>마이센터</title>
+<style>
+	#area {width: 751px; height: 2011px;}
+	#top {width: 751px; height: 140px; background-color: #ffffff;display:table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 1671px; background-color: #f2f7f7;}
+	
+	#title{width:751px; height:47px;text-align:left;position: absolute;margin-top:63px;margin-left: 42px;}
+	#title>label{font-family:'Noto Sans CJK KR';font-size:50px;font-weight:bold;font-stretch: normal;font-style: normal;text-align:center;display: inline-block;color:#000000;}
+	
+	#namediv{width:160px; height:56px; text-align:center; position: absolute; margin-top:154px; margin-left: 42px;}
+	#namediv>#name{width:120px; height:56px; text-align:center; position: absolute; background-color: #0778ff; float:left;}
+	#namediv>#name>label{font-family:'Noto Sans CJK KR';font-size:35.5px;font-weight:bold;font-stretch: normal; font-style: normal; text-align:center; display: inline-block;color:#ffffff;}
+	#namediv>label{font-family:'Noto Sans CJK KR';font-size:35.5px;font-weight:300;font-stretch: normal; font-style: normal; text-align:center; display: inline-block;color:#000000; float:left; margin-left:130px;}
+	
+	#arrowdiv{width:751px;height: 116px; background-color: #ffffff;text-align:left; position: absolute;margin-top:227px;}
+	#arrowdiv>div{width: 236px; height: 116px; position: absolute;display: inline-block;text-align: center; float: left;}
+	#arrowdiv>div>label{font-family:'Noto Sans CJK KR';font-size:36px;font-weight:bold;font-stretch: normal; font-style: normal; display: inline-block;color:#0778ff;margin-top:33px;}
+	#arrowdiv>#btn_arrow{width:253px; height: 116px; position: absolute;display: inline-block;text-align: center; float: left; margin-left:498px;}
+	#arrowdiv>#btn_arrow>button{width: 70px; height: 70px; border:none; outline: none; text-align: center; margin-top:20px; border-radius: 10px; box-shadow: 0 0 8px 0 rgba(0, 98, 217, 0.45); border: solid 3px #0778ff;}
+	
+	#categorydiv{width:751px;height: 650px; border-top:solid 3px #0778ff; text-align:center; position: absolute; margin-top:343px;}
+	#categorydiv>.centerboxdiv{width:751px;height: 90px; text-align:center; display:inline-block; margin-top:17px;}
+	#categorydiv>.centerboxdiv>.centerbox{width: 670px;height: 90px;border-radius: 10px;background-color: #ffffff;display: inline-block; text-align: left;}
+	#categorydiv>.centerboxdiv>.centerbox>.checkboxdiv{width: 88px;height: 90px;display: inline-block; text-align: center; float:left;}
+	#categorydiv>.centerboxdiv>.centerbox>.checkboxdiv>input[type = checkbox]{display: none;}
+	#categorydiv>.centerboxdiv>.centerbox>.checkboxdiv>input[type = checkbox] + label{display: inline-block;cursor: pointer; width:24px;height:24px;background: url('image/radio_off.png') no-repeat;  margin-top: 32px;}
+	#categorydiv>.centerboxdiv>.centerbox>.checkboxdiv>input[type = checkbox]:checked + label{background: url("image/radio_on.png") no-repeat;}
+	#categorydiv>.centerboxdiv>.centerbox>.labeldiv{width:580px;height: 90px;display: inline-block; text-align: left;}
+	#categorydiv>.centerboxdiv>.centerbox>.labeldiv>label{font-family:'Noto Sans CJK KR';font-size:28px;font-weight:bold;font-stretch: normal; font-style: normal; display: inline-block;color:#000000;  margin-top: 22px;}
+	
+	.btndiv{width:751px; height: 80px; text-align:center; position: absolute;}
+	.btndiv>button{width: 669px;height: 80px; border-radius: 10px; border:none; outline:none; display: inline-block; font-family:'Noto Sans CJK KR';font-size:28px;font-weight:bold;font-stretch: normal; font-style: normal; display: inline-block;color:#ffffff;}
+	
+	#footer{width : 751px;height: 500px;background-color: #ffffff;position: absolute;top :1671px}
+	
+</style>
+</head>
+
+<body id="area">
+	<div id = "top"><!--top 화면-->
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
+	</div>
+	
+	<div id = "main">
+		<div id = "title"><label>마이센터</label></div>
+		
+		<div id = "namediv">
+			<div id = "name"><label>홍길동</label></div>
+			<label>님</label>
+		</div> <!--end namediv-->
+		
+		<div id = "arrowdiv">
+			<div><label>목록수정</label></div>
+			
+			<div id = "btn_arrow">
+				<button style = "background: url('image/화살표u.png') center;"></button>
+				<button style = "background: url('image/화살표d.png') center; margin-left:15px;"></button>
+			</div>
+		</div> <!--end arrowdiv-->
+		
+		<div id = "categorydiv">
+			<div class = "centerboxdiv" style = "margin-top:46px;">
+				<div class = "centerbox">
+					<div class = "checkboxdiv">
+						<input type = "checkbox" name = "center_name" id = "name1">
+						<label for = "name1"></label>
+					</div> <!--end checkboxdiv-->
+					
+					<div class = "labeldiv">
+						<label><font style = "color: #0778ff; margin-right: 20px;">센터명</font>  아이플러스 서울언어치료센터 </label>
+					</div> <!--end labeldiv-->
+				</div> <!--end centerbox-->
+			</div> <!--end centerboxdiv-->
+			
+			<div class = "centerboxdiv">
+				<div class = "centerbox">
+					<div class = "checkboxdiv">
+						<input type = "checkbox" name = "center_name" id = "name2">
+						<label for = "name2"></label>
+					</div> <!--end checkboxdiv-->
+					
+					<div class = "labeldiv">
+						<label><font style = "color: #0778ff; margin-right: 20px;">센터명</font>  아이플러스 서울언어치료센터 </label>
+					</div> <!--end labeldiv-->
+				</div> <!--end centerbox-->
+			</div> <!--end centerboxdiv-->
+			
+			<div class = "centerboxdiv">
+				<div class = "centerbox">
+					<div class = "checkboxdiv">
+						<input type = "checkbox" name = "center_name" id = "name3">
+						<label for = "name3"></label>
+					</div> <!--end rcheckboxdiv-->
+					
+					<div class = "labeldiv">
+						<label><font style = "color: #0778ff; margin-right: 20px;">센터명</font>  아이플러스 서울언어치료센터 </label>
+					</div> <!--end labeldiv-->
+				</div> <!--end centerbox-->
+			</div> <!--end centerboxdiv-->
+		</div> <!--categorydiv-->
+		
+		<div class = "btndiv" style = "margin-top:754px;"><button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45); background-color: #0262d6;">항목삭제</button></div>
+		<div class = "btndiv" style = "margin-top:854px;"><button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45); background-color: #595959;">완료</button></div>
+	</div> <!--end main-->
+	
+	<div id = "footer">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+	</div>
+</body>
+</html>

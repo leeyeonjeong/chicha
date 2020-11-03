@@ -66,8 +66,8 @@
 			</select>
 			<hr style = "width: 125px;height: 3px;background-color:rgba(0, 0, 0, 0.4); border:none; position: absolute; left: 622px; top:65px;">
 			
-			<div id = "record_box">
-				<div class = "title" th:each="schedule : ${scheduleDto}">
+			<div id = "record_box" th:each="schedule : ${scheduleDto}">
+				<div class = "title" >
 					<a class="ti_btn" th:href="@{'/therapist_calendar_session_registration/' + ${schedule.id}}">회기작성</a>
 					<!--<button class = "ti_btn" onClick="location.href = '/therapist_calendar_session_registration'">회기작성</button>-->
 					<span th:text="${schedule.id}" class = "ti_one"></span><span class="ti_one"> 회기</span><br>
@@ -76,65 +76,20 @@
 					<span class = "ti_four">최종수정일 </span><span class = "ti_four" th:text="${schedule.createdDate}"></span>
 					<span class = "ti_detail">수정하기</span>
 				</div>
-
-				<br>
-				
-				<div class = "title">
-					<button class = "ti_btn" onClick="location.href = '캘린더_치료사_치료회기_등록.html'">회기작성</button>
-					<span class = "ti_one">04회기</span><br>
-					<span class = "ti_two">2020.09.07</span>
-					<span class = "ti_three">13:00-14:00 (50분)</span><br>
-					<span class = "ti_four">최종수정일 2020.09.14</span>
-					<span class = "ti_detail">수정하기</span>
-				</div>
-				<div class = "content">
-					<div class = "con_1">
-						<span>회기</span>
-						<br>
-						<label>더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다.더보기를 누르면 전체 글 내용이 보여집니다.</label>
-					</div><!--end con_1-->
-					<div class = "con_2">
-						<span>상담</span>
-						<br>
-						<label>본문(상담)입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다본문(상담)입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다.본문(상담)입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다.본문(상담)입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다..</label>
-					</div><!--end con_1-->
-				</div><!--end content-->
-				
-				<br>
-					
-				<div class = "title">
-					<button class = "ti_btn" onClick="location.href = '캘린더_치료사_치료회기_등록.html'">회기작성</button>
-					<span class = "ti_one">03회기</span><br>
-					<span class = "ti_two">2020.09.04</span>
-					<span class = "ti_three">13:00-14:00 (50분)</span><br>
-					<span class = "ti_four">최종수정일 2020.09.10</span>
-					<span class = "ti_detail">상세보기</span>
-				</div>
-				
-				<br>
-				
-				<div class = "title">
-					<button class = "ti_btn" onClick="location.href = '캘린더_치료사_치료회기_등록.html'">회기작성</button>
-					<span class = "ti_one">02회기</span><br>
-					<span class = "ti_two">2020.08.27</span>
-					<span class = "ti_three">13:00-14:00 (50분)</span><br>
-					<span class = "ti_four">최종수정일 2020.09.27</span>
-					<span class = "ti_detail">상세보기</span>
-				</div>
-				
-				<br>
-				
-				<div class = "title">
-					<button class = "ti_btn" onClick="location.href = '캘린더_치료사_치료회기_등록.html'">회기작성</button>
-					<span class = "ti_one">01회기</span><br>
-					<span class = "ti_two">2020.08.24</span>
-					<span class = "ti_three">13:00-14:00 (50분)</span><br>
-					<span class = "ti_four">최종수정일 2020.09.14</span>
-					<span class = "ti_detail">상세보기</span>
-				</div>
-				
-				
-			
+				<li th:if="${schedule.coach}">
+					<div class = "content">
+						<div class = "con_1">
+							<span>회기</span>
+							<br>
+							<label th:text="${schedule.session}"></label>
+						</div><!--end con_1-->
+						<div class = "con_2">
+							<span>상담</span>
+							<br>
+							<label th:text="${schedule.counseling}"></label>
+						</div><!--end con_1-->
+					</div><!--end content-->
+				</li>
 			</div><!--end record_box-->
 
 			

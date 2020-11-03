@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>메시지</title>
+<style>
+	#area {width: 751px; height: 2280px;}
+	#top {width: 751px; height: 140px;display:table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height:1640px;display: table;}
+	#main>#title{width:751px;height:239px;background-color:#eef3f6;position: absolute;}
+	#main>#title>#ti{font-family:'Noto Sans CJK KR';font-size: 42px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.9;letter-spacing: -2.52px;text-align: left;color: #000000;position: absolute;left:39px;top:71px;}
+	#main>#title>#explain{font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 300; font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.47px;text-align: left;color: #000000;position: absolute;left:39px;top:140px;}
+	#main>#title>#commu{width: 169px;height: 70px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45);border: solid 3px #0778ff;background-color: #ffffff;position: absolute;left:540px;top:88px;display:table;}
+	#main>#title>#commu>span{width:100px;height: 25px;font-family:'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal; line-height: normal;letter-spacing: -1.56px;text-align: center;color: #0778ff;display:table-cell;vertical-align:middle;}
+	#main>#tap{width:750px;height: 80px;border-bottom: solid 4px #dae1e6;position: absolute;top:379px;}
+	#main>#tap>.tap_name{width:140px; height:42px;position: absolute;top:38px;display: table;border-bottom:solid 6px  #c2c8cc;}
+	#main>#tap>.tap_name>label{width:47px;font-family:'Noto Sans CJK KR';font-size: 27.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.65px;text-align: center;color:#c2c8cc;display:table-cell;vertical-align: middle;}
+	#main>#content{width:670px;height:1500px;border:none;position:absolute;top:500px;left:40px;overflow-y: auto;border-top:solid 2px #dcdcdc;word-break:break-all;}
+	#main>#content>.line{width: 670px;height: 120px;background-color: #ffffff;border:none;border-bottom:solid 2px #dcdcdc;word-break:break-all;overflow-y: auto;}
+	#main>#content>.no{background-color: #f0f5f7;}
+	#main>#content>.line>.image{width:130px;height:120px;display:table;position: absolute;float:left;}
+	#main>#content>.line>.image>label{width: 80px;height: 80px;display:table-cell;text-align:center;vertical-align:middle;}
+	#main>#content>.line>.insti{width:200px;height:50px;position: absolute;float:left;display:table;margin-left:130px;}
+	#main>#content>.line>.insti>label{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 3.15;letter-spacing: -1.44px;text-align: left;color: #000000;display:table-cell;vertical-align:middle;}
+	#main>#content>.line>.the_name{width:200px;height:50px;position: absolute;float:left;display:table;margin-left:330px;}
+	#main>#content>.line>.the_name>label{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 3.15;letter-spacing: -1.44px;text-align: left;color: #0671f7;display:table-cell;vertical-align:middle;}
+	#main>#content>.line>.re_mes{width:420px;height:70px;position: absolute;float:left;display:table;margin-left:130px;margin-top:50px;word-break:break-all;overflow-y: auto;}
+	#main>#content>.line>.re_mes>label{height:70px;font-family:'Noto Sans CJK KR';font-size: 20px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.2px;text-align: left;color: rgba(0, 0, 0, 0.9);display:table-cell;vertical-align:top;}
+	#main>#content>.line>.star{width:50px;height:50px;display:table;position: absolute;float:left;margin-left:580px;margin-top:20px;}
+	#main>#content>.line>.star>label{width: 35px;height: 35px;display:table-cell;text-align:center;vertical-align:middle;}
+	#main>#content>.line>.time{width:100px;height:70px;position: absolute;float:left;display:table;margin-left:550px;margin-top:50px;}
+	#main>#content>.line>.time>label{font-family:'Noto Sans CJK KR';font-size: 20px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 3.78;letter-spacing: -1.2px;text-align: left; color: rgba(0, 0, 0, 0.6);display:table-cell;vertical-align:middle;}
+	#footer{width : 751px;height: 500px;background-color: #ffffff;position: absolute;top : 1780px;}
+	
+</style>
+<script>
+	function popup(){
+		var popUrl = "메시지_소통하기_팝업";
+		var popOption = "width=670px, height=524px, resizable=no, scrollbars=no, status=no;"; 
+		window.open(popUrl,"",popOption);
+	}
+</script>
+</head>
+
+<body id="area">
+	<div id = "top"><!--top 화면-->
+		<a href = "메인"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "메뉴"><img src = "image/icn_menu.png" id = "menu"></a>
+	</div>
+	
+	<div id = "main">
+		<div id = "title">
+			<span id = "ti">메시지</span>
+			<span id = "explain"><font style = "font-weight: bold;color: #0778ff;">ChiCha</font>에서 <font style = "font-weight: bold;">전문가들과</font> 소통해보세요.</span>
+			<div id = "commu" onClick="popup()"><span>소통하기</span></div>
+		</div> <!-- end title-->
+		
+		<div id = "tap">
+			<span class = "tap_name" style = "left:98px;"><label onClick="location.href = '메시지_일반'">전체</label></span>
+			<span class = "tap_name" style = "left:305px; border-bottom-color:#0062d9;"><label  style = "color:#0062d9;" onClick="location.href = '메시지_읽지않음'">안읽음</label></span>
+			<span class = "tap_name" style = "left:512px;"><label onClick="location.href = '메시지_보관'">보관</label></span>
+		</div> <!--end tap-->
+		
+		<div id = "content">
+			<div class = "line no">
+				<span class = "image"><label><img src = "image/picture.png"></label></span>
+				<span class = "insti"><label>치료기관</label></span>
+				<span class = "the_name"><label>홍길동</label></span>
+				<span class = "re_mes" onClick = "location.href = '메시지_상세'"><label>최근 메시지 내용이 보여집니다.</label></span>
+				<span class = "time"><label>오전 10:12</label></span>
+			</div><!--end line-->
+			<div class = "line no">
+				<span class = "image"><label><img src = "image/picture.png"></label></span>
+				<span class = "insti"><label>치료기관</label></span>
+				<span class = "the_name"><label>아동명</label></span>
+				<span class = "re_mes" onClick = "location.href = '메시지_상세'"><label>최근 메시지 내용이 보여집니다.</label></span>
+				<span class = "time"><label>오전 10:12</label></span>
+			</div><!--end line-->
+		</div><!--end content-->
+	</div> <!-- end main-->
+	<div id = "footer">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+	</div>
+</body>
+</html>

@@ -84,6 +84,9 @@ public class ScheduleService {
                     .gender(schedule.getGender())
                     .birthday(schedule.getBirthday())
                     .createdDate(schedule.getCreatedDate())
+                    .coach(schedule.getCoach())
+                    .session(schedule.getSession())
+                    .counseling(schedule.getCounseling())
                     .build();
             scheduleDtoList.add(scheduleDto);
         }

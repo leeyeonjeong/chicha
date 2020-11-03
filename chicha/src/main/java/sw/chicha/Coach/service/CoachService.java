@@ -2,10 +2,16 @@ package sw.chicha.Coach.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import sw.chicha.Child.domain.Child;
+import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Coach.domain.Coach;
 import sw.chicha.Coach.dto.CoachDto;
 import sw.chicha.Coach.repository.CoachRepository;
+import sw.chicha.Schedule.domain.Schedule;
+import sw.chicha.Schedule.dto.ScheduleDto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,19 +23,42 @@ public class CoachService {
         return coachRepository.save(coachDto.toEntity()).getId();
     }
 
-    public CoachDto getCoach(Long id) {
-        Optional<Coach> coachWrapper = coachRepository.findById(id);
-        if (coachWrapper.isPresent()) {
-            Coach coach = coachWrapper.get();
+    public List<CoachDto> getcoachList(Long id) {
+        List<Coach> coaches = coachRepository.findBySchedule_id(id);
+        List<CoachDto> coachDtoList = new ArrayList<>();
 
+        if(coaches.isEmpty()) return coachDtoList;
+
+        for (Coach coach : coaches) {
             CoachDto coachDto = CoachDto.builder()
                     .id(coach.getId())
                     .counseling(coach.getCounseling())
                     .session(coach.getSession())
                     .schedule(coach.getSchedule())
                     .build();
+            coachDtoList.add(coachDto);
+        }
 
-            return coachDto;
+        return coachDtoList;
+    }
+
+    public CoachDto getCoach(Long id) {
+        if (coachRepository.findBySchedule_id(id) != null) {
+            Optional<Coach> coachWrapper = coachRepository.findBySchedule_id(id).stream().findAny();
+            if (coachWrapper.isPresent()) {
+                Coach coach = coachWrapper.get();
+
+                CoachDto coachDto = CoachDto.builder()
+                        .id(coach.getId())
+                        .counseling(coach.getCounseling())
+                        .session(coach.getSession())
+                        .schedule(coach.getSchedule())
+                        .build();
+
+                return coachDto;
+            } else {
+                return CoachDto.builder().build();
+            }
         } else {
             return CoachDto.builder().build();
         }

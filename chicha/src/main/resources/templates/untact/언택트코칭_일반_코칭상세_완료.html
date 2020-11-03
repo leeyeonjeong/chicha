@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>코칭상세</title>
+<style>
+	#area {width: 751px; height: 3360px;}
+	#top {width: 751px; height: 140px; background-color: #ffffff;display:table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
+	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height :2084px; background-color: #eef3f6;}
+	#main>label{font-family:'Noto Sans CJK KR';font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.95;letter-spacing: -2.4px;text-align: left;position: absolute;}
+	#main>#box{width: 670px;height: 1080px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute;left:40px;top:356px;}
+	#main>#box>#info{width: 670px;height: 160px;background-color: #f5f5f5;position: absolute;}
+	#main>#box>#info>span{ font-family:'Noto Sans CJK KR';font-size: 24.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.47px;text-align: left;color: #010000;position:absolute;}
+	#main>#box>#info>#field{width: 158px;height: 58px;background-color: #e6ecf2;position:absolute;left:479px;top:42px;font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #0056bf;padding-top:17px;}
+	#main>#box>span{font-family:'Noto Sans CJK KR';font-size: 24.5px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.47px;text-align: left;color: #808080;position: absolute;left:38px;top:182px;}
+	#main>#box>#status{width: 158px;height:45px;background-color: #006df2;position: absolute; left: 474px;top:175px;font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #ffffff;padding-top:5px;}
+	#main>#box>#video{width: 594px;height: 367px;position: absolute;left: 39px;top:231px;}
+	#main>#box>#content{opacity: 0.8;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.44px;text-align: left;color: rgba(0, 0, 0, 0.8);padding-right:36px; padding-left: 36px; position: absolute; top:630px;}
+	#main>#box>#filename{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: left;color: #999999;position: absolute;left: 33px;top:1027px;}
+	#main>span{font-family:'Noto Sans CJK KR';font-size: 36px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.16px;text-align: left;color: #000000;position: absolute;left: 38px;top:1510px;}
+	#main>#coach_box{width: 670px;height: 1107px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute;left: 40px;top:1572px;}
+	#main>#coach_box>#profile{width: 670px;height: 120px;background-color: #f5f5f5;}
+	#main>#coach_box>#profile>span{font-family:'Noto Sans CJK KR';font-size: 24.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.47px;text-align: left;color: #010000;position: absolute;}
+	#main>#coach_box>#profile>label{font-family:'Noto Sans CJK KR';font-size: 24.5px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.47px;text-align: left;color: #808080;position: absolute;top:72px;left:458px;}
+	#main>#coach_box>#profile>#video2{width: 590px;height: 365px;position: absolute;left: 40px;top:166px;}
+	#main>#coach_box>#profile>#content2{height:168px;opacity: 0.8;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.44px;text-align: left;color: rgba(0, 0, 0, 0.8);padding-right:36px; padding-left: 36px; position: absolute; top:570px;overflow-y: auto;}
+	#main>#coach_box>#satis_box{width: 670px;height: 320px;background-color: #f5f5f5;border-top:solid 2px #dcdcdc;position: absolute;top:785px;}
+	#main>#coach_box>#satis_box>span{font-family:'Noto Sans CJK KR';font-size: 28.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal; letter-spacing: -1.71px;text-align: left;color: #010000;position: absolute;left: 41px;top:39px;}
+	#main>#coach_box>#satis_box>#submit{width: 120px;height: 50px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(2, 98, 214, 0.45);border: solid 3px #0671f7;outline:none;background-color: #f7f7f7;position:absolute;left:509px;top:37px;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: center;color: #0262d6;}
+	#main>#coach_box>#satis_box>.question{font-family:'Noto Sans CJK KR';font-size: 24.5px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.47px;text-align: left;color: #808080;position: absolute;left: 39px;}
+	.star_box{width:167px;height:30px;position:absolute;left:449px;}
+	.star_left{background: url("image/별_left.png") no-repeat;background-size:15px;width:15px;height: 30px;float:left;display:inline-block;cursor: pointer;}
+	.star_right{background: url("image/별_right.png") no-repeat;background-size:15px;width:15px;height: 30px;float:left;display:inline-block;cursor: pointer;margin-right:-18px;}
+	.star_left.on{background-position: 0 0;}
+	.star_right.on{background: url("image/별.png"); background-position: -15px; 0;}
+	
+	
+	
+	#main>#coach_box>#satis_box>hr{width: 590px;height: 1px;background-color: #cccccc;border: none; position: absolute;left:40px;}
+	
+	#main>button{width: 669px;height: 80px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0262d6;position: absolute; left: 41px;top:2730px;font-family: NotoSansKR;
+  font-size: 28px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -1.68px;
+  text-align: center;
+  color: #ffffff;}
+</style>
+<script>
+	$(document).ready(function(){
+		$('.star_box span').click(function(){
+			  $(this).parent().children('span').removeClass('on');
+			  $(this).addClass('on').prevAll('span').addClass('on');
+			  return false;
+		});
+	});
+</script>
+
+</head>
+
+<body id="area">
+	<div id = "top"><!--top 화면-->
+		<a href = "메인"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "메뉴"><img src = "image/icn_menu.png" id = "menu"></a>
+	</div>
+	
+	<div id = "main">
+		<label style = "font-size: 40px; left:288px; top:209px;">언택트 코칭</label>
+		<br>
+		<label style = "font-size: 24px; left:43px; top:292px;"><font style = "background-color: #0778ff; color : #ffffff;">언택트 코칭(untact coaching)&nbsp;</font>&nbsp;&nbsp;가정에서 쉽게 할 수 있는 트레이닝</label>
+		
+		<div id = "box">
+			<div id = "info">
+				<img src = "image/picture.png" style = "width: 80px;height: 80px;position:absolute;left:35px;top:42px;">
+				<span style = "left:135px; top:46px;">아이디가 들어갑니다</span>
+				<span style = "left:135px; top:85px;">성별  <font style = "font-weight: normal;color: #808080;">성별</font></span>
+				<span style = "left:240px; top:85px;">연령  <font style = "font-weight: normal;color: #808080;">연령</font></span>
+				<div id = "field">치료분야</div>
+			</div> <!--end info-->
+			
+			<span><font style = "font-weight: bold;color: #010000;">등록일</font>&nbsp;&nbsp;&nbsp;&nbsp;2020-09-02</span>
+			
+			<div id = "status">
+			코칭완료
+			</div>
+			
+			<div id = "video">
+				<video controls width="594px" height="367px"><source src = "image/youtube_play.png"></video>
+			</div>
+			
+			<label id = "content">
+				내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.
+			</label>
+			
+			<hr style = "width: 670px;height: 2px;background-color: #dcdcdc;border: none;position: absolute;top:1001px;">
+			
+			<label id = "filename">fileName001.mov</label>
+		</div> <!-- end box-->
+		
+		<span>코칭</span>
+		<div id = "coach_box">
+			<div id = "profile">
+				<img src = "image/picture.png" style = "width: 80px; height: 80px; position: absolute; left: 33px;top:20px;">
+				<span style = "font-weight: normal;color: #808080;left:131px;top:25px;">코치</span>
+				<span style = "left:181px;top:25px;">홍길동 님</span>
+				<span style = "color: #0062d9;left:131px;top:59px;">치료분야</span>
+				<label><font style = "font-weight: bold;color: #010000;margin-right:5px;">답변일 </font> 2020-09-07</label>
+				
+				<div id = "video2">
+				<video controls width="590px" height="365px"><source src = "image/youtube_play.png"></video>
+				</div>
+				
+				<div id = "content2">
+						내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.내용이 보여집니다. 내용이 보여집니다. 내용이 보여집니다.
+				</div>
+			</div> <!-- end profile-->
+			<div id = "satis_box">
+				<span>코칭만족도</span>
+				
+				<button id = "submit">제출</button>
+				
+				<label class = "question" style = "top:121px;">코칭이 만족스럽나요?</label>
+				
+				<div class = "star_box" style = "top:128px;">
+					<span class="star_left"></span>
+  					<span class="star_right"></span>
+					
+				</div><!--end star_box-->
+				
+				<hr style = "top:160px;">
+				
+				
+				<label class = "question" style = "top:184px;">코칭 내용이 이해하기 어렵지 않았나요?</label>
+				
+				<hr style = "top:223px;">
+				<label class = "question" style = "top:246px;">코칭을 또 받고 싶은 의향이 있나요?</label>
+				<hr style = "top:285px;">
+			</div> <!--end satis_box-->
+		</div> <!-- end coach_box-->
+		
+		<button></button>
+		
+	</div> <!-- end main-->
+	
+	
+	
+	<!--
+	<div id = "footer">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+	</div>
+-->
+</body>
+</html>

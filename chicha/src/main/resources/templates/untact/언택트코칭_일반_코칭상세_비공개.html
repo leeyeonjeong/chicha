@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>코칭상세</title>
+<style>
+	#area {width: 751px; height: 1647px;}
+	#top {width: 751px; height: 140px; background-color: #ffffff;display:table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height :1147px; background-color: #eef3f6;}
+	#main>label{font-family:'Noto Sans CJK KR';font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.95;letter-spacing: -2.4px;text-align: left;position: absolute;}
+	#main>#box{width: 670px;height: 609px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 40px;top:356px;}
+	#main>#box>#profile{width: 670px;height: 160px;background-color: #f5f5f5;}
+	#main>#box>#profile>span{font-family:'Noto Sans CJK KR';font-size: 24.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.47px;text-align: left;color: #010000;position: absolute;overflow: hidden;}
+	#main>#box>#profile>#id_span{width: 150px; height:40px;}
+	#main>#box>#profile>.geag_span{width: 100px; height:40px;}
+	#main>#box>#profile>#field{width: 158px;height: 70px;background-color: #e6ecf2;position:absolute;left: 479px;top:42px;display:table;}
+	#main>#box>#profile>#field>span{width: 158px;height: 70px;font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align:center;color: #0056bf;display:table-cell;vertical-align:middle;}
+	#main>#box>#guide{width:670px;height:40px;display:table;position:absolute;top:234px;}
+	#main>#box>#guide>span{font-family:'Noto Sans CJK KR';font-size: 36px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.16px;text-align: center;color: #000000;display:table-cell;vertical-align:middle;}
+	#main>#box>#access{width: 610px;height: 210px;border: solid 1px rgba(0, 0, 0, 0.2);background-color: #d9d9d9;position: absolute; left: 29px;top:313px;}
+	#main>#box>#access>div>#span_1{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: bold;line-height: 1.8;letter-spacing: -1.44pxpx;text-align: center;color: #000000;display:table-cell;vertical-align:middle;}
+	#main>#box>#access>div>#span_2{font-family:'Noto Sans CJK KR';font-size: 20px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.8;letter-spacing: -1.2px;text-align:center;color: #4d4d4d;display:table-cell;vertical-align:middle;}
+	#main>button{width: 669px;height: 80px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0262d6;border:none;outline:none;font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #ffffff;position: absolute;left: 40px;top:1016px;}
+	#footer{width : 751px;height: 500px;background-color: #eef3f6;position: absolute;top : 1147px;}
+</style>
+</head>
+
+<body id="area">
+	<div id = "top"><!--top 화면-->
+		<a href = "메인"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "메뉴"><img src = "image/icn_menu.png" id = "menu"></a>
+	</div>
+	
+	<div id = "main">
+		<label style = "font-size: 40px; left:288px; top:209px;">언택트 코칭</label>
+		<br>
+		<label style = "font-size: 24px; left:43px; top:292px;"><font style = "background-color: #0778ff; color : #ffffff;">언택트 코칭(untact coaching)&nbsp;</font>&nbsp;&nbsp;가정에서 쉽게 할 수 있는 트레이닝</label>
+		
+		<div id = "box">
+			<div id = "profile">
+				<img src = "image/picture.png" style = "width: 80px; height: 80px; position: absolute; left: 35px; top:42px;">
+				<span id = "id_span" style = "left: 134px; top:45px;">chi****</span>
+				<span style = "left: 134px; top:85px;">성별</span>
+				<span class = "geag_span" style = "left: 184px; top:85px; color: #808080;">성별</span>
+				<span style = "left: 286px; top:85px;">나이</span>
+				<span class = "geag_span" style = "left: 336px; top:85px; color: #808080;">나이</span>
+				<div id = "field"><span>치료분야</span></div>
+			</div> <!--end profile-->
+			
+			<div id = "guide">
+				<span>안내</span>
+			</div>
+			
+			<div id = "access">
+				<div style = "width:610px;height:40px;display:table;position:absolute;top:33px;">
+					<span id = "span_1">접근 권한이 없습니다.</span>
+				</div>
+				<div style = "width:610px;height:40px;display:table;position:absolute;top:103px;">
+					<span id = "span_2">모든 코칭은 비공개로 이뤄집니다.<br>
+					우리 아이들의 소중한 정보를 지켜주세요.</span>
+				</div>
+			</div> <!-- end access-->
+		</div> <!--end box-->
+		
+		<button onClick="location.href = '언택트코칭_일반'">목록</button>
+	</div> <!-- end main-->
+	<div id = "footer">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+	</div>
+</body>
+</html>

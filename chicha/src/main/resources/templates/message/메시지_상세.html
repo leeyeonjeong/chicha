@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>메시지</title>
+<style>
+	#area {width: 751px; height: 1834px;}
+	#top {width: 751px; height: 140px;display:table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height:1334px;display: table;}
+	#main>#title{width:751px;height:239px;background-color:#eef3f6;position: absolute;}
+	#main>#title>#ti{font-family:'Noto Sans CJK KR';font-size: 42px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.9;letter-spacing: -2.52px;text-align: left;color: #000000;position: absolute;left:39px;top:71px;}
+	#main>#title>#explain{font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 300; font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.47px;text-align: left;color: #000000;position: absolute;left:39px;top:140px;}
+	#main>#title>#commu{width: 169px;height: 70px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45);border: solid 3px #0778ff;background-color: #ffffff;position: absolute;left:540px;top:88px;display:table;}
+	#main>#title>#commu>span{width:100px;height: 25px;font-family:'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal; line-height: normal;letter-spacing: -1.56px;text-align: center;color: #0778ff;display:table-cell;vertical-align:middle;}
+	#main>#box{width: 670px;height:243px;border-bottom:solid 2px #f2f2f2; background-color: #ffffff;position: absolute;border-top:solid 6px #99b0bf;margin-left: 40px;margin-top:283px;}
+	#main>#box>#profile{width: 670px;height: 120px;background-color: #f0f5f7;position: absolute;}
+	#main>#box>#profile>.image{width:130px;height:120px;display:table;position: absolute;float:left;}
+	#main>#box>#profile>.image>label{width: 80px;height: 80px;display:table-cell;text-align:center;vertical-align:middle;}
+	#main>#box>#profile>.the_name{width:200px;height:50px;position: absolute;float:left;display:table;margin-left:130px;margin-top:15px;}
+	#main>#box>#profile>.the_name>label{font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.58;letter-spacing: -1.68px;text-align: left;color:#000000;display:table-cell;vertical-align:middle;}
+	#main>#box>#profile>.field{width:200px;height:50px;position: absolute;float:left;display:table;margin-left:130px;margin-top:55px;}
+	#main>#box>#profile>.field>label{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.58;letter-spacing: -1.44px;text-align: left;color: #0671f7;display:table-cell;vertical-align:middle;}
+	#main>#box>#profile>.star{width:50px;height:50px;display:table;position: absolute;float:left;margin-left:600px;margin-top:35px;}
+	#main>#box>#profile>.star>label{width: 50px;height: 50px;display:table-cell;text-align:center;vertical-align:middle;}
+	#main>#box>#announce{width: 670px;height:125px;border-bottom:solid 2px #f2f2f2;position: absolute;top:120px;}
+	#main>#box>#announce>#date{width:670px;height:20px;display:table;position: absolute;top:26px;}
+	#main>#box>#announce>#date>label{width: 70px;height:20px;font-family:'Noto Sans CJK KR';font-size: 20px;font-weight: 300;font-stretch: normal;font-style: normal;text-align: center;color: rgba(0, 0, 0, 0.6);display: table-cell;vertical-align: middle;}
+	#main>#box>#announce>#join{width:670px;height:20px;display:table;position: absolute;top:73px;}
+	#main>#box>#announce>#join>label{width: 70px;height:20px;font-family:'Noto Sans CJK KR';font-size: 20px;font-weight: 300;font-stretch: normal;font-style: normal;text-align: center;color: rgba(0, 0, 0, 0.7);display: table-cell;vertical-align: middle;}
+	#main>#box>#announce>#join>label>font{font-weight: bold;}
+	
+	
+	#main>#chat{width:670px;height:530px;overflow-y: auto;margin-left: 40px;margin-top:533px;}
+	#main>#chat>.ch_r_line{width: 670px;height: 120px;border-bottom: solid 2px #f2f2f2;}
+	#main>#chat>.ch_r_line>.ch_r_image{width:130px;height: 120px;display:table;position: absolute;float:left;}
+	#main>#chat>.ch_r_line>.ch_r_image>label{width: 80px;height: 80px;display:table-cell;text-align:center;vertical-align:middle;}
+	#main>#chat>.ch_r_line>.ch_r_name{width:200px;height:50px;position: absolute;float:left;display:table;margin-left:130px;margin-top:15px;}
+	#main>#chat>.ch_r_line>.ch_r_name>label{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;text-align: left;color: #000000;display:table-cell;vertical-align:middle;}
+	#main>#chat>.ch_r_line>.r_content{width:530px;height:30px;position: absolute;float:left;display:table;margin-left:130px;margin-top:65px;overflow-x: auto;}
+	#main>#chat>.ch_r_line>.r_content>label{width:530px;height:30px;font-family:'Noto Sans CJK KR';font-size: 20px;font-weight: normal;font-stretch: normal;font-style: normal;text-align: left;color: #rgba(0, 0, 0, 0.7);display:inline-block;overflow-x: auto;}
+	
+	#main>#chat>.ch_l_line{width: 670px;height: 120px;border-bottom: solid 2px #f2f2f2; text-align:right;}
+	#main>#chat>.ch_l_line>.ch_l_image{width:130px;height: 120px;display:table;position: absolute;float:right;margin-left:540px;}
+	#main>#chat>.ch_l_line>.ch_l_image>label{width: 80px;height: 80px;display:table-cell;text-align:center;vertical-align:middle;}
+	#main>#chat>.ch_l_line>.l_content{width:530px;height:30px;position: absolute;float:right;display:table;margin-right:150px;margin-top:45px;overflow-x: auto;}
+	#main>#chat>.ch_l_line>.l_content>label{width:530px;height:30px;font-family:'Noto Sans CJK KR';font-size: 20px;font-weight: normal;font-stretch: normal;font-style: normal;text-align: right;color: #rgba(0, 0, 0, 0.7);display:inline-block;overflow-x: auto;}
+	
+	#main>#input_box{width: 670px;height: 120px;background-color: #cfd9e6;position: absolute;margin-left:40px;}
+	#main>#input_box>#chatting{width: 410px;height: 70px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);border: solid 1px rgba(0, 34, 77, 0.2);background-color: #ffffff;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: normal;font-stretch: normal;font-style: normal;text-align: left;color: rgba(0, 0, 0, 0.4);overflow-x: auto;padding-left:30px;margin-left:40px;margin-top:26px;}
+	#main>#input_box>#btn{width: 135px;height: 70px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45);border: solid 3px #0778ff;background-color: #ffffff;position: absolute;left:505px;top:26px;display:table;}
+	#main>#input_box>#btn>label{font-family:'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal;text-align: center;color: #0778ff;display:table-cell;vertical-align: middle;}
+	
+	#footer{width : 751px;height: 500px;background-color: #ffffff;position: absolute;top : 1334px;}
+</style>
+</head>
+
+<body id="area">
+	<div id = "top"><!--top 화면-->
+		<a href = "메인"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "메뉴"><img src = "image/icn_menu.png" id = "menu"></a>
+	</div>
+	
+	<div id = "main">
+		<div id = "title">
+			<span id = "ti">메시지</span>
+			<span id = "explain"><font style = "font-weight: bold;color: #0778ff;">ChiCha</font>에서 <font style = "font-weight: bold;">전문가들과</font> 소통해보세요.</span>
+			<div id = "commu" onClick = "location.href = '메시지_일반'"><span>목록</span></div>
+		</div> <!--end title-->
+		
+		<div id = "box">
+			<div id = "profile">
+				<span class = "image"><label><img src = "image/picture.png"></label></span>
+				<span class = "the_name"><label>홍길동</label></span>
+				<span class = "field"><label>언어치료</label></span>
+				<span class = "star"><label><img src = "image/별_상세.png"></label></span>		
+			</div><!--end profile-->
+		  <div id = "announce">
+				<div id = "date"><label>10월13일</label></div>
+			<div id = "join"><label><font>홍길동</font> 님이 소통에 참여하셨습니다.</label></div>
+		  </div><!--end announce-->
+		</div> <!--end box-->
+		<div id = "chat">
+			<div class = "ch_r_line">
+				<span class = "ch_r_image"><label><img src = "image/picture.png"></label></span>
+				<span class = "ch_r_name"><label>홍길동</label></span>
+				<span class = "r_content"><label>안녕하세요.</label></span>
+			</div> <!--end ch_r_line-->
+			
+			<div class = "ch_l_line">
+				<span class = "ch_l_image"><label><img src = "image/picture.png"></label></span>
+				<span class = "l_content"><label>안녕하세요.</label></span>
+			</div> <!--end ch_l_line-->
+			
+			<div class = "ch_l_line">
+				<span class = "ch_l_image"><label><img src = "image/picture.png"></label></span>
+				<span class = "l_content"><label>대화내용이 보여집니다.</label></span>
+			</div> <!--end ch_l_line-->
+			
+			<div class = "ch_r_line">
+				<span class = "ch_r_image"><label><img src = "image/picture.png"></label></span>
+				<span class = "ch_r_name"><label>홍길동</label></span>
+				<span class = "r_content"><label>대화내용이 보여집니다.</label></span>
+			</div> <!--end ch_r_line-->	
+			
+		</div><!-- end chat-->
+		
+		<div id = "input_box">
+			<input type = "text" id = "chatting" placeholder = "내용을 입력해주세요.">
+			<span id = "btn"><label>입력</label></span>
+		
+		</div> <!-- end input_box-->
+	</div><!--end main-->
+	<div id = "footer">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+	</div>
+</body>
+</html>
