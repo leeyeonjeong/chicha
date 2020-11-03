@@ -13,7 +13,6 @@ public class ChildService {
     private ChildRepository childRepository;
 
     public Long saveChildMember(ChildMemberDto childMemberDto) {
-
         return childRepository.save(childMemberDto.toEntity()).getId();
     }
 

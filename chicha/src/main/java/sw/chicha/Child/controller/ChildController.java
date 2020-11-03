@@ -37,9 +37,6 @@ public class ChildController {
     public String exce_child_registration(@ModelAttribute ChildMemberDto childmemberDto, Principal principal) {
         String currentName = (String)principal.getName();
         childmemberDto.setMember(memberRepository.findByEmail(currentName).get());
-        MemberDto memberDto = memberService.getMember(childmemberDto.getMember().getId());
-        memberDto.setChild(childmemberDto.toEntity());
-        memberService.saveMember(memberDto);
         childService.saveChildMember(childmemberDto);
         return "redirect:/";
     }

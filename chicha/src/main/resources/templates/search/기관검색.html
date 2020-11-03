@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>기관검색</title>
+<style>
+	#area { width: 751px; height: 2011px;}
+	#top { width: 751px; height: 140px; background-color: #ffffff; display:table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 1371px; background-color: #edfaf8;}
+	#mint{width: 254px; height: 51px;opacity: 0.8;background-color: #00bfbf; position: absolute; left: 40px; top: 277px; display: table;}
+	#search{width: 751px;height: 151px; opacity: 0.5;background-color: #00bfbf;position: absolute; top: 438px;}
+	#detail{width: 751px;height: 1451px;box-shadow: inset 10px 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; top: 589px;}
+	.title{font-family: 'Noto Sans CJK KR';font-size: 30px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.8px;text-align: left;color: #000000;position: absolute; left : 39px;}
+	select{width:201px;height:56px; border-style : none; -webkit-appearance: none;-moz-appearance: none;appearance: none;position: absolute;top:180px;}
+	select::-ms-expand {display: none;}
+	.select_font{font-family: 'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 2.58;letter-spacing: -1.71px;text-align: left;color: #00bfbf;}
+	input[type = checkbox]{display: none;}
+	input[type = checkbox] + label{border-radius: 10px;border: solid 2px #dcdcdc;background-color: #ffffff; height: 47px; padding-top: 22px; font-family: 'Noto Sans CJK KR';font-size: 25px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1;letter-spacing: -1.68px;text-align: center; color : #dcdcdc;}
+	input[type = checkbox]:checked + label{border-color: #00bfbf; color: #00bfbf;}
+#footer{
+    width : 751px;
+    height: 264px;
+    background-color: #ffffff;
+    position: absolute;
+    top : 1275px;
+	}
+</style>
+	
+</head>
+
+<body id="area">
+	<div id = "top" style="display: table;"><!--top 화면-->
+		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
+	</div>
+	<div id = "main">
+		<div> <!--회색박스-->
+			<label style = "height: 47px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 40px; top: 203px">기관검색</label>
+			
+			<div id = "mint"> <!--치료실을 찾으시나요?-->
+				<label style = "font-family:'Noto Sans CJK KR';font-size: 28.5px;font-weight:bold;font-stretch: normal;font-style: normal;line-height: 1.63;letter-spacing: -1.71px;text-align: center;display:table-cell; text-align:center; vertical-align:middle; color:#FFFFFF;">치료실을 찾으시나요?</label>
+				
+			</div>
+			
+			<label style = "font-family: 'Noto Sans CJK KR'; font-size: 28.5px; font-weight: normal; font-stretch: normal; font-style: normals; line-height: 1.63; letter-spacing: -1.71px; text-align: left; display: table-cell; color: #000000; position: absolute; left: 40px; top:338px;"><font style = "font-weight: bold;">어디서 어떻게</font> 치료를 시작할 지 막막하시나요?
+			<br>저희가 <font style = "color: #00bfbf;">적절한 치료실</font>을 찾아드리겠습니다!</label>
+		</div>
+		
+		<div id = "search"> <!-- 검색박스-->
+			<input type = "text" style = "width: 646px;height: 71px;border-radius: 10px;border: solid 1px rgba(0, 0, 0, 0.2); position: absolute; left: 38px; top: 41px; font-family: 'Noto Sans CJK KR';font-size: 22px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: left; color:#000000; padding-left: 25px;" placeholder="어떤 치료실을 찾으시나요?">
+			<button style = "width: 43px; height: 42px; background-image: url('image/검색아이콘.png'); position: absolute; left: 639px; top: 57px; border: none;outline: none; background-color: #FFFFFF; outline: none;"></button>
+		</div>
+		
+		<div id = "detail">
+			<label style = "height: 30px; font-family: 'Noto Sans CJK KR';font-stretch: normal;font-size: 32px;font-weight: bold;font-style: normal;line-height: normal;letter-spacing: -1.92px;text-align: left;color: #00bfbf;;position: absolute; left: 37px; top:25px;">상세검색</label>
+			
+			<button style = "width: 180px;height: 63px;border-radius: 10px;box-shadow: 0 0 9.5px 0.5px rgba(0, 191, 191, 0.45);border: solid 3px #00bfbf;; background-color: #ffffff; position: absolute; left: 532px; top:18px; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align:center;color: #00bfbf;outline: none;">입력초기화</button>
+			
+			<hr style = "width: 741px;height: 7px;background-color: #00bfbf; border: none; position: absolute; left: auto; top:93px; ">
+			
+			<div> <!--지역-->
+				<label class = "title" style = "top:135px;">지역</label>
+				
+				<div class = "option"><!--시도-->
+					<select name = "sido" class = "select_font" style = "left: 44px; background: url('image/선택화살표_pu.png') no-repeat 95% 65%;">
+						<option value = "">시 ･ 도</option>
+					</select>
+					<hr style = "width: 201px;height: 3px;background-color: #00bfbf;; position: absolute; left: 40px; top:236px; border:none;">
+				</div>
+				
+				<div class = "option"><!--시구군-->
+					<select name = "sigugun" class = "select_font" style = "left: 277px; background: url('image/선택화살표.png') no-repeat 95% 65%; color: rgba(0, 0, 0, 0.4);">
+						<option value = "" >시 ･ 구 ･ 군</option>
+					</select>
+					<hr style = "width: 201px;height: 3px;background-color: #f2f2f2; border:none; position: absolute; left: 273px; top:236px;">
+				</div>
+				
+				<hr style = "width: 749px;height: 3px;background-color: #f2f2f2; border:none; position: absolute; top:278px;">
+			</div>
+			
+			<div> <!--치료명-->
+				<label class = "title" style = "top:321px;">치료명</label>
+				<div id = "name">
+					<input type = "checkbox" id = "1" name = "treatment_name"><label for = "1" style = "width: 217px;position: absolute; left:38px; top:381px;">언어치료</label>
+					<input type = "checkbox" id = "2" name = "treatment_name"><label for = "2" style = "width: 217px;position: absolute; left:267px; top:381px;">놀이치료</label>
+					<input type = "checkbox" id = "3" name = "treatment_name"><label for = "3" style = "width: 217px;position: absolute; left:494px; top:381px;">심리치료</label>
+					<input type = "checkbox" id = "4" name = "treatment_name"><label for = "4" style = "width: 217px;position: absolute; left:38px; top:465px;">학습치료</label>
+					<input type = "checkbox" id = "5" name = "treatment_name"><label for = "5" style = "width: 217px;position: absolute; left:267px; top:465px;">인지치료</label>
+					<input type = "checkbox" id = "6" name = "treatment_name"><label for = "6" style = "width: 217px;position: absolute; left:494px; top:465px;">그룹치료</label>
+					<input type = "checkbox" id = "7" name = "treatment_name"><label for = "7" style = "width: 217px;position: absolute; left:38px; top:550px;">감각통합치료</label>
+					<input type = "checkbox" id = "8" name = "treatment_name"><label for = "8" style = "width: 217px;position: absolute; left:267px; top:550px;">사회성치료</label>
+				</div>	
+				<hr style = "width: 749px;height: 3px;background-color: #f2f2f2; border:none; position: absolute; top:657px;">
+			</div>
+			
+			<div> <!--지원 서비스-->
+				<label class = "title" style = "top:703px;">지원 서비스</label>
+				<div id = "service">
+					<input type = "checkbox" id = "s1" name = "support_service"><label for = "s1" style = "width: 328px;position: absolute; left:38px; top:765px;">발달재활서비스</label>
+					<input type = "checkbox" id = "s2" name = "support_service"><label for = "s2" style = "width: 328px;position: absolute; left:381px; top:765px;">심리지원서비스</label>
+					<input type = "checkbox" id = "s3" name = "support_service"><label for = "s3" style = "width: 328px;position: absolute; left:38px; top:849px;">교육청지원서비스</label>
+					<input type = "checkbox" id = "s4" name = "support_service"><label for = "s4" style = "width: 328px;position: absolute; left:381px; top:849px;">지역사회서비스</label>
+					<input type = "checkbox" id = "s5" name = "support_service"><label for = "s5" style = "width: 328px;position: absolute; left:38px; top:933px;">언어발달지원</label>
+				</div>	
+				<hr style = "width: 749px;height: 3px;background-color: #f2f2f2; border:none; position: absolute; top:1041px;">
+			</div>
+			
+			<a href= "기관검색_목록.html"><button style = "width: 668px; height: 70px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(0, 191, 191, 0.45);background-color: #00bfbf; font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #ffffff;position: absolute;left : 40px; top:1079px; border:none; outline: none;">결과보기</button></a>
+			
+			<div id = "footer">
+				<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 35px;"> 
+				<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 144px;">
+				<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 151px;"></a>
+				<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 191px;">이메일무단수집 거부</span>
+				<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 188px;">개인정보처리방침</span>
+		`	</div>
+		</div>	
+	</div>
+</body>
+</html>
