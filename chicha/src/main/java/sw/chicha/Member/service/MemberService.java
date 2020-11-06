@@ -34,10 +34,16 @@ public class MemberService implements UserDetailsService {
     private MemberRepository memberRepository;
     private TherapistRepository therapistRepository;
 
-    // 일반 회원가입
+    // 일반 저장
     public Long saveMember(MemberDto memberDto) {
         return memberRepository.save(memberDto.toEntity()).getId();
     }
+
+    // 치료사 저장
+    public Long saveTherapist(TherapistDto therapistDto) {
+        return therapistRepository.save(therapistDto.toEntity()).getId();
+    }
+
 
     // 일반 회원가입
     public Long joinMember(MemberDto memberDto) {
@@ -91,8 +97,6 @@ public class MemberService implements UserDetailsService {
             // Detail에서 새로운 객체 반환
             return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
         }
-
-
     }
 
     // 일반 멤버 반환
@@ -115,6 +119,26 @@ public class MemberService implements UserDetailsService {
             return memberDto;
         } else {
             return MemberDto.builder().build();
+        }
+    }
+
+    // 치료사 반환
+    public TherapistDto getTherapist(Long id) {
+        Optional<Therapist> therapistWrapper = therapistRepository.findById(id);
+        if (therapistWrapper.isPresent()) {
+            Therapist therapist = therapistWrapper.get();
+
+            TherapistDto therapistDto = TherapistDto.builder()
+                    .id(therapist.getId())
+                    .name(therapist.getName())
+                    .email(therapist.getEmail())
+                    .password(therapist.getPassword())
+                    .phoneNumber(therapist.getPhoneNumber())
+                    .build();
+
+            return therapistDto;
+        } else {
+            return TherapistDto.builder().build();
         }
     }
 
