@@ -3,6 +3,55 @@
 <head>
 <meta charset="utf-8">
 <title>계정관리</title>
+	<!-- 주소 API -->
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+	<script type="text/javascript">
+		// 주소
+		function execPostCode() {
+			new daum.Postcode({
+				oncomplete: function(data) {
+					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+					// 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+					// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+					var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+					var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+					// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+					// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+					if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+						extraRoadAddr += data.bname;
+					}
+					// 건물명이 있고, 공동주택일 경우 추가한다.
+					if(data.buildingName !== '' && data.apartment === 'Y'){
+						extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+					}
+					// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+					if(extraRoadAddr !== ''){
+						extraRoadAddr = ' (' + extraRoadAddr + ')';
+					}
+					// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+					if(fullRoadAddr !== ''){
+						fullRoadAddr += extraRoadAddr;
+					}
+
+					// 우편번호와 주소 정보를 해당 필드에 넣는다.
+					console.log(data.zonecode);
+					console.log(fullRoadAddr);
+
+
+					$("[name=zipcode]").val(data.zonecode);
+					$("[name=firstAddr]").val(fullRoadAddr);
+
+					/* document.getElementById('signUpUserPostNo').value = data.zonecode; //5자리 새우편번호 사용
+					document.getElementById('signUpUserCompanyAddress').value = fullRoadAddr;
+					document.getElementById('signUpUserCompanyAddressDetail').value = data.jibunAddress; */
+				}
+			}).open();
+		}
+
+	</script>
 <style>
 	#area{width: 751px; height: 2011px;}
 	#top{width: 751px; height: 140px;display:table;}
@@ -49,7 +98,7 @@
 		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
 		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
-	<form th:action="@{'/account_management_update_member' + ${memberDto.id}}" method="post">
+	<form th:action="@{'/account_management_update_member/' + ${memberDto.id}}" method="post">
 	<div id = "main">
 		<div id = "title"><label>계정관리</label></div>
 		
@@ -57,6 +106,10 @@
 		
 		<div id = "box">
 			<div id = "input_box">
+				<input type="hidden" name="_method" value="put"/>
+				<input type="hidden" name="id" th:value="${memberDto.id}"/>
+				<input type="hidden" name="password" th:value="${memberDto.password}"/>
+
 				<div class = "id_line" style = "margin-top:36px;">
 					<div class = "left"><label>이름</label></div>
 					<div class = "right" style = "padding-left: 20px;padding-top:18px;"><label th:text="${memberDto.name}"></label></div>
@@ -64,12 +117,12 @@
 				
 				<div class = "id_line">
 					<div class = "left"><label>아이디</label></div>
-					<div class = "right" ><input th:text="${memberDto.email}" name="email" id="email" type = "text" class = "input"></div>
+					<div class = "right" ><input th:value="${memberDto.email}" name="email" id="email" type = "text" class = "input"></div>
 				</div><!--end id_line-->
 				
 				<div class = "id_line">
 					<div class = "left"><label>휴대폰</label></div>
-					<div class = "right"><input th:text="${memberDto.phoneNumber}" name="phoneNumber" id="phoneNumber" type = "text" class = "input" style = "width:268px; margin-right:10px;"><div class = "btn"><label>인증요청</label></div></div>
+					<div class = "right"><input th:value="${memberDto.phoneNumber}" name="phoneNumber" id="phoneNumber" type = "text" class = "input" style = "width:268px; margin-right:10px;"><div class = "btn"><label>인증요청</label></div></div>
 				</div><!--end id_line-->
 
 					<div class = "right" style="height: 114px;">
@@ -92,17 +145,17 @@
 				<div class = "id_line" style = "height: 225px;">
 					<div class = "left" style = "height: 225px;"><label >주소</label></div>
 					<div class = "right" style = "height: 225px;">
-						<input th:text="${memberDto.zipcode}" name="zipcode" id="zipcode" type = "text" class = "input" placeholder="00000" style = "width:268px; margin-right:10px;">
-						<div class = "btn"><label>우편번호</label></div>
-						<input th:text="${memberDto.firstAddr}" name="firstAddr" id="firstAddr" type = "text" class = "input" style = "margin-top:10px;">
-						<input th:text="${memberDto.secondAddr}" name="secondAddr" id="secondAddr" type = "text" class = "input" style = "margin-top:10px;">
+						<input th:value="${memberDto.zipcode}" name="zipcode" id="zipcode" type = "text" class = "input" placeholder="00000" style = "width:268px; margin-right:10px;">
+						<div class = "btn" onclick="execPostCode()"><label>우편번호</label></div>
+						<input th:value="${memberDto.firstAddr}" name="firstAddr" id="firstAddr" type = "text" class = "input" style = "margin-top:10px;">
+						<input th:value="${memberDto.secondAddr}" name="secondAddr" id="secondAddr" type = "text" class = "input" style = "margin-top:10px;">
 					</div>
 				</div><!--end id_line-->
 
 			</div> <!--end input_box-->
 		</div> <!--end box-->
 		
-		<div class = "butto" style = "top:1220px;"><button type="submit" style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0262d6;" onClick="popup()">완료</button></div>
+		<div class = "butto" style = "top:1220px;"><button type="submit" style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0262d6;">완료</button></div>
 		
 		<div class = "butto" style = "top:1320px;"><button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);;background-color: #595959;" onClick = "location.href = 'account_management_detail_member'">취소</button></div>
 	</div><!--end main-->
