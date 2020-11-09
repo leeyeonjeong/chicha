@@ -37,7 +37,7 @@
 </style>
 <script>
 	function popup(){
-		var popUrl = "메시지_소통하기_팝업.html";
+		var popUrl = "message_communication";
 		var popOption = "width=670px, height=524px, resizable=no, scrollbars=no, status=no;"; 
 		window.open(popUrl,"",popOption);
 	}
@@ -46,8 +46,8 @@
 
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
 	<div id = "main">
@@ -59,8 +59,8 @@
 		
 		<div id = "tap">
 			<span class = "tap_name" style = "left:98px;"><label onClick="location.href = '메시지_일반.html'">전체</label></span>
-			<span class = "tap_name" style = "left:305px; border-bottom-color:#0062d9;"><label  style = "color:#0062d9;" onClick="location.href = '메시지_읽지않음.html'">안읽음</label></span>
-			<span class = "tap_name" style = "left:512px;"><label onClick="location.href = '메시지_보관.html'">보관</label></span>
+			<span class = "tap_name" style = "left:305px; border-bottom-color:#0062d9;"><label  style = "color:#0062d9;" onClick="location.href = 'message_noread'">안읽음</label></span>
+			<span class = "tap_name" style = "left:512px;"><label onClick="location.href = 'message_storage'">보관</label></span>
 		</div> <!--end tap-->
 		
 		<div id = "content">
