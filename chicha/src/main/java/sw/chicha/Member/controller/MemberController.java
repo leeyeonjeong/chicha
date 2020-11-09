@@ -27,13 +27,13 @@ public class MemberController {
     // 회원가입 선택
     @GetMapping("join_select")
     public String join_select() {
-        return "/join/회원가입선택";
+        return "join/회원가입선택";
     }
 
      // 회원가입 페이지 (일반)
     @GetMapping("join_general")
     public String dis_join_general() {
-        return "/join/회원가입_일반";
+        return "join/회원가입_일반";
     }
 
     // 회원가입 처리 (일반)
@@ -49,7 +49,7 @@ public class MemberController {
                 model.addAttribute(key, validatorResult.get(key));
             }
 
-            return "/join/회원가입_일반";
+            return "redirect:/";
         }
 
         memberService.joinMember(memberDto);
@@ -59,13 +59,13 @@ public class MemberController {
     // 회원가입 완료 (일반)
     @GetMapping("join_success_general")
     public String join_success_general() {
-        return "/join/회원가입완료_일반";
+        return "join/회원가입완료_일반";
     }
 
     // 회원가입 페이지 (치료사)
     @GetMapping("join_therapist")
     public String dis_join_therapist() {
-        return "/join/회원가입_치료사";
+        return "join/회원가입_치료사";
     }
 
     // 회원가입 처리 (치료사)
@@ -78,13 +78,13 @@ public class MemberController {
     // 회원가입 완료 (치료사)
     @GetMapping("join_success_therapist")
     public String join_success_therapist() {
-        return "/join/회원가입완료_치료사";
+        return "join/회원가입완료_치료사";
     }
 
     // 아이등록
     @GetMapping("join_child")
     public String join_child() {
-        return "/join/회원가입_아이등록";
+        return "join/회원가입_아이등록";
     }
 
     // SMS 인증
@@ -118,7 +118,7 @@ public class MemberController {
     // 로그인 페이지
     @GetMapping("login")
     public String login() {
-        return "/login/로그인";
+        return "login/로그인";
     }
 
     // 로그아웃 페이지

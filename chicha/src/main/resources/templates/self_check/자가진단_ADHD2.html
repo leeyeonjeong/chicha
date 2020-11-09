@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>ADHD자가진단</title>
+<title>자가진단</title>
 	<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
@@ -43,33 +43,55 @@
 		})
 	</script>
 <style>
-	#area { width: 751px; height: 2011px;}
+	#area { width: 751px; height: 2863px;}
 	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
-	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #edfaf8;}
-	#expl{width: 523px;height: 69px;font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left; position: absolute; left: 40px; top: 290px;}
-	#select_box{width: 751px;height: 1572px;box-shadow: inset 0 10px 10px -10px rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; top: 433px;}
-	#explain{width: 523px;height: 94px;font-family: 'Noto Sans CJK KR';font-size: 17px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.79;letter-spacing: -1.16px;text-align: left;color: #777777; position: absolute; left: 40px; top: 70px;}
-	#total{width: 90px;height: 18px;font-family: 'Noto Sans CJK KR';font-size: 17px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.02px;text-align: left;color: #000000;position: absolute; left: 40px; top: 217px;}
-	#insert{width: 671px;height: 1050px;position: absolute;left: 40px;top: 253px;}
-	.question{width: 671px;background-color: #e6e6e6; border:none; border-top:solid 1px #3c3c3c;font-family: 'Noto Sans CJK KR';font-size: 20px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.2px;text-align: center;color: #000000; padding-top:19px;}
-	.select{width: 671px;height: 115px;background-color: #ffffff; border:none; border-bottom:solid 1px #e6e6e6;}
-	input[type = radio]{display: none;}
-	input[type = radio] + label{display: inline-block;cursor: pointer; width:44px;height:44px;background: url('image/자가진단체크_off.png') no-repeat;}
-	input[type = radio]:checked + label{background: url("image/자가진단체크_on.png") no-repeat;;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 2563px; background-color: #ffffff;}	
+	#topdiv{width: 751px; height : 301px; background-color: #eef3f6;}
 	
-	.font{font-family: 'Noto Sans CJK KR'; font-size: 16px; font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.25;letter-spacing: -0.96px;text-align: center;color:rgba(0, 0, 0, 0.6);position:absolute;}
-	#next{width: 315px;height: 50px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(0, 191, 191, 0.45);border: solid 3px #00bfbf;background-color: #ffffff;outline: none; position:absolute; left:355px; top:985px;}
-	#back{width: 315px;height: 50px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(0, 191, 191, 0.45);border: solid 3px #00bfbf;background-color: #ffffff;outline: none; position:absolute; right:355px; top:985px;}
-	#footer{
-    width : 751px;
-    height: 250px;
-    background-color: #ffffff;
-    position: absolute;
-    top : 1861px;
-	}
-</style>
+	
+	#titlediv{width: 751px; height: 60px; position: absolute; text-align: left; margin-top: 50px;}
+	#titlediv>label{font-family: 'Noto Sans CJK KR'; font-size: 50px; font-weight: bold; font-stretch: normal; font-style: normal; margin-left: 40px; display: inline-block;}
+	
+	#contentdiv{width: 751px; height: 120px; position: absolute; text-align: left; margin-top: 144px;}
+	#contentdiv>#content{width: 600px; height: 120px; margin-left: 40px; display: inline-block;}
+	#contentdiv>#content>label{font-family: 'Noto Sans CJK KR'; font-size: 28.5px; font-weight: 300; font-stretch: normal; font-style: normal;}
+	#contentdiv>#content>label>font{font-weight: bold;}
+	
+	#boxdiv{width: 751px; height: 1921px;  text-align: center;}
+	#boxdiv>#hrdiv{width: 751px; height: 6px; position: absolute; text-align: left; margin-top: 41px;}
+	#boxdiv>#hrdiv>hr{width: 61px; height: 6px; border:none; background-color: #000000; display: inline-block; margin-left: 39px;}
+	#boxdiv>#selfdiv{width: 751px; height: 150px; position: absolute; text-align: left; margin-top: 78px;}
+	#boxdiv>#selfdiv>#self{width: 650px; height: 150px; display: inline-block; margin-left: 39px;}
+	#boxdiv>#selfdiv>#self>label{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: 300; font-stretch: normal; font-style: normal;}
+    #boxdiv>#selfdiv>#self>label>font{font-size: 20px;color: #777777;}
+	#boxdiv>#totaldiv{width: 751px; height: 40px; position: absolute; text-align: left; margin-top: 238px;}
+	#boxdiv>#totaldiv>#total{width: 150px; height: 40px; display: inline-block; margin-left: 39px;}
+	#boxdiv>#totaldiv>#total>label{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: 900; font-stretch: normal; font-style: normal;}
+	#boxdiv>#totaldiv>#total>label>font{color: #00bfbf;}
+	
+	#boxdiv>.listboxdiv{width: 751px; height: 287px; position: absolute; text-align: center;}
+	#boxdiv>.listboxdiv>.listbox{width: 670px; height: 287px; display: inline-block;}
+	#boxdiv>.listboxdiv>.listbox>.toplist{width: 670px; height: 118px; background-color: #e6e6e6; border-top: solid 4px #3c3c3c; text-align: center;}
+	#boxdiv>.listboxdiv>.listbox>.toplist>.labeldiv{width: 600px; height: 40px; display: inline-block; margin-top:18px;}
+	#boxdiv>.listboxdiv>.listbox>.toplist>.labeldiv>label{font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal;}
+	
+	#boxdiv>.listboxdiv>.listbox>.contentlist{width: 670px; height: 167px; background-color: #ffffff; border-bottom: solid 2px #dcdcdc; text-align: center;}
+	#boxdiv>.listboxdiv>.listbox>.contentlist>.checkdiv{width:550px; height: 167px; display: inline-block; text-align: left;}
+	#boxdiv>.listboxdiv>.listbox>.contentlist>.checkdiv>.check{width:120px; height: 167px; display: inline-block; float:left; text-align: center;}
+	#boxdiv>.listboxdiv>.listbox>.contentlist>.checkdiv>.check>input{display: none;}
+	#boxdiv>.listboxdiv>.listbox>.contentlist>.checkdiv>.check>input + label{display: inline-block; cursor: pointer; width:44px;height:44px; background: url('image/자가진단체크_off.png') no-repeat; margin-top:20px;}
+	#boxdiv>.listboxdiv>.listbox>.contentlist>.checkdiv>.check>input:checked + label{background: url("image/자가진단체크_on.png") no-repeat;}
+	#boxdiv>.listboxdiv>.listbox>.contentlist>.checkdiv>.check>.check_label{width:120px;height: 55px; margin-top:15px;}
+	#boxdiv>.listboxdiv>.listbox>.contentlist>.checkdiv>.check>.check_label>label{font-family: 'Noto Sans CJK KR'; font-size: 22px; font-weight: 500;font-stretch: normal;font-style: normal;color:rgba(0, 0, 0, 0.6);}
+	
+	#boxdiv>#buttondiv{width: 751px; height: 70px; position: absolute; text-align: left; margin-top: 1838px;}
+	#boxdiv>#buttondiv>button{width: 320px; height: 70px; border-radius: 10px; box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45); border: solid 3px #00bfbf; background-color: #ffffff; font-family: 'Noto Sans CJK KR'; font-size: 26px; font-weight: bold;font-stretch: normal;font-style: normal;color:#00bfbf; outline: none;}
+	
+	#footer{width : 751px;height: 500px;position: absolute; top : 2563px;}
+	
+=</style>
 </head>
 
 <body id="area">
@@ -79,128 +101,213 @@
 	</div>
 	
 	<div id = "main">
+		<div id = "topdiv">
+			<div id=  "titlediv"><label>자가진단</label></div>
 		
-		<div> <!-- 회색 박스-->
-			<label style = "height: 47px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 39px; top: 203px;">자가 진단</label>
-			
-			<div id = "expl">
-				우리 아이가 혹시 <font style = "font-weight: 900; color: #0778ff;">ADHD</font>?
-				<br>
-				간편하게 확인해보고 <font style = "font-weight: 900;">알맞은 기관</font>을 추천받으세요!
-			</div>
-		</div>
+			<div id = "contentdiv">
+				<div id = "content">
+					<label>우리 아이가 혹시 <font style = "color: #0778ff;">ADHD?</font><br>간편하게 확인해보고 <font>알맞은 기관</font>을 추천받으세요!
+					</label>
+				</div>
+			</div> <!--end contentdiv-->
+		</div> <!--end topdiv-->
 		
-		<div id = "select_box"> <!--하얀 박스-->
-			<hr style = "width: 61px;height: 6px;border: none;background-color: #000000;position: absolute; left: 40px; top: 35px;">
-			
-			<div id = "explain">
-				<font style = "font-size: 21px; letter-spacing: -1.36px; color: #000000;">항목을 읽어보고 알맞게 선택해주세요.</font>
-				<br>
-				**자가진단은 개인적으로 참고할 수 있는 자료로
-				<br>
-				이 결과가 효력을 발휘하지 않습니다.
-				<br>
-				원하시는 경우 전문 기관에 방문하여 정확한 평가를 받아보시길 바랍니다.  
+		<div id = "boxdiv">
+			<div id = "hrdiv"><hr></div>
+			<div id = "selfdiv"><div id = "self"><label>항목을 읽어보고 알맞게 선택해주세요.<br><font>
+				**자가진단은 개인적으로 참고할 수 있는 자료로 <br>
+				이 결과가 효력을 발휘하지 않습니다.<br>
+				원하시는 경우 전문 기관에 방문하여 정확한 평가를 받아보시길 바랍니다.</font></label></div>
 			</div>
 			
-			<font id = "total">총 <font style = "color: #00bfbf;">2</font> / 18 개</font> 
-			
-			<div id = "insert"> <!--항목 선택-->
-				<div id = "one"> <!--1번 질문-->
-					<div class = "question" style = "height: 57px;">
-						상황에 맞지 않게 과도하게 뛰어다니거나 기어오른다.
-					</div>
-					<div class = "select">
-						<input value="0" type = "radio" id = "1_never" name = "one"><label for= "1_never" style =  "position: absolute;left:98.9px; top:88px;"></label>
-						<font class = "font" style = "left:84px; top:140px;">전혀<br>그렇지 않다</font>
-						
-						<input value="1" type = "radio" id = "1_not" name = "one"><label for= "1_not" style =  "position: absolute;left:241.7px; top:88px;"></label>
-						<font class = "font" style = "left:226.9px; top:140px;">약간<br>그렇지 않다</font>
-						
-						<input value="2" type = "radio" id = "1_little" name = "one"><label for= "1_little" style =  "position: absolute;left:384.6px; top:88px;"></label>
-						<font class = "font" style = "left:386px; top:140px;">약간<br>그렇다</font>
-						
-						<input value="3" type = "radio" id = "1_very" name = "one"><label for= "1_very" style =  "position: absolute;left:527.5px; top:88px;"></label>
-						<font class = "font" style = "left:528px; top:140px;">매우<br>그렇다</font>
-					</div>
-				</div>
-				
-				<div id = "two"> <!--2번 질문-->
-					<div class = "question" style = "height: 57px;">
-						지시에 따라서 학업이나 집안일이나 자신이 해야할 일을 끝마치지 못한다.
-					</div>
-					<div class = "select" style = "top: 57px;">
-						<input value="0" type = "radio" id = "2_never" name = "two"><label for= "2_never" style = "position: absolute;left:98.9px; top:280px;"></label>
-						<font class = "font" style = "left:84px; top:332px;">전혀<br>그렇지 않다</font>
-						<input value="1" type = "radio" id = "2_not" name = "two"><label for= "2_not"  style =  "position: absolute;left:241.7px;top:280px;"></label>
-						<font class = "font" style = "left:226.9px; top:332px;">약간<br>그렇지 않다</font>
-						<input value="2" type = "radio" id = "2_little" name = "two"><label for= "2_little"   style =  "position: absolute;left:384.6px;top:280px;"></label>
-						<font class = "font" style = "left:386px; top:332px;">약간<br>그렇다</font>
-						<input value="3" type = "radio" id = "2_very" name = "two"><label for= "2_very"  style =  "position: absolute;left:527.5px;top:280px;"></label>
-						<font class = "font" style = "left: 528px; top:332px;">매우<br>그렇다</font>
-					</div>
-				</div>
-				
-				<div id = "three"> <!--3번 질문-->
-					<div class = "question" style = "height: 57px;">
-						조용히 하는 놀이나 오락 활동에 참여하는데 어려움이 있다.
-					</div>
-					<div class = "select" style = "top: 57px;">
-						<input value="0" type = "radio" id = "3_never" name = "three"><label for= "3_never" style = "position: absolute;left:98.9px; top:472px;"></label>
-						<font class = "font" style = "left:84px; top:524px;">전혀<br>그렇지 않다</font>
-						<input value="1" type = "radio" id = "3_not" name = "three"><label for= "3_not"  style =  "position: absolute;left:241.7px;top:472px;"></label>
-						<font class = "font" style = "left:226.9px; top:524px;">약간<br>그렇지 않다</font>
-						<input value="2" type = "radio" id = "3_little" name = "three"><label for= "3_little" style =  "position: absolute;left:384.6px;top:472px;"></label>
-						<font class = "font" style = "left:386px; top:524px;">약간<br>그렇다</font>
-						<input value="3" type = "radio" id = "3_very" name = "three"><label for= "3_very"  style =  "position: absolute;left:527.5px;top:472px;"></label>
-						<font class = "font" style = "left: 528px; top:524px;">매우<br>그렇다</font>
-					</div>
-				</div>
-				
-				<div id = "four"> <!--4번 질문-->
-					<div class = "question" style = "height: 57px;">
-						과제나 활동을 체계적으로 하는데 어려움이 있다.
-					</div>
-					<div class = "select" style = "top: 57px;">
-						<input value="0" type = "radio" id = "4_never" name = "four"><label for= "4_never" style = "position: absolute;left:98.9px; top:664px;"></label>
-						<font class = "font" style = "left:84px; top:716px;">전혀<br>그렇지 않다</font>
-						<input value="1" type = "radio" id = "4_not" name = "four"><label for= "4_not" style =  "position: absolute;left:241.7px;top:664px;"></label>
-						<font class = "font" style = "left:226.9px; top:716px;">약간<br>그렇지 않다</font>
-						<input value="2" type = "radio" id = "4_little" name = "four"><label for= "4_little" style =  "position: absolute;left:384.6px;top:664px;"></label>
-						<font class = "font" style = "left:386px; top:716px;">약간<br>그렇다</font>
-						<input value="3" type = "radio" id = "4_very" name = "four"><label for= "4_very" style =  "position: absolute;left:527.5px;top:664px;"></label>
-						<font class = "font" style = "left: 528px; top:716px;">매우<br>그렇다</font>
-					</div>
-				</div>
-				<div id = "five"> <!--5번 질문-->
-					<div class = "question" style = "height: 57px;">
-						항상 끊임없이 움직이거나 마치 모터가 달려서 움직이는 것처럼 행동한다.
-					</div>
-					<div class = "select" style = "top: 57px;">
-						<input value="0" type = "radio" id = "5_never" name = "five"><label for= "5_never" style = "position: absolute;left:98.9px; top:856px;"></label>
-						<font class = "font" style = "left:84px; top:908px;">전혀<br>그렇지 않다</font>
-						<input value="1" type = "radio" id = "5_not" name = "five"><label for= "5_not"  style =  "position: absolute;left:241.7px;top:856px;"></label>
-						<font class = "font" style = "left:226.9px; top:908px;">약간<br>그렇지 않다</font>
-						<input value="2" type = "radio" id = "5_little" name = "five"><label for= "5_little"  style =  "position: absolute;left:384.6px;top:856px;"></label>
-						<font class = "font" style = "left:386px; top:908px;">약간<br>그렇다</font>
-						<input value="3" type = "radio" id = "5_very" name = "five"><label for= "5_very"  style =  "position: absolute;left:527.5px;top:856px;"></label>
-						<font class = "font" style = "left: 528px; top:908px;">매우<br>그렇다</font>
-					</div>
-				</div>
-				
-				<a href ="/self_check_ADHD1"><button id = "back"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #00bfbf;">이전</font></button></a>
-				<a href ="/self_check_ADHD3"><button id = "next"><font style = " width: 31px;height: 18px;font-family:'Noto Sans CJK KR';font-size: 18.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.11px;text-align: left;color: #00bfbf;">다음</font></button></a>
+			<div id = "totaldiv">
+				<div id = "total"><label>총 <font>2</font> / 18 개</label></div>
 			</div>
-		</div>
-	</div>
+			
+			<div class = "listboxdiv" style = "margin-top: 284px;">
+				<div class = "listbox">
+					<div class = "toplist">
+						<div class = "labeldiv"><label>상황에 맞지 않게 과도하게 뛰어다니거나<br>기어오른다.</label></div>
+					</div> <!--end toplist-->
+					
+					<div class = "contentlist" >
+						<div class = "checkdiv">
+							<div class = "check" style = "margin-right:20px;">
+								<input value="0" type = "radio" id = "1_never" name = "one"><label for= "1_never"></label>
+								<div class = "check_label"><label>전혀<br>그렇지 않다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="1" type = "radio" id = "1_not" name = "one"><label for= "1_not"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="2" type = "radio" id = "1_little" name = "one"><label for= "1_little"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" >
+								<input value="3" type = "radio" id = "1_very" name = "one"><label for= "1_very"></label>
+								<div class = "check_label"><label>매우<br>그렇다</label></div>
+							</div>
+						</div>
+					
+					</div> <!--end contentlist-->
+				
+				</div>
+			</div> <!--end listboxdiv-->
+			
+			<div class = "listboxdiv" style = "margin-top: 592px;">
+				<div class = "listbox">
+					<div class = "toplist">
+						<div class = "labeldiv"><label>지시에 따라서 학업이나 집안일이나 자신이<br>해야 할 일을 끝마치지 못한다. </label></div>
+					</div> <!--end toplist-->
+					
+					<div class = "contentlist" >
+						<div class = "checkdiv">
+							<div class = "check" style = "margin-right:20px;">
+								<input value="0" type = "radio" id = "2_never" name = "two"><label for= "2_never"></label>
+								<div class = "check_label"><label>전혀<br>그렇지 않다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="1" type = "radio" id = "2_not" name = "two"><label for= "2_not"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="2" type = "radio" id = "2_little" name = "two"><label for= "2_little"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" >
+								<input value="3" type = "radio" id = "2_very" name = "two"><label for= "2_very"></label>
+								<div class = "check_label"><label>매우<br>그렇다</label></div>
+							</div>
+						</div>
+					
+					</div> <!--end contentlist-->
+				
+				</div>
+			</div> <!--end listboxdiv-->
+			
+			<div class = "listboxdiv" style = "margin-top: 901px;">
+				<div class = "listbox">
+					<div class = "toplist">
+						<div class = "labeldiv"><label>조용히 하는 놀이나 오락 활동에 참여하는데<br>어려움이 있다.</label></div>
+					</div> <!--end toplist-->
+					
+					<div class = "contentlist" >
+						<div class = "checkdiv">
+							<div class = "check" style = "margin-right:20px;">
+								<input value="0" type = "radio" id = "3_never" name = "three"><label for= "3_never"></label>
+								<div class = "check_label"><label>전혀<br>그렇지 않다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="1" type = "radio" id = "3_not" name = "three"><label for= "3_not"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="2" type = "radio" id = "3_little" name = "three"><label for= "3_little"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" >
+								<input value="3" type = "radio" id = "3_very" name = "three"><label for= "3_very"></label>
+								<div class = "check_label"><label>매우<br>그렇다</label></div>
+							</div>
+						</div>
+					
+					</div> <!--end contentlist-->
+				
+				</div>
+			</div> <!--end listboxdiv-->
+			
+			<div class = "listboxdiv" style = "margin-top: 1208px;">
+				<div class = "listbox">
+					<div class = "toplist">
+						<div class = "labeldiv"  style = "margin-top:35px;"><label>과제나 활동을 체계적으로 하는데 어려움이 있다. </label></div>
+					</div> <!--end toplist-->
+					
+					<div class = "contentlist" >
+						<div class = "checkdiv">
+							<div class = "check" style = "margin-right:20px;">
+								<input value="0" type = "radio" id = "4_never" name = "four"><label for= "4_never"></label>
+								<div class = "check_label"><label>전혀<br>그렇지 않다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="1" type = "radio" id = "4_not" name = "four"><label for= "4_not"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="2" type = "radio" id = "4_little" name = "four"><label for= "4_little"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" >
+								<input value="3" type = "radio" id = "4_very" name = "four"><label for= "4_very"></label>
+								<div class = "check_label"><label>매우<br>그렇다</label></div>
+							</div>
+						</div>
+					
+					</div> <!--end contentlist-->
+				
+				</div>
+			</div> <!--end listboxdiv-->
+			
+			<div class = "listboxdiv" style = "margin-top: 1508px;">
+				<div class = "listbox">
+					<div class = "toplist">
+						<div class = "labeldiv"><label>항상 끊임없이 움직이거나<br>마치 모터가 달려서 움직이는 것처럼 행동한다. </label></div>
+					</div> <!--end toplist-->
+					
+					<div class = "contentlist" >
+						<div class = "checkdiv">
+							<div class = "check" style = "margin-right:20px;">
+								<input value="0" type = "radio" id = "5_never" name = "five"><label for= "5_never"></label>
+								<div class = "check_label"><label>전혀<br>그렇지 않다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="1" type = "radio" id = "5_not" name = "five"><label for= "5_not"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" style = "margin-right:20px;">
+								<input value="2" type = "radio" id = "5_little" name = "five"><label for= "5_little"></label>
+								<div class = "check_label"><label>약간<br>그렇다</label></div>
+							</div>
+							
+							<div class = "check" >
+								<input value="3" type = "radio" id = "5_very" name = "five"><label for= "5_very"></label>
+								<div class = "check_label"><label>매우<br>그렇다</label></div>
+							</div>
+						</div>
+					
+					</div> <!--end contentlist-->
+				
+				</div>
+			</div> <!--end listboxdiv-->
+			
+			<div id = "buttondiv">
+				<button style = "margin-left:40px;" onClick = "location.href = 'self_check_ADHD1'">이전</button>
+				<button type="submit" id="next" name="next" style = "margin-left:30px;" onClick = "location.href = 'self_check_ADHD3'">다음</button>
+			</div>
+		</div> <!--end boxdiv-->
+		
+	</div> <!--end main-->
 	
 	<div id = "footer">
-		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 21px;">
-		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 130px;">
-		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 137px;"></a>
-		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 177px;">이메일무단수집 거부</span>
-		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 174px;">개인정보처리방침</span>
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
+		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
 	</div>
 </body>
 </html>
-

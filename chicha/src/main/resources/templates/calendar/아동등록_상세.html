@@ -1,78 +1,115 @@
 <!doctype html>
 <html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<title>아동등록</title>
-<style>
-	/*a태그 밑줄 삭제*/
-	a {
-		text-decoration: none
-	}
-	#area { width: 751px; height: 2011px;}
-	#top { width: 751px; height: 140px; background-color: #ffffff;display:table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}	
-	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1581px; background-color: #f4f4f4;}
-	#main>#title{font-family:'Noto Sans CJK KR';font-size: 45px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -2.7px;text-align: left;color: #000000; position: absolute; left: 297px; top: 200px;}
-	#main>#box_1{width: 670px;height: 750px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 40px; top: 295px;}
-	#main>#box_1>#human{width: 610px;height: 221px;border: solid 1px rgba(0, 0, 0, 0.2);background-color: #dcdcdc;position: absolute;left: 31px; top: 39px;}
-	#main>#box_1>#human>span{font-family:'Noto Sans CJK KR';font-size: 30px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.4;letter-spacing: -1.8px;text-align: left;position: absolute;top:20px;}
-	#main>#box_1>#human>label{font-family:'Noto Sans CJK KR';opacity: 0.8;font-size: 24px;font-stretch: normal;font-style: normal;line-height: 1.4;letter-spacing: -1.8px;text-align: left;position: absolute; color:rgba(0, 0, 0, 0.8);}
-	#main>#box_1>span{opacity: 0.8;font-family:'Noto Sans CJK KR';font-size: 28.5px;font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.71px;text-align: left;color: rgba(0, 0, 0, 0.8);position: absolute; left: 32px;}
-	#main>#box_1>.content{width: 610px; height: 130px; border: none; position: absolute; left: 32px; word-break: break-all;overflow-y: auto; font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.47px;text-align: left;color: rgba(0, 0, 0, 0.7);}
-	#main>button{width: 668px;height: 70px;border-radius: 10px;position: absolute; left: 40px; border:none; outline: none; font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px; text-align: center; color: #ffffff;}
-	#footer{
-    width : 751px;
-    height: 500px;
-    background-color: #f4f4f4;
-    position: absolute;
-	top : 1511px;
-	}
-</style>
+	<meta charset="utf-8">
+	<title>아동등록</title>
+	<style>
+		a {
+			text-decoration: none;
+			color: #000000;
+		}
+		#area {width: 751px; height: 1900px;}
+		#top {width: 751px; height: 140px; background-color: #ffffff;}
+		#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+		#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+		#main {width: 751px; height : 1400px; background-color: #f4f4f4;}
+
+		#titlediv{width :751px; height: 45px; position: absolute; text-align: center; margin-top: 71px;}
+		#titlediv>label{font-family: 'Noto Sans CJK KR';font-size: 39.5px; font-weight: bold; font-stretch: normal; font-style: normal; display: inline-block; margin-left: 42px;}
+
+		#resultboxdiv{width :751px; height: 810px; position: absolute; text-align: center; margin-top: 195px;}
+		#resultbox{width: 670px; height: 810px; box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45); background-color: #ffffff; display: inline-block;}
+		#childinfobox{width: 610px; height: 221px; border: solid 1px rgba(0, 0, 0, 0.2); background-color: #d9d9d9; display: inline-block; margin-top: 39px;}
+		.line{width: 610px; height: 30px; text-align: left; }
+		#chname{width: 100px; height: 35px; display: inline-block; text-align: left; float: left; margin-left:35px; }
+		#chname>label{font-family: 'Noto Sans CJK KR';font-size: 30px; font-weight: bold; font-stretch: normal; font-style: normal; color: #000000;}
+		#center{width: 420px; height: 35px; display: inline-block; text-align: left; float: left; margin-left:38px;}
+		#center>label{font-family: 'Noto Sans CJK KR';font-size: 30px; font-weight: bold; font-stretch: normal; font-style: normal; color: #0778ff;}
+		.left{width: 120px; height: 35px; display: inline-block; text-align: left; float: left; margin-left:35px;margin-top:5px;}
+		.left>label{opacity: 0.8;font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8);}
+		.right{width: 300px; height: 35px; display: inline-block; text-align: left; float: left;  margin-left:35px; margin-top:5px; font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: 300; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8);}
+		.right>label{ opacity: 0.8; font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: 300; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8);}
+		#addressdiv{width: 672px; height: 241px; text-align: left; display: inline-block; margin-top: 30px;}
+		#addressdiv>label{opacity: 0.8; font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: 900;font-stretch: normal;font-style: normal;text-align: left;color: rgba(0, 0, 0, 0.8);margin-left:34px;}
+		#adcontent{width: 610px; height: 150px;text-align: left; display: inline-block; margin-top: 10px; font-family: 'Noto Sans CJK KR';font-size: 24.5px; font-weight: normal; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.7); margin-left: 33px;}
+		#resultbox>hr{width: 610px; height: 2px; background-color: #dcdcdc; border: none;}
+		#memodiv{width: 672px; height: 307px; text-align: left; display: inline-block; margin-top: 30px;}
+		#memodiv>label{opacity: 0.8; font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: 900;font-stretch: normal;font-style: normal;text-align: left;color: rgba(0, 0, 0, 0.8);margin-left:34px;}
+		#mecontent{width: 610px; height: 166px;text-align: left; display: inline-block; margin-top: 10px; font-family: 'Noto Sans CJK KR';font-size: 24.5px; font-weight: normal; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.7); margin-left: 33px; overflow-y: auto;}
+
+		#btndiv{width :751px; height: 160px; position: absolute; text-align: center; margin-top: 1054px;}
+		#change{width: 668px; height: 70px; border-radius: 10px; border:none; outline:none; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45); background-color: #0778ff; display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color:#ffffff; text-align: center;}
+		#ok{width: 668px; height: 70px; border-radius: 10px; border:none; outline:none; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #3c3c3c; display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color:#ffffff; margin-top:20px;text-align: center;}
+
+		#footer{width : 751px;height: 500px;position: absolute; top : 1400px;  background-color: #f4f4f4;}
+
+
+	</style>
 </head>
 
-<body id="area">
-	<div id = "top"><!--top 화면-->
-		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
-	</div>
-	<div id = "main">
-		<label id = "title">아동상세</label>
-		<div id = "box_1">
-			<div id = "human">
-				<span th:text="${childDto.name}" style = "left:34px; color: #000000;"></span>
-				<span style = "left:127px; color: #0778ff;">아이플러스 서울언어치료센터</span>
-				<label style = "font-weight: bold; left: 34px; top:100px;">생년월일</label>
-				<label th:text="${childDto.birthday}" style = "font-weight: 300; left: 150px; top:100px;"></label>
-				<label style = "font-weight: bold; left: 34px; top:130px;">상태</label>
-				<label style = "font-weight: 300; left: 150px; top:130px;">진행</label>
-				<label style = "font-weight: bold; left: 34px; top:160px;">전화번호</label>
-				<label th:text="${childDto.phoneNumber}" style = "font-weight: 300; left: 150px; top:160px;">모</label>
-			</div><!--end human-->
-			
-			<span style = "top: 301px;">주소</span>
-			<div class = "content" style = "top: 350px;">
-				0000<br>
-				<p th:text="${childDto.firstAddr}"></p><br>
-				<p th:text="${childDto.secondAddr}"></p><br>
+<body id = "area">
+<div id = "top"><!--top 화면-->
+	<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+	<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
+</div>
+
+<div id = "main">
+	<div id = "titlediv"><label>아동 상세</label></div>
+
+	<div id = "resultboxdiv">
+		<div id = "resultbox">
+			<div id = "childinfobox">
+				<div class = "line" style = "margin-top:30px;">
+					<div id = "chname"><label th:text="${childDto.name}"></label></div>
+					<div id = "center"><label>아이플러스 서울언어치료센터</label></div>
+				</div>
+				<div class = "line" style = "margin-top:20px;">
+					<div class = "left"><label>생년월일</label></div>
+					<div class = "right"><label th:text="${childDto.birthday}"></label></div>
+				</div>
+				<div class = "line">
+					<div class = "left"><label>상태</label></div>
+					<div class = "right"><label>진행</label></div>
+				</div>
+				<div class = "line">
+					<div class = "left"><label>전화번호</label></div>
+					<div class = "right">모<label th:text="${childDto.phoneNumber}"></label></div>
+				</div>
+			</div> <!--end childinfobox-->
+
+			<div id = "addressdiv">
+				<label>주소</label>
+				<div id = "adcontent">
+					0000<br>
+					<p th:text="${childDto.firstAddr}"></p><br>
+					<p th:text="${childDto.secondAddr}"></p><br>
+				</div>
+			</div> <!--end addressdiv-->
+
+			<hr>
+
+			<div id = "memodiv">
+				<label>메모</label>
+				<div id = "mecontent">
+					<p th:text="${childDto.memo}"></p>
+				</div>
 			</div>
-			<hr style = "width: 610px;height: 2px;background-color: #dcdcdc; position: absolute; left: 32px; top:501px; border:none;">
-			
-			<span style = "top: 530px;">메모</span>
-			<div class = "content" style = "top:580px;">
-				<p th:text="${childDto.memo}">
-			</div>
-		</div><!--end box_1-->
-		<!--<a th:href="@{'/therapist_calendar_child_registration/' + ${childDto.id}}"/>--><button style = "top: 1080px; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0778ff;">수정</button>
-		<button style = "top: 1170px; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #3c3c3c;">확인</button>
-	</div> <!--end main-->
-	
-	<div id = "footer">
-		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
-		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
-		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
-		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
-		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+		</div>
+	</div> <!--end resultboxdiv-->
+
+	<div id = "btndiv">
+		<!--<a th:href="@{'/therapist_calendar_child_registration/' + ${childDto.id}}"/>--><button id = "change">수정</button>
+		<button id = "ok">확인</button>
 	</div>
+
+</div> <!--end main-->
+
+<div id = "footer">
+	<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
+	<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+	<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+	<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+	<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+</div>
 </body>
 </html>

@@ -1,94 +1,124 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>자가진단</title>
-<style>
-	#area { width: 751px; height: 2011px;}
-	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
-	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #eef3f6;}	
-	#expl{width: 300px;height: 111px;position: absolute; left: 39px; top: 289px;}
-	.ex_text{font-family: 'Noto Sans CJK KR';font-size: 28.5px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left;}
-	#select {width: 751px;height: 1567px;box-shadow: inset 0 10px 10px -10px rgba(115, 155, 210, 0.45);background-color: #ffffff; position: absolute; top: 439px;}
-	.self_font{font-family:'Noto Sans CJK KR';font-size: 28px;font-stretch: normal;font-style: normal;line-height: 1.43;letter-spacing: -2.24px;text-align: left;color: #00bfbf; position: absolute; left : 38px;}
-	#image_box{width: 670x;height: 602px;opacity: 0.5;position: absolute; left: 39px; top: 181.2px;}
-	#image1{width: 335px; height: 301px; position: absolute; left: auto; top:auto; background-image: url("image/언어발달_off.png");}
-	#image1:hover{background-image: url("image/언어발달_on.png");}
-	#image2{width: 335px; height: 301px; position: absolute; left : 335px; top:auto; background-image: url("image/ADHD_off.png");}
-	#image2:hover{background-image: url("image/ADHD_on.png");}
-	#image3{width: 335px; height: 301px; position: absolute; left: auto; top:301px;background-image: url("image/심리정서_off.png");}
-	#image3:hover{background-image: url("image/심리정서_on.png");}
-	#image4{width: 335px; height: 301px; position: absolute; left : 335px; top:301px; background-image: url("image/감각발달_off.png");}
-	#image4:hover{background-image: url("image/감각발달_on.png");}
-	.box_btn{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #ffffff;position: absolute; left: 42px; top: 198.8px; border:none; outline:none; background-color: transparent;}
-	.arrow{width: 53px;height: 18px; position: absolute; left: 226px; top: 205px; border:none; outline:none;background-color: transparent;}
-	#footer{
-    width : 751px;
-    height: 500px;
-    background-color: #ffffff;
-    background-color: #ffffff;
-    position: absolute;
-	top : 1511px;
-	}
-</style>	
+	<meta charset="utf-8">
+	<title>자가진단</title>
+	<style>
+		/*a태그 밑줄 삭제*/
+		a{
+			text-decoration: none;
+			color: #000000;
+		}	
+		#area { width: 751px; height: 2011px;}
+		#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
+		#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+		#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+		#main {width: 751px; height : 1571px; background-color: #ffffff;}
+		#topdiv{width: 751px; height : 304px; background-color: #eef3f6;}
+
+
+		#titlediv{width: 751px; height: 60px; position: absolute; text-align: left; margin-top: 50px;}
+		#titlediv>label{font-family: 'Noto Sans CJK KR'; font-size: 50px; font-weight: bold; font-stretch: normal; font-style: normal; margin-left: 40px; display: inline-block;}
+
+		#contentdiv{width: 751px; height: 120px; position: absolute; text-align: left; margin-top: 144px;}
+		#content{width: 350px; height: 120px; margin-left: 40px; display: inline-block;}
+		#content>label{font-family: 'Noto Sans CJK KR'; font-size: 28.5px; font-weight: 300; font-stretch: normal; font-style: normal;}
+		#content>label>font{font-weight: bold;}
+
+		#boxdiv{width: 751px; height: 833px;  text-align: center;}
+		#hrdiv{width: 751px; height: 6px; position: absolute; text-align: left; margin-top: 41px;}
+		#hrdiv>hr{width: 61px; height: 6px; border:none; background-color: #000000; display: inline-block; margin-left: 39px;}
+		#selfdiv{width: 751px; height: 80px; position: absolute; text-align: left; margin-top: 74px;}
+		#self{width: 400px; height: 80px; display: inline-block; margin-left: 39px;}
+		#self>label{font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: 900; font-stretch: normal; font-style: normal;}
+		#self>label>font{font-weight: normal; color: #088c8c;}
+
+		#selectboxdiv{width: 751px; height: 600px; text-align: center; position: absolute; margin-top:181.2px;}
+		#selectbox{width: 670px; height: 600px; display: inline-block;}
+		#image1{width: 335px; height: 300px; float: left;background-image: url("image/언어발달_off.png");}
+		#image1:hover{background-image: url("image/언어발달_on.png");}
+		#image2{width: 335px; height: 300px; float: left;background-image: url("image/ADHD_off.png");}
+		#image2:hover{background-image: url("image/ADHD_on.png");}
+		#image3{width: 335px; height: 300px; float: left;background-image: url("image/심리정서_off.png");}
+		#image3:hover{background-image: url("image/심리정서_on.png");}
+		#image4{width: 335px; height: 300px; float: left;background-image: url("image/감각발달_off.png");}
+		#image4:hover{background-image: url("image/감각발달_on.png");}
+
+		.go{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;color: #ffffff; border:none; outline:none; background-color: transparent; margin-top:190px; margin-left:-80px;}
+
+
+		#footer{width : 751px;height: 500px;position: absolute; top : 1571px;}
+
+
+	</style>
 </head>
 
 <body id="area">
-	<div id = "top"><!--top 화면-->
-		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
-	</div>
-	
-	<div id = "main">
-		<div> <!-- 회색 박스-->
-			<label style = "height: 47px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 39px; top: 203px;">자가 진단</label>
-			
-			<div id = "expl">
-				<label class = "ex_text"><font style = "font-weight: bold;">무슨 치료</font>를 받아야 하는지,</label>
-				<label class = "ex_text"><font style = "font-weight: bold;">어떤 기관</font>에 가야 하는지</label>
-				<label class = "ex_text"><font style = "font-weight: bold;color: #0778ff;">ChiCha</font>에서 알려드릴게요.</label>
-			</div>
-		</div>
-		
-		<div id = "select"> <!--영역 선택 -->
-			<hr style = "width: 61px;height: 6px;border: none;background-color: #000000; position: absolute; left: 38px; top: 41px;">
-			
-			<label class = "self_font" style = "font-weight: 900; color : #000000; top:74px;">자가진단</label>
-			<br>
-			<label class = "self_font" style = "font-weight: normal; top:120px;">해보고 싶은 영역을 선택해보세요.</label>
+<div id = "top"><!--top 화면-->
+	<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+	<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
+</div>
 
-			<form action="/saveType" method="get">
-				<div id = "image_box">
+<div id = "main">
+	<div id = "topdiv">
+		<div id=  "titlediv"><label>자가진단</label></div>
+
+		<div id = "contentdiv">
+			<div id = "content">
+				<label><font>무슨 치료</font>를 받아야 하는지,<br>
+					<font>어떤 기관에 가야 하는지</font><br>
+					<font style = "color: #0778ff;">ChiCha</font>에서 알려드릴게요.
+				</label>
+			</div>
+		</div> <!--end contentdiv-->
+	</div>
+
+
+	<div id = "boxdiv">
+		<div id = "hrdiv"><hr></div>
+		<div id = "selfdiv"><div id = "self"><label>자가진단<br><font>
+			해보고 싶은 영역을 선택해보세요.</font></label></div></div>
+
+		<form action="/saveType" method="get">
+			<div id = "selectboxdiv">
+				<div id = "selectbox">
 					<div id = "image1">
-						<a href = "/self_check_info" name="language_development"><button type="submit" name="type" value="language_development" class = "box_btn">진단하러 가기</button>
-							<button style = "background-image: url('image/자가진단화살표.png')" class = "arrow"></button></a>
+						<a href = "/self_check_info" name="language_development"><button type="submit" name="type" value="language_development" class = "go">진단하러가기</button></a>
+
 					</div>
+
 					<div id = "image2">
-						<a href = "/self_check_info"></a><button name="type" value="ADHD" type="submit" class = "box_btn">진단하러 가기</button>
-						<button style = "background-image: url('image/자가진단화살표.png'); left : 241px;" class = "arrow"></button></a>
+						<a href = "/self_check_info"><button name="type" value="ADHD" type="submit" class = "go" onClick = "location.href = 'self_check_info'">진단하러가기</button></a>
+
 					</div>
+
 					<div id = "image3">
-						<a href = "/self_check_info"><button name="type" type="submit" value="psychological_sentiment" class = "box_btn">진단하러 가기</button>
-							<button style = "background-image: url('image/자가진단화살표.png')" class = "arrow"></button></a>
+						<a href = "/self_check_info"><button name="type" type="submit" value="psychological_sentiment" class = "go">진단하러가기</button></a>
+
 					</div>
+
 					<div id = "image4">
-						<a href = "/self_check_info"><button name="type" type="submit" value="sensory_development" class = "box_btn">진단하러 가기</button>
-							<button style = "background-image: url('image/자가진단화살표.png'); left : 241px; " class = "arrow"></button></a>
+						<a href = "/self_check_info"><button name="type" type="submit" value="sensory_development" class = "go">진단하러가기</button></a>
+
 					</div>
+
 				</div>
-			</form>
-		
-		</div>
-		
-	</div>
-	<div id = "footer">
-		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
-		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
-		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
-		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
-		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
-	</div>
+
+			</div> <!--end selectboxdiv-->
+		</form>
+
+	</div> <!--end boxdiv-->
+
+
+
+</div> <!--end main-->
+
+<div id = "footer">
+	<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
+	<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+	<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+	<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+	<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+</div>
 </body>
 </html>

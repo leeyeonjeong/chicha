@@ -1,65 +1,74 @@
 <!doctype html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<title>기록하기</title>
-<style>
-	/*a태그 밑줄 삭제*/
-	a {
-		text-decoration: none
-	}
-	#area { width: 751px; height: 2011px;}
-	#top { width: 751px; height: 140px; background-color: #ffffff;display:table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
-	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #f4f4f4;}
-	#main>label{font-family:'Noto Sans CJK KR';font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000;position: absolute;}
-	#main>#box{width: 670px;height: 531px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 40px; top:335px;}
-	#main>#box>#date{font-family:'Noto Sans CJK KR';font-size: 28.5px; opacity: 0.8; font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.71px;text-align: left;color: rgba(0, 0, 0, 0.8);position: absolute; left:33px;}
-	#main>#box>#currentDate{font-family:'Noto Sans CJK KR';font-size: 28.5px;opacity: 0.8;  font-weight: 300;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.71px;text-align: left;color: rgba(0, 0, 0, 0.8);position: absolute;left:123px; top:30px;}
-	#main>#box>#memo{font-family:'Noto Sans CJK KR';font-size: 28.5px; opacity: 0.8; font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.71px;text-align: left;color: rgba(0, 0, 0, 0.8);position: absolute; left:33px; top:75px;}
-	#main>#box>#m_content{width: 578px;height: 353px;border-radius: 10px;border: solid 1px rgba(0, 0, 0, 0.2);background-color: #ffffff;position: absolute; left: 31px; top:127px; opacity: 0.5;font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.47px;text-align: left;color: rgba(0, 0, 0, 0.5);padding-left:30px; padding-top:22px;resize: none;}
-	button{ width: 668px;height: 70px;border-radius: 10px;position: absolute; left: 40px;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: center;color: #ffffff;border: none; outline: none;}
-	#footer{
-    width : 751px;
-    height: 500px;
-    background-color: #f4f4f4;
-    position: absolute;
-	top : 1511px;
-	}
-</style>
+	<meta charset="utf-8">
+	<title>기록하기</title>
+	<style>
+		/*a태그 밑줄 삭제*/
+		a {
+			text-decoration: none
+		}
+		#area {width: 751px; height: 2000px;}
+		#top {width: 751px; height: 140px; background-color: #ffffff;}
+		#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+		#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+		#main {width: 751px; height : 1500px; background-color: #f4f4f4;}
+
+		#titlediv{width :751px; height: 45px; position: absolute; text-align: left; margin-top: 69px;}
+		#titlediv>label{font-family: 'Noto Sans CJK KR';font-size: 39.5px; font-weight: bold; font-stretch: normal; font-style: normal; display: inline-block; margin-left: 39px;}
+
+		#expldiv{width :751px; height: 45px; position: absolute; text-align: left; margin-top: 150px;}
+		#expldiv>label{font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; display: inline-block; margin-left: 39px; color: #010000;}
+
+		#inputboxdiv{width :751px; height: 531px; position: absolute; text-align: center; margin-top: 196px;}
+		#inputbox{width: 670px; height: 531px; box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45); background-color: #ffffff; display: inline-block; text-align: left;}
+		#datediv{width:630px; height: 30px; margin-left: 30px; margin-top: 27px;}
+		#date{width:100px; float: left; margin-right: 15px; font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8); display: inline-block;}
+		#datediv>label{width:400px;float: left; font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: 300; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8); display: inline-block;}
+		#memodiv{width:630px; height: 30px; margin-left: 30px; margin-top: 27px; font-family: 'Noto Sans CJK KR';font-size: 28.5px; font-weight: 900; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8); display: inline-block;}
+		#inputbox>textarea{width: 578px; height: 335px; border-radius: 10px; border: solid 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; margin-left: 30px; margin-top: 20px; display: inline-block; resize: none; padding-left: 30px; padding-top: 20px; font-family: 'Noto Sans CJK KR';font-size: 24.5px; font-weight: 500; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.5);}
+
+		#btndiv{width :751px; height: 160px; position: absolute; text-align: center; margin-top: 795px;}
+		#register{width: 668px; height: 70px; border-radius: 10px; border:none; outline:none; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45); background-color: #0778ff; display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color:#ffffff; text-align: center;}
+		#cancel{width: 668px; height: 70px; border-radius: 10px; border:none; outline:none; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #3c3c3c; display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color:#ffffff; margin-top:20px;text-align: center;}
+
+		#footer{width : 751px;height: 500px;position: absolute; top : 1500px;  background-color: #f4f4f4;}
+
+	</style>
 </head>
 
-<body id="area">
-	<div id = "top"><!--top 화면-->
-		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
-	</div>
+<body id = "area">
+<div id = "top"><!--top 화면-->
+	<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+	<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
+</div>
+<form th:action="@{/member_calendar_registration}" method="post">
+	<div id = "main">
+		<div id = "titlediv"><label>기록하기</label></div>
 
-	<form th:action="@{/member_calendar_registration}" method="post">
-		<div id = "main">
-			<label style = "font-size: 50px;left:39px;top:208px;">기록하기</label>
-			<label style = "font-size: 24px;left:39px;top:289px;">오늘 우리 아이는 어땠나요?</label>
+		<div id = "expldiv"><label>오늘 우리 아이는 어땠나요?</label></div>
 
-			<div id = "box">
-				<label id = "date" style = "top:30px;">날짜</label>
-				<label id = "currentDate" name="currentDate" th:text="${currentDate}"></label>
+		<div id = "inputboxdiv">
+			<div id = "inputbox">
+				<div id = "datediv"><div id = "date">날짜</div><label id="currentDate" name="currentDate" th:text="${currentDate}"></label></div>
 
-				<label id = "memo" style = "top:80px;">메모</label>
-				<textarea name="memo" id = "m_content" placeholder="내용을 입력하세요.">
-				</textarea>
-			</div> <!--end box-->
+				<div id = "memodiv">메모</div>
+				<textarea name="memo" placeholder="내용을 입력하세요."></textarea>
+			</div>
+		</div> <!--end inputboxdiv-->
 
-			<button type="submit" style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0778ff;top:935px;">등록</button>
-			<button style = "box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #3c3c3c;top:1024px;">취소</button>
-		</div> <!--end main-->
-	</form>
-	<div id = "footer">
-		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
-		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
-		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
-		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
-		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
-	</div>
+		<div id = "btndiv">
+			<button type="submit" id = "register">등록</button>
+			<button id = "cancel">취소</button>
+		</div>
+	</div> <!--end main-->
+</form>
+<div id = "footer">
+	<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
+	<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+	<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+	<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+	<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+</div>
 </body>
 </html>

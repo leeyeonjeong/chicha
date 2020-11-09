@@ -64,7 +64,6 @@ public class CoachController {
             scheduleDto.stream().findAny().get().setCoach(coachList.stream().findAny().get().toEntity());
             scheduleDto.stream().findAny().get().setSession(coachList.stream().findAny().get().toEntity().getSession());
             scheduleDto.stream().findAny().get().setCounseling(coachList.stream().findAny().get().toEntity().getCounseling());
-
         }
 
         model.addAttribute("scheduleDto", scheduleDto);

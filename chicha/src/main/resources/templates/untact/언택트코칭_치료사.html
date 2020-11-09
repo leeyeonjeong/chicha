@@ -1,167 +1,154 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>언택트코칭</title>
 <style>
-	#area { width: 751px; height: 2011px;}
-	#top { width: 751px; height: 140px; background-color: #ffffff;display:table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
-	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #eef3f6;}
-	#main>label{font-family:'Noto Sans CJK KR';font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.95;letter-spacing: -2.4px;text-align: left;position: absolute; left:43px;}
-	#main>#box{width: 751px;height: 980px;box-shadow: inset 0 10px 10px -10px rgba(115, 155, 210, 0.45);;background-color: #ffffff;position: absolute; top:379px;}
-	#main>#box>span{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: left;position: absolute; left: 41px; top:60px;}
-	#main>#box>span>font{color: #0778ff;}
-	#main>#box>button{width: 169px;height: 70px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45);border: solid 3px #0778ff;background-color: #ffffff;position: absolute; left: 542px; top:39px;font-family:'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.56px;text-align: center;color: #0778ff;outline: none;}
-	.table{width: 670px;height: 805px;border:none; border-top: solid 5px #3c3c3c;position: absolute; left: 40px; top:139px; }
-	.table>.line{width: 670px;height: 77px;border:none; border-bottom: solid 3px #dcdcdc;}
-	.table>.line>.number{width:10%; height:77px;float:left;}
-	.table>.line>.area{width:10%; height:77px;float:left;}
-	.table>.line>.c_area{width:20%; height:77px;float:left;}
-	.table>.line>.gender{width:10%; height:77px;float:left;}
-	.table>.line>.age{width:10%; height:77px;float:left;}
-	.table>.line>.id{width:20%; height:77px;float:left;}
-	.table>.line>div>label{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 3.15;letter-spacing: -1.44px;position: relative; padding-left:20px;text-align: center;}
-	.table>.line>.finish{width:20%;height: 60px;background-color: #e6ecf2;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 2.3;letter-spacing: -1.44px;text-align: center;color: rgba(8, 119, 255, 0.8);display:inline-block;float:left;margin-top:9px;}
-	.table>.line>.ing{width: 20%;height: 60px;background-color: #e6ecf2;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 2.3;letter-spacing: -1.44px;text-align: center;color:rgba(0, 0, 0, 0.5);display:inline-block;float:left;margin-top:9px;}
-	.table>.line>.c_btn{width:19%;height: 60px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(64, 64, 64, 0.45);border: solid 3px #4d4d4d;background-color: #ffffff;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 2.3;letter-spacing: -1.44px;text-align: center;color: rgba(0, 0, 0, 0.8);display:inline-block;float:left;margin-top:7px;}
-	.table>.line>.incomplete{width: 20%;height: 60px;background-color: #e6ecf2;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 2.3;letter-spacing: -1.44px;text-align: center;color:rgba(0, 0, 0, 0.5);display:inline-block;float:left;margin-top:9px;}
-	#main>#page_num{width:751px; height: 450px; background-color: #ffffff; position: absolute; top:1350px;}
-	#main>#page_num>img{height: 12px; position: absolute; top:15px;}
-	#main>#page_num>span{font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: normal;font-stretch: normal; font-style: normal;line-height: 2.08;letter-spacing: -0.24px;text-align: center;position: absolute; top:-5px;}
-	.select{width: 50px;height: 50px;background-color: #ebeef2;color:#0671f7;}
-	#footer{width : 751px;height: 500px;background-color: #ffffff;position: absolute;top : 1511px;}
+	#area { width: 751px; height: 1967px;}
+	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 1467px; background-color: #ffffff;}	
+	#topdiv{width: 751px; height : 223px; background-color: #eef3f6;}
+	
+	
+	#titlediv{width: 751px; height: 60px; position: absolute; text-align: left; margin-top: 69px;}
+	#titlediv>label{font-family: 'Noto Sans CJK KR'; font-size: 50px; font-weight: bold; font-stretch: normal; font-style: normal; margin-left: 40px; display: inline-block;}
+	#contentdiv{width: 751px; height: 120px; position: absolute; text-align: left; margin-top: 144px;}
+	#contentdiv>#content{width: 700px; height: 120px; margin-left: 40px; display: inline-block; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal;}
+	#contentdiv>#content>label{color: #ffffff;  background-color: #0778ff;padding:3px;}
+	
+	#totaldiv{width: 100px; height: 40px; position: absolute; text-align: left; margin-top: 61px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: 500; font-stretch: normal; font-style: normal; margin-left: 40px; float: left;}
+	#totaldiv>label{font-weight: 900; color: #0778ff; margin: auto 4px;}
+	
+	#buttondiv{width: 170px; height: 70px; position: absolute; text-align: center; margin-top: 40px; float: right; margin-left: 538px;}
+	#buttondiv>button{width: 169px; height: 70px; border-radius: 10px; box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45); border: solid 3px #0778ff; background-color: #ffffff; font-family: 'Noto Sans CJK KR'; font-size: 26px; font-weight: bold; font-stretch: normal; font-style: normal; color: #0778ff;}
+	
+	hr{width: 670px; height: 5px; background-color: #3c3c3c; margin-top: 140px; border:none;}
+	
+	#resultboxdiv{width: 751px; height: 725px; position: absolute; text-align: center;}
+	#resultboxdiv>#resultbox{width: 670px; height: 725px; display: inline-block; text-align: left;}
+	#resultboxdiv>#resultbox>.line{width: 670px; height: 77px; background-color: #ffffff; border-bottom: solid 3px #dcdcdc; padding-top:17px;}
+	#resultboxdiv>#resultbox>.line>.num{width: 50px; height: 50px; text-align: center; margin-top: 15px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: #666666;float: left;}
+	#resultboxdiv>#resultbox>.line>.part{width: 60px; height: 50px; text-align: center; margin-top: 15px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal;float: left;}
+	#resultboxdiv>#resultbox>.line>.coachpart{width: 140px; height: 50px; text-align: left; margin-top: 15px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: #0671f7;float: left;}
+	#resultboxdiv>#resultbox>.line>.gender{width: 60px; height: 50px; text-align: center; margin-top: 15px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.6);float: left;}
+	#resultboxdiv>#resultbox>.line>.age{width: 60px; height: 50px; text-align: center; margin-top: 15px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.6);float: left;}
+	#resultboxdiv>#resultbox>.line>.id{width: 140px; height: 50px; text-align: left; margin-top: 15px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.6);float: left;}
+	#resultboxdiv>#resultbox>.line>.end{width: 130px; height: 45px; text-align: center; margin-top: 8px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(8, 119, 255, 0.8); background-color: #e6ecf2; float: left; padding-top:8px;}
+	#resultboxdiv>#resultbox>.line>.ing{width: 130px; height: 45px; text-align: center; margin-top: 8px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.5); background-color: #f2f2f2; float: left; padding-top:8px;}
+	#resultboxdiv>#resultbox>.line>.not{width: 130px; height: 45px; text-align: center; margin-top: 8px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.5); background-color: #f2f2f2; float: left; padding-top:8px;}
+	#resultboxdiv>#resultbox>.line>.gobtn{width: 130px; height: 45px; border-radius: 10px; box-shadow: 0 0 5px 0 rgba(64, 64, 64, 0.45); border: solid 3px #4d4d4d; background-color: #ffffff; text-align: center; margin-top: 7px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8); background-color: #ffffff; float: left; padding-top:8px;}
+	
+	#pagediv{width: 670px; height: 50px; text-align: center; margin-top:1000px; margin-left: 40px;}
+	#pagediv>#backpage{width: 80px; height: 50px; display: inline-block; float:left;}
+	#pagediv>#backpage>img{margin-left: 15px; margin-top: 15px;}
+	#pagediv>#numpage{width: 400px; height: 50px; display: inline-block; float:left;}
+	#pagediv>#numpage>.nu{width: 50px; height: 50px; display: inline-block; background-color: #ffffff;text-align: center;}
+	#pagediv>#numpage>.nu>label{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: normal; font-stretch: normal; font-style: normal;}
+	#pagediv>#numpage>#ch{width: 50px; height: 50px; display: inline-block; background-color: #ebf2f2;text-align: center;}
+	#pagediv>#numpage>#ch>label{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: #0671f7;}
+	#pagediv>#frontpage{width: 80px; height: 50px; display: inline-block; float:left;}
+	#pagediv>#frontpage>img{margin-left: 15px; margin-top: 15px;}
+	
+	#footer{width : 751px;height: 500px;position: absolute; top : 1467px;}
+	
+	
 </style>
 </head>
+
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
 	<div id = "main">
-		<label style = "font-size: 40px; top:209px;">언택트 코칭</label>
-		<br>
-		<label style = "font-size: 24px; top:292px;"><font style = "background-color: #0778ff; color : #ffffff;">언택트 코칭(untact coaching)&nbsp;</font>
-			&nbsp;&nbsp;가정에서 쉽게 할 수 있는 트레이닝</label>
+		<div id = "topdiv">
+			<div id=  "titlediv"><label>언택트코칭</label></div>
+			<div id = "contentdiv">
+				<div id = "content">
+					<label>언택트 코칭(untact coaching)</label>가정에서 쉽게 할 수 있는 트레이닝
+				</div>
+			</div> <!--end contentdiv-->
+		</div>
 		
-		<div id = "box">
-			<span>총 <font>62</font> 개</span>
-			<button onClick="location.href = '언택트코칭_치료사_내코칭보기.html'">내 코칭보기</button>
+		<div id = "totaldiv">총<label>62</label>개</div>
+		
+		<div id = "buttondiv"><button onClick="location.href = '언택트코칭_내 코칭보기'">내 코칭 보기</button></div>
+		
+		<hr>
+		
+		<div id = "resultboxdiv">
+			<div id = "resultbox">
+				<div class = "line">
+					<div class = "num">42</div>
+					<div class = "part">분야</div>
+					<div class = "coachpart">언어치료</div>
+					<div class = "gender">성별</div>
+					<div class = "age">나이</div>					
+					<div class = "id">ch***</div>
+					<div class = "end" onClick = "location.href = '언택트코칭_치료사_코칭상세_완료'">코칭완료</div>
+				</div>
+				
+				<div class = "line">
+					<div class = "num">41</div>
+					<div class = "part">분야</div>
+					<div class = "coachpart">언어치료</div>
+					<div class = "gender">성별</div>
+					<div class = "age">나이</div>					
+					<div class = "id">ch***</div>
+					<div class = "ing" onClick="location.href = '언택트코칭_치료사_코칭상세'">코칭중</div>
+				</div>
+				
+				<div class = "line">
+					<div class = "num">40</div>
+					<div class = "part">분야</div>
+					<div class = "coachpart">언어치료</div>
+					<div class = "gender">성별</div>
+					<div class = "age">나이</div>					
+					<div class = "id">ch***</div>
+					<div class = "gobtn" onClick="location.href = '언택트코칭_치료사_약관동의'">코칭하기</div>
+				</div>
+				
+				<div class = "line">
+					<div class = "num">39</div>
+					<div class = "part">분야</div>
+					<div class = "coachpart">언어치료</div>
+					<div class = "gender">성별</div>
+					<div class = "age">나이</div>					
+					<div class = "id">ch***</div>
+					<div class = "not">미완료</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<div id = "pagediv">
+			<div id = "backpage">
+				<img src = "image/bback.png">
+				<img src = "image/back.png">
+			</div>
 			
-			<div class = "table"> 
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">42</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">언어치료</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">남성</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">6세</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">CH****</label></div>
-					<div class = "finish" onClick = "location.href = '언택트코칭_치료사_코칭상세_완료.html'">코칭완료</div>
-				</div> <!--end line-->
-				
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">41</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">코칭분야</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">성별</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">연령</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">id****</label></div>
-					<div class = "ing" onClick="location.href = '언택트코칭_치료사_코칭상세.html'">코칭중</div>
-				</div> <!--end line-->
-				
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">40</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">코칭분야</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">성별</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">연령</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">id****</label></div>
-					<div class = "c_btn" onClick="location.href = '언택트코칭_치료사_약관동의.html'">코칭하기</div>
-				</div> <!--end line-->
-				
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">39</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">코칭분야</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">성별</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">연령</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">id****</label></div>
-					<div class = "c_btn" onClick="location.href = '언택트코칭_치료사_약관동의.html'">코칭하기</div>
-				</div> <!--end line-->
-				
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">38</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">코칭분야</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">성별</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">연령</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">id****</label></div>
-					<div class = "finish" onClick = "location.href = '언택트코칭_치료사_코칭상세_완료.html'">코칭완료</div>
-				</div> <!--end line-->
-				
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">37</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">코칭분야</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">성별</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">연령</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">id****</label></div>
-					<div class = "finish" onClick = "location.href = '언택트코칭_치료사_코칭상세_완료.html'">코칭완료</div>
-				</div> <!--end line-->
-				
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">36</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">코칭분야</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">성별</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">연령</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">id****</label></div>
-					<div class = "incomplete">미완료</div>
-				</div> <!--end line-->
-				
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">35</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">코칭분야</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">성별</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">연령</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">id****</label></div>
-					<div class = "incomplete">미완료</div>
-				</div> <!--end line-->
-				
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">34</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">코칭분야</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">성별</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">연령</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">id****</label></div>
-					<div class = "incomplete">미완료</div>
-				</div> <!--end line-->
-				
-				<div class = "line">
-					<div class = "number"><label style = "color: #666666;">33</label></div>
-					<div class = "area"><label style = "color: #000000;">분야</label></div>
-					<div class = "c_area"><label style = "color: #0671f7;">코칭분야</label></div>
-					<div class = "gender"><label style = "color: rgba(0, 0, 0, 0.6);">성별</label></div>
-					<div class = "age"><label style = "color: rgba(0, 0, 0, 0.6);">연령</label></div>
-					<div class = "id"><label style = "color: rgba(0, 0, 0, 0.6);">id****</label></div>
-					<div class = "incomplete">미완료</div>
-				</div> <!--end line-->
-			</div> <!--end table-->
-		</div> <!--end box-->
-		<div id = "page_num">
-			<img src = "image/bback.png" style = "width: 14px;left:45px;">
-			<img src = "image/back.png" style = "width: 7px;left:82px;">
-			<span style="left: 124px;">1</span><span style="left: 176px;">2</span><span style="left: 215px;" class = "select">3</span><span style="left: 280px;">4</span><span style="left: 332px;">5</span><span style="left: 384px;">6</span><span style="left: 436px;">7</span><span style="left: 488px;">8</span><span style="left: 540px;">9</span><span style="left: 592px;">10</span>
-			<img src = "image/front.png" style = "width: 7px;left:660px;">
-			<img src = "image/ffront.png" style = "width: 14px;left:690px;">
-		</div><!--end page_num-->
+			<div id = "numpage">
+				<div class = "nu"><label>1</label></div>
+				<div class = "nu"><label>2</label></div>
+				<div id = "ch"><label>3</label></div>
+				<div class = "nu"><label>4</label></div>
+				<div class = "nu"><label>5</label></div>
+				<div class = "nu"><label>6</label></div>
+				<div class = "nu"><label>7</label></div>
+			</div>
+			
+			<div id = "frontpage">
+				<img src = "image/front.png">
+				<img src = "image/ffront.png">
+			</div>
+		</div>
 	</div> <!--end main-->
+	
 	<div id = "footer">
-		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
 		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
 		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
 		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>

@@ -52,9 +52,10 @@ public class ScheduleController {
 
     // 팝업 -> 코칭등록2
     @GetMapping("therapist_calendar_registration_pop/{id}")
-    public String pop_therapist_calendar_registration(@PathVariable("id") Long id, Model model, HttpSession session) {
+    public String pop_therapist_calendar_registration(@PathVariable("id") Long id, Model model, HttpSession session, Principal principal) {
         ChildTherapistDto childTherapistDto = scheduleService.getChildTherapist(id);
         session.setAttribute("childName", childTherapistDto.getName());
+        model.addAttribute("therapistName", principal.getName());
         model.addAttribute("childDto", childTherapistDto);
         return "calendar/캘린더_치료사_일정등록2";
     }

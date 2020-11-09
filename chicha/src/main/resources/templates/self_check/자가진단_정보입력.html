@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>자가진단 정보입력</title>
+<title>자가진단</title>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			var g = document.getElementById("gender");
@@ -26,85 +26,108 @@
 <style>
 	#area { width: 751px; height: 2011px;}
 	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
-	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #edfaf8;}
-	#expl{width: 526px;height: 69px;font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left; position: absolute; left: 40px; top: 290px;}
-	#select_box{width: 751px;height: 1455px;box-shadow: inset 0 10px 10px -10px rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; top: 444px;}
-	.option{width: 669px;height: 70px;border-radius: 10px;border: solid 1px rgba(0, 0, 0, 0.2);background-color: #ffffff;position: absolute; left: 40px;}
-	.option_text{width: 48px;height: 26px;opacity: 0.8;font-family: 'Noto Sans CJK KR';font-size: 23px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: var(--black-80);position: absolute; left: 208px; top:17px;}
-	select{width: 146px;height:33px;border-style : none;border-bottom: 3px solid #dcdcdc ;background: url('image/선택화살표.png') no-repeat 95% 50%;-webkit-appearance: none;-moz-appearance: none;appearance: none;position: absolute; left: 312px; top:19px; padding-left: 6px;}
-	select::-ms-expand {display: none;}
-	.select_font{opacity: 0.6;font-family: 'Noto Sans CJK KR';font-size: 18px;font-weight: 500;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color: rgba(0, 0, 0, 0.6);}
-	#btn{width: 671px;height: 70px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(0, 191, 191, 0.45);;border: solid 3px #00bfbf;background-color: #ffffff; position: absolute; left: 39px; top:842px;}
-	#footer{
-    width : 751px;
-    height: 500px;
-    background-color: #ffffff;
-    position: absolute;
-	top : 1511px;
-	}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 1511px; background-color: #ffffff;}	
+	#topdiv{width: 751px; height : 304px; background-color: #edfaf8;}
+	
+	#titlediv{width: 751px; height: 60px; position: absolute; text-align: left; margin-top: 50px;}
+	#titlediv>label{font-family: 'Noto Sans CJK KR'; font-size: 50px; font-weight: bold; font-stretch: normal; font-style: normal; margin-left: 40px; display: inline-block;}
+	
+	#contentdiv{width: 751px; height: 120px; position: absolute; text-align: left; margin-top: 144px;}
+	#contentdiv>#content{width: 600px; height: 120px; margin-left: 40px; display: inline-block;}
+	#contentdiv>#content>label{font-family: 'Noto Sans CJK KR'; font-size: 28.5px; font-weight: 300; font-stretch: normal; font-style: normal;}
+	#contentdiv>#content>label>font{font-weight: 900;}
+	
+	#boxdiv{width: 751px; height: 833px; text-align: center;}
+	#boxdiv>#hrdiv{width: 751px; height: 6px; position: absolute; text-align: left; margin-top: 41px;}
+	#boxdiv>#hrdiv>hr{width: 61px; height: 6px; border:none; background-color: #000000; display: inline-block; margin-left: 39px;}
+	#boxdiv>#selfdiv{width: 751px; height: 80px; position: absolute; text-align: left; margin-top: 74px;}
+	#boxdiv>#selfdiv>#self{width: 400px; height: 80px; display: inline-block; margin-left: 39px;}
+	#boxdiv>#selfdiv>#self>label{font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal;}
+	#boxdiv>.selectboxdiv{width: 751px; height: 70px; position: absolute; text-align: center;}
+	#boxdiv>.selectboxdiv>.selectbox{width: 669px; height: 70px; border-radius: 10px; border: solid 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; display: inline-block; text-align: center;}
+	#boxdiv>.selectboxdiv>.selectbox>.sel{width: 250px; height: 40px; display: inline-block; margin-top:15px;}
+	#boxdiv>.selectboxdiv>.selectbox>.sel>label{font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal;color: rgba(0, 0, 0, 0.8); }
+	#boxdiv>.selectboxdiv>.selectbox>.sel>select{width: 136px; height:45px;border-style : none;border-bottom: 3px solid #dcdcdc ;background: url('image/선택화살표.png') no-repeat 95% 50%;-webkit-appearance: none;-moz-appearance: none;appearance: none; padding-left: 10px; margin-left:45px; }
+	#boxdiv>.selectboxdiv>.selectbox>.sel>select::-ms-expand {display: none;}
+	#boxdiv>.selectboxdiv>.selectbox>.sel>select{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: 500; font-stretch: normal; font-style: normal;color: rgba(0, 0, 0, 0.6);}
+	
+	#btndiv{width: 751px; height: 70px; position: absolute; text-align: center; margin-top:398px;}
+	#btndiv>button{ width: 671px; height: 70px; border-radius: 10px; box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45); border: solid 3px #00bfbf; background-color: #ffffff; font-family: 'Noto Sans CJK KR'; font-size: 26px; font-weight: 500; font-stretch: bold; font-style: normal;color:  #00bfbf;}
+	
+	#footer{width : 751px;height: 500px;position: absolute; top : 1511px;}
+	
+	
 </style>
 </head>
 
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
+		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 
 	<form action="/saveInfo" method="get">
 	<div id = "main">
-		<div> <!-- 회색 박스-->
-			<label style = "height: 47px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 39px; top: 203px;">자가 진단</label>
+		<div id = "topdiv">
+			<div id=  "titlediv"><label>자가진단</label></div>
 			
-			<div id = "expl">
-				우리 아이의 <font style = "font-weight: 900; color: #0778ff;">언어발달</font>은 잘 되고 있을까?
-				<br>간편하게 확인해보고 <font style = "font-weight: 900;">알맞은 기관</font>을 추천받으세요!
-			</div>			
-		</div>	
+			<div id = "contentdiv">
+				<div id = "content">
+					<label>우리 아이의 <font style = "color: #0778ff;">언어발달</font>은 잘 되고 있을까?<br>간편하게 확인해보고 <font>알맞은 기관</font>을 추천받으세요!</label>
+				</div>
+			</div> <!--end contentdiv-->
+		</div> <!--end topdiv-->
 		
-		<div id = "select_box"> <!--선택 영역-->
-			<hr style = "width: 61px;height: 6px;border:none;background-color: #000000; position: absolute; left: 39px; top: 41px;">
-			<label style = "width: 294px;height: 27px;font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.43;letter-spacing: -2.24px;text-align: left;color: #000000;position: absolute; left: 39px; top: 71px;">나이와 성별을 선택해주세요.</label>
-
-			<div class = "option" style = "top:159px;">
-				<font class = "option_text" >성별</font>
-				<select id="gender" name = "gender" class = "select_font" >
-					<option value = "">선택</option>
-					<option value = "man">남자</option>
-					<option value = "woman">여성</option>
-				</select>
-			</div>
+		<div id = "boxdiv">
+			<div id = "hrdiv"><hr></div>
+			<div id = "selfdiv"><div id = "self"><label>나이와 성별을 선택해주세요.</label></div></div>
 			
-			<div class = "option" style = "top:258px;">
-				<font class = "option_text">연령</font>
-				<select id="age" name = "age" class = "select_font" >
-					<option value = "">선택</option>
-					<option value = "unthree">3개월이하</option>
-					<option value = "fosi">4~6개월</option>
-					<option value = "seni">7~9개월</option>
-					<option value = "tentw">10~12개월</option>
-					<option value = "thfi">13~15개월</option>
-					<option value = "siei">16~18개월</option>
-					<option value = "nitw">19~21개월</option>
-					<option value = "twtw">22~24개월</option>
-					<option value = "three">만3세</option>
-					<option value = "four">만4세</option>
-					<option value = "five">만5세</option>
-					<option value = "six">만6세</option>
-					<option value = "seven">만7세</option>
-					<option value = "upeight">만8세 이상</option>
-				</select>
-			</div>
+			<div class = "selectboxdiv" style = "margin-top:159px;">
+				<div class = "selectbox">
+					<div class = "sel">
+						<label >성별</label>
+						<select name = "gender" id="gender">
+							<option value = "">선택</option>
+							<option value = "남자">남자</option>
+							<option value = "여자">여자</option>
+						</select>
+					</div>
+				</div>
+			</div> <!--end selectboxdiv-->
+			
+			<div class = "selectboxdiv" style = "margin-top:258px;">
+				<div class = "selectbox">
+					<div class = "sel">
+						<label >나이</label>
+						<select name = "age">
+							<option value = "">선택</option>
+							<option value = "3개월이하">3개월이하</option>
+							<option value = "4~6개월">4~6개월</option>
+							<option value = "7~9개월">7~9개월</option>
+							<option value = "10~12개월">10~12개월</option>
+							<option value = "13~15개월">13~15개월</option>
+							<option value = "16~18개월">16~18개월</option>
+							<option value = "19~21개월">19~21개월</option>
+							<option value = "22~24개월">22~24개월</option>
+							<option value = "만3세">만3세</option>
+							<option value = "만4세">만4세</option>
+							<option value = "만5세">만5세</option>
+							<option value = "만6세">만6세</option>
+							<option value = "만7세">만7세</option>
+							<option value = "만8세 이상">만8세 이상</option>
+						</select>
+					</div>
+				</div>
+			</div> <!--end selectboxdiv-->
+			
+			<div id = "btndiv"><a href = "/self_check_ADHD1"><button type="submit">다음</button></a></div>
 		</div>
-		
-		<a href = "/self_check_ADHD1"><button type="submit" id = "btn"><font style = "width: 43px;height: 25px;font-family:'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.56px;text-align: left;color: #00bfbf;">다음</font></button></a>
-	</div>
+	</div> <!--end main-->
 	</form>
-	
 	<div id = "footer">
-		<img src = "image/chicha.png" width = "164px" height = "88px" style = "position: absolute; left: 6px; top: 271px;">
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
 		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
 		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
 		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>

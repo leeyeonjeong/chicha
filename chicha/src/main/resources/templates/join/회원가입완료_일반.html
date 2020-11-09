@@ -1,62 +1,56 @@
 <!doctype html>
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
-<title>일반 회원가입완료</title>
-
+<title>회원가입</title>
 <style>
 	#area { width: 751px; height: 2011px;}
-	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+	#top { width: 751px; height: 140px; background-color: #ffffff;display:table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
 	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #ebf2f2;}
-	.btn{width: 673px;height: 70px;border-radius: 10px;position: absolute; left: 38px; outline: none;}
-	.font_btn{width: 195px;height: 27px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;}
-	#footer{
-		width : 751px;
-		height: 500px;
-		background-color: #ebf2f2;
-		position: absolute;
-		top : 1511px;
-	}
+	#main {width: 751px; height : 1571px; background-color: #edf2f2;}
+	
+	#titlediv{width :751px; height: 70px; position: absolute; text-align: center; margin-top: 91px;}
+	#titlediv>label{font-family: 'Noto Sans CJK KR';font-size: 50px; font-weight: bold; font-stretch: normal; font-style: normal; display: inline-block;}
+	
+	#contentdiv{width :751px; height: 80px; position: absolute; text-align: center; margin-top: 187px;}
+	#contentdiv>label{opacity: 0.8; font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: 500; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8); display: inline-block;}
+	
+	.buttondiv{width :751px; height: 70px; position: absolute; text-align: center;}
+	.buttondiv>button{width: 673px; height: 70px; border-radius: 10px; border:none; outline: none; display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal;}
 </style>
 </head>
 
-<body id = "area">
+<body id="area">
 	<div id = "top"><!--top 화면-->
 		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
 		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
 	<div id = "main">
-		<div> <!-- 버튼 위에 글씨 부분 -->
-			<label style = "width: 190px;height: 46px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 290px; top:189px;">회원가입</label>
-			
-
-			<label style = "width: 577px; height: 24px;opacity: 0.8;font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.27;letter-spacing: -1.2px;text-align: left;color: rgba(0, 0, 0, 0.8); position: absolute; left: 240px; top: 267px;">회원가입을 완료하였습니다!</label>
-			<label style = "width: 600px; height: 24px;opacity: 0.8;font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.27;letter-spacing: -1.2px;text-align: left;color: rgba(0, 0, 0, 0.8); position: absolute; left: 170px; top: 297px;"><font style = " font-weight: 900; color: #0778ff;">ChiCha</font>에서 더욱 풍성한 서비스를 이용해보세요.</label>
-		</div>
+		<div id = "titlediv"><label>회원가입</label></div>
 		
-		<div> <!--버튼 3개 -->
+		<div id = "contentdiv">
+			<label>회원가입을 완료하였습니다!<br><font style = "font-weight: bold; color: #0778ff;">ChiCha</font> 에서 더욱 풍성한 서비스를 이용해보세요.</label>
+		</div>
+
+		<div class = "buttondiv" style = "margin-top: 391px;">
+			<!--여기요!!!!!!!!!!!!!!!!!!!!!-->
 			<th:block sec:authorize="isAuthenticated()">
-				<a href = "/child_registration"><button class = "btn" style = " border:none; box-shadow: 0 0 14.3px 0.8px rgba(7, 120, 255, 0.45);background-color: #0778ff;top: 456px;"> <font class = "font_btn" style = "color: #ffffff;">아이등록 하러가기</font></button></a>
+				<a href = "/child_registration"><button style = "box-shadow: 0 0 14.3px 0.8px rgba(7, 120, 255, 0.45); background-color: #0778ff; color: #ffffff;">아이등록 하러가기</button></a>
 			</th:block>
 
 			<th:block sec:authorize="isAnonymous()">
-				<a href = "/login"><button class = "btn" style = " border:none; box-shadow: 0 0 14.3px 0.8px rgba(7, 120, 255, 0.45);background-color: #0778ff;top: 456px;"> <font class = "font_btn" style = "color: #ffffff;">아이등록 하러가기</font></button></a>
+				<a href = "/login"><button style = "box-shadow: 0 0 14.3px 0.8px rgba(7, 120, 255, 0.45); background-color: #0778ff; color: #ffffff;">아이등록 하러가기</button></a>
 			</th:block>
-
-			<a href = "/login"><button class = "btn" style = "border:none; box-shadow: 0 0 9.5px 0.5px rgba(0, 191, 191, 0.45); background-color: #ffffff;top: 546px;"> <font class = "font_btn" style = "color: #00bfbf;">로그인하기</font></button></a>
-			
-			<a href = "/"><button class = "btn" style = "box-shadow: 0 0 14.3px 0.8px rgba(84, 84, 84, 0.75); background-color: #3c3c3c;top: 636px;"> <font class = "font_btn" style = "color: #ffffff;">메인으로 이동하기</font></button></a>
 		</div>
 		
-		<div id = "footer"><!--맨 아래 부분-->
-			<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
-			<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
-			<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
-			<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
-			<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+		<div class = "buttondiv" style = "margin-top: 491px;">
+			<button style = "box-shadow: 0 0 9.5px 0.5px rgba(0, 191, 191, 0.45); background-color: #ffffff; color: #00bfbf;" onClick = "location.href = '/login'">로그인하기</button>
+		</div>
+		
+		<div class = "buttondiv" style = "margin-top: 591px;">
+			<button style = "box-shadow: 0 0 9.5px 0.5px rgba(84, 84, 84, 0.75); background-color: #4d4d4d; color: #ffffff;" onClick="location.href = '/'">메인으로 이동하기</button>
 		</div>
 	</div>
 </body>

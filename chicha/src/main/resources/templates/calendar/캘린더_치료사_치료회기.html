@@ -1,109 +1,192 @@
 <!doctype html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<title>치료사 회기등록</title>
-<style>
-	/*a태그 밑줄 삭제*/
-	a {
-		text-decoration: none
-	}
-	#area { width: 751px; height: 2011px;}
-	#top { width: 751px; height: 140px; background-color: #ffffff;display:table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
-	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #f4f4f4; overflow-y: auto;}
-	#child_name{font-family: 'Noto Sans CJK KR';font-size: 40px;letter-spacing: -2.4px;color: #fefefe;font-weight: bold;font-stretch: normal;font-style: normal;text-align: left; background-color: #0778ff;position: absolute; left: 39px; top:300px;}
-	#birth{opacity: 0.8;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.68px;text-align: left;color: rgba(0, 0, 0, 0.8); position: absolute; left: 155px; top:320px;}
-	#record{width: 751px;height: 1500px;box-shadow: inset 0 10px 10px -10px rgba(115, 155, 210, 0.45);background-color: #ffffff; position: absolute; top: 380px;}
-	#record>span{font-family: 'Noto Sans CJK KR';font-size: 23.5px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.41px;text-align: left;color: #000000; position: absolute; left: 40px; top:35px;}
-	select{width:145px;height:56px; border-style : none; -webkit-appearance: none;-moz-appearance: none;appearance: none;position: absolute;left:570px;top:23px;}
-	select::-ms-expand {display: none;}
-	.select_font{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight:500;font-stretch: normal;font-style: normal;line-height: 2.58;letter-spacing: -1.71px;text-align: left;color:rgba(0, 0, 0, 0.6);}
-	#record_box{width:670px; height: 1250px; position: absolute; left:38px; top:100px;overflow-y: auto; overflow-x: hidden;}
-	.title{width: 670px;height: 140px;background-color: #e6e6e6; border:none; border-top: solid 4px #3c3c3c; padding-top:10px;}
-	.title>span{font-family: 'Noto Sans CJK KR';font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.41px;text-align: left;position: relative;}
-	.title>.ti_btn{width: 180px;height: 70px;border-radius: 10px;box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45);border: solid 3px #00bfbf;background-color: #ffffff;font-family: 'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.56px;text-align: center;color: #00bfbf;position: relative; left: 70%;top:5%;outline:none;}
-	.title>.ti_one{font-size: 28px;font-weight: bold;color: #00bfbf;width:75px;left:-23.5%;top:-5%;}
-	.title>.ti_two{font-size: 28px;font-weight: bold;color: #000000;width:100px;left:4%;top:-15%;}
-	.title>.ti_three{font-size: 28px;font-weight: normal;color: #404040;width:240px;left:4%;top:-15%;}
-	.title>.ti_four{font-size: 24px;font-weight: normal;color: #808080;width:220px;left:4%;top:-15%;}
-	.title>.ti_detail{font-size: 24px;font-weight: 500;color: rgba(64, 64, 64, 0.5);width:90px;left:50%;top:-15%;}
-	.content{width: 670px;height: 523px;background-color: #f7f7f7;border: none;padding-left: 20px; padding-right: 20px;overflow-y: auto; overflow-x: hidden;}
-	.content>.con_1{width: 630px;;background-color: #f7f7f7;border: none; border-bottom: solid 3px #dcdcdc;overflow-y: auto; overflow-x: hidden;word-break:break-all;padding-top:30px;padding-bottom:10px;}
-	.content>.con_1>span{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #000000;}
-	.content>.con_1>label{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.44px;text-align: left;color: #404040; position: relative;top:10%;}
-	.content>.con_2{width: 630px;background-color: #f7f7f7;border: none; overflow-y: auto; overflow-x: hidden;word-break:break-all;padding-top:30px;}
-	.content>.con_2>span{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #000000;}
-	.content>.con_2>label{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.44px;text-align: left;color: #404040; position: relative;top:10%;}
-	
-	#footer{width : 751px;height: 300px;background-color: #ffffff;position: absolute;top : 1721px;}
-</style>
+	<meta charset="utf-8">
+	<title>코칭회기</title>
+	<style>
+		/*a태그 밑줄 삭제*/
+		a {
+			text-decoration: none
+		}
+		#area {width: 751px; height: 2556px;}
+		#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
+		#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+		#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+		#main {width: 751px; height : 2056px; background-color: #ffffff;}
+		#topdiv{width: 751px; height : 278px; background-color: #f2f2f2;}
+
+		#titlediv{width: 751px; height: 60px; position: absolute; text-align: left; margin-top: 69px;}
+		#titlediv>label{font-family: 'Noto Sans CJK KR'; font-size: 50px; font-weight: bold; font-stretch: normal; font-style: normal; margin-left: 40px; display: inline-block;}
+		#tcenterdiv{width: 751px; height: 60px; position: absolute; text-align: left; margin-top: 145px;}
+		#tcenterdiv>label{font-family: 'Noto Sans CJK KR'; font-size: 32px; font-weight: bold; font-stretch: normal; font-style: normal; margin-left: 40px; color: #0778ff; display: inline-block;}
+		#cnamediv{width: 127px; height: 52px; position: absolute; text-align: center; margin-top: 198px; background-color: #0778ff; margin-left: 40px; padding-bottom:10px;}
+		#cnamediv>label{font-family: 'Noto Sans CJK KR'; font-size: 40px; font-weight: bold; font-stretch: normal; font-style: normal; color: #fefefe; display: inline-block;}
+		#cbirth{width: 150px; height: 50px; position: absolute; text-align: center; margin-top: 222px; margin-left:160px;}
+		#cbirth>label{font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: 500; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8); display: inline-block;}
+		#cgender{width: 50px; height: 50px; position: absolute; text-align: center; margin-top: 222px; margin-left:300px;}
+		#cgender>label{font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: 500; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8); display: inline-block;}
+
+		#numdiv{width: 751px; height: 30px; position: absolute; text-align: left; margin-top: 58px;}
+		#num{width: 150px; height: 30px; margin-left:39px; font-family: 'Noto Sans CJK KR'; font-size: 23.5px; font-weight: 500; font-stretch: normal; font-style: normal;float: left;}
+		#num>font{font-weight: 900; color: #00bfbf;}
+		#order{width :150px; height: 30px; text-align: right; display: inline-block; float: right; margin-right:39px;}
+		#order>select{width: 130px;height:33px;border-style : none; background: url('image/선택화살표.png') no-repeat 95% 50%;-webkit-appearance: none;-moz-appearance: none;appearance: none; padding-left: 6px; opacity: 0.6;font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color: rgba(0, 0, 0, 0.6); float: left; margin-top: -10px; margin-left:25px;}
+		#order>select::-ms-expand {display: none;}
+		#order>hr{width: 145px; height: 3px; background-color: #dcdcdc; float: left; border:none; margin-left:18px;}
+
+
+		.boxdiv{width: 751px;}
+		.topboxdiv{width: 751px; height: 150px; position: absolute; text-align: center;}
+		.topbox{width: 670px; height: 150px; background-color: #e6e6e6; border-top:solid 2px #3c3c3c; display: inline-block;}
+		.rounddiv{width: 670px; height: 35px; text-align: left; margin-top: 10px; font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color: #00bfbf; }
+		.rounddiv>label{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color: #00bfbf; margin-left:33px;}
+		.datediv{width: 170px; height: 40px; text-align: left; margin-top: 5px; margin-left:33px; float:left;}
+		.datediv>label{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal; text-align: left;}
+		.timediv{width: 250px; height: 40px; text-align: left; margin-top: 5px; float:left;}
+		.timediv>label{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;color: #404040; text-align: left;}
+		.recentdiv{width: 300px; height: 40px; text-align: left; margin-top: 5px; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: normal;font-stretch: normal;font-style: normal;color: #808080; float:left; margin-left:33px;}
+		.recentdiv>label{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: normal;font-stretch: normal;font-style: normal;color: #808080; text-align: left;}
+		.writebtn{width: 180px; height: 70px; text-align: center; margin-top: -25px; float:right; margin-right:32px;}
+		.writebtn>button{width: 180px; height: 70px; border-radius: 10px; box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45); border: solid 3px #00bfbf; background-color: #ffffff; font-family: 'Noto Sans CJK KR';font-size: 26px;font-weight: bold;font-stretch: normal;font-style: normal; color: #00bfbf;}
+		.detaildiv{width: 100px; height: 40px; text-align: right; margin-top: 10px; float:right; margin-right:32px;}
+		.detaildiv>label{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;color: rgba(64, 64, 64, 0.5);}
+
+		.midboxdiv{width: 751px; height: 282px; position: absolute; text-align: center; margin-top:147px;}
+		.midbox{width: 670px; height: 282px; background-color: #f7f7f7; border-top:solid 3px #b3b3b3; display: inline-block;}
+		.mititle{width: 400px; height: 40px; text-align: left; margin-top: 40px; float:left; margin-left:31px;}
+		.mititle>label{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;}
+		.micontent{width: 610px; height: 130px; text-align: left; margin-top: 15px; float:left; margin-left:31px; overflow: auto;}
+		.micontent>label{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;color: #404040;}
+
+		.botboxdiv{width: 751px; height: 244px; position: absolute; text-align: center; margin-top:429px;}
+		.botbox{width: 670px; height: 244px; background-color: #f7f7f7; border-top:solid 3px #b3b3b3; display: inline-block;}
+		.bottitle{width: 400px; height: 40px; text-align: left; margin-top: 40px; float:left; margin-left:31px;}
+		.bottitle>label{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;}
+		.botcontent{width: 610px; height: 130px; text-align: left; margin-top: 30px; float:left; margin-left:31px; overflow: auto;}
+		.botcontent>label{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;color: #404040;}
+
+		#footer{width : 751px;height: 500px;position: absolute; top :  2056px  ; background-color: #ffffff;}
+
+
+	</style>
 </head>
 
 <body id="area">
-	<div id = "top"><!--top 화면-->
-		<a href = "/"><img src = "../image/로고.png" id = "img1"></a>
-		<a href = "/menu"><img src = "../image/icn_menu.png" id = "menu"></a>
-	</div>
-	
-	<div id = "main"> 
-		<div> <!-- 회색 박스-->
-			<label style = "height: 47px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 39px; top: 193px;">코칭 회기</label>
-		
-			<label style = "font-family: 'Noto Sans CJK KR';font-size: 32px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.89;letter-spacing: -1.92px;text-align: left;color: #0778ff;position: absolute; left: 39px; top:249px;">아이플러스 서울언어치료센터</label>
-			
-			<label id = "child_name" th:text="${scheduleDto1.child}"></label>
-			<label id = "birth" th:text="${scheduleDto1.birthday}"></label>
-			<label id = "gender" th:text="${scheduleDto1.gender}"></label>
-		</div>
-		
-		<div id = "record">
-			<span>총 <font style = "color : #00bfbf;">5</font> 명</span>
-		
-			<select name = "alignment" class = "select_font" style = "left: 630px; background: url('image/선택화살표.png') no-repeat 70% 60%; color: rgba(0, 0, 0, 0.4);">
+<div id = "top"><!--top 화면-->
+	<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+	<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
+</div>
+
+<div id = "main">
+	<div id = "topdiv">
+		<div id=  "titlediv"><label>코칭회기</label></div>
+		<div id = "tcenterdiv"><label>아이플러스 서울언어치료센터</label></div>
+		<div id = "cnamediv"><label th:text="${scheduleDto1.child}"></label></div>
+		<div id = "cbirth"><label th:text="${scheduleDto1.birthday}"></label></div>
+		<div id = "cgender"><label th:text="${scheduleDto1.gender}"></label></div>
+	</div> <!--end topdiv-->
+
+	<div id = "numdiv">
+		<div id = "num">총 <font>5</font> 회</div>
+		<div id = "order">
+			<select name = "start">
 				<option value = "">최신순</option>
 			</select>
-			<hr style = "width: 125px;height: 3px;background-color:rgba(0, 0, 0, 0.4); border:none; position: absolute; left: 622px; top:65px;">
-			
-			<div id = "record_box" th:each="schedule : ${scheduleDto}">
-				<div class = "title" >
-					<a class="ti_btn" th:href="@{'/therapist_calendar_session_registration/' + ${schedule.id}}">회기작성</a>
-					<!--<button class = "ti_btn" onClick="location.href = '/therapist_calendar_session_registration'">회기작성</button>-->
-					<span th:text="${schedule.id}" class = "ti_one"></span><span class="ti_one"> 회기</span><br>
-					<span th:text="${schedule.createdDate}" class = "ti_two"></span>
-					<span th:text="${schedule.start}" class = "ti_three"></span><span class="ti_three"> - </span><span th:text="${schedule.end}" class = "ti_three">-</span><br>
-					<span class = "ti_four">최종수정일 </span><span class = "ti_four" th:text="${schedule.createdDate}"></span>
-					<span class = "ti_detail">수정하기</span>
-				</div>
-				<li th:if="${schedule.coach}">
-					<div class = "content">
-						<div class = "con_1">
-							<span>회기</span>
-							<br>
-							<label th:text="${schedule.session}"></label>
-						</div><!--end con_1-->
-						<div class = "con_2">
-							<span>상담</span>
-							<br>
-							<label th:text="${schedule.counseling}"></label>
-						</div><!--end con_1-->
-					</div><!--end content-->
-				</li>
-			</div><!--end record_box-->
+			<hr>
+		</div>
+	</div> <!--end numdiv-->
 
-			
-			
-			
-			
-		</div><!--end record-->
-	</div> <!--end main-->
-	<div id = "footer">
-		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 71px;"> 
-		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 180px;">
-		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 187px;"></a>
-		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 227px;">이메일무단수집 거부</span>
-		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 224px;">개인정보처리방침</span>
-	</div>
+	<div class = "boxdiv" style = "margin-top:110px;">
+		<div class = "topboxdiv">
+			<div class = "topbox" th:each="schedule : ${scheduleDto}">
+				<div class = "rounddiv" th:text="${schedule.id}"><label >회차</label></div>
+				<div class = "datediv" th:text="${schedule.createdDate}"><label></label></div>
+				<div class = "timediv"><label th:text="${schedule.start}"></label><label> - </label><label th:text="${schedule.end}"></label></div>
+				<div class = "recentdiv">최종수정일<label th:text="${schedule.createdDate}"> 2020.09.14</label></div>
+				<a th:href="@{'/therapist_calendar_session_registration/' + ${schedule.id}}"><div class = "writebtn"><button>회기작성</button></div></a>
+			</div>
+		</div> <!--end topboxdiv-->
+		<div class = "midboxdiv">
+			<div class = "midbox">
+				<div class = "mititle"><label>회기</label></div>
+				<div class = "micontent"><label th:text="${schedule.session}"></label></div>
+			</div> <!--end midboxdiv-->
+			<div class = "botboxdiv">
+				<div class = "botbox">
+					<div class = "bottitle"><label>상담</label></div>
+					<div class = "botcontent"><label th:text="${schedule.counseling}"></label></div>
+				</div> <!--end botboxdiv-->
+			</div> <!--end boxdiv-->
+		</div> <!--end botboxdiv-->
+	</div> <!--end boxdiv-->
+
+			<div class = "boxdiv" style = "margin-top:281px;">
+				<div class = "topboxdiv">
+					<div class = "topbox">
+						<div class = "rounddiv"><label>05회차</label></div>
+						<div class = "datediv"><label>2020.09.14</label></div>
+						<div class = "timediv"><label>13:00-14:00 (50분)</label></div>
+						<div class = "recentdiv"><label>최종수정일 2020.09.14</label></div>
+						<div class = "detaildiv"><label>수정하기</label></div>
+					</div>
+				</div> <!--end topboxdiv-->
+				<div class = "midboxdiv">
+					<div class = "midbox">
+						<div class = "mititle"><label>회기</label></div>
+						<div class = "micontent"><label>더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. 더보기를 누르면 전체 글 내용이 보여집니다. . 더보기를 누르면 전체 글 내용이 보여집니다.</label></div>
+					</div>
+				</div> <!--end midboxdiv-->
+				<div class = "botboxdiv">
+					<div class = "botbox">
+						<div class = "bottitle"><label>상담</label></div>
+						<div class = "botcontent"><label>본문(상담)입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다. 본문입니다</label></div>
+					</div>
+				</div> <!--end botboxdiv-->
+			</div> <!--end boxdiv-->
+
+			<div class = "boxdiv" style = "margin-top:979px;">
+				<div class = "topboxdiv" >
+					<div class = "topbox">
+						<div class = "rounddiv"><label>03회차</label></div>
+						<div class = "datediv"><label>2020.09.14</label></div>
+						<div class = "timediv"><label>13:00-14:00 (50분)</label></div>
+						<div class = "recentdiv"><label>최종수정일 2020.09.14</label></div>
+						<div class = "detaildiv"><label>상세보기</label></div>
+					</div>
+				</div> <!--end topboxdiv-->
+			</div> <!--end boxdiv-->
+
+			<div class = "boxdiv" style = "margin-top:1150px;">
+				<div class = "topboxdiv" >
+					<div class = "topbox">
+						<div class = "rounddiv"><label>02회차</label></div>
+						<div class = "datediv"><label>2020.09.14</label></div>
+						<div class = "timediv"><label>13:00-14:00 (50분)</label></div>
+						<div class = "recentdiv"><label>최종수정일 2020.09.14</label></div>
+						<div class = "detaildiv"><label>상세보기</label></div>
+					</div>
+				</div> <!--end topboxdiv-->
+			</div> <!--end boxdiv-->
+
+			<div class = "boxdiv" style = "margin-top:1324px;">
+				<div class = "topboxdiv" >
+					<div class = "topbox">
+						<div class = "rounddiv"><label>01회차</label></div>
+						<div class = "datediv"><label>2020.09.14</label></div>
+						<div class = "timediv"><label>13:00-14:00 (50분)</label></div>
+						<div class = "recentdiv"><label>최종수정일 2020.09.14</label></div>
+						<div class = "detaildiv"><label>상세보기</label></div>
+					</div>
+				</div> <!--end topboxdiv-->
+			</div> <!--end boxdiv-->
+		</div> <!--end main-->
+
+		<div id = "footer">
+			<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
+			<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+			<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+			<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+			<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+		</div>
 </body>
 </html>

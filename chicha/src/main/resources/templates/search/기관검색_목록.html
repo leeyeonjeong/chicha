@@ -1,146 +1,215 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>센터결과보기</title>
+<meta charset="utf-8">
+<title>기관검색</title>
 <style>
-	#area { width: 751px; height: 2011px;}
-	#top { width: 751px; height: 140px; background-color: #ffffff; display: table;}
+	#area {width: 751px; height: 1930px;}
+	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
 	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
-	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #edfaf8;}
-	#result{width: 751px;height: 1139px;box-shadow: inset 0 10px 10px -10px rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; top: 367px;}
-	.center{width: 670px;height: 308px; border: none; border-top: 4px solid #3c3c3c; border-bottom: 2px solid #cccccc; position: absolute;}
-	.name{width: 670px;height: 120px;background-color: #e6e6e6;position: absolute; font-family: 'Noto Sans CJK KR';font-stretch: normal;font-style: normal;line-height: 1.4;letter-spacing: -1.8px;text-align: left;}
-	.treatment{width: 670px;height: 124px;background-color: #ffffff;font-family: 'Noto Sans CJK KR';font-size: 22px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.27;letter-spacing: -1.32px;text-align: center;color: #666666;position: absolute;}
-	.rate{width: 670px;height: 64px;background-color: #f2f2f2;position: absolute;}
-	#footer{
-    width : 751px;
-    height: 500px;
-    background-color: #ffffff;
-    position: absolute;
-	top : 1511px;
-	}
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 1430px; background-color: #ffffff;}	
+	#topdiv{width: 751px; height : 223px; background-color: #f2f2f2;}
+	
+	#titlediv{width: 751px; height: 60px; position: absolute; text-align: left; margin-top: 50px;}
+	#titlediv>label{font-family: 'Noto Sans CJK KR'; font-size: 50px; font-weight: bold; font-stretch: normal; font-style: normal; margin-left: 40px; display: inline-block;}
+	
+	#contentdiv{width: 751px; height: 100px; position: absolute; text-align: left; margin-top: 154px;}
+	#contentdiv>#content{width: 600px; height: 100px; margin-left: 40px; display: inline-block;}
+	#contentdiv>#content>label{font-family: 'Noto Sans CJK KR'; font-size: 28.5px; font-weight: 300; font-stretch: normal; font-style: normal;}
+	#contentdiv>#content>label>font{font-weight: 900; color: #1d7373;}
+	
+	#totaldiv{width: 751px; height: 35px; position: absolute; text-align: left; margin-top: 31px;}
+	#totaldiv>#total{width: 100px; height: 35px; display: inline-block; margin-left: 39px;}
+	#totaldiv>#total>label{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: 900; font-stretch: normal; font-style: normal;}
+	#totaldiv>#total>label>font{color: #00bfbf;}
+	
+	.centerboxdiv{width: 751px; height: 308px; position: absolute; text-align: center;}
+	.centerboxdiv>.centerbox{width: 670px; height: 308px; display: inline-block; border-top: solid 4px #3c3c3c; border-bottom: solid 2px #cccccc;}
+	.centerboxdiv>.centerbox>.centertop{width: 670px;height: 120px;background-color: #e6e6e6;text-align: center;}
+	
+	.centerboxdiv>.centerbox>.centertop>.centernamediv{width: 670px;height: 35px;text-align: left; margin-top: 18px; display: inline-block;}
+	.centerboxdiv>.centerbox>.centertop>.centernamediv>.namediv{width: 550px;height: 35px; margin-left:31px; display: inline-block; float: left;}
+	.centerboxdiv>.centerbox>.centertop>.centernamediv>.namediv>label{font-family: 'Noto Sans CJK KR'; font-size: 30px; font-weight: bold; font-stretch: normal; font-style: normal;}
+	.centerboxdiv>.centerbox>.centertop>.centernamediv>.mark{width: 52px;height: 78px; margin-left:20px; margin-top:-18px; display: inline-block; float: left;}
+	.centerboxdiv>.centerbox>.centertop>.centernamediv>.mark>img{width: 52px; height: 78px;}
+	.centerboxdiv>.centerbox>.centertop>.centeradddiv{width: 670px;height: 30px;text-align: left; margin-top: 10px; display: inline-block;}
+	.centerboxdiv>.centerbox>.centertop>.centeradddiv>.adddiv{width: 450px;height: 30px; margin-left:31px; display: inline-block; float: left;}
+	.centerboxdiv>.centerbox>.centertop>.centeradddiv>.adddiv>label{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: normal; font-stretch: normal; font-style: normal;color: #999999;}
+	
+	.centermid{width: 670px;height: 124px;background-color: #ffffff;text-align: center;}
+	.centermid>.servicebox{width: 100px;height: 28px; margin-top:20px; display: inline-block; float: center; text-align: center;}
+	.centermid>.servicebox>.checklabel{font-family: 'Noto Sans CJK KR'; font-size: 22px; font-weight: normal; font-stretch: normal; font-style: normal; color: #666666; display: inline-block;}
+	.centermid>.servicebox>.nonchecklabel{font-family: 'Noto Sans CJK KR'; font-size: 22px; font-weight: normal; font-stretch: normal; font-style: normal; color: rgba(102, 102, 102, 0.5); display: inline-block;}
+	
+	.centerbot{width: 670px;height: 64px;background-color: #f2f2f2;text-align: center;}
+	.centerbot>.stardiv{width: 150px;height: 25px;  margin-top:20px; display: inline-block; float: left; text-align: center; margin-left:31px;}
+	.centerbot>.stardiv>img{width: 25px; height: 24px;}
+	.centerbot>.scorelabeldiv{width: 50px;height: 35px; float: left; display: inline-block; margin-left:10px; margin-top:12px;}
+	.centerbot>.scorelabeldiv>label{font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: 900; font-stretch: normal; font-style: normal; color: #00bfbf;}
+	
+	.centerbot>.con{width: 150px;height: 40px; margin-top:10px; display: inline-block; float: left; text-align: center; margin-left:250px; margin-top: 15px;}
+	.centerbot>.con>img{width: 38px; height: 37px; margin-left: 7px;}
+	
+	
+	#footer{width : 751px;height: 500px;position: absolute; top : 1430px;}
+	
 </style>
 </head>
 
 <body id="area">
 	<div id = "top"><!--top 화면-->
-		<a href = "메인.html"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "메뉴.html"><img src = "image/icn_menu.png" id = "menu"></a>
+		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
 	</div>
 	
-	<div id = "main"> 
-		<div><!--회색박스-->	
-			<label style = "font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000;position: absolute; left: 40px; top: 204px;">센터 결과보기</label>
+	<div id = "main">
+		<div id = "topdiv">
+			<div id=  "titlediv"><label>센터 결과보기</label></div>
 			
-			<label style = "font-family: 'Noto Sans CJK KR';font-size: 28.5px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left;color: #000000; position: absolute; left: 42px; top: 290px;">“ <font style = "font-weight: bold; color:#00bfbf;">서울시 전체</font> ”  “ <font style = "font-weight: bold; color:#00bfbf;">언어치료</font> ”  검색한 결과입니다.</label>
-		</div>
+			<div id = "contentdiv">
+				<div id = "content">
+					<label>“ <font>서울시 전체</font> ”  “ <font>언어치료</font> ”  검색한 결과입니다.</label>
+				</div>
+			</div> <!--end contentdiv-->
+		</div> <!--end topdiv-->
 		
-		<div id = "result">
-			<label style = "font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: left;color: #000000;position: absolute; left: 40px; top: 23px;">총 <font style = "color: #00bfbf;">3</font> 개</label>
-			<div class = "center" style = "left: 40px; top: 69px;"><!--아이플러스 서울언어치료센터 -->
-				<div class = "name">
-					<label style = "font-size:30px; font-weight: bold;color: #000000;position:  absolute; left: 31px; top: 25px;">아이플러스 서울언어치료센터</label>
-					<label style = "font-size:24px; font-weight: normal;color: #999999;position:  absolute; left: 31px; top: 71px;">서울특별시 관악구 난곡로 110 (난향동664)</label>
-					<img src = "image/즐겨찾기.png" style = "width: 52px;height: 78px; position:  absolute; left: 591px;">
-				</div>
-				<div class = "treatment" style = "top: 118px;" >
-					<span style = "position:absolute; left: 33px; top: 24px;">언어</span>
-					<span style = "position:absolute; left: 105px; top: 24px;color:#cccccc;">놀이</span>
-					<span style = "position:absolute; left: 178px; top: 24px;">심리</span>
-					<span style = "position:absolute; left: 251px; top: 24px;">학습</span>
-					<span style = "position:absolute; left: 325px; top: 24px;">인지</span>
-					<span style = "position:absolute; left: 398px; top: 24px;">그룹</span>
-					<span style = "position:absolute; left: 472px; top: 24px;color:#cccccc;">감각통합</span>
-					<span style = "position:absolute; left: 584px; top: 24px;color:#cccccc;">사회성</span>
-					<span style = "position:absolute; left: 33px; top: 77px;color:#cccccc;">발달재활서비스</span>
-					<span style = "position:absolute; left: 200px; top: 77px;color:#cccccc;">지역사회서비스</span>
-					<span style = "position:absolute; left: 385px; top: 77px;color:#cccccc;">교육청지원</span>
-				</div>
-				<div class = "rate" style = "top: 242px;">
-					<div>
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 34px; top: 22px;" >
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 60px; top: 22px;">
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 89px; top: 22px;">
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 118px; top: 22px;">
-						<img src = "image/별점.png" style = "position:absolute; left: 147px; top: 22px;">
-					</div>
-					<label style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #00bfbf; position:absolute; left: 186px; top: 13px;">4.0</label>
-					<img src = "image/엘리베이터.png" style = "width: 38px;height: 37px; position:absolute; left: 499px; top: 14px;">
-					<img src = "image/주차.png" style = "width: 38px;height: 37px; position:absolute; left: 551px; top: 14px;">
-					<img src = "image/카페.png" style = "width: 38px;height: 37px; position:absolute; left: 602px; top: 14px;">
-				</div>
-			</div><!--end 아이플러스 서울언어치료센터 -->
-			
-			<div class = "center" style = "left: 40px; top:411px;"><!--신림종합사회복지관 다솜아동발달지원센터  -->
-				<div class = "name">
-					<a href = "기관검색_상세.html"><label style = "font-size:30px; font-weight: bold;color: #000000;position:  absolute; left: 31px; top: 25px;">신림종합사회복지관 다솜아동발달지원센터</label></a>
-					<label style = "font-size:24px; font-weight: normal;color: #999999;position:  absolute; left: 31px; top: 71px;">서울 관악구 난곡로 110</label>
-					<img src = "image/즐겨찾기_pu.png" style = "width: 52px;height: 78px; position:  absolute; left: 591px;">
-				</div>
-				<div class = "treatment" style = "top: 118px;" >
-					<span style = "position:absolute; left: 33px; top: 24px;">언어</span>
-					<span style = "position:absolute; left: 105px; top: 24px;color:#cccccc;">놀이</span>
-					<span style = "position:absolute; left: 178px; top: 24px;">심리</span>
-					<span style = "position:absolute; left: 251px; top: 24px;color:#cccccc;">학습</span>
-					<span style = "position:absolute; left: 325px; top: 24px;">인지</span>
-					<span style = "position:absolute; left: 398px; top: 24px;">그룹</span>
-					<span style = "position:absolute; left: 472px; top: 24px;color:#cccccc;">감각통합</span>
-					<span style = "position:absolute; left: 584px; top: 24px;color:#cccccc;">사회성</span>
-					<span style = "position:absolute; left: 33px; top: 77px;color:">발달재활서비스</span>
-					<span style = "position:absolute; left: 200px; top: 77px;color:">지역사회서비스</span>
-					<span style = "position:absolute; left: 385px; top: 77px;color:color:#cccccc;">교육청지원</span>
-				</div>
-				<div class = "rate" style = "top: 242px;">
-					<div>
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 34px; top: 22px;" >
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 60px; top: 22px;">
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 89px; top: 22px;">
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 118px; top: 22px;">
-						<img src = "image/별점_0.5.png" style = "position:absolute; left: 147px; top: 22px;">
-					</div>
-					<label style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #00bfbf; position:absolute; left: 186px; top: 13px;">4.5</label>
-					<img src = "image/엘리베이터.png" style = "width: 38px;height: 37px; position:absolute; left: 551px; top: 14px;">
-					<img src = "image/주차.png" style = "width: 38px;height: 37px; position:absolute; left: 602px; top: 14px;">
-				</div>
-			</div> <!--end 신림종합사회복지관 다솜아동발달지원센터-->
+		<div id = "totaldiv"><div id = "total"><label>총 <font>3</font> 개</label></div></div>
 		
-		
-			<div class = "center" style = "left: 40px; top: 753px;"><!--톡톡톡 언어심리발달센터 -->
-				<div class = "name">
-					<label style = "font-size:30px; font-weight: bold;color: #000000;position:  absolute; left: 31px; top: 25px;">톡톡톡 언어심리발달센터</label>
-					<label style = "font-size:24px; font-weight: normal;color: #999999;position:  absolute; left: 31px; top: 71px;">서울 관악구 난곡로 110</label>
-					<img src = "image/즐겨찾기.png" style = "width: 52px;height: 78px; position:  absolute; left: 591px;">
-				</div>
-				<div class = "treatment" style = "top: 118px;" >
-					<span style = "position:absolute; left: 33px; top: 24px;">언어</span>
-					<span style = "position:absolute; left: 105px; top: 24px;color:#cccccc;">놀이</span>
-					<span style = "position:absolute; left: 178px; top: 24px;">심리</span>
-					<span style = "position:absolute; left: 251px; top: 24px;color:#cccccc;">학습</span>
-					<span style = "position:absolute; left: 325px; top: 24px;">인지</span>
-					<span style = "position:absolute; left: 398px; top: 24px;">그룹</span>
-					<span style = "position:absolute; left: 472px; top: 24px;color:#cccccc;">감각통합</span>
-					<span style = "position:absolute; left: 584px; top: 24px;color:#cccccc;">사회성</span>
-					<span style = "position:absolute; left: 33px; top: 77px;color:">발달재활서비스</span>
-					<span style = "position:absolute; left: 200px; top: 77px;color:">지역사회서비스</span>
-					<span style = "position:absolute; left: 385px; top: 77px;color:">교육청지원</span>
-				</div>
-				<div class = "rate" style = "top: 242px;">
-					<div>
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 34px; top: 22px;" >
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 60px; top: 22px;">
-						<img src = "image/별점_pu.png" style = "position:absolute; left: 89px; top: 22px;">
-						<img src = "image/별점.png" style = "position:absolute; left: 118px; top: 22px;">
-						<img src = "image/별점.png" style = "position:absolute; left: 147px; top: 22px;">
+		<div class = "centerboxdiv" style = "margin-top:74px;">
+			<div class = "centerbox">
+				
+				<div class = "centertop">
+					<div class = "centernamediv">
+						<div class = "namediv"><label>아이플러스 서울언어치료센터 </label></div>
+						<div class = "mark"><img src = "image/즐겨찾기.png"></div>
 					</div>
-					<label style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: left;color: #00bfbf; position:absolute; left: 186px; top: 13px;">3.0</label>
-					<img src = "image/엘리베이터.png" style = "width: 38px;height: 37px; position:absolute; left: 551px; top: 14px;">
-					<img src = "image/주차.png" style = "width: 38px;height: 37px; position:absolute; left: 602px; top: 14px;">
-				</div>
-			</div><!--end 톡톡톡 언어심리발달센터-->
-		</div> <!--end result-->
-	</div>
+					<div class = "centeradddiv"><div class = "adddiv"><label>서울특별시 관악구 난곡로 110 (난향동664)</label></div></div>
+					<div class = "markdiv"></div>
+				</div> <!--end centertop-->
+				
+				<div class = "centermid">
+					<div class = "servicebox"><label class = "checklabel">언어</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">놀이</label></div>
+					<div class = "servicebox"><label class = "checklabel">심리</label></div>
+					<div class = "servicebox"><label class = "checklabel">학습</label></div>
+					<div class = "servicebox"><label class = "checklabel">인지</label></div>
+					<div class = "servicebox"><label class = "checklabel">그룹</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">감각통합</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">사회성</label></div>
+					<div class = "servicebox" style = "width: 150px;"><label class = "nonchecklabel">교육청지원</label></div>
+					<div class = "servicebox" style = "width: 150px;"><label class = "nonchecklabel">발달재활서비스</label></div>
+				</div> <!--end centermid-->
+				
+				<div class = "centerbot">
+					<div class = "stardiv">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점.png">
+					</div>
+					
+					<div class = "scorelabeldiv"><label>4.0</label></div>
+					
+					<div class = "con">
+						<img src ="image/엘리베이터.png">
+						<img src ="image/주차.png">
+						<img src = "image/카페.png">
+					</div>
+				</div> <!--end centerbot--> 
+			</div> <!---end centerbox-->
+		</div> <!--end centerboxdiv-->
+		
+		<div class = "centerboxdiv" style = "margin-top:402px;">
+			<div class = "centerbox">
+				
+				<div class = "centertop" onClick="location.href = '기관검색_상세'">
+					<div class = "centernamediv">
+						<div class = "namediv"><label>신림종합사회복지관 다솜아동발달지원센터 </label></div>
+						<div class = "mark"><img src = "image/즐겨찾기_mark.png"></div>
+					</div>
+					<div class = "centeradddiv"><div class = "adddiv"><label>서울 관악구 난곡로 110</label></div></div>
+					<div class = "markdiv"></div>
+				</div> <!--end centertop-->
+				
+				<div class = "centermid">
+					<div class = "servicebox"><label class = "checklabel">언어</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">놀이</label></div>
+					<div class = "servicebox"><label class = "checklabel">심리</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">학습</label></div>
+					<div class = "servicebox"><label class = "checklabel">인지</label></div>
+					<div class = "servicebox"><label class = "checklabel">그룹</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">감각통합</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">사회성</label></div>
+					<div class = "servicebox" style = "width: 150px;"><label class = "checklabel">교육청지원</label></div>
+					<div class = "servicebox" style = "width: 150px;"><label class = "checklabel">발달재활서비스</label></div>
+				</div> <!--end centermid-->
+				
+				<div class = "centerbot">
+					<div class = "stardiv">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점_0.5.png">
+						<img src = "image/별점.png">
+					</div>
+					
+					<div class = "scorelabeldiv"><label>4.5</label></div>
+					
+					<div class = "con">
+						<img src ="image/엘리베이터.png">
+						<img src ="image/주차.png">
+					</div>
+				</div> <!--end centerbot--> 
+			</div> <!---end centerbox-->
+		</div> <!--end centerboxdiv-->
+		
+		<div class = "centerboxdiv" style = "margin-top:734px;">
+			<div class = "centerbox">
+				
+				<div class = "centertop">
+					<div class = "centernamediv">
+						<div class = "namediv"><label>톡톡톡 언어심리발달센터 </label></div>
+						<div class = "mark"><img src = "image/즐겨찾기.png"></div>
+					</div>
+					<div class = "centeradddiv"><div class = "adddiv"><label>서울 관악구 난곡로 110</label></div></div>
+					<div class = "markdiv"></div>
+				</div> <!--end centertop-->
+				
+				<div class = "centermid">
+					<div class = "servicebox"><label class = "checklabel">언어</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">놀이</label></div>
+					<div class = "servicebox"><label class = "checklabel">심리</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">학습</label></div>
+					<div class = "servicebox"><label class = "checklabel">인지</label></div>
+					<div class = "servicebox"><label class = "checklabel">그룹</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">감각통합</label></div>
+					<div class = "servicebox"><label class = "nonchecklabel">사회성</label></div>
+					<div class = "servicebox" style = "width: 150px;"><label class = "checklabel">교육청지원</label></div>
+					<div class = "servicebox" style = "width: 150px;"><label class = "checklabel">발달재활서비스</label></div>
+				</div> <!--end centermid-->
+				
+				<div class = "centerbot">
+					<div class = "stardiv">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점_full.png">
+						<img src = "image/별점.png">
+						<img src = "image/별점.png">
+					</div>
+					
+					<div class = "scorelabeldiv"><label>3.0</label></div>
+					
+					<div class = "con">
+						<img src ="image/엘리베이터.png">
+						<img src ="image/주차.png">
+					</div>
+				</div> <!--end centerbot--> 
+			</div> <!---end centerbox-->
+		</div> <!--end centerboxdiv-->
+	</div> <!--end main-->
+	
 	<div id = "footer">
 		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
 		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
@@ -148,5 +217,6 @@
 		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
 		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
 	</div>
+	
 </body>
 </html>

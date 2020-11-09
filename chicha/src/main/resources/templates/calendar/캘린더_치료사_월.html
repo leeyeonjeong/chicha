@@ -1,193 +1,152 @@
 <!doctype html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<title>치료사캘린더</title>
-<style>
-	/*a태그 밑줄 삭제*/
-	a {
-		text-decoration: none
-	}
-	#area { width: 751px; height: 2011px;}
-	#top { width: 751px; height: 140px; background-color: #ffffff;display:table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
-	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1581px; background-color: #f4f4f4;}
-	#schedule{width:670px; height:245px; box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff; position: absolute; left:40px; top: 288px;}
-	.sche_font{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.75;letter-spacing: -1.44px;text-align: left; color: #ffffff; position: absolute; top:35px;}
-	.sche_box{width: 40px;height: 35px;border-radius: 5px;box-shadow: 0 0 9.5px 0.5px #000000; border:none;position: absolute; top:36px; display: table;}
-	#c_top{width: 670px;height: 111px;border:none;}
-	.cal_btn{width: 286px;height: 70px;border-radius: 10px;box-shadow: 0 0 10px 0 rgba(0, 98, 217, 0.45);background-color: #ffffff;position: absolute; top:555px; border:none;outline:none;}
-	.btn_font{font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;color: #0262d6;position: absolute; left: 78px; top:17px;}
-	#month_box{width:448px; height: 111px; position: absolute;  left:111px;  border:none; display: table;}
-	#calendarMember{width: 670px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;position: absolute; left: 39px; top: 660px; border-collapse:collapse}
-	.day{
-    height: 30px;
-    opacity: 0.5;
-    font-family: 'Noto Sans CJK KR';
-    font-size: 20px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.4;
-    letter-spacing: normal;
-    text-align: center;
-    color: rgba(51, 58, 64, 0.5);
-    vertical-align: center;padding-top: 0px;}
-	.month{align:center;width: 448px;font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -0.56px;text-align: center; color: #616d76; }
-	.year{align:center;width: 448px;font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -0.56px;text-align: center; color: #616d76;}
-	td{width: 90px;height: 128px;font-family: 'Noto Sans CJK KR';font-size: 22px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.27;letter-spacing: -1.32px;text-align: center;color: #616d76; padding-top: 18px; vertical-align: top;}
-	.absent_number{font-family: 'Noto Sans CJK KR';font-size: 18px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.56;letter-spacing: -1.08px;text-align: left;color: #ffffff;display:table-cell; position: absolute; left: 47px; top:30px;}
-	.attendance_number{font-family: 'Noto Sans CJK KR';font-size: 16px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -0.96px;text-align: center;color: #7d868d;display:table-cell; text-align:center; vertical-align:middle;}
-	#chi_list{width:670px;height: 70px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #0262d6; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: center;color: #ffffff; border: none; outline: none; position: absolute; left:39px; top:1560px;}
-	#footer{
-    width : 751px;
-    height: 290px;
-    background-color: #f4f4f4;
-    position: absolute;
-	top : 1721px;
-	}
-</style>
-	
+	<meta charset="utf-8">
+	<title>캘린더</title>
+	<style>
+		/*a태그 밑줄 삭제*/
+		a {
+			text-decoration: none
+		}
+		#area {width: 751px; height: 2133px;}
+		#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
+		#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+		#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+		#main {width: 751px; height : 1633px; background-color: #f4f4f4;}
 
-<script language="javascript">
-	var today = new Date();
-	var date = new Date();
-	
-	function prevCalendar() {
-		today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
-        buildCalendar();
-	}
-	  function nextCalendar() {  //다음 달을 today에 저장
-    	today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
-       buildCalendar();
-    }
-	
-	function buildCalendar(){
-		var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var doMonth = new Date(today.getFullYear(),today.getMonth(),1);
-        var lastDate = new Date(today.getFullYear(),today.getMonth()+1,0);
-        var tbCalendar = document.getElementById("calendarMember");
-        var tbCalendarYM = document.getElementById("tbCalendarYM");
-        tbCalendarYM.innerHTML = monthNames[today.getMonth()] +"  "+ today.getFullYear() + "년" ;
-        
-        while (tbCalendar.rows.length > 2) {
-			tbCalendar.deleteRow(tbCalendar.rows.length-1);
-        }
-        var row = null;
-        row = tbCalendar.insertRow();
-        var cnt = 0;
- 		for (i=0; i<doMonth.getDay(); i++) {
-        	cell = row.insertCell();
-            cnt = cnt + 1;
-        }
-		
-        for (i=1; i<=lastDate.getDate(); i++) { 
-			cell = row.insertCell();
-            cell.innerHTML = i;
-            cnt = cnt + 1;
-			if (cnt % 7 == 1) {
-                cell.innerHTML =  i
-            }
-            if (cnt % 7 == 0) {
-                cell.innerHTML = i
-                row = calendarMember.insertRow();
-            }
-            if(today.getFullYear()==date.getFullYear()&&today.getMonth()==date.getMonth()&&i==date.getDate()) 
-            {
-				cell.innerHTML = "<font color=#FFFFFF>"+i;
-				print(i);
-				cell.style.background = "url('image/오늘날짜표시.png')";
-            }
-        }
- 
-    }
-	
-		
-</script>
+		#titlediv{width: 751px; height: 60px; position: absolute; text-align: left; margin-top: 71px;}
+		#titlediv>label{font-family: 'Noto Sans CJK KR'; font-size: 50px; font-weight: bold; font-stretch: normal; font-style: normal; margin-left: 40px; display: inline-block;}
+
+		#planboxdiv{width: 751px; height: 244px; position: absolute; text-align: center; margin-top: 147px;}
+		#planbox{width: 670px; height: 244px; box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45); background-color: #ffffff; display: inline-block;}
+		#thismonth{width: 120px; height: 30px; margin-left: 31px; margin-top: 30px; text-align: left;}
+		#thismonth>label{font-family: 'Noto Sans CJK KR'; font-size: 32px; font-weight: 300; font-stretch: normal; font-style: normal; color: #2f2f2f;}
+		#thisplan{width: 140px; height: 30px; margin-left: 31px; margin-top: 20px; text-align: left; float: left;}
+		#thisplan>label{font-family: 'Noto Sans CJK KR'; font-size: 32px; font-weight: bold; font-stretch: normal; font-style: normal; color: #2f2f2f;}
+		#people{width: 120px; height: 40px; margin-top: 20px; box-shadow: 0 0 10px 0 rgba(0, 204, 204, 0.45); background-color: #00cccc; text-align: center; float: left; padding-bottom: 8px;}
+		#people>label{font-family: 'Noto Sans CJK KR'; font-size: 32px; font-weight: bold; font-stretch: normal; font-style: normal; color: #ffffff;}
+		#currentdiv{width: 250px; height: 30px; margin-right: 33px; margin-top: 30px; text-align: right; float: right;}
+		#currentdiv>label{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: #2f2f2f;}
+		#currentdiv>label>font{font-weight: normal; color: #4e4e4e;}
+		#peoplebox{width: 670px; height: 110px; background-color: #2f2f2f; display: inline-block; margin-top: 10px; text-align: center;}
+		#p{width: 640px; height: 50px; display: inline-block; margin-top: 38px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: #ffffff;}
+		#attendancediv{width: 100px; display: inline-block; float: left; text-align: left;}
+		#attendancediv>label{float: left;}
+		#attendance{width: 42px; display: inline-block; float: left; margin-left: 10px; border-radius: 5px; background-color: #ffffff; color: #2f2f2f; text-align: center;}
+		#absentdiv{width: 100px; display: inline-block; float: left; text-align: left; margin-left: 10px; color: #f25b3d;}
+		#absentdiv>label{float: left;}
+		#absent{width: 42px; display: inline-block; float: left; margin-left: 10px; border-radius: 5px; background-color: #f25b3d; color: #ffffff; text-align: center;}
+		#reinforcediv{width: 150px; display: inline-block; float: left; text-align: left; margin-left: 10px; color: #ffffff;}
+		#reinforcediv>label{float: left;}
+		#reinforce{width: 42px; display: inline-block; float: left; margin-left: 10px; border-radius: 5px; background-color: #ffffff; color: #ff4a26; text-align: center;}
+		#evaluationdiv{width: 150px; display: inline-block; float: left; text-align: left; margin-left: 10px;}
+		#evaluationdiv>label{float: left;}
+		#evaluation{width: 42px; display: inline-block; float: left; margin-left: 10px; border-radius: 5px; box-shadow: 0 0 4.8px 0.3px #000000; background-color: #2f2f2f; color: #ffffff; text-align: center;}
+		#totaldiv{width: 100px; display: inline-block; float: left; text-align: left; margin-left: 10px;}
+		#totaldiv>label{float: left;}
+		#total{width: 42px; display: inline-block; float: left; margin-left: 10px; border-radius: 5px; box-shadow: 0 0 4.8px 0.3px #000000; background-color: #2f2f2f; color: #ffffff; text-align: center;}
+
+		#calendarboxdiv{width: 751px; height: 930px; position: absolute; text-align: center; margin-top: 422px;}
+		#calendarbox{width: 670px; height: 930px; display: inline-block; background-color: #ffffff;}
+		#caltopdiv{width: 670px; height: 111px; background-color: #f7fbff; text-align: center;}
+		#calbutton{width: 610px; height: 70px; display: inline-block; margin-top: 20px;}
+		#calbutton>a>button{width: 286px; height: 70px; border-radius: 10px; box-shadow: 0 0 10px 0 rgba(0, 98, 217, 0.45); background-color: #ffffff; margin-left: 8px; margin-right: 8px; font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal; color: #0262d6;;}
+
+		#btndiv{width :751px; height: 160px; position: absolute; text-align: center; margin-top: 1373px;}
+		#btndiv>button{width: 668px; height: 70px; border-radius: 10px; border:none; outline:none; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45); background-color: #0262d6;display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal; text-align: left;color:#ffffff; text-align: center;}
+
+		#footer{width : 751px;height: 500px;position: absolute; top : 1633px;  background-color: #f4f4f4;}
+
+
+	</style>
 </head>
+
 <body id="area">
-	<div id = "top"><!--top 화면-->
-		<a href = "/"><img src = "image/로고.png" id = "img1"></a>
-		<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
-	</div>
-	
-	<div id = "main"> 
-		<label style = "font-family: 'Noto Sans CJK KR'; font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.84;letter-spacing: -3px;text-align:left;color: #000000; position: absolute; left: 38px; top:212px;">코칭일정</label>
-		
-		<div id = "schedule"><!--치료 예정-->
-			<label style = "font-family:'Noto Sans CJK KR';font-size: 32px;font-weight:300;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #2f2f2f;position: absolute; left: 31px; top:30px;">이번달<br><font style = "font-weight: bold;">치료예정</font></label>
-			
-			<div style = "width: 106px;height: 44px;box-shadow: 0 0 10px 0 rgba(0, 191, 191, 0.45);background-color: #00bfbf; position: absolute; left: 152px; top:75px; display: table">
-				<label id = "person" style = "font-family:'Noto Sans CJK KR';font-size: 32px;font-weight:bold;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #ffffff;display:table-cell; text-align:center; vertical-align:middle;" th:text="${expect}"> 명</label>
-			</div>
-			<label style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;text-align: right;color: #2f2f2f; position: absolute; left: 455px; top:90px;">
-			이번달 치료현황 <font style = "font-weight: normal;color: #4e4e4e;"> 명</font></label>
-			
-			<div style = "width: 670px;height: 111px; background-color: #2f2f2f; position: absolute; top:134px;"> 
-				<label class = "sche_font" style = "left:22px;">출석</label>
-				<div class = "sche_box" style = "left:78px; background-color: #ffffff"><label id = "attendance" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#2f2f2f" th:text="${attendance}"></label></div>
-				
-				<label class = "sche_font" style = "left:134px; color:#f25b3d;">결석</label>
-				<div class = "sche_box" style = "left:190px; background-color: #f25b3d;"><label id = "absen" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff" th:text="${absen}"></label></div>
-				
-				<label class = "sche_font" style = "left:246px;">보강완료</label>
-				<div class = "sche_box" style = "left:340px; background-color: #ffffff"><label id = "reinforce" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#f25b3d" th:text="${reinforce}"></label></div>
-				
-				<label class = "sche_font" style = "left:400px;">평가완료</label>
-				<div class = "sche_box" style = "left:494px;"><label id = "evaluation" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff;" th:text="${evaluation}"></label></div>
-				
-				<label class = "sche_font" style = "left:550px;">누적</label>
-				<div class = "sche_box" style = "left:606px;"><label id = "accumulation" style = "font-family:'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;display:table-cell; text-align:center; vertical-align:middle;color:#ffffff;" th:text="${accumulation}"></label></div>
-			</div>
-		</div> <!--end schedule-->
+<div id = "top"><!--top 화면-->
+	<a href = "/"><img src = "image/로고.png" id = "img1"></a>
+	<a href = "/menu"><img src = "image/icn_menu.png" id = "menu"></a>
+</div>
 
-		<div> <!--달력-->
-			<a href = "/therapist_calendar_registration1"><button class ="cal_btn" style = "left : 76px;"><label class = "btn_font" ><img src = "image/캘린더_플러스.png" style = "width: 30px; height: 30px; background-color: transparent;">코칭등록</label></button></a>
-			<a href = "therapist_calendar_sessionlist"><button class ="cal_btn" style = "left : 392px;"><label class = "btn_font" ><img src = "image/캘린더_화살표.png" style = "width: 54px; height: 21px; background-color: transparent;">코칭회기</label></button></a>
-			
-			<table id = "calendarMember">
-				<tr id = "c_top">
-					<th><button style = "width: 80px; height: 80px; position: absolute; left: 30px;top:15px;background-image: url('image/캘린더back.png'); background-color: transparent;border:none; outline: none;" onclick="prevCalendar()" id="before"></button></th>
-					<th id = "month_box"><span id="tbCalendarYM" style = "font-family:'Noto Sans CJK KR';font-size: 28px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -0.56px;text-align: center;color: #616d76; display:table-cell; text-align:center; vertical-align:middle;"></span></th>
-					<th><button style = "width: 80px; height: 80px; position: absolute; left: 559px;top:15px;background-image: url('image/캘린더front.png'); background-color: transparent;border:none; outline: none;" onclick="nextCalendar()" id="next"></button></th>
-				</tr>
-			
-				<tr>
-					<td class = "day">SUN</td>
-					<td class = "day">MON</td>
-					<td class = "day">THE</td>
-					<td class = "day">WEN</td>
-					<td class = "day">THU</td>
-					<td class = "day">FRI</td>
-					<td class = "day">SAT</td>
-				</tr>
-			</table>
-			<script language="javascript" type="text/javascript">buildCalendar();</script>	
-		</div>
+<div id = "main">
+	<div id = "titlediv"><label>코칭일정</label></div>
 
-		<div class = "absent_check" style = "width :75px;height:67px;position: absolute; left:153px; top:953px;"><!--결석-->
-			<img src="image/결석날짜.png">
-			<label class = "absent_number">2</label>
+
+	<div id = "planboxdiv">
+		<div id = "planbox">
+			<div id = "thismonth"><label>이번 달</label></div>
+			<div id = "thisplan"><label>코칭예정</label></div>
+			<div id = "people"><label th:text="${expect}">명</label></div>
+			<div id = "currentdiv"><label>이번달 코치현황 <font>(명)</font></label></div>
+
+			<div id = "peoplebox">
+				<div id = "p">
+					<div id = "attendancediv">
+						<label>출석</label>
+						<div id = "attendance" th:text="${attendance}"></div>
+					</div>
+
+					<div id = "absentdiv">
+						<label>출석</label>
+						<div id = "absent" th:text="${absen}"></div>
+					</div>
+
+					<div id = "reinforcediv">
+						<label>보강완료</label>
+						<div id = "reinforce" th:text="${reinforce}"></div>
+
+					</div>
+
+					<div id = "evaluationdiv">
+						<label>평가완료</label>
+						<div id = "evaluation" th:text="${evaluation}"></div>
+
+					</div>
+
+					<div id = "totaldiv">
+						<label>누적</label>
+						<div id = "total" th:text="${accumulation}"></div>
+					</div>
+				</div>
+			</div>
 		</div>
-		
-		<a href = "/therapist_calendar_day" onClick="window.open(this.href,'_blanck','width = 680px, height = 1097px','left = 40px, top = 290px'); return false">
-			
-		<div class = "attendance_check" style = "width: 81px;height: 43px;border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);border: solid 2px #7d868d;background-color:transparent;display: table; position: absolute; left: 230px; top:881px;"><!--출석-->
-			<label class = "attendance_number">출석<font style = "font-size: 20px;font-weight: bold;">6명</font></label>
-		</div></a>
-		
-		<button id = "chi_list" onClick="location.href = 'therapist_calendar_childlist'">아동리스트</button>
-	</div><!--end main-->
-	
-	
-	
-	<div id = "footer">
-		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 61px;">
-		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 170px;">
-		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 177px;"></a>
-		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 217px;">이메일무단수집 거부</span>
-		<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 214px;">개인정보처리방침</span>
+	</div> <!-- end planboxdiv-->
+
+	<div id = "calendarboxdiv">
+		<div id = "calendarbox">
+			<div id = "caltopdiv">
+				<div id = "calbutton">
+					<a href = "/therapist_calendar_registration1">
+						<button>
+							<img src = "image/코칭등록.png">
+							코칭등록
+						</button>
+					</a>
+					<a href = "/therapist_calendar_sessionlist">
+						<button>
+							<img src = "image/코칭회기.png">
+							코칭회기
+						</button>
+					</a>
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</div> <!--end calendarboxdiv-->
+
+	<div id = "btndiv">
+		<button onClick="location.href = 'therapist_calendar_childlist'">아동리스트</button>
 	</div>
+</div> <!--end main-->
+
+<div id = "footer">
+	<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
+	<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
+	<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
+	<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>
+	<span style = "font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 323px; top: 424px;">개인정보처리방침</span>
+</div>
 </body>
 </html>

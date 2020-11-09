@@ -95,7 +95,7 @@ public class SelfCheckController {
      * */
 
     // 진단 타입
-    @GetMapping("/saveType")
+    @GetMapping("saveType")
     public String saveType(@RequestParam(name="type", required = false) String type,
                            HttpSession session) {
         session.setAttribute("type", type);

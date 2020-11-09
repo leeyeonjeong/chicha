@@ -1,47 +1,91 @@
 <!doctype html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<title>치료회기 등록</title>
-<style>
-	/*a태그 밑줄 삭제*/
-	a {
-		text-decoration: none
-	}
-	#area {width: 670px; height: 1097px;}
-	#box{width: 610px;height: 181px;border: none;background-color: #d9d9d9;position: absolute; left: 30px; top:112px; padding-top:25px; padding-left:34px; padding-bottom: 20px;}
-	#box>label{font-family: 'Noto Sans CJK KR';font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.8px;text-align: left;position: absolute;}
-	#box>.sub{font-family: 'Noto Sans CJK KR';font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.8px;text-align: left;position: absolute;font-size: 24px;font-weight: bold;color:rgba(0, 0, 0, 0.8);}
-	#box>.obj{font-family: 'Noto Sans CJK KR';font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.8px;text-align: left;position: absolute;font-size: 24px;font-weight: 300;left:180px;color:rgba(0, 0, 0, 0.8);}
-	textarea{width: 588px;height: 171px;border-radius: 10px;border: solid 1px rgba(0, 0, 0, 0.2);background-color: #ffffff; position: absolute; left:31px; resize:none;font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.47px;text-align: left;color: rgba(0, 0, 0, 0.5);padding-left:30px; padding-top:20px;}
-	button{width:618px;height: 70px; position: absolute; left: 31px;font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: center;color: #ffffff;border-radius: 10px;border:none;outline:none;}
-</style>
+	<meta charset="utf-8">
+	<title>코칭회기</title>
+	<style>
+		/*a태그 밑줄 삭제*/
+		a {
+			text-decoration: none;
+			color: #000000;
+		}
+		#main{width: 670px; height: 1165px; background-color: #ffffff;}
+
+		#titlediv{width:670px; height: 45px; position: absolute; text-align: left; margin-top: 30px;}
+		#titlediv>label{font-family: 'Noto Sans CJK KR';font-size: 40.5px; font-weight: bold; font-stretch: normal; font-style: normal; display: inline-block; margin-left: 27px;}
+
+		#childinfoboxdiv{width:670px; height: 220px; position: absolute; text-align: center; margin-top: 100px;}
+		#childinfobox{width: 610px; height: 221px; border: solid 1px rgba(0, 0, 0, 0.2); background-color: #d9d9d9; display: inline-block;}
+		.line{width: 610px; height: 30px; text-align: left; }
+		#chname{width: 100px; height: 35px; display: inline-block; text-align: left; float: left; margin-left:35px; }
+		#chname>label{font-family: 'Noto Sans CJK KR';font-size: 30px; font-weight: bold; font-stretch: normal; font-style: normal; color: #000000;}
+		#cround{width: 120px; height: 35px; display: inline-block; text-align: left; float: left; margin-left:38px;}
+		#cround>label{font-family: 'Noto Sans CJK KR';font-size: 30px; font-weight: bold; font-stretch: normal; font-style: normal; color: #0778ff;}
+		.left{width: 120px; height: 35px; display: inline-block; text-align: left; float: left; margin-left:35px;margin-top:5px;}
+		.left>label{opacity: 0.8;font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8);}
+		.right{width: 300px; height: 35px; display: inline-block; text-align: left; float: left;  margin-left:35px; margin-top:5px;}
+		.right>label{ opacity: 0.8; font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: 300; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8);}
+
+		.divdiv{width:670px; height: 265px; position: absolute; text-align: left;}
+		.divtitle{width: 120px; height: 35px; display: inline-block; text-align: left; float: left; margin-left:33px;}
+		.divtitle>label{font-family: 'Noto Sans CJK KR';font-size: 28.5px; font-weight: 900; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.8);}
+		.contentdiv{width: 608px; height: 200px; display: inline-block; text-align: center; float: left; margin-left:33px;}
+		.contentdiv>textarea{width: 578px;height: 181px; border-radius: 10px;border: solid 1px rgba(0, 0, 0, 0.2);background-color: #ffffff; resize: none; margin-top: 20px; padding-left:30px; padding-top:20px; display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 24px; font-weight: 500; font-stretch: normal; font-style: normal; color: rgba(0, 0, 0, 0.5);}
+
+		#btndiv{width :670px; height: 160px; position: absolute; text-align: center; margin-top: 950px;}
+		#register{width: 608px; height: 70px; border-radius: 10px; border:none; outline:none; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45); background-color: #00bfbf; display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color:#ffffff; text-align: center;}
+		#cancel{width: 608px; height: 70px; border-radius: 10px; border:none; outline:none; box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45); background-color: #3c3c3c; display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;letter-spacing: -1.44px;text-align: left;color:#ffffff; margin-top:20px;text-align: center;}
+
+	</style>
+
 </head>
 
 <form th:action="@{/therapist_calendar_session_registration}" method="post">
-	<body id = "area">
-		<label style = "font-family: 'Noto Sans CJK KR';font-size: 40.5px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.43px;text-align: left;s: #000000;position: absolute; left: 31px; top:40px;">치료회기</label>
-		<div id = "box">
-			<label style = "font-size: 30px;font-weight: bold;" th:text="${childName}"></label>
-			<label style = "font-size: 30px;font-weight: bold; left:180px;color:#0778ff;" th:text="${scheduleDto.id}"></label><label style = "font-size: 30px;font-weight: bold; left:180px;color:#0778ff;"> 회기</label><br><br><br><br>
+	<body>
+	<div id = "main">
 
-			<label class = "sub">날짜</label>
-			<label class = "obj" th:text="${scheduleDto.createdDate}"></label><br><br>
-			<label class = "sub">시간</label>
-			<label class = "obj" th:text="${scheduleDto.start}"></label><label class="obj"> - </label><label class = "obj" th:text="${scheduleDto.end}"></label><br><br>
-			<label class = "sub">최종수정일</label>
-			<label class = "obj">2020.09.14</label>
+		<div id=  "titlediv"><label>치료회기</label></div>
+
+		<div id = "childinfoboxdiv">
+			<div id = "childinfobox">
+				<div class = "line" style = "margin-top:30px;">
+					<div id = "chname"><label th:text="${childName}"></label></div>
+					<div id = "cround"><label th:text="${scheduleDto.id}"></label><label> 회기</label></div>
+				</div>
+				<div class = "line" style = "margin-top:20px;">
+					<div class = "left"><label>날짜</label></div>
+					<div class = "right"><label th:text="${scheduleDto.createdDate}"></label></div>
+				</div>
+				<div class = "line">
+					<div class = "left"><label>시간</label></div>
+					<div class = "right"><label th:text="${scheduleDto.start}"></label><label> - </label><label th:text="${scheduleDto.end}"></label></div>
+				</div>
+				<div class = "line">
+					<div class = "left"><label>최종수정일</label></div>
+					<div class = "right"><label> 2020.09.14</label></div>
+				</div>
+			</div>
+		</div> <!--end childinfoboxdiv-->
+
+		<div class = "divdiv" style = "margin-top:355px;">
+			<div class = "divtitle"><label>회기</label></div>
+			<div class = "contentdiv">
+				<textarea name="session" id="session" placeholder="내용을 입력하세요."></textarea>
+			</div>
+		</div>
+		<div class = "divdiv" style = "margin-top:640px;">
+			<div class = "divtitle"><label>상담</label></div>
+			<div class = "contentdiv">
+				<textarea  id="counseling" name="counseling"  placeholder="내용을 입력하세요."></textarea>
+			</div>
 		</div>
 
-		<label style = "font-family: 'Noto Sans CJK KR';font-size: 28.5px;font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.43px;text-align: left;color: #000000;position: absolute; left: 31px; top:360px;">회기</label>
-		<textarea id="session" name="session" class = "textbox" style = "top:410px;" placeholder = "내용을 입력하세요."></textarea>
+		<div id = "btndiv">
+			<button id = "register" type="submit">등록</button>
+			<button id = "cancel">취소</button>
+		</div>
 
-		<label style = "font-family: 'Noto Sans CJK KR';font-size: 28.5px;font-weight: 900;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -2.43px;text-align: left;color: #000000;position: absolute; left: 31px; top:625px;">상담</label>
-		<textarea id="counseling" name="counseling" class = "textbox" style = "top:675px;" placeholder = "내용을 입력하세요."></textarea>
-
-		<!--<button style = "background-color: #00bfbf; top:900px;" onClick="location.href='/therapist_calendar_sessionlist'">등록</button>-->
-		<button type="submit" style = "background-color: #00bfbf; top:900px;">등록</button>
-		<button style = "background-color: #4d4d4d; top:990px;" >취소</button>
+	</div> <!--end main-->
 	</body>
 </form>
 </html>

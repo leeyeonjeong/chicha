@@ -8,19 +8,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SearchController {
 
-    @GetMapping("search")
+    @GetMapping("기관검색")
     public String search() {
         return "search/기관검색";
     }
 
-    @GetMapping("search_list")
+    @GetMapping("기관검색_목록")
     public String search_list() {
         return "search/기관검색_목록";
     }
 
-    @GetMapping("search_detail")
+    @GetMapping("기관검색_상세")
     public String search_detail() {
         return "search/기관검색_상세";
+    }
+
+    @GetMapping("상세_iframe")
+    public String search_iframe() {
+        return "search/상세_iframe";
     }
 
 }

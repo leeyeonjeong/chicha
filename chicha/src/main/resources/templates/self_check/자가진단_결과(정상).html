@@ -1,24 +1,46 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>자가진단_결과</title>
+<meta charset="utf-8">
+<title>결과</title>
 <style>
-	#area { width: 751px; height: 2011px;}
-	#top { width: 751px; height: 140px; background-color: #ffffff; display: table;}
-	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;} 
-	#menu { width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
-	#main {width: 751px; height : 1371px; background-color: #f2faf9;}
-	#expl{width: 523px;height: 69px;font-family: 'Noto Sans CJK KR';font-size: 24.5px;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left; position: absolute; left: 40px; top: 290px;}
-	#result{width: 670px;height: 71px;background-color: #d9d9d9;position: absolute; left: 40px; top: 550px; display:table;}
-	.btn{width: 670px;height: 80px;  border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45); border: solid 3px #00bfbf;font-size: 24px;font-family: 'Noto Sans CJK KR';font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;position: absolute; left: 40px; outline: none;}
-	#footer{
-    width : 751px;
-    height: 500px;
-    background-color: #f2faf9;
-    position: absolute;
-	top : 1511px;
-	}
+	#area { width: 751px; height: 1460px;}
+	#top { width: 751px; height: 140px; background-color: #ffffff;display: table;}
+	#img1 {width: 254px;height: 79px;position: absolute; left: 27px; top: 30px;}
+	#menu {width: 54px; height: 44px; position: absolute; left: 676px; top: 47px;}
+	#main {width: 751px; height : 960px; background-color: #f2faf9;}	
+	
+	
+	#titlediv{width: 751px; height: 60px; position: absolute; text-align: left; margin-top: 50px;}
+	#titlediv>label{font-family: 'Noto Sans CJK KR'; font-size: 50px; font-weight: bold; font-stretch: normal; font-style: normal; margin-left: 40px; display: inline-block;}
+	
+	#contentdiv{width: 751px; height: 120px; position: absolute; text-align: left; margin-top: 144px;}
+	#contentdiv>#content{width: 600px; height: 120px; margin-left: 40px; display: inline-block;}
+	#contentdiv>#content>label{font-family: 'Noto Sans CJK KR'; font-size: 28.5px; font-weight: 300; font-stretch: normal; font-style: normal;}
+	#contentdiv>#content>label>font{font-weight: bold;}
+	
+	#hrdiv{width: 751px; height: 6px; position: absolute; text-align: left; margin-top: 345px;}
+	#hrdiv>hr{width: 61px; height: 6px; border:none; background-color: #000000; display: inline-block; margin-left: 39px;}
+	
+	#selfdiv{width: 751px; height: 150px; position: absolute; text-align: left; margin-top: 378px;}
+	#selfdiv>#self{width: 650px; height: 150px; display: inline-block; margin-left: 39px;}
+	#selfdiv>#self>label{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal;}
+	
+	#resultboxdiv{width: 751px; height: 220px; position: absolute; text-align: center; margin-top: 434px;}
+	#resultboxdiv>#resultbox{width: 670px; height: 220px; display: inline-block;}
+	#resultboxdiv>#resultbox>#resulttop{width: 670px; height: 80px; background-color: #e6e6e6;}
+	#resultboxdiv>#resultbox>#resulttop>#labeldiv{width: 150px; height: 35px; display: inline-block; margin-top:16px;}
+	#resultboxdiv>#resultbox>#resulttop>#labeldiv>label{font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: bold; font-stretch: normal; font-style: normal;}
+	#resultboxdiv>#resultbox>#resultcontent{width: 670px; height: 140px; background-color: #ffffff;}
+	#resultboxdiv>#resultbox>#resultcontent>#labelcontent{width:400px; height: 35px; display: inline-block; margin-top:50px;}
+	#resultboxdiv>#resultbox>#resultcontent>#labelcontent>label{font-family: 'Noto Sans CJK KR'; font-size: 28px; font-weight: normal; font-stretch: normal; font-style: normal;}
+	
+	
+	#buttondiv{width: 751px; height: 70px; position: absolute; text-align: center; margin-top: 695px;}
+	#buttondiv>button{width: 670px; height: 70px; border-radius: 10px; box-shadow: 0 0 8px 0 rgba(57, 56, 58, 0.45); border: solid 3px #00bfbf; background-color: #ffffff; font-family: 'Noto Sans CJK KR'; font-size: 26px; font-weight: bold; font-stretch: normal; font-style: normal; color: #00bfbf; outline: none;}
+	
+	#footer{width : 751px;height: 500px;position: absolute; top : 960px; background-color: #f2faf9;}
+	
 </style>
 </head>
 
@@ -29,38 +51,35 @@
 	</div>
 	
 	<div id = "main">
+		<div id=  "titlediv"><label>자가진단</label></div>
 		
-		<div> <!-- 회색 박스-->
-			<label style = "height: 47px;font-family: 'Noto Sans CJK KR';font-size: 50px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 0.76;letter-spacing: -3px;text-align: left;color: #000000; position: absolute; left: 39px; top: 203px;">자가 진단</label>
-			
-			<div id = "expl">
-				우리 아이가 혹시 <font style = "font-weight: 900; color: #0788ff;">ADHD</font>?
-				<br>
-				간편하게 확인해보고 <font style = "font-weight: 900;">알맞은 기관</font>을 추천받으세요!
+		<div id = "contentdiv">
+			<div id = "content">
+				<label>우리 아이가 혹시 <font style = "color: #0778ff;">ADHD?</font><br>간편하게 확인해보고 <font>알맞은 기관</font>을 추천받으세요!
+				</label>
 			</div>
-		</div>
-		
-		
-		<div> <!--결과-->
-			<hr style = "width: 61px;height: 6px;border:none;background-color: #000000;position: absolute; left: 40px; top: 454px;">
-		
-			<label style = "width: 160px;height: 20px;font-family: 'Noto Sans CJK KR';font-size: 21px;font-weight: 500; font-stretch: normal;font-style: normal;line-height: 1.49;letter-spacing: -1.71px;text-align: left; position: absolute; left: 40px; top: 500px;">우리 아이 결과는?</label>
+		</div> <!--end contentdiv-->
 			
-			<div id = "result">
-				<label style = "width: 220px;height: 28px;font-family: 'Noto Sans CJK KR';font-size: 23px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center; display:table-cell; text-align:center; vertical-align:middle; letter-spacing: 5px;">정상입니다</label>
-			</div>	
+		<div id = "hrdiv"><hr></div>
+		<div id = "selfdiv"><div id = "self"><label>우리 아이 결과는?</label><br></div></div>
 			
-			<div style = "width: 671px;height: 115px;background-color: #ffffff; border:none; border-bottom:solid 1px #e6e6e6; position: absolute; left: 40px; top: 621px; display:table;">
-				<label style="font-family: 'Noto Sans CJK KR';font-size: 20px;font-weight: center;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.68px;text-align: center;display:table-cell; text-align:center; vertical-align:middle;" >다른 분야도 함께 진단해보세요.</label>
-			</div>
-			
-			<div>
-				<a href = "/self_check"><button class = "btn" style="color:#00bfbf; top:780px; background-color: #ffffff;">다른 진단해보기</button></a>
-			</div>
-		</div>
-	</div>
+		<div id = "resultboxdiv">
+			<div id = "resultbox">
+				<div id = "resulttop">
+					<div id = "labeldiv"><label>정상입니다.</label></div>
+				</div>
+				<div id = "resultcontent">
+					<div id = "labelcontent"><label>다른 분야도 함께 진단해보세요. </label></div>
+				</div>
+			</div><!--end resultbox-->
+		</div>	<!--end resultboxdiv-->
+		
+		<div id = "buttondiv"><button onClick = "location.href = 'self_check'">다른 진단해보기</button></div>
+		
+	</div> <!--end main-->
+
 	<div id = "footer">
-		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;"> 
+		<img src = "image/로고.png" width = "317px" height = "98px" style = "position: absolute; left: 38px; top: 271px;">
 		<img src = "image/copy.png" width = "446px" height = "29px" style = "position: absolute; left: 49px; top: 380px;">
 		<a href = "#top"><img src = "image/up.png" width = "80px" height = "80px" style = "position: absolute; left: 649px; top: 387px;"></a>
 		<span style = "width: 242px;height: 26px;font-family: 'Noto Sans CJK KR';font-size: 28px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.07;letter-spacing: -1.68px;text-align: left;color: #000000; position: absolute; left: 39px; top: 427px;">이메일무단수집 거부</span>

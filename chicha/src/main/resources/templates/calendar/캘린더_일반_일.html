@@ -1,73 +1,77 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>무제 문서</title>
-<style>
-	/*a태그 밑줄 삭제*/
-	a {
-		text-decoration: none
-	}
-	#area {width: 670px; height: 700px; overflow-y: auto; word-break: break-all;}
-	#top {width: 670px;height: 154px;box-shadow: 0 0 10px 0 rgba(115, 155, 210, 0.45);background-color: #ffffff;}
-	#top>.top_font{font-family: "Noto Sans CJK KR";font-size: 32px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.52;letter-spacing: -1.92px;text-align: left;color: #2f2f2f;}
-	#therapy_font{font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: left; color: #000000;position: absolute; left: 460px;}
-	#box_1{width:670px; height:190px; border-bottom: solid 2px #dcdcdc; overflow-y: auto;}
-	#area>#box_1>span{font-family: "Noto Sans CJK KR";font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;text-align: left;position: absolute; }
-	.name{color: #2f2f2f; left: 35px;}
-	.number{color:#4e4e4e; left: 235px;}
-	#area>#box_1>#memo{width: 601px; top:50px; position: absolute; left: 35px; top:270px;opacity: 0.8;font-family: "Noto Sans CJK KR";font-size: 24px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -0.48px; text-align: left;color: rgba(60, 60, 60, 0.8);overflow-y: auto; word-break: break-all;}
-	.absent{width: 604px;height: 90px;background-color: #ffeeeb;border-left: solid 4px #ff5634;position: absolute; left: 35px;}
-	.attendance{width: 604px;height: 90px;background-color: #f1f7fc;border-left: solid 4px #2f2f2f;position: absolute; left: 35px;}
-	.absent>span, .attendance>span{font-family:"Noto Sans CJK KR";font-stretch: normal;font-style: normal;line-height: 0.93;letter-spacing: -1.8px;text-align: left;position: absolute;}
-	.ab_time{font-size: 24px;font-weight: bold;color: rgba(255, 86, 52, 0.97);left: 27px; top:15px;}
-	.at_time{font-size: 24px;font-weight: bold;color: rgba(47, 47, 47, 0.97);left: 27px; top:15px;}
-	.ab_state{font-size: 30px;font-weight: bold;color: #ff5634;left: 132px; top:15px;}
-	.at_state{font-size: 30px;font-weight: bold;color: rgba(47, 47, 47, 0.97);left: 132px; top:15px;}
-	.c_area{font-size: 24px;font-weight: bold;color: #000000;left: 391px; top:15px;}
-	.c_name{font-size: 24px;font-weight: normal;color: #000000;left: 500px; top:15px;}
-	.company{font-size: 20px;font-weight: 300;color: color: rgba(0, 0, 0, 0.6);left: 133px; top:54px;}
-	
-	button{width: 608px;height: 70px; border-radius: 10px;box-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45);background-color: #3c3c3c;position: absolute; border: none; outline: none; left: 33px; top:640px;font-family: "Noto Sans CJK KR";font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: normal;letter-spacing: -1.44px;text-align: center;color: #ffffff;}
-</style>
+	<meta charset="utf-8">
+	<title>캘린더</title>
+	<style>
+		/*a태그 밑줄 삭제*/
+		a {
+			text-decoration: none
+		}
+
+		#main {width: 670px; height: 800px; background-color: #ffffff;}
+
+		#today{width: 200px; height: 30px; margin-left: 31px; margin-top: 30px; text-align: left;}
+		#today>label{font-family: 'Noto Sans CJK KR'; font-size: 32px; font-weight: bold; font-stretch: normal; font-style: normal; color: #2f2f2f;}
+		#thisplan{width: 140px; height: 30px; margin-left: 31px; margin-top: 20px; text-align: left; float: left;}
+		#thisplan>label{font-family: 'Noto Sans CJK KR'; font-size: 32px; font-weight: bold; font-stretch: normal; font-style: normal; color: #2f2f2f;}
+		#people{width: 120px; height: 40px; margin-top: 20px; box-shadow: 0 0 10px 0 rgba(0, 204, 204, 0.45); background-color: #00cccc; text-align: center; float: left; padding-bottom: 8px; font-family: 'Noto Sans CJK KR'; font-size: 32px; font-weight: bold; font-stretch: normal; font-style: normal; color: #ffffff;}
+		#people>label{font-family: 'Noto Sans CJK KR'; font-size: 32px; font-weight: bold; font-stretch: normal; font-style: normal; color: #ffffff;}
+		hr{width: 670px; height: 2px; background-color: #dcdcdc; display: inline-block; border: none; margin-top: 30px;}
+
+		.treatline{width: 300px; height: 30px; margin-left: 35px; margin-top: 8px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: normal; font-stretch: normal; font-style: normal; color: #4e4e4e; text-align: left;}
+		.treatline>.tname{width: 200px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: #2f2f2f;float: left;}
+		.treatline>font{font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: normal; font-stretch: normal; font-style: normal; color: #4e4e4e;}
+		#memo{width: 600px; height: 50px; display: inline-block; text-align: left; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: 500; font-stretch: normal; font-style: normal; color: rgba(60, 60, 60, 0.8); margin-left: 35px; margin-top: 5px;}
+
+		.abline{width: 600px; height: 90px; background-color: #ffeeeb; border-left: solid 4px #ff5634; margin-left: 35px; margin-top: 30px;}
+		.abline>.abtime{width: 80px; height: 25px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(255, 86, 52, 0.97); margin-left: 23px; margin-top: 10px; float: left;}
+		.abline>.abstate{width: 100px; height: 35px; font-family: 'Noto Sans CJK KR'; font-size: 30px; font-weight: bold; font-stretch: normal; font-style: normal; color: #ff5634; margin-left: 23px; margin-top: 8px; float: left;}
+		.atline{width: 600px; height: 90px; background-color: #f1f7fc; border-left: solid 4px #2f2f2f; margin-left: 35px; margin-top: 30px;}
+		.atline>.attime{width: 80px; height: 25px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal; color: rgba(47 47 47, 0.97); margin-left: 23px; margin-top: 10px; float: left;}
+		.atline>.atstate{width: 100px; height: 35px; font-family: 'Noto Sans CJK KR'; font-size: 30px; font-weight: bold; font-stretch: normal; font-style: normal; color: #2f2f2f; margin-left: 23px; margin-top: 8px; float: left;}
+		.abtreatname{width: 100px; height: 35px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: bold; font-stretch: normal; font-style: normal;margin-left: 150px; margin-top: 8px; float: left;}
+		.coachname{width: 100px; height: 35px; font-family: 'Noto Sans CJK KR'; font-size: 24px; font-weight: normal; font-stretch: normal; font-style: normal;margin-left: 10px; margin-top: 8px; float: left;}
+		.centername{width: 300px; height: 35px; font-family: 'Noto Sans CJK KR'; font-size: 20px; font-weight: 300; font-stretch: normal; font-style: normal;margin-left: 128px; margin-top: 10px; float: left;}
+
+
+		#btndiv{width :670px; height: 160px; position: absolute; text-align: center; margin-top: 100px;}
+		#btndiv>button{width: 608px; height: 70px; border-radius: 10px; border:none; outline:none; bbox-shadow: 0 0 5px 0 rgba(115, 155, 210, 0.45); background-color: #3c3c3c;display: inline-block; font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal; color:#ffffff; text-align: center; display: inline-block;}
+	</style>
 </head>
 
-<body id = "area">
-	<div id = "top">
-		<label class= "top_font" style = "position: absolute; left: 33px; top:35px;">2020.09.18</label>
-		<label class= "top_font" style = "position: absolute; left: 32px; top:85px;">치료예정</label>
-		<div style = "width: 81px;height: 43px;box-shadow: 0 0 10px 0 rgba(0, 204, 204, 0.45);background-color: #00cccc; position: absolute; left: 153px; top:89px; display: table;">
-			<label id = "therapy_number" class = "top_font" style = "color: #ffffff; display:table-cell; text-align:center; vertical-align:middle;">05</label>
-		</div>
-		<label style = "font-family: 'Noto Sans CJK KR';font-size: 24px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.77;letter-spacing: -1.44px;text-align: right;color: #2f2f2f;position: absolute; left: 454px; top:96px;">오늘의 치료현황<font style = "font-weight: normal;color: #4e4e4e;">&nbsp;&nbsp;(명)</font></label>
-	</div> <!--end top-->
-	
-	<div id = "box_1">
-		<span class = "name" style = "top:180px;">언어치료</span>
-		<span class = "number" style = "top:180px;">1회</span>
-		<span class = "name" style = "top:220px;">감각통합치료</span>
-		<span class = "number" style = "top:220px;">1회</span>
-		<div id = "memo">
-			메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 
-		</div>
-	</div> <!--end box_1-->
-	
-	<div class = "absent" style = "top:383px;">
-		<span class = "ab_time">09:00</span>
-		<span class = "ab_state">결석 </span>
-		<span class = "c_area">코칭분야</span>
-		<span class = "c_name">치료사명</span>
-		<span class = "company">기관명</span>
-	</div> <!--end absent-->
-	
-	<div class = "attendance" style = "top:500px;">
-		<span class = "at_time">10:00</span>
-		<span class = "at_state">출석</span>
-		<span class = "c_area">코칭분야</span>
-		<span class = "c_name">치료사명</span>
-		<span class = "company">기관명</span>
-	</div><!--end attendance-->
-	
-	<button onClick = "window.close()">닫기</button>
+<body>
+<div id = "main">
+	<div id = "today"><label>2020.09.18</label></div>
+	<div id = "thisplan"><label>코칭일정</label></div>
+	<div id = "people"><label>05</label>회</div>
+	<hr>
+
+	<div class = "treatline"><div class = "tname">언어치료</div> <font>1</font>회</div>
+	<div class = "treatline"><div class = "tname">감각통합치료</div> <font>1</font>회</div>
+	<div id = "memo">메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용이 보여집니다. 메모내용메모내용이 보여집니다.</div>
+	<hr>
+
+	<div class = "abline">
+		<div class = "abtime">09:00</div>
+		<div class = "abstate">결석</div>
+		<div class = "abtreatname">코칭분야</div>
+		<div class = "coachname">치료사명</div>
+		<div class = "centername">기관명</div>
+
+	</div>
+	<div class = "atline">
+		<div class = "attime">10:00</div>
+		<div class = "atstate">출석</div>
+		<div class = "abtreatname">코칭분야</div>
+		<div class = "coachname">치료사명</div>
+		<div class = "centername">기관명</div>
+	</div>
+
+	<div id = "btndiv">
+		<button onClick = "window.close()">닫기</button>
+	</div>
+
+</div> <!--end main-->
 </body>
 </html>
