@@ -49,4 +49,12 @@ public class MessageController {
         return "message/메시지_치료사";
     }
 
+
+
+
+    @GetMapping("chat")
+    public String chat() {
+        return "message/chat";
+    }
+
 }
