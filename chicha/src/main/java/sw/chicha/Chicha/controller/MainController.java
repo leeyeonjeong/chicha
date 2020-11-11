@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     // Main
-    @GetMapping("/")
+    @GetMapping("")
     public String main() {
         return "/main/메인";
     }
 
     // Menu
-    @GetMapping("/menu")
+    @GetMapping("menu")
     public String menu() {
         return "/main/메뉴";
     }
