@@ -9,13 +9,13 @@ public class MainController {
     // Main
     @GetMapping("")
     public String main() {
-        return "/main/메인";
+        return "main/메인";
     }
 
     // Menu
     @GetMapping("menu")
     public String menu() {
-        return "/main/메뉴";
+        return "main/메뉴";
     }
 
 
