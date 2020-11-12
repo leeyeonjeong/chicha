@@ -27,7 +27,7 @@ public class CalendarService {
 
     public CalendarDto getCalendar(Long id) {
         Optional<Calendar> calendarWrapper = calendarRepository.findById(id);
-        if (calendarWrapper.isPresent()) {
+        try{if (calendarWrapper.isPresent()) {
             Calendar calendar = calendarWrapper.get();
 
             CalendarDto calendarDto = CalendarDto.builder()
@@ -42,30 +42,34 @@ public class CalendarService {
                     .build();
 
             return calendarDto;
-        } else {
-            return CalendarDto.builder().build();
+        } }catch (Exception e){
+            e.printStackTrace();
         }
+        return CalendarDto.builder().build();
     }
 
     public CalendarDto getTherapist(Long id) {
         Optional<Calendar> calendarWrapper = calendarRepository.findById(id);
-        if (calendarWrapper.isPresent()) {
-            Calendar calendar = calendarWrapper.get();
+        try {
+            if (calendarWrapper.isPresent()) {
+                Calendar calendar = calendarWrapper.get();
 
-            CalendarDto calendarDto = CalendarDto.builder()
-                    .id(calendar.getId())
-                    .therapist(calendar.getTherapist())
-                    .build();
+                CalendarDto calendarDto = CalendarDto.builder()
+                        .id(calendar.getId())
+                        .therapist(calendar.getTherapist())
+                        .build();
 
-            return calendarDto;
-        } else {
-            return CalendarDto.builder().build();
+                return calendarDto;
+            }
+        } catch (Exception e){
+            e.printStackTrace();
         }
+        return CalendarDto.builder().build();
     }
 
     public CalendarDto getMember(Long id) {
         Optional<Calendar> calendarWrapper = calendarRepository.findById(id);
-        if (calendarWrapper.isPresent()) {
+        try {if (calendarWrapper.isPresent()) {
             Calendar calendar = calendarWrapper.get();
 
             CalendarDto calendarDto = CalendarDto.builder()
@@ -74,9 +78,10 @@ public class CalendarService {
                     .build();
 
             return calendarDto;
-        } else {
-            return CalendarDto.builder().build();
+        }} catch (Exception e){
+            e.printStackTrace();
         }
+        return CalendarDto.builder().build();
     }
 
 }

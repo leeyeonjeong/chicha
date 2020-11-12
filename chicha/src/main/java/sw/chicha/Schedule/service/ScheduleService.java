@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import sw.chicha.Calendar.domain.Calendar;
+import sw.chicha.Calendar.dto.CalendarDto;
 import sw.chicha.Child.domain.Child;
 import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Child.repository.ChildRepository;
@@ -97,7 +98,7 @@ public class ScheduleService {
     // 일정 전체 반환
     public ScheduleDto getSchedule(Long id) {
         Optional<Schedule> scheduleWrapper = scheduleRepository.findById(id);
-        if (scheduleWrapper.isPresent()) {
+        try{if (scheduleWrapper.isPresent()) {
             Schedule schedule = scheduleWrapper.get();
 
             ScheduleDto scheduleDto = ScheduleDto.builder()
@@ -115,9 +116,10 @@ public class ScheduleService {
                     .build();
 
             return scheduleDto;
-        } else {
-            return ScheduleDto.builder().build();
+        }} catch (Exception e){
+            e.printStackTrace();
         }
+        return ScheduleDto.builder().build();
     }
 
     // 이름, 성별, 상태, 생년월일, 전화번호, 주소, 메모

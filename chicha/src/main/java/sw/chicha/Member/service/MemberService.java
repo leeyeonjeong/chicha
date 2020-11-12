@@ -102,7 +102,7 @@ public class MemberService implements UserDetailsService {
     // 일반 멤버 반환
     public MemberDto getMember(Long id) {
         Optional<Member> memberWrapper = memberRepository.findById(id);
-        if (memberWrapper.isPresent()) {
+        try{if (memberWrapper.isPresent()) {
             Member member = memberWrapper.get();
 
             MemberDto memberDto = MemberDto.builder()
@@ -117,15 +117,16 @@ public class MemberService implements UserDetailsService {
                     .build();
 
             return memberDto;
-        } else {
-            return MemberDto.builder().build();
+        }} catch (Exception e){
+            e.printStackTrace();
         }
+        return MemberDto.builder().build();
     }
 
     // 치료사 반환
     public TherapistDto getTherapist(Long id) {
         Optional<Therapist> therapistWrapper = therapistRepository.findById(id);
-        if (therapistWrapper.isPresent()) {
+        try{if (therapistWrapper.isPresent()) {
             Therapist therapist = therapistWrapper.get();
 
             TherapistDto therapistDto = TherapistDto.builder()
@@ -137,9 +138,10 @@ public class MemberService implements UserDetailsService {
                     .build();
 
             return therapistDto;
-        } else {
-            return TherapistDto.builder().build();
+        }} catch (Exception e){
+            e.printStackTrace();
         }
+        return TherapistDto.builder().build();
     }
 
     // 유효성검사 핸들러

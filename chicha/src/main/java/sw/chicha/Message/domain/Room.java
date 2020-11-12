@@ -12,24 +12,22 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
 @Entity
 @Getter
-public class Message {
+public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String session;
-    private String counseling;
-
-    @OneToOne
-    @JoinColumn(name = "schedule_id")
-    private Schedule schedule;
+    private String name;
 
     @Builder
-    public Message(Long id, String session, String counseling, Schedule schedule) {
+    public Room(Long id, String name) {
         this.id = id;
-        this.session = session;
-        this.counseling = counseling;
-        this.schedule = schedule;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Room [roomNumber=" + id + ", roomName=" + name + "]";
     }
 
 }

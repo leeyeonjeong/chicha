@@ -1,7 +1,7 @@
 package sw.chicha.Message.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import sw.chicha.Message.domain.Message;
+import sw.chicha.Message.domain.Room;
 
-public interface MessageRepository extends JpaRepository<Message, Long> {
+public interface MessageRepository extends JpaRepository<Room, Long> {
 }

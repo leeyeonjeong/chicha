@@ -2,6 +2,7 @@ package sw.chicha.Coach.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import sw.chicha.Calendar.dto.CalendarDto;
 import sw.chicha.Child.domain.Child;
 import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Coach.domain.Coach;
@@ -43,6 +44,7 @@ public class CoachService {
     }
 
     public CoachDto getCoach(Long id) {
+        try {
         if (coachRepository.findBySchedule_id(id) != null) {
             Optional<Coach> coachWrapper = coachRepository.findBySchedule_id(id).stream().findAny();
             if (coachWrapper.isPresent()) {
@@ -56,12 +58,11 @@ public class CoachService {
                         .build();
 
                 return coachDto;
-            } else {
-                return CoachDto.builder().build();
             }
-        } else {
-            return CoachDto.builder().build();
+        }} catch (Exception e){
+            e.printStackTrace();
         }
+        return CoachDto.builder().build();
     }
 
 }

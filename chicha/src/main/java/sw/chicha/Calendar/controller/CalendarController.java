@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import sw.chicha.Calendar.dto.CalendarDto;
 import sw.chicha.Calendar.repository.CalendarRepository;
 import sw.chicha.Calendar.service.CalendarService;
@@ -37,55 +38,58 @@ public class CalendarController {
      * */
 
     @GetMapping("calendar_month")
-    public String calendar_month(Principal principal, CalendarDto calendarDto, Model model) {
+    public ModelAndView calendar_month(Principal principal, CalendarDto calendarDto, Model model) {
+        ModelAndView mv = new ModelAndView();
+        try {
          // 사용자가 치료사일 경우
-       if (therapistRepository.findByEmail(principal.getName()).isPresent()) {
-           // 처음 캘린더를 실행할 경우
-           if (calendarService.getTherapist(therapistRepository.findByEmail(principal.getName()).get().getId()).getId() == null) {
-               calendarDto.setTherapist(therapistRepository.findByEmail(principal.getName()).get());
-               calendarDto.setExpect(0L);
-               calendarDto.setAttendance(0L);
-               calendarDto.setAbsen(0L);
-               calendarDto.setReinforce(0L);
-               calendarDto.setEvaluation(0L);
-               calendarDto.setAccumulation(0L);
-               calendarService.saveCalender(calendarDto);
-           } else {
-               calendarDto = calendarService.getCalendar(therapistRepository.findByEmail(principal.getName()).get().getId());
+           if (therapistRepository.findByEmail(principal.getName()).isPresent()) {
+               // 처음 캘린더를 실행할 경우
+               if (calendarService.getTherapist(therapistRepository.findByEmail(principal.getName()).get().getId()).getId() == null) {
+                   calendarDto.setTherapist(therapistRepository.findByEmail(principal.getName()).get());
+                   calendarDto.setExpect(0L);
+                   calendarDto.setAttendance(0L);
+                   calendarDto.setAbsen(0L);
+                   calendarDto.setReinforce(0L);
+                   calendarDto.setEvaluation(0L);
+                   calendarDto.setAccumulation(0L);
+                   calendarService.saveCalender(calendarDto);
+               } else {
+                   calendarDto = calendarService.getCalendar(therapistRepository.findByEmail(principal.getName()).get().getId());
+               }
+               model.addAttribute("expect", calendarDto.getExpect());
+               model.addAttribute("attendance", calendarDto.getAttendance());
+               model.addAttribute("absen", calendarDto.getAbsen());
+               model.addAttribute("reinforce", calendarDto.getReinforce());
+               model.addAttribute("evaluation", calendarDto.getEvaluation());
+               model.addAttribute("accumulation", calendarDto.getAccumulation());
+               mv.setViewName("calendar/캘린더_치료사_월");
+           // 사용자가 일반 멤버일 경우
+           } else if (memberRepository.findByEmail(principal.getName()).isPresent()){
+              if (calendarService.getMember(memberRepository.findByEmail(principal.getName()).get().getId()).getId() == null) {
+                  calendarDto.setMember(memberRepository.findByEmail(principal.getName()).get());
+                  calendarDto.setExpect(0L);
+                  calendarDto.setAttendance(0L);
+                  calendarDto.setAbsen(0L);
+                  calendarDto.setReinforce(0L);
+                  calendarDto.setEvaluation(0L);
+                  calendarDto.setAccumulation(0L);
+                  calendarService.saveCalender(calendarDto);
+              } else {
+                  calendarDto = calendarService.getCalendar(memberRepository.findByEmail(principal.getName()).get().getId());
+              }
+               model.addAttribute("expect", calendarDto.getExpect());
+               model.addAttribute("attendance", calendarDto.getAttendance());
+               model.addAttribute("absen", calendarDto.getAbsen());
+               model.addAttribute("reinforce", calendarDto.getReinforce());
+               model.addAttribute("evaluation", calendarDto.getEvaluation());
+               model.addAttribute("accumulation", calendarDto.getAccumulation());
+               mv.setViewName("calendar/캘린더_일반_월");
            }
-           model.addAttribute("expect", calendarDto.getExpect());
-           model.addAttribute("attendance", calendarDto.getAttendance());
-           model.addAttribute("absen", calendarDto.getAbsen());
-           model.addAttribute("reinforce", calendarDto.getReinforce());
-           model.addAttribute("evaluation", calendarDto.getEvaluation());
-           model.addAttribute("accumulation", calendarDto.getAccumulation());
-           return "calendar/캘린더_치료사_월";
-       // 사용자가 일반 멤버일 경우
-       } else if (memberRepository.findByEmail(principal.getName()).isPresent()){
-          if (calendarService.getMember(memberRepository.findByEmail(principal.getName()).get().getId()).getId() == null) {
-              calendarDto.setMember(memberRepository.findByEmail(principal.getName()).get());
-              calendarDto.setExpect(0L);
-              calendarDto.setAttendance(0L);
-              calendarDto.setAbsen(0L);
-              calendarDto.setReinforce(0L);
-              calendarDto.setEvaluation(0L);
-              calendarDto.setAccumulation(0L);
-              calendarService.saveCalender(calendarDto);
-          } else {
-              calendarDto = calendarService.getCalendar(memberRepository.findByEmail(principal.getName()).get().getId());
-          }
-           model.addAttribute("expect", calendarDto.getExpect());
-           model.addAttribute("attendance", calendarDto.getAttendance());
-           model.addAttribute("absen", calendarDto.getAbsen());
-           model.addAttribute("reinforce", calendarDto.getReinforce());
-           model.addAttribute("evaluation", calendarDto.getEvaluation());
-           model.addAttribute("accumulation", calendarDto.getAccumulation());
-           return "calendar/캘린더_일반_월";
-       } else if (principal.getName() == null){
-           return "error/null";
-       } else {
-           return "main/메인";
-       }
+        } catch(Exception e) {
+            mv.setViewName("error/null");
+        }
+
+        return mv;
     }
 
     @GetMapping("therapist_calendar_day/{day}")
