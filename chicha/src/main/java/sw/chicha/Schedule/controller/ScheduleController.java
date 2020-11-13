@@ -178,7 +178,7 @@ public class ScheduleController {
         Long calendar_id = calendarRepository.findById(member_id).get().getId();
         CalendarDto calendarDto = calendarService.getCalendar(calendar_id);
         scheduleMemberDto.setCreatedDate(LocalDateTime.now().toLocalDate());
-        scheduleMemberDto.setChild(calendarRepository.findById(calendar_id).get().getMember().getChild().getName());
+        scheduleMemberDto.setChild(calendarRepository.findById(calendar_id).get().getMember().getChilds().stream().findAny().get().getName());
         scheduleMemberDto.setCalendar(calendarDto.toEntity());
 
         scheduleService.saveCalenderMember(scheduleMemberDto);

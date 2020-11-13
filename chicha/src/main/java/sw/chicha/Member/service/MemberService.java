@@ -113,7 +113,7 @@ public class MemberService implements UserDetailsService {
                     .zipcode(member.getZipcode())
                     .firstAddr(member.getFirstAddr())
                     .secondAddr(member.getSecondAddr())
-                    .child(member.getChild())
+                    .childs(member.getChilds())
                     .build();
 
             return memberDto;

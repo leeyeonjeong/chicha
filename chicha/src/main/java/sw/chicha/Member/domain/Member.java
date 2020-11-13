@@ -9,6 +9,8 @@ import sw.chicha.Child.domain.Child;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
 @Getter
@@ -26,13 +28,12 @@ public class Member {
     private String firstAddr;      // 지번주소
     private String secondAddr;      // 상세주소
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "child_id")
-    private Child child;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Child> childs = new ArrayList<Child>();
 
     @Builder
     public Member(Long id, String name, String phoneNumber, String email, String password,
-                  String zipcode, String firstAddr, String secondAddr, Child child) {
+                  String zipcode, String firstAddr, String secondAddr, List<Child> childs) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -41,6 +42,6 @@ public class Member {
         this.zipcode = zipcode;
         this.firstAddr = firstAddr;
         this.secondAddr = secondAddr;
-        this.child = child;
+        this.childs = childs;
     }
 }
