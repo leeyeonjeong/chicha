@@ -1,33 +1,32 @@
 package sw.chicha.Message.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import sw.chicha.Schedule.domain.Schedule;
 
 import javax.persistence.*;
 
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
-@Entity
+@NoArgsConstructor(access = AccessLevel.PUBLIC)  // 기본 생성자 (protected type)
+@Setter
 @Getter
 public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private Integer roomNumber;
+    private String roomName;
 
     @Builder
-    public Room(Long id, String name) {
+    public Room(Long id, Integer roomNumber, String roomName) {
         this.id = id;
-        this.name = name;
+        this.roomNumber = roomNumber;
+        this.roomName = roomName;
     }
 
     @Override
     public String toString() {
-        return "Room [roomNumber=" + id + ", roomName=" + name + "]";
+        return "Room [roomNumber=" + roomName + ", roomName=" + roomName + "]";
     }
 
 }

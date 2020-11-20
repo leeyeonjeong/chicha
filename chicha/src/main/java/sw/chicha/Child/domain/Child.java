@@ -8,6 +8,7 @@ import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Therapist;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
 @Entity
@@ -31,6 +32,7 @@ public class Child {
     private String firstAddr;
     private String secondAddr;
     private String memo;
+    private Timestamp createDate;
 
     @ManyToOne
     @JoinColumn(name = "member_id")

@@ -4,11 +4,14 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 import sw.chicha.Calendar.domain.Calendar;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,8 @@ public class Therapist {
     private String email;
     private String password;
     private String confirm;     // 자격증 인증
+    @CreationTimestamp  // 시간이 자동으로 입력
+    private Timestamp createDate;
 
     @OneToMany(mappedBy = "therapist")
     private List<Calendar> calendars = new ArrayList<Calendar>();

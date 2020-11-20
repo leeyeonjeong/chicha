@@ -2,6 +2,13 @@
 <html>
 <head>
 <meta charset="utf-8">
+	<script type="text/javascript">
+
+		function chatName(){
+			var userName = $("#userName").val();
+			sessionStorage.setItem("userName", userName);
+		}
+	</script>
 <style>
 	#area{width: 670px; height: 524px;}
 	#area>#title{width:670px;height:40px;display: table;position:absolute;top:42px;}
@@ -16,13 +23,15 @@
 
 <body id = "area">
 	<div id = "title"><span>소통하기</span></div>
-	
-	<div id = "box">
-		<div id = "ti"><span>소통하고자 하는 상대방의 아이디를 입력하세요.</span></div>
-		
-		<input type = "text" placeholder="아이디를 입력하세요.">
+
+	<div>
+		<div id = "box">
+			<div id = "ti"><span>소통하고자 하는 상대방의 아이디를 입력하세요.</span></div>
+
+			<input type = "text" name="userName" id="userName" placeholder="아이디를 입력하세요.">
+		</div>
+
+		<button onClick="chatName()">확인</button>
 	</div>
-	
-	<button onClick="window.close();">확인</button>
 </body>
 </html>

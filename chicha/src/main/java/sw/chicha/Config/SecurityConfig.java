@@ -4,13 +4,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import sw.chicha.OAuth.service.CustomOAuth2UserService;
 import sw.chicha.Member.service.MemberService;
 
 import static org.hibernate.criterion.Restrictions.and;
@@ -18,9 +18,9 @@ import static org.hibernate.criterion.Restrictions.and;
 @Configuration
 @AllArgsConstructor
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)  // 컨트롤러에 직접 권한 지정 가능
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private MemberService memberService;
-    private final CustomOAuth2UserService customOAuth2UserService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -37,13 +37,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 페이지 권한
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("MEMBER")
-                .antMatchers("/**").permitAll()
+                .antMatchers("/")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
         .and()
                 .formLogin()
                 .loginPage("/login")
-                //.defaultSuccessUrl("/")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/")
                 .permitAll()
         .and()
                 .logout()

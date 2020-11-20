@@ -6,6 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		var ws;
+		var userName = sessionStorage.getItem("userName");
 
 		function wsOpen(){
 			ws = new WebSocket("ws://" + location.host + "/chating");
@@ -46,18 +47,6 @@
 						send();
 					}
 				});
-			}
-		}
-
-		function chatName(){
-			var userName = $("#userName").val();
-			if(userName == null || userName.trim() == ""){
-				alert("사용자 이름을 입력해주세요.");
-				$("#userName").focus();
-			}else{
-				wsOpen();
-				$("#yourName").hide();
-				$("#input_box").show();
 			}
 		}
 
@@ -167,15 +156,6 @@
 			</div>
 			-->
 		</div><!-- end chat-->
-		<div id="yourName">
-			<table class="inputTable">
-				<tr>
-					<th>사용자명</th>
-					<th><input type="text" name="userName" id="userName"></th>
-					<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
-				</tr>
-			</table>
-		</div>
 		<div id = "input_box">
 			<input type = "text" id = "chatting" placeholder = "내용을 입력해주세요.">
 			<span id = "btn"><label onclick="send()" id="sendBtn">입력</label></span>

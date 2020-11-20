@@ -4,11 +4,14 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 import sw.chicha.Child.domain.Child;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,15 +21,23 @@ import java.util.List;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 프로젝트에서 연결된 DB의 넘버링 전략을 따라감(Oracle-시퀀스, MySQL- auto_increment)
     private Long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String phoneNumber;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String zipcode;     // 우편번호
+    @Column(nullable = false)
     private String firstAddr;      // 지번주소
     private String secondAddr;      // 상세주소
+    @CreationTimestamp  // 시간이 자동으로 입력
+    private Timestamp createDate;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Child> childs = new ArrayList<Child>();
