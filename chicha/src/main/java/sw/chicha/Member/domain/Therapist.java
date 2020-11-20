@@ -31,6 +31,8 @@ public class Therapist {
     private String confirm;     // 자격증 인증
     @CreationTimestamp  // 시간이 자동으로 입력
     private Timestamp createDate;
+    @Enumerated(EnumType.STRING)
+    private Role role; // Enum을 쓰는게 좋다. // ADMIN, USER
 
     @OneToMany(mappedBy = "therapist")
     private List<Calendar> calendars = new ArrayList<Calendar>();

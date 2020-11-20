@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 페이지 권한
-                .antMatchers("/")
+                .antMatchers("/","/join_select", "/join_general", "/join_therapist", "/join_success_therapist", "/join_success_general", "/check/sendSMS")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

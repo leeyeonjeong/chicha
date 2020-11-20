@@ -38,6 +38,8 @@ public class Member {
     private String secondAddr;      // 상세주소
     @CreationTimestamp  // 시간이 자동으로 입력
     private Timestamp createDate;
+    @Enumerated(EnumType.STRING)
+    private Role role; // Enum을 쓰는게 좋다. // ADMIN, USER
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Child> childs = new ArrayList<Child>();

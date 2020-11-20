@@ -3,7 +3,10 @@ package sw.chicha.Member.dto;
 import lombok.*;
 import sw.chicha.Child.domain.Child;
 import sw.chicha.Member.domain.Member;
+import sw.chicha.Member.domain.Role;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.List;
 
 @NoArgsConstructor
@@ -21,7 +24,8 @@ public class MemberDto {
     private String firstAddr;
     private String secondAddr;
     private List<Child> childs;
-
+    @Enumerated(EnumType.STRING)
+    private Role role; // Enum을 쓰는게 좋다. // ADMIN, USER
 
     public Member toEntity() {
         return Member.builder()

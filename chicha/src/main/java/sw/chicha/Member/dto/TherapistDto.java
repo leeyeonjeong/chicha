@@ -2,7 +2,11 @@ package sw.chicha.Member.dto;
 
 import lombok.*;
 import sw.chicha.Member.domain.Member;
+import sw.chicha.Member.domain.Role;
 import sw.chicha.Member.domain.Therapist;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @NoArgsConstructor
 @Setter
@@ -16,6 +20,8 @@ public class TherapistDto {
     private String email;
     private String password;
     private String confirm;
+    @Enumerated(EnumType.STRING)
+    private Role role; // Enum을 쓰는게 좋다. // ADMIN, USER
 
     public Therapist toEntity() {
         return Therapist.builder()

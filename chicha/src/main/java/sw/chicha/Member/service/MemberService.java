@@ -25,6 +25,7 @@ import sw.chicha.Member.repository.TherapistRepository;
 import sw.chicha.Schedule.domain.Schedule;
 import sw.chicha.Schedule.dto.ScheduleDto;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -46,19 +47,29 @@ public class MemberService implements UserDetailsService {
 
 
     // 일반 회원가입
+    @Transactional
     public Long joinMember(MemberDto memberDto) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
-
-        return memberRepository.save(memberDto.toEntity()).getId();
+        memberDto.setRole(Role.MEMBER);
+        try {
+            return memberRepository.save(memberDto.toEntity()).getId();
+        } catch (Exception e) {
+            return 0L;
+        }
     }
 
     // 치료사 회원가입
+    @Transactional
     public Long joinTherapist(TherapistDto therapistDto) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         therapistDto.setPassword(passwordEncoder.encode(therapistDto.getPassword()));
-
-        return therapistRepository.save(therapistDto.toEntity()).getId();
+        therapistDto.setRole(Role.THERAPIST);
+        try {
+            return therapistRepository.save(therapistDto.toEntity()).getId();
+        } catch (Exception e) {
+            return 0L;
+        }
     }
 
     // 로그인
