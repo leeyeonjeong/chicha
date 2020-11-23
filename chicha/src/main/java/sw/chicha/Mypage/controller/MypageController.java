@@ -1,6 +1,7 @@
 package sw.chicha.Mypage.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,7 @@ public class MypageController {
 
     @PostMapping("account_management")
     public String exec_account_management(Principal principal, String pwd) {
-        String re = "redirect:/account_management_detail";
+        String re = "redirect:/mypage";
         // 사용자가 치료사일 경우
         if (therapistRepository.findByEmail(principal.getName()).isPresent()) {
             TherapistDto therapistDto = memberService.getTherapist(therapistRepository.findByEmail(principal.getName()).get().getId());
@@ -44,13 +45,13 @@ public class MypageController {
         } else if (memberRepository.findByEmail(principal.getName()).isPresent()) {  // 일반 사용자일 경우
             MemberDto memberDto = memberService.getMember(memberRepository.findByEmail(principal.getName()).get().getId());
             if (memberDto.getPassword() == pwd) {
-                re= "redirect:/account_management_detail";
+                re= "redirect:/mypage";
             }
         }
         return re;
     }
 
-    // 계정관리 상세 치료사
+    // 계정관리 상세
     @GetMapping("account_management_detail")
     public String account_management_detail(Principal principal, Model model) {
         // 사용자가 치료사일 경우
@@ -92,5 +93,14 @@ public class MypageController {
         memberService.saveMember(memberDto);
         return "redirect:/";
     }
+
+    @GetMapping("mypage")
+    public String mypage(Principal principal, Model model) {
+        String memberName = memberRepository.findByEmail(principal.getName()).get().getName();
+        model.addAttribute("memberName", memberName);
+        return "mypage/마이페이지";
+    }
+
+
 
 }

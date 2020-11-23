@@ -8,9 +8,9 @@ import sw.chicha.Member.domain.Therapist;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+@AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 @ToString
 public class TherapistDto {
 

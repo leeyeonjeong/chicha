@@ -9,9 +9,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.util.List;
 
+@AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 @ToString
 public class MemberDto {
 

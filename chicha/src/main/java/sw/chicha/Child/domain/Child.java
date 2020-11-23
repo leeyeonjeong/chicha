@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import sw.chicha.Member.domain.Member;
 import sw.chicha.Member.domain.Therapist;
 
@@ -32,6 +33,7 @@ public class Child {
     private String firstAddr;
     private String secondAddr;
     private String memo;
+    @CreationTimestamp  // 시간이 자동으로 입력
     private Timestamp createDate;
 
     @ManyToOne

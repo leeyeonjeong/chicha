@@ -1,8 +1,6 @@
-package sw.chicha.Message.Handler;
+package sw.chicha.Handler;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

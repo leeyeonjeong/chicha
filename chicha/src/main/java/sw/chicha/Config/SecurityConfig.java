@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import sw.chicha.Member.service.MemberService;
 
 import static org.hibernate.criterion.Restrictions.and;
+import static org.springframework.security.config.oauth2.client.CommonOAuth2Provider.FACEBOOK;
+import static org.springframework.security.config.oauth2.client.CommonOAuth2Provider.GOOGLE;
 
 @Configuration
 @AllArgsConstructor
@@ -38,8 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // 페이지 권한
                 .antMatchers("/","/join_select", "/join_general", "/join_therapist", "/join_success_therapist", "/join_success_general", "/check/sendSMS")
-                .permitAll()
-                .anyRequest()
+                .permitAll()                .anyRequest()
                 .authenticated()
         .and()
                 .formLogin()
@@ -56,9 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.logoutRequestMatcher("/logout/result")
                 .invalidateHttpSession(true);
         //.and()
-        //        .oauth2Login()
-        //        .userInfoEndpoint()
-        //        .userService(customOAuth2UserService);
+                //.oauth2Login();
+                //.userInfoEndpoint()
         //.and()
                 // 403 예외처리
                 //.exceptionHandling().accessDeniedPage("/denied");

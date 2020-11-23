@@ -8,8 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 @ToString
 public class ScheduleMemberDto {
 

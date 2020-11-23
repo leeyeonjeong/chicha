@@ -21,70 +21,15 @@ import java.util.Random;
 public class MemberController {
     private MemberService memberService;
     private CertificationService certificationService;
-    private MemberRepository memberRepository;
-    private TherapistRepository therapistRepository;
+
+    /**
+     * 공통
+     * */
 
     // 회원가입 선택
     @GetMapping("join_select")
     public String join_select() {
         return "join/회원가입선택";
-    }
-
-     // 회원가입 페이지 (일반)
-    @GetMapping("join_general")
-    public String dis_join_general() {
-        return "join/회원가입_일반";
-    }
-
-    // 회원가입 처리 (일반)
-    @PostMapping("join_general")
-    public String exec_join_general(MemberDto memberDto, Errors errors, Model model) {
-        if (errors.hasErrors()) {
-            // 회원가입 실패 시, 입력 데이터 유지
-            model.addAttribute("memberDto", memberDto);
-
-            // 유효성 검사 못한 필드 핸들링
-            Map<String, String> validatorResult = memberService.validateHandling(errors);
-            for (String key : validatorResult.keySet()) {
-                model.addAttribute(key, validatorResult.get(key));
-            }
-
-            return "redirect:/";
-        }
-
-        memberService.joinMember(memberDto);
-        return "redirect:/join_success_general";
-    }
-
-    // 회원가입 완료 (일반)
-    @GetMapping("join_success_general")
-    public String join_success_general() {
-        return "join/회원가입완료_일반";
-    }
-
-    // 회원가입 페이지 (치료사)
-    @GetMapping("join_therapist")
-    public String dis_join_therapist() {
-        return "join/회원가입_치료사";
-    }
-
-    // 회원가입 처리 (치료사)
-    @PostMapping("join_therapist")
-    public String exec_join_therapist(TherapistDto therapistDto) {
-        memberService.joinTherapist(therapistDto);
-        return "redirect:/join_success_therapist";
-    }
-
-    // 회원가입 완료 (치료사)
-    @GetMapping("join_success_therapist")
-    public String join_success_therapist() {
-        return "join/회원가입완료_치료사";
-    }
-
-    // 아이등록
-    @GetMapping("join_child")
-    public String join_child() {
-        return "join/회원가입_아이등록";
     }
 
     // SMS 인증
@@ -106,15 +51,6 @@ public class MemberController {
         return numStr;
     }
 
-    // 아이디 중복 확인
-    @GetMapping("idCheck")
-    public String id_check(String id) {
-        System.out.println("conttttttttttttttttttt"+id);
-        String str = memberService.idCheck(id);
-        System.out.println("conttttttttttttttttttt str"+str);
-        return str;
-    }
-
     // 로그인 페이지
     @GetMapping("login")
     public String login() {
@@ -127,5 +63,59 @@ public class MemberController {
         return "redirect:/";
     }
 
+
+    /**
+     * 일반 회원
+     * */
+
+     // 회원가입 페이지 (일반)
+    @GetMapping("join_general")
+    public String dis_join_general() {
+        return "join/회원가입_일반";
+    }
+
+    // 회원가입 처리 (일반)
+    @PostMapping("join_general")
+    public String exec_join_general(MemberDto memberDto) {
+        memberService.joinMember(memberDto);
+        return "redirect:/join_success_general";
+    }
+
+    // 회원가입 완료 (일반)
+    @GetMapping("join_success_general")
+    public String join_success_general() {
+        return "join/회원가입완료_일반";
+    }
+
+    // 아이등록
+    @GetMapping("join_child")
+    public String join_child() {
+        return "join/회원가입_아이등록";
+    }
+
+
+    /**
+     * 치료사 회원
+     * */
+
+
+    // 회원가입 페이지 (치료사)
+    @GetMapping("join_therapist")
+    public String dis_join_therapist() {
+        return "join/회원가입_치료사";
+    }
+
+    // 회원가입 처리 (치료사)
+    @PostMapping("join_therapist")
+    public String exec_join_therapist(TherapistDto therapistDto) {
+        memberService.joinTherapist(therapistDto);
+        return "redirect:/join_success_therapist";
+    }
+
+    // 회원가입 완료 (치료사)
+    @GetMapping("join_success_therapist")
+    public String join_success_therapist() {
+        return "join/회원가입완료_치료사";
+    }
 
 }

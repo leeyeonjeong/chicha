@@ -1,9 +1,6 @@
 package sw.chicha.Schedule.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import sw.chicha.Calendar.domain.Calendar;
 import sw.chicha.Coach.domain.Coach;
@@ -16,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
 @Entity
 @Getter

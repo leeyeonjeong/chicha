@@ -41,17 +41,18 @@ public class MemberService implements UserDetailsService {
     }
 
     // 치료사 저장
-    public Long saveTherapist(TherapistDto therapistDto) {
-        return therapistRepository.save(therapistDto.toEntity()).getId();
-    }
-
+    public Long saveTherapist(TherapistDto therapistDto) { return therapistRepository.save(therapistDto.toEntity()).getId(); }
 
     // 일반 회원가입
     @Transactional
     public Long joinMember(MemberDto memberDto) {
+        // 비밀번호 해쉬
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
+
+        // Role 부여
         memberDto.setRole(Role.MEMBER);
+
         try {
             return memberRepository.save(memberDto.toEntity()).getId();
         } catch (Exception e) {
@@ -64,7 +65,9 @@ public class MemberService implements UserDetailsService {
     public Long joinTherapist(TherapistDto therapistDto) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         therapistDto.setPassword(passwordEncoder.encode(therapistDto.getPassword()));
+
         therapistDto.setRole(Role.THERAPIST);
+
         try {
             return therapistRepository.save(therapistDto.toEntity()).getId();
         } catch (Exception e) {
@@ -77,37 +80,29 @@ public class MemberService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<Member> userEntityWrapper = memberRepository.findByEmail(email);
 
-        // 치료사 로그인일 때
-        if (!userEntityWrapper.isPresent()) {
-            Optional<Therapist> userEntityWrapper2 = therapistRepository.findByEmail(email);
-            Therapist userEntity = userEntityWrapper2.get();
+            // 치료사 로그인일 때
+            if (!userEntityWrapper.isPresent()) {
+                Optional<Therapist> userEntityWrapper2 = therapistRepository.findByEmail(email);
+                Therapist userEntity = userEntityWrapper2.get();
+                List<GrantedAuthority> authorities = new ArrayList<>();
 
-            List<GrantedAuthority> authorities = new ArrayList<>();
+                // 권한생성
+                 authorities.add(new SimpleGrantedAuthority(Role.THERAPIST.getValue()));
 
-            // 권한생성
-            if (("admin").equals(email)) {
-                authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
-            } else {
-                authorities.add(new SimpleGrantedAuthority(Role.THERAPIST.getValue()));
-            }
+                // Detail에서 새로운 객체 반환
+                return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
+            } else if (userEntityWrapper.isPresent()) {
+                Member userEntity = userEntityWrapper.get();
+                List<GrantedAuthority> authorities = new ArrayList<>();
 
-            // Detail에서 새로운 객체 반환
-            return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
-        } else {
-            Member userEntity = userEntityWrapper.get();
-
-            List<GrantedAuthority> authorities = new ArrayList<>();
-
-            // 권한생성
-            if (("admin").equals(email)) {
-                authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
-            } else {
+                // 권한생성
                 authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
+
+                // Detail에서 새로운 객체 반환
+                return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
             }
 
-            // Detail에서 새로운 객체 반환
-            return new User(userEntity.getEmail(), userEntity.getPassword(), authorities);
-        }
+            return new User("", "", null);
     }
 
     // 일반 멤버 반환
@@ -124,7 +119,6 @@ public class MemberService implements UserDetailsService {
                     .zipcode(member.getZipcode())
                     .firstAddr(member.getFirstAddr())
                     .secondAddr(member.getSecondAddr())
-                    .childs(member.getChilds())
                     .build();
 
             return memberDto;
@@ -153,31 +147,6 @@ public class MemberService implements UserDetailsService {
             e.printStackTrace();
         }
         return TherapistDto.builder().build();
-    }
-
-    // 유효성검사 핸들러
-    public Map<String, String> validateHandling(Errors errors) {
-        Map<String, String> validatorResult = new HashMap<>();
-
-        for (FieldError error : errors.getFieldErrors()) {
-            String validKeyName = String.format("valid_%s", error.getField());
-            validatorResult.put(validKeyName, error.getDefaultMessage());
-        }
-
-        return validatorResult;
-    }
-
-    // 아이디 중복 체크 함수
-    public String idCheck(String email) {
-        System.out.println("serviceeeeeeeeeeeeeeeeeeeeeeeee"+memberRepository.findByEmail(email));
-        String re = "YES";
-
-        if (memberRepository.findByEmail(email) == null) {
-            re = "YES";
-        } else {
-            re = "NO";
-        }
-        return re;
     }
 
 }

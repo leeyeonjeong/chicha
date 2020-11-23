@@ -46,12 +46,7 @@ public class CalendarController {
                // 처음 캘린더를 실행할 경우
                if (calendarService.getTherapist(therapistRepository.findByEmail(principal.getName()).get().getId()).getId() == null) {
                    calendarDto.setTherapist(therapistRepository.findByEmail(principal.getName()).get());
-                   calendarDto.setExpect(0L);
-                   calendarDto.setAttendance(0L);
-                   calendarDto.setAbsen(0L);
-                   calendarDto.setReinforce(0L);
-                   calendarDto.setEvaluation(0L);
-                   calendarDto.setAccumulation(0L);
+                   calendarService.setCalendar(calendarDto);
                    calendarService.saveCalender(calendarDto);
                } else {
                    calendarDto = calendarService.getCalendar(therapistRepository.findByEmail(principal.getName()).get().getId());
@@ -67,12 +62,7 @@ public class CalendarController {
            } else if (memberRepository.findByEmail(principal.getName()).isPresent()){
               if (calendarService.getMember(memberRepository.findByEmail(principal.getName()).get().getId()).getId() == null) {
                   calendarDto.setMember(memberRepository.findByEmail(principal.getName()).get());
-                  calendarDto.setExpect(0L);
-                  calendarDto.setAttendance(0L);
-                  calendarDto.setAbsen(0L);
-                  calendarDto.setReinforce(0L);
-                  calendarDto.setEvaluation(0L);
-                  calendarDto.setAccumulation(0L);
+                  calendarService.setCalendar(calendarDto);
                   calendarService.saveCalender(calendarDto);
               } else {
                   calendarDto = calendarService.getCalendar(memberRepository.findByEmail(principal.getName()).get().getId());

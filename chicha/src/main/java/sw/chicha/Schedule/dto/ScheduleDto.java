@@ -12,9 +12,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 @ToString
 public class ScheduleDto {
 

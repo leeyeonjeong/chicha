@@ -8,10 +8,12 @@ import sw.chicha.Calendar.repository.CalendarRepository;
 import sw.chicha.Child.domain.Child;
 import sw.chicha.Child.dto.ChildTherapistDto;
 import sw.chicha.Child.repository.ChildRepository;
+import sw.chicha.Member.repository.MemberRepository;
 import sw.chicha.Schedule.domain.Schedule;
 import sw.chicha.Schedule.dto.ScheduleDto;
 
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +22,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CalendarService {
     private CalendarRepository calendarRepository;
+    private MemberRepository memberRepository;
 
     public Long saveCalender(CalendarDto calendarDto) {
         return calendarRepository.save(calendarDto.toEntity()).getId();
@@ -82,6 +85,16 @@ public class CalendarService {
             e.printStackTrace();
         }
         return CalendarDto.builder().build();
+    }
+
+    public CalendarDto setCalendar(CalendarDto calendarDto) {
+        calendarDto.setExpect(0L);
+        calendarDto.setAttendance(0L);
+        calendarDto.setAbsen(0L);
+        calendarDto.setReinforce(0L);
+        calendarDto.setEvaluation(0L);
+        calendarDto.setAccumulation(0L);
+        return calendarDto;
     }
 
 }

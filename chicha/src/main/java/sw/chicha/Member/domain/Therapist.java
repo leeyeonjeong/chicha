@@ -1,9 +1,6 @@
 package sw.chicha.Member.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import sw.chicha.Calendar.domain.Calendar;
@@ -15,6 +12,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  // 기본 생성자 (protected type)
 @Getter
 @Entity
